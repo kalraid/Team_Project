@@ -143,7 +143,7 @@ select count(*)from(select content_id from festival where content_id is not null
 -- 지역 테이블 생성   
 drop table area_code;
 drop sequence seq_place;
-
+create sequence seq_place;
 create table area_code(
     name varchar2(100),
     code number primary key

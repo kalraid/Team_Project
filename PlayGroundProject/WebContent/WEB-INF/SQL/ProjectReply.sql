@@ -1,14 +1,14 @@
 CREATE TABLE gesipan(
     no NUMBER PRIMARY KEY, --번호
     id VARCHAR2(20 CHAR), -- 아이디
-    people VARCHAR2(10 CHAR), -- 작성자
+    people VARCHAR2(20 CHAR), -- 작성자
     linklist VARCHAR2(100 CHAR), -- 제목
     gesimul VARCHAR2(500 CHAR), -- 게시물 내용
     tablenum NUMBER, -- 테이블 번호 1 번은 일반게시판 2번은 추천게시판
     dbdate TIMESTAMP,-- 날짜
     good NUMBER, --조회수
-    pass VARCHAR2(25 CHAR),
-    File1 VARCHAR2(50 CHAR)
+    pass VARCHAR2(50 CHAR),
+    File1 VARCHAR2(300 CHAR)
 );
 ALTER TABLE gesipan
 ADD (pass VARCHAR2(25));
@@ -40,8 +40,8 @@ UPDATE gesipan SET  linklist='휴ㅏ', id='eew',pass='1234' ,people='영', dbdat
 
 
 CREATE TABLE ProjectReply(
-	no NUMBER(7) PRIMARY KEY,
-	projectNo NUMBER(7) NOT NULL,
+	no NUMBER PRIMARY KEY,
+	projectNo NUMBER NOT NULL,
 	projectreply VARCHAR2(500 CHAR),
 	projectwriter VARCHAR2(20 CHAR) NOT NULL,
 	projectdbdate TIMESTAMP NOT NULL,	
