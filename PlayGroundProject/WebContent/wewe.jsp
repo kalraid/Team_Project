@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 {"routes":
 	[	{"summary":"","copyrights":"Map data ©2018 SK telecom",
-		 "legs":
+		 "legs":  
 		 	[	{"duration":
 		 			{"text":"32 mins","value":1920}
 	 			,"start_location":
