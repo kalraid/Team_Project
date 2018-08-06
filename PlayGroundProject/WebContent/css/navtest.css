@@ -1,0 +1,93 @@
+
+
+body{font: 14px/1.5 "맑은 고딕", sans-serif;
+		position:relative;
+		padding:50px 0px !important;
+		}
+
+.nav01 ul{
+  list-style: none;
+  width: 150px;
+  font-size: 1em;
+  padding: 0;
+}
+
+/* 서브 ul 좌측 여백 제거 */
+.nav01 li a{
+  text-decoration: none;
+  display: block;
+}
+
+/* 부모 메뉴 */
+.nav01 .parent01 li a{
+  padding: 10px 12px 10px 20px;
+  background: #333;
+  color: white;
+  border-bottom:1px solid #eee;
+}
+
+/* 자식 메뉴 기본 상태(색) 지정 */
+.nav01 .child01 li a{ background: #ddd; color:#333;}
+
+/* 링크 상태(색) 정의*/
+.nav01 .parent01 a:hover{ background: #555;}
+.nav01 .child01 a:hover{ background: #999;}
+
+/* 부모 목록 마우스 오버시 자식메뉴 표시 */
+ul.parent01 > li:hover > ul.child01{ 
+  display: block; 
+  position: absolute;
+  left: 150px; top: 0;
+  z-index:11;
+}
+
+/* 부모 목록의 위치 선언 */
+ul.parent01 > li{ position: relative;}
+/* 자식 목록 숨김 */
+ul.child01{ display: none; }
+
+.plus{ float: right; } /* 메뉴 아이콘 배치 */
+
+body{ font: 14px/1.5 "맑은 고딕", sans-serif; }
+.nav01 ul{
+  list-style: none;
+  width: 150px;
+  font-size: 1em;
+  padding: 0;
+}
+ 
+/* 서브 ul 좌측 여백 제거 */
+.nav01 li a{
+  text-decoration: none;
+  display: block;
+}
+ 
+/* 부모 메뉴 */
+.nav01 .parent01 li a{
+  padding: 10px 12px 10px 20px;
+  background: #333;
+  color: white;
+  border-bottom:1px solid #eee;
+}
+ 
+/* 자식 메뉴 기본 상태(색) 지정 */
+.nav01 .child01 li a{ background: #ddd; color:#333;}
+ 
+/* 링크 상태(색) 정의*/
+.nav01 .parent01 a:hover{ background: #555;}
+.s .child01 a:hover{ background: #999;}
+ 
+/* 부모 목록 마우스 오버시 자식메뉴 표시 */
+ul.parent01 > li:hover > ul.child01{ 
+  display: block; 
+  position: absolute;
+  left: 150px; top: 0;
+  z-index:10;
+}
+ 
+/* 부모 목록의 위치 선언 */
+ul.parent01 > li{ position: relative;}
+/* 자식 목록 숨김 */
+ul.child01{ display: none; }
+ 
+.plus{ float: right; } /* 메뉴 아이콘 배치 */

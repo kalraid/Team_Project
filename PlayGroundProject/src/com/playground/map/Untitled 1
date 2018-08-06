@@ -1,0 +1,500 @@
+{   "html_attributions" : [],
+   "results" : 
+	[
+      
+		{
+         "geometry" : 
+			{
+            "location" : 
+				{
+               "lat" : 37.5037195,
+               "lng" : 127.0258675
+            
+			},
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.50506932989272,
+                  "lng" : 127.0272173298927
+               },
+               "southwest" : {
+                  "lat" : 37.50236967010727,
+                  "lng" : 127.0245176701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "8bee8373242e5a7fa29f95cc3e9bde85480df933",
+         "name" : "보드게임카페 오즈",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 1440,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/108489212632774758674/photos\"\u003eJin Park\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAGzpIY_CAzJWhKHyjT9JQ0_OBx3i4rKAhzBb7UNxUDRtxx0deN_JJc3_OFO-Ghd2R4vZzI3DFvZqQggKRYikbLAVI54Xe5wiUiiZ3jyXf5KL97QSsVJXJ5C0sbCp1YZ_BEhAMkBFWKWCZIiD7CgLzkZ_JGhTI4cMLq-eKVODukyY0ZpMChIhqig",
+               "width" : 2560
+            }
+         ],
+         "place_id" : "ChIJy45rQVihfDURBhW5rwEn9QI",
+         "plus_code" : {
+            "compound_code" : "G23G+F8 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G23G+F8"
+         },
+         "rating" : 4,
+         "reference" : "CmRbAAAA3Rv_h6bTvktnLCXR0UL-oC5lP6h31U_xmXQCyXlp2tZE6YuDZjViGUiDD-tnJzHdJY2WGZ7NToNTAH9iFYV5RUHfTZPrwndQptMm065ZHSM3bSgWOIsStJjJfUQJ6mypEhA644ydrM3tJzjTJO83txQSGhQh1KZa8HxjEtMG7Tn05cJo0nqdyw",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 역삼1동 봉은사로2길 13"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5119468,
+               "lng" : 126.9454192
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.51329662989271,
+                  "lng" : 126.9467690298927
+               },
+               "southwest" : {
+                  "lat" : 37.51059697010727,
+                  "lng" : 126.9440693701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "9b4687476360d4b8d19691b414b27f489e53294d",
+         "name" : "보드게임하자",
+         "photos" : [
+            {
+               "height" : 4656,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112465387110578924724/photos\"\u003eSora O\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA07HzO2q3edvWIvQzF4cluBnVTSK_3eIQeGn8NqvmG0Tl1uzCTE-4WYG_GL2l9BvtjA1WvhVpS4Ed1vAPoihxF_X48sUB1H6JTJ6lt28-H-Lqs3H5i_mQnzD7JtHR4GgHEhC94QgjlpAD25eMiBcys1pUGhSsizMljYkCtKg3MpJGNuOkHgAzQA",
+               "width" : 2620
+            }
+         ],
+         "place_id" : "ChIJh7JapWeffDURT7Gi4HZmG9c",
+         "plus_code" : {
+            "compound_code" : "GW6W+Q5 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q98GW6W+Q5"
+         },
+         "rating" : 4.7,
+         "reference" : "CmRbAAAAp7A78Fkz0rl-ZUOp-C9KQZp3l-hX2MKdgsF0lytLuKxAkRmox4HQhQ1W3Ub7JAZG3XZGL024ADB5CovWoYzpbXZnOXbV3sc0tvUkPVfgW14m50ZIVf6hMSzMBLUjmGSEEhDCPJJguqCvrIC98JzTgxbzGhQAItePlfwJvFQfoQz6bUi9c609tQ",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "-dong, 124-6 노량진1동 동작구"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5003771,
+               "lng" : 127.0274666
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.50172692989273,
+                  "lng" : 127.0288164298927
+               },
+               "southwest" : {
+                  "lat" : 37.49902727010728,
+                  "lng" : 127.0261167701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "f8c936c7d16ef2463b11a036ce497b363928f7d4",
+         "name" : "오로오로보드게임카페",
+         "place_id" : "ChIJM2b_TlihfDURICtCAcVNcz0",
+         "plus_code" : {
+            "compound_code" : "G22G+5X 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G22G+5X"
+         },
+         "rating" : 3,
+         "reference" : "CmRbAAAAYPWGtE5dCT9TP-m0e6x2nqLBgksEAyLnQHtmxln5lQrzp_taPLoowcl0Rn25fg8JZu4S7oyyUIbl-HleZ0VSozWdBtk4-HgLEm2TQU_smrj5q19tUlq0M8Yr4m2Jxwh8EhC0Nx3Zfp9GM0bLJiRPCinBGhTg6NdBv8XMtCMlnqz1jaOEzGGJuA",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 역삼동 817-6"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.469296,
+               "lng" : 126.9375873
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.47064582989272,
+                  "lng" : 126.9389371298927
+               },
+               "southwest" : {
+                  "lat" : 37.46794617010728,
+                  "lng" : 126.9362374701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "78241d7bb095d5c8f955cd5a1cea0a9925a36624",
+         "name" : "마린블루스보드게임까페",
+         "place_id" : "ChIJ4dBlDOaffDURExMDrcd4HuQ",
+         "plus_code" : {
+            "compound_code" : "FW9Q+P2 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q98FW9Q+P2"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAA1fJndEriftbYONIctyZLN64kepMsC6OY_rocy3v8Ul-TufQn6MQRQykqSUqPoApm1xMDOSZrvIXnvytP3IMSUD7T9YUONcLqld7J1FLzzGA3eGE6iaNQmUp9PkAth12OEhB6nhxpS4r66UvViYTQYYUzGhTpV9sV1XdGy4wIjkvdHA3wWDObBA",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "관악구 신림동 1517-17"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.52598529999999,
+               "lng" : 127.0367149
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.52733512989272,
+                  "lng" : 127.0380647298927
+               },
+               "southwest" : {
+                  "lat" : 37.52463547010727,
+                  "lng" : 127.0353650701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "d5a016797ddca4b801d0a443a254eec90c3ba7f3",
+         "name" : "윈보드게임방",
+         "place_id" : "ChIJfb_gj4ijfDURm2nzUvt2wAI",
+         "plus_code" : {
+            "compound_code" : "G2GP+9M 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G2GP+9M"
+         },
+         "rating" : 4.7,
+         "reference" : "CmRbAAAAuh1z-ZJnpEYWfX8an8jsY6WPP-KjNqW2z3J0yCtTp3GMrMj8qMIzzRXa1HN78JWZ_8_y-Qgi3AqfdyzZ-_ymjiZ0wGIP3eEhICydWi1PslD4CfAFR76UL8C_-hzVd19HEhD3WTYXaV0KgXVxlT3lyE7VGhThPemCQ2-FkGvfNCeVi7gEWAQx0A",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 신사동 642-27"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5256242,
+               "lng" : 127.0382704
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.52697402989272,
+                  "lng" : 127.0396202298927
+               },
+               "southwest" : {
+                  "lat" : 37.52427437010728,
+                  "lng" : 127.0369205701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "b54541bb7e6b863e6a7917a1d76064c8ca6b5895",
+         "name" : "GAMZINO보드게임카페",
+         "place_id" : "ChIJmS8NcYijfDURYgXgzhH2Dsc",
+         "plus_code" : {
+            "compound_code" : "G2GQ+68 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G2GQ+68"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAAsHKRmAmbC-s84KZukRk62wF8gwGzdLZWjhnuyFup7n_wxN5pnzC4VMOnGz0EsimqVFydTxiWP6IQjPIRsnjqTaFSQn3OM4K9yXKM7jPpblsTAS2TcAA8pR7zIGN2BWiYEhDXw5pAwD7oYEj13N64_7DJGhTkbO0A70zR9VnbjBsHy5OpoppNLg",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 신사동 657-32"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5253465,
+               "lng" : 127.0376593
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.52669632989272,
+                  "lng" : 127.0390091298927
+               },
+               "southwest" : {
+                  "lat" : 37.52399667010727,
+                  "lng" : 127.0363094701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "ea55e59fcbcf30d5e381c4ee301636584bdc7398",
+         "name" : "Dais보드게임카페",
+         "place_id" : "ChIJ1Wx5ZoijfDURES5bktrAdlM",
+         "plus_code" : {
+            "compound_code" : "G2GQ+43 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G2GQ+43"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAAAhA_dmBig3_Z0MTklvXM4SoMHvxHXl58bt5kdh393VN3dDxb9L-n1ybP6_rvbDab_W7f58aK0jE4o0yZfDZlHelRZCz-NH2MWuEJGR96xjRIQ0DFH0WInuln0FCnBoddEhB8ghxqP3jHI6dCI35BlMI-GhSUBTXlkIJ8gP0HxKA8LZLF5q68Zw",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 신사동 656-7"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5262908,
+               "lng" : 127.0380204
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.52764062989272,
+                  "lng" : 127.0393702298927
+               },
+               "southwest" : {
+                  "lat" : 37.52494097010728,
+                  "lng" : 127.0366705701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "379a75b3c6b929e1f178bcec2dcb15d403ac4de0",
+         "name" : "몰보드게임",
+         "place_id" : "ChIJCX9914ejfDURfC36oerSQsQ",
+         "plus_code" : {
+            "compound_code" : "G2GQ+G6 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G2GQ+G6"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAASCgz4pudzyuulm7KfIGvtG_UbieqRbHQsrOqvLN7zMVzVJqPTxEDrkm2qX83nHl88smBH6DXSNXpRytpdTxdKYxLqWpX0Jynxm_9E4G6-8IjaTRwR1vteglyAz5so4gcEhCxou41u0P9ByvDgquhrYjsGhSLC3a3BP8t5WTANaSsnpuTF4gbLA",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 신사동 663-4"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.4959339,
+               "lng" : 127.0141407
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.49728372989271,
+                  "lng" : 127.0154905298927
+               },
+               "southwest" : {
+                  "lat" : 37.49458407010727,
+                  "lng" : 127.0127908701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+         "id" : "75f89018aae4567cbe39f6bd3b59a52a8878ce45",
+         "name" : "달무티 교대점",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 2080,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/117082785314844696029/photos\"\u003e이기쁨\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAj-ne3qUEVcvFhBYDxk8T0FGiapZmluoU-P-sHG2HCXUjnIbecLnFPel2Vs09vBn48SvONm9zsow3EWlk-CHVmBLbnE9EU1HAg6IkvB33q46vJWjh4p4FOXXh5whrMX7NEhBI12o7U5MSbIWvoE4558XvGhTZ6PwRcZpnHBrVlADfkqUuiElWmQ",
+               "width" : 4160
+            }
+         ],
+         "place_id" : "ChIJQZTs22ihfDUREbAEg7SCFQE",
+         "plus_code" : {
+            "compound_code" : "F2W7+9M 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99F2W7+9M"
+         },
+         "rating" : 4.7,
+         "reference" : "CmRbAAAAz3A4W-5RhIZxOqpRp87cxTA0XimxsP4H7be8OEY77n8iPkSdS-fH9Qq6XzxjRkixMQurywnkwuruFxfztvjZFm3gmIFMWmIv1Vh-ZqpnD9W3-yZ7-vuOeU042jZkZcVkEhC9L5K1PNxC8u3Cn56eYWCeGhRrTuNU4FccmNZ-iqRUvbPDO0frgw",
+         "scope" : "GOOGLE",
+         "types" : [ "store", "point_of_interest", "establishment" ],
+         "vicinity" : "22 서초대로51길 서초동 서초구"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5068498,
+               "lng" : 127.0249336
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.50819962989272,
+                  "lng" : 127.0262834298927
+               },
+               "southwest" : {
+                  "lat" : 37.50549997010728,
+                  "lng" : 127.0235837701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "0b5afa762614b57e5fa30b4d4cb12a1a33e76720",
+         "name" : "보드게임마블",
+         "place_id" : "ChIJ_xBi6eOjfDURl40rQ8exmwE",
+         "plus_code" : {
+            "compound_code" : "G24F+PX 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G24F+PX"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAAjlU7SeqYLRKwdN7ly9L8g2mbnVE7-xpupQ1zFvNDKKIN94yUBoNYjSMap0DqoedM41qJcUTtDO5Wpai3CyBG36WT5F7D398Rh84cVFxjENsK1rKgx9g1xOGxc0a3PgqjEhDc0pa5BuKO9DhN0jIhm60mGhS7XKoaJanAV-6Dmwv1JDTxyjfCGA",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "논현동 182-25번지 3호 강남구 서울특별시 KR"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.4876738,
+               "lng" : 126.9830507
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.48902362989271,
+                  "lng" : 126.9844005298927
+               },
+               "southwest" : {
+                  "lat" : 37.48632397010726,
+                  "lng" : 126.9817008701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "c91f764cb78ef78a4af5854c8f180f0b6cd5cb22",
+         "name" : "이수보드게임교육원",
+         "place_id" : "ChIJz7s2DrGhfDURd8mcNe9qtis",
+         "plus_code" : {
+            "compound_code" : "FXQM+36 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q98FXQM+36"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAAKvtowNNGR3ovZyPvOU3TxX5kmuSigDKLnuk3PfyLkw3FesCskwzUovkNoNnbtQtahFge1TaRGgc9SeU3JZR8GzuZ5vkPFn8xWhJGCQA20mT5KsL-RSBMO_Nl9wxcKhWgEhCDkqBFyIFEWFVrcHyIO3sSGhQldQsErv-QTa8ytsy0fd7vaUnAhg",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "방배동 1656번지 하동 1층 서초구 서울특별시 KR"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.5252354,
+               "lng" : 127.0387148
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.52658522989272,
+                  "lng" : 127.0400646298927
+               },
+               "southwest" : {
+                  "lat" : 37.52388557010728,
+                  "lng" : 127.0373649701073
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "e40b5fff26dc819094ab1bb0c68eca353f38bbc6",
+         "name" : "블랙앤보드카페",
+         "place_id" : "ChIJzVXFD4ijfDURwRWthY9syyE",
+         "plus_code" : {
+            "compound_code" : "G2GQ+3F 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q99G2GQ+3F"
+         },
+         "rating" : 0,
+         "reference" : "CmRbAAAAQCQ5YjQUrgaLsLrUpom46CesKuyfvXf54Ogl4QGLfXM2jNP-1me-PP1SZ9OH4J5Q3qGBqwbCOQux1IIxIzPgyUUtAwMEWZUDubwS20tA3NQ5ERWB_wjlgtR7E_FvSa1FEhBnRWeFR3tifCY4XFL5_PZ-GhQv4m2swrYROGirrHdI1bF6TFL2Mw",
+         "scope" : "GOOGLE",
+         "types" : [ "point_of_interest", "establishment" ],
+         "vicinity" : "강남구 신사동 655-5"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.4828993,
+               "lng" : 126.9296462
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.48424912989272,
+                  "lng" : 126.9309960298927
+               },
+               "southwest" : {
+                  "lat" : 37.48154947010728,
+                  "lng" : 126.9282963701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "3a99281c3a158894c4391b4ffb06a15eedf14b97",
+         "name" : "모두의 보드카페",
+         "place_id" : "ChIJBZCTeb-ffDUR35tFHb1urHw",
+         "plus_code" : {
+            "compound_code" : "FWMH+5V 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q98FWMH+5V"
+         },
+         "rating" : 4,
+         "reference" : "CmRbAAAAOjNSgG3UAiFQ3fXXrisG6tqnkXcxzlIaLO8AiQHQiVe5ObVnIKTDg33-3kk5cs1K5iohigiyavv0gn3e4zL4V4ikBGPdBDHw9FvdaRi09yZA2M7hYNAYmqejADz845YLEhAAPHJ7DCAqxN_3u_M0ya2_GhRDhToPsNY_hwITOZ5EcrXrYbp_SQ",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "관악구 신림동 신림로 321"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.510668,
+               "lng" : 126.9228219
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.51201782989271,
+                  "lng" : 126.9241717298927
+               },
+               "southwest" : {
+                  "lat" : 37.50931817010727,
+                  "lng" : 126.9214720701072
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "bf42de7c78cf9b71ea12c965d5f630d601a080b5",
+         "name" : "보드카페아쿠아",
+         "opening_hours" : {
+            "open_now" : false
+         },
+         "photos" : [
+            {
+               "height" : 465,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112247219484631082966/photos\"\u003eA Google User\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAfF131sWR2pJY36mBUDKPIrKmcPWnxqfzqmcWLushRXxX6RAG60gqzp5Z7nqNc03T-FKD38lOo2rtgrcTjwcgRhJfk-_RU5dI2sE16haegfwqa3VAv6UGe9se5zjKH8e-EhC85SY8ZKPRS8SZ5mcr23W3GhQrPmJJIbUouxE77ELWlo9UqEmZsw",
+               "width" : 720
+            }
+         ],
+         "place_id" : "ChIJW9fCmw-ffDURNu502Ktc-zE",
+         "plus_code" : {
+            "compound_code" : "GW6F+74 서울특별시 대한민국 서울특별시",
+            "global_code" : "8Q98GW6F+74"
+         },
+         "rating" : 5,
+         "reference" : "CmRbAAAA3570FH_4wCRnYmvei5qEHJxenX7ljUcWrQQNKQUvSrLEpvIbLtVwtV7hPpKyb59OuPJ7BmgmYOG9Bsth5ph0wVM3Mw9-jou80uTBdgPvqskVATT1rPIRTCSeqm87_8D-EhCKJKIWbStPx3ofBmKoLHvyGhTUiaDxnuUeRiJSNxmS-3v7-hW6WQ",
+         "scope" : "GOOGLE",
+         "types" : [
+            "cafe",
+            "store",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "영등포구 신길동 1243"
+      }
+   ],
+   "status" : "OK"
+}

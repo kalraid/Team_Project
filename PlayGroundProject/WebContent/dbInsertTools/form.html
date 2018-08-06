@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js">	</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<p>
+	파싱 주소 : https://maps.googleapis.com/maps/api/place/nearbysearch/json?<br/>
+	위도 : 37.489684<br/>
+	경도 : 126.98163<br/>
+	반경 : 5000<br/>
+	이름 : 보드게임<br/>
+	키 값 : AIzaSyALJ7iILn3iNgPrON9XJ1q6vyNsc4ItTu8</p><br/>	
+	<a href="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.489684,126.98163&radius=5000&name=%EB%B3%B4%EB%93%9C%EA%B2%8C%EC%9E%84&key=AIzaSyALJ7iILn3iNgPrON9XJ1q6vyNsc4ItTu8">링크</a>
+	<br/>
+	<form action="12map" method="get">
+		위도 : <input type="text" name ="Latitude" value="37.489684" required><br/>
+		경도 : <input type="text" name ="Hardness" value="126.98163" required><br/>
+		반경 : <input type="number" name ="radius" value="5000" required><br/>
+		이름 : <input type="text" name = "name" value="동물원" required><br/>
+		종류 : <input type="text" name ="search" ><br/>
+		<input type="reset" value="초기화">&nbsp;&nbsp;&nbsp;<input type="submit" value="보내기">
+	</form>
+
+</body>
+</html>
