@@ -71,11 +71,12 @@ $(document).on("click", ".s_themaName", function() {
 	var lng = sessionStorage.getItem("lng");
 	var intext = $(this).html();
 	var marker;
+	var pos = new google.maps.LatLng(lat, lng);
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center : pos,
 		zoom : 18
 	});
-	var pos = new google.maps.LatLng(lat, lng);
+
 	map.setCenter(pos);
 	var contentString;
 	$.ajax({
@@ -301,7 +302,8 @@ $(document).on("click", ".selectbox_top", function() {
 							var legs = summary.legs
 							var duration = legs[0];
 							var start_location = duration.start_location;
-
+							var overview_polyline = summary.overview_polyline;
+							var overview_point = overview_polyline.points;
 							// 시작 지점 경도  위도 주소
 							var st_lat = start_location.lat;
 							var st_lng = start_location.lng;
@@ -329,7 +331,7 @@ $(document).on("click", ".selectbox_top", function() {
 
 
 							var DIDList = new Array();
-							
+
 							for (var i = 0; i < steps.length; i++) {
 								var duration2 = steps[i];
 								var dura2 = duration.duration;
@@ -345,15 +347,15 @@ $(document).on("click", ".selectbox_top", function() {
 								var points = duration2.polyline;
 								var Polylines = points.points;
 								DIDList.push(st_location, St_lats, St_lngs, Distances, Travel_mode, end_locations, End_lats, End_lngs, Polylines);
-								
+
 							}
 
-							
-							initMap();
-							
-							
-							
-							
+
+							addPoline(DIDList, st_lat, st_lng, end_lat, end_lng);
+
+
+
+
 						},
 						error : function(xhr, status, error) {
 							alert("error : " + xhr.statusText + ", " + status + ", " + error);
@@ -371,36 +373,34 @@ $(document).on("click", ".selectbox_top", function() {
 
 });
 
+function addPoline(DIDList, st_lat, st_lng, end_lat, end_lng) {
+	var lat = sessionStorage.getItem("lat");
+	var lng = sessionStorage.getItem("lng");
+	var pos = new google.maps.LatLng(lat, lng);
+	var map = new google.maps.Map(document.getElementById('map'), {
+		center : pos,
+		zoom : 18
+	});
+	map.setCenter(pos);
+	var len = DIDList.length / 9;
 
+	var latlngList = new Array();
+	var flightPlanCoordinates = [
+        {lat: DIDList[1], lng: DIDList[2]}
+      ];
+	for (var i = 0; i < len; i++) {
+		var j = {lat: DIDList[6+(i*9)], lng: DIDList[7+(i*9)]};
+		flightPlanCoordinates.push(j);
+	}
+	console.log(flightPlanCoordinates);
+	var flightPath = new google.maps.Polyline({
+		path : flightPlanCoordinates,
+		geodesic : true,
+		strokeColor : '#FF0000',
+		strokeOpacity : 1.0,
+		strokeWeight : 2
+	});
 
-function addPoline(contentString, map, marker) {
-	
+	flightPath.setMap(map);
 
 }
-function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 3,
-      center: {lat: 0, lng: -180},
-      mapTypeId: 'terrain'
-    });
-
-    var flightPlanCoordinates = [
-      {lat: 37.772, lng: -122.214},
-      {lat: 21.291, lng: -157.821},
-      {lat: -18.142, lng: 178.431},
-      {lat: -27.467, lng: 153.027}
-    ];
-    var flightPath = new google.maps.Polyline({
-      path: flightPlanCoordinates,
-      geodesic: true,
-      strokeColor: '#FF0000',
-      strokeOpacity: 1.0,
-      strokeWeight: 2
-    });
-
-    flightPath.setMap(map);
-  }
-
-
-
-
