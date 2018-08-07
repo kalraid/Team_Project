@@ -173,8 +173,10 @@
 						sessionStorage.setItem("lat", pos.lat);
 						sessionStorage.setItem("lng", pos.lng);
 						map.setCenter(pos);
-					}, function() {
+					}, function(e) {
 						alert("위치찾기에 실패했습니다.");
+
+
 					});
 				}
 		
@@ -260,6 +262,10 @@
 					label : labels[labelIndex++],
 					map : map
 				});
+			}
+			function Geocoding(){
+				
+				
 			}
 		</script>
 		<script async defer
