@@ -392,21 +392,16 @@ function resetAni() {
 
 .redbg {
     background: red;
-    
-    background: -moz-linear-gradient(-45deg,  #a90329 0%, #8f0222 44%, #6d0019 100%);
     background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019));
     background: -webkit-linear-gradient(-45deg,  #a90329 0%,#8f0222 44%,#6d0019 100%);
-    background: -o-linear-gradient(-45deg,  #a90329 0%,#8f0222 44%,#6d0019 100%);
     background: -ms-linear-gradient(-45deg,  #a90329 0%,#8f0222 44%,#6d0019 100%);
     background: linear-gradient(135deg,  #a90329 0%,#8f0222 44%,#6d0019 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=1 );
 }
 .greybg {
     background: #7d7e7d;
-    background: -moz-radial-gradient(center, ellipse cover,  #7d7e7d 0%, #000000 70%, #0e0e0e 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7d7e7d), color-stop(70%,#000000), color-stop(100%,#0e0e0e));
     background: -webkit-radial-gradient(center, ellipse cover,  #7d7e7d 0%,#000000 70%,#0e0e0e 100%);
-    background: -o-radial-gradient(center, ellipse cover,  #7d7e7d 0%,#000000 70%,#0e0e0e 100%);
     background: -ms-radial-gradient(center, ellipse cover,  #7d7e7d 0%,#000000 70%,#0e0e0e 100%);
     background: radial-gradient(ellipse at center,  #7d7e7d 0%,#000000 70%,#0e0e0e 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 );
