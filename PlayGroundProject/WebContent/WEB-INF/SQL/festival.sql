@@ -649,6 +649,335 @@ Insert into HR.FESTIVAL (CONTENT_ID,FE_PLACE,FEIMG,TITLE,TEL,LATITUDE,LONGITUDE,
 Insert into HR.FESTIVAL (CONTENT_ID,FE_PLACE,FEIMG,TITLE,TEL,LATITUDE,LONGITUDE,EVENTSTART_DATE,EVENTEND_DATE,A_CODE,D_NO,GOOD,SUM_AREA) values (1773755,'서울특별시 강남구 영동대로 513','http://tong.visitkorea.or.kr/cms/resource/88/2509688_image2_1.JPG','서울 살롱 뒤 쇼콜라 2018','02-6000-6698, 6673','127.0591318945','37.5118092746',to_date('18/01/18','RR/MM/DD'),to_date('18/01/21','RR/MM/DD'),1,1,33104,'강남권');
 Insert into HR.FESTIVAL (CONTENT_ID,FE_PLACE,FEIMG,TITLE,TEL,LATITUDE,LONGITUDE,EVENTSTART_DATE,EVENTEND_DATE,A_CODE,D_NO,GOOD,SUM_AREA) values (141759,'서울특별시 종로구 종로 157','http://tong.visitkorea.or.kr/cms/resource/28/935328_image2_1.jpg','종묘대제 2018','02-2270-1242','126.9944471257','37.5742897425',to_date('18/05/06','RR/MM/DD'),to_date('18/05/06','RR/MM/DD'),1,23,31617,'강북권');
 Insert into HR.FESTIVAL (CONTENT_ID,FE_PLACE,FEIMG,TITLE,TEL,LATITUDE,LONGITUDE,EVENTSTART_DATE,EVENTEND_DATE,A_CODE,D_NO,GOOD,SUM_AREA) values (2032306,'서울특별시 서대문구 창천동 연세로','http://tong.visitkorea.or.kr/cms/resource/33/2551133_image2_1.jpg','신촌맥주축제 2018','02-565-0501','126.9352058303','37.5556575125',to_date('18/09/07','RR/MM/DD'),to_date('18/09/09','RR/MM/DD'),1,14,31045,'강북권');
+--------------------------------------------------------------------------------
 
 
+--------------------------------------------------------
+--  파일이 생성됨 - 화요일-8월-07-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table AREA_CODE
+--------------------------------------------------------
+
+  CREATE TABLE "HR"."AREA_CODE" 
+   (   "NAME" VARCHAR2(100 BYTE), 
+   "CODE" NUMBER
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into HR.AREA_CODE
+SET DEFINE OFF;
+Insert into HR.AREA_CODE (NAME,CODE) values ('서울',1);
+Insert into HR.AREA_CODE (NAME,CODE) values ('인천',2);
+Insert into HR.AREA_CODE (NAME,CODE) values ('대전',3);
+Insert into HR.AREA_CODE (NAME,CODE) values ('대구',4);
+Insert into HR.AREA_CODE (NAME,CODE) values ('광주',5);
+Insert into HR.AREA_CODE (NAME,CODE) values ('부산',6);
+Insert into HR.AREA_CODE (NAME,CODE) values ('울산',7);
+Insert into HR.AREA_CODE (NAME,CODE) values ('세종특별자치시',8);
+Insert into HR.AREA_CODE (NAME,CODE) values ('경기도',31);
+Insert into HR.AREA_CODE (NAME,CODE) values ('강원도',32);
+Insert into HR.AREA_CODE (NAME,CODE) values ('충청북도',33);
+Insert into HR.AREA_CODE (NAME,CODE) values ('충청남도',34);
+Insert into HR.AREA_CODE (NAME,CODE) values ('경상북도',35);
+Insert into HR.AREA_CODE (NAME,CODE) values ('경상남도',36);
+Insert into HR.AREA_CODE (NAME,CODE) values ('전라북도',37);
+Insert into HR.AREA_CODE (NAME,CODE) values ('전라남도',38);
+Insert into HR.AREA_CODE (NAME,CODE) values ('제주도',39);
+--------------------------------------------------------
+--  DDL for Index SYS_C007181
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "HR"."SYS_C007181" ON "HR"."AREA_CODE" ("CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table AREA_CODE
+--------------------------------------------------------
+
+  ALTER TABLE "HR"."AREA_CODE" ADD PRIMARY KEY ("CODE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+
+  
+  ------------------------------------------------------------------------------------------------
+  
+  
+  --------------------------------------------------------
+--  파일이 생성됨 - 화요일-8월-07-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table AREA_DISTRICT
+--------------------------------------------------------
+
+  CREATE TABLE "HR"."AREA_DISTRICT" 
+   (   "D_NO" NUMBER, 
+   "A_CODE" NUMBER, 
+   "CODE" NUMBER, 
+   "NAME" VARCHAR2(30 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into HR.AREA_DISTRICT
+SET DEFINE OFF;
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (1,1,1,'강남구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (2,1,2,'강동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (3,1,3,'강북구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (4,1,4,'강서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (5,1,5,'관악구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (6,1,6,'광진구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (7,1,7,'구로구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (8,1,8,'금천구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (9,1,9,'노원구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (10,1,10,'도봉구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (11,1,11,'동대문구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (12,1,12,'동작구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (13,1,13,'마포구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (14,1,14,'서대문구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (15,1,15,'서초구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (16,1,16,'성동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (17,1,17,'성북구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (18,1,18,'송파구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (19,1,19,'양천구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (20,1,20,'영등포구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (21,1,21,'용산구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (22,1,22,'은평구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (23,1,23,'종로구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (24,1,24,'중구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (25,1,25,'중랑구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (26,2,1,'강화군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (27,2,2,'계양구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (28,2,3,'남구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (29,2,4,'남동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (30,2,5,'동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (31,2,6,'부평구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (32,2,7,'서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (33,2,8,'연수구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (34,2,9,'옹진군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (35,2,10,'중구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (36,3,1,'대덕구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (37,3,2,'동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (38,3,3,'서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (39,3,4,'유성구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (40,3,5,'중구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (41,4,1,'남구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (42,4,2,'달서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (43,4,3,'달성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (44,4,4,'동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (45,4,5,'북구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (46,4,6,'서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (47,4,7,'수성구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (48,4,8,'중구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (49,5,1,'광산구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (50,5,2,'남구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (51,5,3,'동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (52,5,4,'북구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (53,5,5,'서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (54,6,1,'강서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (55,6,2,'금정구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (56,6,3,'기장군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (57,6,4,'남구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (58,6,5,'동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (59,6,6,'동래구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (60,6,7,'부산진구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (61,6,8,'북구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (62,6,9,'사상구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (63,6,10,'사하구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (64,6,11,'서구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (65,6,12,'수영구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (66,6,13,'연제구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (67,6,14,'영도구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (68,6,15,'중구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (69,6,16,'해운대구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (70,7,1,'중구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (71,7,2,'남구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (72,7,3,'동구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (73,7,4,'북구');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (74,7,5,'울주군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (75,8,1,'세종특별자치시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (76,31,1,'가평군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (77,31,2,'고양시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (78,31,3,'과천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (79,31,4,'광명시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (80,31,5,'광주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (81,31,6,'구리시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (82,31,7,'군포시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (83,31,8,'김포시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (84,31,9,'남양주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (85,31,10,'동두천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (86,31,11,'부천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (87,31,12,'성남시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (88,31,13,'수원시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (89,31,14,'시흥시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (90,31,15,'안산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (91,31,16,'안성시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (92,31,17,'안양시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (93,31,18,'양주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (94,31,19,'양평군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (95,31,20,'여주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (96,31,21,'연천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (97,31,22,'오산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (98,31,23,'용인시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (99,31,24,'의왕시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (100,31,25,'의정부시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (101,31,26,'이천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (102,31,27,'파주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (103,31,28,'평택시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (104,31,29,'포천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (105,31,30,'하남시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (106,31,31,'화성시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (107,32,1,'강릉시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (108,32,2,'고성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (109,32,3,'동해시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (110,32,4,'삼척시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (111,32,5,'속초시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (112,32,6,'양구군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (113,32,7,'양양군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (114,32,8,'영월군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (115,32,9,'원주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (116,32,10,'인제군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (117,32,11,'정선군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (118,32,12,'철원군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (119,32,13,'춘천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (120,32,14,'태백시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (121,32,15,'평창군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (122,32,16,'홍천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (123,32,17,'화천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (124,32,18,'횡성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (125,33,1,'괴산군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (126,33,2,'단양군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (127,33,3,'보은군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (128,33,4,'영동군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (129,33,5,'옥천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (130,33,6,'음성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (131,33,7,'제천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (132,33,8,'진천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (133,33,9,'청원군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (134,33,10,'청주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (135,33,11,'충주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (136,33,12,'증평군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (137,34,1,'공주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (138,34,2,'금산군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (139,34,3,'논산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (140,34,4,'당진시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (141,34,5,'보령시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (142,34,6,'부여군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (143,34,7,'서산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (144,34,8,'서천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (145,34,9,'아산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (146,34,11,'예산군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (147,34,12,'천안시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (148,34,13,'청양군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (149,34,14,'태안군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (150,34,15,'홍성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (151,34,16,'계룡시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (152,35,1,'경산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (153,35,2,'경주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (154,35,3,'고령군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (155,35,4,'구미시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (156,35,5,'군위군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (157,35,6,'김천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (158,35,7,'문경시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (159,35,8,'봉화군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (160,35,9,'상주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (161,35,10,'성주군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (162,35,11,'안동시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (163,35,12,'영덕군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (164,35,13,'영양군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (165,35,14,'영주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (166,35,15,'영천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (167,35,16,'예천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (168,35,17,'울릉군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (169,35,18,'울진군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (170,35,19,'의성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (171,35,20,'청도군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (172,35,21,'청송군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (173,35,22,'칠곡군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (174,35,23,'포항시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (175,36,1,'거제시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (176,36,2,'거창군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (177,36,3,'고성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (178,36,4,'김해시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (179,36,5,'남해군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (180,36,6,'마산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (181,36,7,'밀양시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (182,36,8,'사천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (183,36,9,'산청군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (184,36,10,'양산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (185,36,12,'의령군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (186,36,13,'진주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (187,36,14,'진해시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (188,36,15,'창녕군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (189,36,16,'창원시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (190,36,17,'통영시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (191,36,18,'하동군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (192,36,19,'함안군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (193,36,20,'함양군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (194,36,21,'합천군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (195,37,1,'고창군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (196,37,2,'군산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (197,37,3,'김제시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (198,37,4,'남원시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (199,37,5,'무주군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (200,37,6,'부안군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (201,37,7,'순창군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (202,37,8,'완주군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (203,37,9,'익산시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (204,37,10,'임실군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (205,37,11,'장수군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (206,37,12,'전주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (207,37,13,'정읍시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (208,37,14,'진안군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (209,38,1,'강진군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (210,38,2,'고흥군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (211,38,3,'곡성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (212,38,4,'광양시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (213,38,5,'구례군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (214,38,6,'나주시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (215,38,7,'담양군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (216,38,8,'목포시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (217,38,9,'무안군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (218,38,10,'보성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (219,38,11,'순천시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (220,38,12,'신안군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (221,38,13,'여수시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (222,38,16,'영광군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (223,38,17,'영암군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (224,38,18,'완도군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (225,38,19,'장성군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (226,38,20,'장흥군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (227,38,21,'진도군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (228,38,22,'함평군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (229,38,23,'해남군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (230,38,24,'화순군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (231,39,1,'남제주군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (232,39,2,'북제주군');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (233,39,3,'서귀포시');
+Insert into HR.AREA_DISTRICT (D_NO,A_CODE,CODE,NAME) values (234,39,4,'제주시');
+--------------------------------------------------------
+--  DDL for Index SYS_C007210
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "HR"."SYS_C007210" ON "HR"."AREA_DISTRICT" ("D_NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table AREA_DISTRICT
+--------------------------------------------------------
+
+  ALTER TABLE "HR"."AREA_DISTRICT" ADD PRIMARY KEY ("D_NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
     
