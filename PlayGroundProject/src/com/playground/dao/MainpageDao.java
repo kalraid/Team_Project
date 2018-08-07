@@ -4,9 +4,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.playground.vo.Festival;
+import com.playground.beans.Recommend;
 
 public class MainpageDao {
 
@@ -55,11 +56,45 @@ public class MainpageDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+		 DBManager.close(conn, pstmt, rs);
 		}
 		
-		
-		
 		return MainArr; 
+	}
+	
+	public ArrayList<Recommend> getMainRecommend () {
+		ArrayList<Recommend> list = new ArrayList<Recommend>();
+		String sql = "select  * from (select  no,good, linklist, gesimul, file1 ,row_number() over(order by good desc) as ranks from recommendgesipan)  where ranks<6";
+		
+		conn = DBManager.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Recommend rc = new Recommend();
+				
+				rc.setNo(rs.getInt("no"));
+				rc.setGood(rs.getString("good"));
+				rc.setLinklist(rs.getString("linklist"));
+				rc.setGesimul(rs.getString("gesimul"));
+				rc.setFile(rs.getString("File1"));
+				list.add(rc);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+			
+		}
+		return list;
+		
+
+		
 	}
 	
 }

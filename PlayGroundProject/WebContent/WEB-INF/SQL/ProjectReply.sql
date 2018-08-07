@@ -29,6 +29,7 @@ INSERT INTO gesipan VALUES(seq_gesipan.NEXTVAL,'cksgh', '찬호','부산 여행!
 INSERT INTO gesipan VALUES(seq_gesipan.NEXTVAL,'gowls','해진', '정말 유용한 사이트!','이 사이트 정말 유용하네요! 여기서 관광지 추천받아서 혼자 여행다녀왔어요!',1,SYSDATE,94,'1234','?');
 INSERT INTO gesipan VALUES(seq_gesipan.NEXTVAL,'rudals', '경민','휴가 후기!', '휴가 갔다온 다음날 마음이 편해졌어요! 스트레스 이제 여행으로 날리세요!',2,SYSDATE,95,'1234','?');
 INSERT INTO gesipan VALUES(seq_gesipan.NEXTVAL,'dyd', '용','대학 여행!', '대학 동기들이랑 간단한 여행지 찾구있었는데 여기 정말 좋네요!',1,SYSDATE,78,'1234','?');
+
 COMMIT;
 SELECT *FROM gesipan;
 DROP TABLE gesipan;

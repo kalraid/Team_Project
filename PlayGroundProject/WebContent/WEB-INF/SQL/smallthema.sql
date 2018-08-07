@@ -223,3 +223,4 @@ insert into smallthema values(smallthema_seq.NEXTVAL, '열기구',12);
 
 COMMIT;
 select * from smallthema ORDER BY s_THeMA_NUM;
+

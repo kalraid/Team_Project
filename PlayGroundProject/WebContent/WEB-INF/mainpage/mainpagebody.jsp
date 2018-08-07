@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 * {
 	margin: 0px;
 	padding: 0px;
-	
 }
 
 section {
@@ -54,35 +53,35 @@ ul {
 
 #imgs .visual_01 {
 	left: 0%;
-	width:100%; 
+	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
-	}
+}
 
 #imgs .visual_02 {
 	left: 100%;
-	width:100%; 
+	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
 }
 
 #imgs .visual_03 {
 	left: 200%;
-	width:100%; 
+	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
 }
 
 #imgs .visual_04 {
 	left: 300%;
-	width:100%; 
+	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
 }
 
 #imgs .visual_05 {
 	left: 400%;
-	width:100%; 
+	width: 100%;
 	height: 100%;
 	background-repeat: no-repeat;
 }
@@ -108,34 +107,36 @@ ul {
 	text-indent: -9999px;
 }
 
-
 /* 후기글 */
 #review_txt {
 	text-align: center;
 	font: normal normal normal 25px brandon-grot-w01-light, sans-serif;
-	float:none;
+	float: none;
 }
 
 .reviews {
 	width: 100%;
 	height: 140px;
-	background: rgba(128, 128, 0, 0.8);
 	text-align: center;
-	font : bold normal 
-}
-#review_sec{
-float:none;
-clear: both;
-padding : 10px;
+	font: bold normal;
 }
 
+#review_sec {
+	float: none;
+	clear: both;
+	padding: 10px;
+}
 
+.imgs {
+	width: 100%;
+	height: 160px;
+	text-align: center;
+	color: white;
+}
 </style>
-<
+
 <style>
-	/* 축제 게시판들이 올라오는곳  - w3school에 데모로 나오는 css를 적용함*/
-
-
+/* 축제 게시판들이 올라오는곳  - w3school에 데모로 나오는 css를 적용함*/
 </style>
 <script>
 	$(function() { // $(document).ready(function(){ });
@@ -166,104 +167,112 @@ padding : 10px;
 			buttons.eq(n).trigger('click');
 		}, 7000);
 	});
-	
-	
 </script>
 <section>
- 
+
 	<div id="middle_box">
 		<nav>
 			<!--  메뉴바를 외부에서 import하는 부분 -->
 
 		</nav>
 		<article id="top_txt_box">
-		
+
 			<!--  제목부분 들어가는 곳 -->
 			<div id="main_txt">plaYgrOUnd</div>
 			<div id="sub_txt">데이트코스 시뮬레이터</div>
 		</article>
 		<article id="ban_img">
-		 <div class="weather snow">
-			<div id="wrap">
-				<div id="imgs">
-					<ul>
-						<li><img src="images/mainpageslideimgs/1_sunnyshores_cyprus.jpg"  class="visual_01"></li>
-						<li><img src="images/mainpageslideimgs/2_sunnyshores_france.jpg"  class="visual_02"></li>
-						<li><img src="images/mainpageslideimgs/3_sunnyshores_italy.jpg"  class="visual_03"></li>
-						<li><img src="images/mainpageslideimgs/4_sunnyshores_australia.jpg"  class="visual_04"></li>
-						<li><img src="images/mainpageslideimgs/5_sunnyshores_stvincent.jpg"  class="visual_05"></li>
+			<div class="weather snow">
+				<div id="wrap">
+					<div id="imgs">
+						<ul>
+							<li><img
+								src="images/mainpageslideimgs/1_sunnyshores_cyprus.jpg"
+								class="visual_01"></li>
+							<li><img
+								src="images/mainpageslideimgs/2_sunnyshores_france.jpg"
+								class="visual_02"></li>
+							<li><img
+								src="images/mainpageslideimgs/3_sunnyshores_italy.jpg"
+								class="visual_03"></li>
+							<li><img
+								src="images/mainpageslideimgs/4_sunnyshores_australia.jpg"
+								class="visual_04"></li>
+							<li><img
+								src="images/mainpageslideimgs/5_sunnyshores_stvincent.jpg"
+								class="visual_05"></li>
+						</ul>
+					</div>
+					<ul id="btnList">
+						<li class="on"><a href="#">이미지1</a></li>
+						<li><a href="#">이미지2</a></li>
+						<li><a href="#">이미지3</a></li>
+						<li><a href="#">이미지4</a></li>
+						<li><a href="#">이미지5</a></li>
 					</ul>
 				</div>
-				<ul id="btnList">
-					<li class="on"><a href="#">이미지1</a></li>
-					<li><a href="#">이미지2</a></li>
-					<li><a href="#">이미지3</a></li>
-					<li><a href="#">이미지4</a></li>
-					<li><a href="#">이미지5</a></li>
-				</ul>
 			</div>
-		 </div>
 		</article>
 
-		
-		<c:set var="p" value="${FList}"></c:set>
-  <div id="tour">
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">요근래 인기 있는 지역별 축제들</h2>
-      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-        <div class="w3-third w3-margin-bottom">
-          <h3 style="text-align: center">${ p[0][3] }</h3>
-          <img src="${ p[0][0] }" alt="ca" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>${ p[0][1] }</b></p>
-            <p class="w3-opacity">${ p[0][6] } ~ ${ p[0][7] }</p>
-            <p>연락처 : ${ p[0][2] }</p>
-            <p>추천수 : ${ p[0][4] }</p>
-          </div>
-        </div>
-        <div class="w3-third w3-margin-bottom">
-          <img src="${ p[1][0] }" alt="Paris" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>${ p[1][1] }</b></p>
-            <p class="w3-opacity">${ p[1][6] } ~ ${ p[1][7] }<</p>
-			<p>연락처 : ${ p[1][3] }</p>
-            <p>추천수 : ${ p[1][4] }</p> 
-                     </div>
-        </div>
-        <div class="w3-third w3-margin-bottom">
-          <img src="${ p[2][0] }" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
-          <div class="w3-container w3-white">
-            <p><b>${ p[2][1] }</b></p>
-            <<p>연락처 : ${ p[1][3] }</p>
-            <p>추천수 : ${ p[1][4] }</p> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+
+		<c:set var="F" value="${FList}"></c:set>
+		<div id="tour">
+			<div class="w3-container w3-content w3-padding-64"
+				style="max-width: 800px">
+				<h2 class="w3-wide w3-center">인기 있는 지역별 축제들</h2>
+				<div class="w3-row-padding w3-padding-32" style="margin: 0 -16px">
+					<div class="w3-third w3-margin-bottom">
+						<h3 style="text-align: center">${ F[0][3] }</h3>
+						<img src="${ F[0][0] }" alt="ca" style="width: 100%"
+							class="w3-hover-opacity">
+						<div class="w3-container w3-white">
+							<p>
+								<b>${ F[0][1] }</b>
+							</p>
+							<p class="w3-opacity">${ F[0][6] }~${ F[0][7] }</p>
+							<p>연락처 : ${ F[0][2] }</p>
+							<p>추천수 : ${ F[0][4] }</p>
+						</div>
+					</div>
+					<div class="w3-third w3-margin-bottom">
+						<img src="${ F[1][0] }" alt="Paris" style="width: 100%"
+							class="w3-hover-opacity">
+						<div class="w3-container w3-white">
+							<p>
+								<b>${ F[1][1] }</b>
+							</p>
+							<p class="w3-opacity">${ F[1][6] }~${ F[1][7] }<</p>
+							<p>연락처 : ${ F[1][3] }</p>
+							<p>추천수 : ${ F[1][4] }</p>
+						</div>
+					</div>
+					<div class="w3-third w3-margin-bottom">
+						<img src="${ F[2][0] }" alt="San Francisco" style="width: 100%"
+							class="w3-hover-opacity">
+						<div class="w3-container w3-white">
+							<p>
+								<b>${ F[2][1] }</b>
+							</p>
+							<p>연락처 : ${ F[1][3] }</p>
+							<p>추천수 : ${ F[1][4] }</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<section id="review_sec">
-			<div id="review_txt">HOT REVIEWS</div>
+			<div id="review_txt">조회수가 가장 높은 후기 Best5</div>
+<c:forEach var="p" items="${ RList }">
 			<article class="reviews">
-				<!--  후기글 가져오는곳 그곳 사진중 하나를 가져와서 배경으로  width: 960 height : 140 -->
-				후기1 제목
+				
+					<div class="imgs"
+						style="background:url(images/${p.file}) no-repeat 50% 50% / 100% 100%;">
+						<br><br>
+						<h2 class="bottom_text">${ p.linklist }</h2>
+					</div>
+				
 			</article>
-			<article class="reviews">
-				<!--  후기글 가져오는곳 그곳 사진중 하나를 가져와서 배경으로  width: 960 height : 140 -->
-				후기2 제목
-			</article>
-			<article class="reviews">
-				<!--  후기글 가져오는곳 그곳 사진중 하나를 가져와서 배경으로  width: 960 height : 140 -->
-				후기3 제목
-			</article>
-			<article class="reviews">
-				<!--  후기글 가져오는곳 그곳 사진중 하나를 가져와서 배경으로  width: 960 height : 140 -->
-				후기4 제목
-			</article>
-			<article class="reviews">
-				<!--  후기글 가져오는곳 그곳 사진중 하나를 가져와서 배경으로  width: 960 height : 140 -->
-				후기5 제목
-			</article>
+</c:forEach>
 		</section>
 	</div>
 </section>
