@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 {"routes":
-	[	{"summary":"","copyrights":"Map data ©2018 SK telecom",
-		 "legs":      
+	[	{"summary":"","copyrights":"Map data ©2018 SK telecom"
+		,"legs":      
 		 	[	{"duration":
 		 			{"text":"32 mins","value":1920}
 	 			,"start_location":
@@ -172,7 +172,8 @@
 					]
 					,"traffic_speed_entry":[]
 				}
-			],"warnings":
+			]
+		,"warnings":
 				["Walking directions are in beta.    Use caution \u2013 This route may be missing sidewalks or pedestrian paths."]
 			,"bounds":
 				{"southwest":

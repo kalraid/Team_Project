@@ -28,7 +28,6 @@
 	height: 400px;
 }
 
-
 /* 선택박스 */
 .selectboxdiv {
 	margin: 20px auto;
@@ -72,7 +71,6 @@
 	width: 100%;
 	height: 150px;
 	border-bottom: 1px solid red;
-	
 }
 
 .selectbox_bottom {
@@ -143,9 +141,9 @@
 .del_buttons {
 	border-radius: 20px;
 }
-.selected_place{
-border : 3px solid blue;
 
+.selected_place {
+	border: 3px solid blue;
 }
 </style>
 
@@ -162,6 +160,7 @@ border : 3px solid blue;
 
 		<div id="map"></div>
 		<script>
+		var poly;
 			function initMap() {
 				var pos;
 				// Try HTML5 geolocation.
@@ -211,7 +210,17 @@ border : 3px solid blue;
 					map : map
 				});
 		
+				
 		
+				poly = new google.maps.Polyline({
+					strokeColor : '#000000',
+					strokeOpacity : 1.0,
+					strokeWeight : 3
+				});
+				poly.setMap(map);
+		
+				// Add a listener for the click event
+				map.addListener('click', addLatLng);
 		
 				// This event listener calls addMarker() when the map is clicked.
 				google.maps.event.addListener(map, 'click', function(event) {
@@ -225,6 +234,22 @@ border : 3px solid blue;
 		
 		
 		
+			// Handles click events on a map, and adds a new point to the Polyline.
+			function addLatLng(event) {
+				var path = poly.getPath();
+		
+				// Because path is an MVCArray, we can simply append a new coordinate
+				// and it will automatically appear.
+				path.push(event.latLng);
+		
+				// Add a new marker at the new plotted point on the polyline.
+				var marker = new google.maps.Marker({
+					position : event.latLng,
+					title : '#' + path.getLength(),
+					map : map
+				});
+			}
+		
 			function addMarker(location, map) {
 				var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 				var labelIndex = 0;
@@ -235,7 +260,6 @@ border : 3px solid blue;
 					label : labels[labelIndex++],
 					map : map
 				});
-				console.log(marker);
 			}
 		</script>
 		<script async defer
@@ -247,7 +271,7 @@ border : 3px solid blue;
 					<div class="selectbox first_sb">
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='0'>
-								<c:if test="${pSize >=1 }" >
+								<c:if test="${pSize >=1 }">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[0].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
@@ -258,7 +282,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[0].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="0">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="0">
 									</div>
 
 								</c:if>
@@ -279,7 +304,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[5].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="5">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="5">
 									</div>
 								</c:if>
 							</div>
@@ -301,7 +327,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[1].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="1">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="1">
 									</div>
 								</c:if>
 							</div>
@@ -320,7 +347,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[6].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="6">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="6">
 									</div>
 								</c:if>
 							</div>
@@ -341,7 +369,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[2].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="2">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="2">
 									</div>
 								</c:if>
 							</div>
@@ -360,7 +389,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[7].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="7">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="7">
 									</div>
 								</c:if>
 							</div>
@@ -381,7 +411,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[3].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="3">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="3">
 									</div>
 								</c:if>
 							</div>
@@ -400,7 +431,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[8].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="8">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="8">
 									</div>
 								</c:if>
 							</div>
@@ -421,7 +453,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[4].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="4">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="4">
 									</div>
 								</c:if>
 							</div>
@@ -440,7 +473,8 @@ border : 3px solid blue;
 									<div>${sessionScope.PList[9].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
-											type="button" value="삭제하기" class="del_buttons" data-del-value="9">
+											type="button" value="삭제하기" class="del_buttons"
+											data-del-value="9">
 									</div>
 								</c:if>
 							</div>
@@ -457,6 +491,5 @@ border : 3px solid blue;
 			</ul>
 
 		</div>
-		<div class="recommend"></div>
 	</div>
 </section>
