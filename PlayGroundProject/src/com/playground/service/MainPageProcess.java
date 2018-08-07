@@ -12,6 +12,8 @@ public class MainPageProcess implements CommandProcess {
 	public ForwardService requestProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
+		
 		ForwardService forward = new ForwardService();
 		forward.setPath("/WEB-INF/index.jsp?body=mainpage/mainpagebody.jsp");
 		return forward;

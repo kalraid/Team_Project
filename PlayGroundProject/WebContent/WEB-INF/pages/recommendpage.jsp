@@ -174,12 +174,69 @@
 						sessionStorage.setItem("lng", pos.lng);
 						map.setCenter(pos);
 					}, function(e) {
-						alert("위치찾기에 실패했습니다.");
-
+						tryGeolocation();
 
 					});
 				}
 		
+				var apiGeolocationSuccess = function(position) {
+					/* alert("API geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude); */
+					sessionStorage.setItem("lat", position.coords.latitude);
+					sessionStorage.setItem("lng", position.coords.longitude);
+					pos = {
+							lat : position.coords.latitude,
+							lng : position.coords.longitude
+						};
+					map.setCenter(pos);
+				};
+
+				var tryAPIGeolocation = function() {
+					jQuery.post( "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU", function(success) {
+						apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+				  })
+				  .fail(function(err) {
+				    alert("API Geolocation error! \n\n"+err);
+				    console.log(err);
+				  });
+				};
+
+				var browserGeolocationSuccess = function(position) {
+					/* alert("Browser geolocation success!\n\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude); */
+					sessionStorage.setItem("lat", position.coords.latitude);
+					sessionStorage.setItem("lng", position.coords.longitude);
+					pos = {
+							lat : position.coords.latitude,
+							lng : position.coords.longitude
+						};
+					map.setCenter(pos);
+				};
+
+				var browserGeolocationFail = function(error) {
+				  switch (error.code) {
+				    case error.TIMEOUT:
+				      alert("Browser geolocation error !\n\nTimeout.");
+				      break;
+				    case error.PERMISSION_DENIED:
+				      if(error.message.indexOf("Only secure origins are allowed") == 0) {
+				        tryAPIGeolocation();
+				      }
+				      break;
+				    case error.POSITION_UNAVAILABLE:
+				      alert("Browser geolocation error !\n\nPosition unavailable.");
+				      break;
+				  }
+				};
+
+				var tryGeolocation = function() {
+				  if (navigator.geolocation) {
+				    navigator.geolocation.getCurrentPosition(
+				    	browserGeolocationSuccess,
+				      browserGeolocationFail,
+				      {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
+				  }
+				};
+
+				
 		
 				var map = new google.maps.Map(document.getElementById('map'), {
 					center : pos,
