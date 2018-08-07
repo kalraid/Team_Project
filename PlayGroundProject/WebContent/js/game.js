@@ -4,7 +4,7 @@ for(var i = 0; i < game.keys.length; i++){
    atom.input.bind(atom.key[game.keys[i]], game.keys[i]);
 }
 atom.currentMoleTime = 0;
-atom.tillNewMole = 1;
+atom.tillNewMole = 0.5;
 game.update = function(dt){
    atom.currentMoleTime = atom.currentMoleTime + dt;
    if(atom.currentMoleTime > atom.tillNewMole){
@@ -31,7 +31,10 @@ game.bop = {
          atom.context.fillText('Score : ' + this.total, 300, 200);
       },
       with_key: function(key){
-         if(!!(game.activeMole + 1) === true && key === game.holes[game.activeMole].label){
+    	  //느낌표 두개(!!)를 사용하면 0, null, undefined 등과 같은 
+    	  //정의 되지 않은 변수들을 강제 변환하여 정확한 논리 결과인 true / false를 만들어 줍니다.
+         if(!!(game.activeMole + 1) === true 
+        		 && key === game.holes[game.activeMole].label){
             this.total = this.total + 1;
             game.activeMole = -1;
             this.bopped = true;

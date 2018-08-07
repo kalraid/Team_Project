@@ -27,7 +27,7 @@ body {
 
 </style>
 </head>
-<body class="weather snow">
+<body>
 	<nav>
 		<jsp:include page="mainpage/menubar.jsp"></jsp:include>
 	</nav>

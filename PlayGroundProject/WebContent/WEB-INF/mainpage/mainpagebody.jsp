@@ -169,17 +169,20 @@ padding : 10px;
 	
 </script>
 <section>
+ 
 	<div id="middle_box">
 		<nav>
 			<!--  메뉴바를 외부에서 import하는 부분 -->
 
 		</nav>
 		<article id="top_txt_box">
+		
 			<!--  제목부분 들어가는 곳 -->
 			<div id="main_txt">plaYgrOUnd</div>
 			<div id="sub_txt">데이트코스 시뮬레이터</div>
 		</article>
 		<article id="ban_img">
+		 <div class="weather snow">
 			<div id="wrap">
 				<div id="imgs">
 					<ul>
@@ -198,6 +201,7 @@ padding : 10px;
 					<li><a href="#">이미지5</a></li>
 				</ul>
 			</div>
+		 </div>
 		</article>
 
 		

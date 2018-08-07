@@ -275,12 +275,14 @@ function resetAni() {
         var temptime = (rotationsTime * 1000);
         var dest = (-360 * ballSpinTime) - (360 - deg);
 
+        /* 대상의 위치, 크기, 방향 등을 상대적으로 변경*/
         $.keyframe.define({
             name: 'rotate2',
             from: {
                 transform: 'rotate(0deg)'
             },
-            to: {
+            to: { //대상의 각도를 설정하고 각도를 설정
+            	  //360deg = 1바퀴 회전
                 transform: 'rotate(' + dest + 'deg)'
             }
         });
