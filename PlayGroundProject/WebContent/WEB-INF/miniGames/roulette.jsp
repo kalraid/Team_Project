@@ -200,30 +200,38 @@ function createWheel() {
 
     }
 
-    btnSpin.click(function () {
+    btnSpin.on("click", function () {
           var rndNum = Math.floor((Math.random() * 34) + 0);
+          var result = 0;
         spinTo(rndNum);
         setTimeout(function(){
         	var numwin = $("#numwin").val().trim();
         	if(numwin=="red"){
-        		for (var i = 0; i < rednum.length; i++) {
-					if(rednum[i] == rndnum){
-						alret("축하합니다\n색깔을 맞추셨습니다");
-					}else{
-						alert("룰렛에 실패하셨습니다");
-					}
-				}
+        		for(var i = 0; i < rednum.length; i++){
+        			if(rednum[i] == rndNum){
+        				result = 1;
+        			}
+        		}
+        		if(result == 1){
+        			alert("축하합니다 \n색깔을 맞추셨습니다");
+        		}else{
+        			alert("룰렛에 실패하셨습니다");
+        		}
         	}else if(numwin=="black"){
+        		
         		for(var i = 0; i < blacknum.length; i++){
-        			if(blacknum[i] == rndnum){
-        				alret("축하합니다\n색깔을 맞추셨습니다");
-        			}else{
-						alert("룰렛에 실패하셨습니다");
-					}
+        			if(blacknum[i] == rndNum){
+        				result = 1;
+        			}
+        		}
+        		if(result == 1){
+        			alert("축하합니다 \n색깔을 맞추셨습니다");
+        		}else{
+        			alert("룰렛에 실패하셨습니다");
         		}
         	}else if(numwin >= 0 && numwin <= 36 ){
         		if(rndnum == numwin){
-        			alret("축하합니다 \n숫자를 맞추셨습니다");
+        			alert("축하합니다 \n숫자를 맞추셨습니다");
         		}else{
         			alert("룰렛에 실패하셨습니다");
         		}
@@ -322,7 +330,7 @@ function resetAni() {
         });
     }
     
-    
+    $(".spinner").css("font-size","+=1.5em");
 
 });
 </script>
@@ -525,19 +533,25 @@ border-bottom: solid .1em rgba(0, 0, 0, 1);
 box-shadow: inset 0 0 .5em #333;
 border-bottom: none;
 }
-
-
+.rouletteP{
+ font-size: 20px;
+}
+#numwin{
+ font-size: 20px;
+}
 </style>
 <article>
-<div class="spinner">
+ <div class="spinner">
 
 		<div class="ball"><span></span></div>
 		<div class="platebg"></div>
 		<div id="rcircle" class="pieContainer">
 			<div class="pieBackground"></div>
 		</div>
-	</div>
-
-<input id="numwin" name="numwin" type="text"><br><br>
-<div id="btnSpin" class="button">Spin</div>
+ </div>
+ <form>
+  <input id="numwin" name="numwin" type="text"><br>
+  <p class="rouletteP">"black" or "red" or number 0~36</p><br>
+  <input type="button" id="btnSpin" class="button" value="Spin"></div>
+ </form>
 </article>
