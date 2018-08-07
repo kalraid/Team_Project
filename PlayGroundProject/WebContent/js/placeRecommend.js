@@ -276,9 +276,9 @@ $(document).on("click", ".selectbox_top", function() {
 						"?origin=" + first_lat + "," + first_lng +
 						"&destination=" + second_lat + "," + second_lng +
 						"&mode=transit" +
-						"&key=" + key+
-						"&language=ko"+
-						"&transit_mode=tram"+
+						"&key=" + key +
+						"&language=ko" +
+						"&transit_mode=tram" +
 						"&driving=transit";
 					/*https://maps.googleapis.com/maps/api/directions/json
 					 * ?origin=37.5127094,126.9449436
@@ -294,8 +294,66 @@ $(document).on("click", ".selectbox_top", function() {
 						},
 						dataType : "text",
 						success : function(data) {
-							console.log(data);
-							alert(data);
+
+							var dir = JSON.parse(data);
+							var results = dir.routes;
+							var summary = results[0];
+							var legs = summary.legs
+							var duration = legs[0];
+							var start_location = duration.start_location;
+
+							// 시작 지점 경도  위도 주소
+							var st_lat = start_location.lat;
+							var st_lng = start_location.lng;
+							var start_address = duration.start_address
+
+							// 도착지점 경도 위도 주소
+							var end_location = duration.end_location;
+							var end_lat = end_location.lat;
+							var end_lng = end_location.lng;
+							var end_address = duration.end_address;
+
+							// 총 시간
+							var dura = duration.duration;
+							var full_time = dura.text;
+
+							// 도착예상시간
+							var arr_time = duration.arrival_time;
+							var arrival_time = arr_time.text;
+
+							// distance = 총 거리
+							var dis = duration.distance;
+							var distance = dis.distance;
+
+							var steps = duration.steps;
+
+
+							var DIDList = new Array();
+							
+							for (var i = 0; i < steps.length; i++) {
+								var duration2 = steps[i];
+								var dura2 = duration.duration;
+								var st_location = duration.start_location;
+								var St_lats = st_location.lat;
+								var St_lngs = st_location.lng;
+								var distanc = duration2.distance;
+								var Distances = distanc.text;
+								var Travel_mode = duration2.travel_mode;
+								var end_locations = duration2.end_location;
+								var End_lats = end_locations.lat;
+								var End_lngs = end_locations.lng;
+								var points = duration2.polyline;
+								var Polylines = points.points;
+								DIDList.push(st_location, St_lats, St_lngs, Distances, Travel_mode, end_locations, End_lats, End_lngs, Polylines);
+								
+							}
+
+							
+							initMap();
+							
+							
+							
+							
 						},
 						error : function(xhr, status, error) {
 							alert("error : " + xhr.statusText + ", " + status + ", " + error);
@@ -312,3 +370,37 @@ $(document).on("click", ".selectbox_top", function() {
 
 
 });
+
+
+
+function addPoline(contentString, map, marker) {
+	
+
+}
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 3,
+      center: {lat: 0, lng: -180},
+      mapTypeId: 'terrain'
+    });
+
+    var flightPlanCoordinates = [
+      {lat: 37.772, lng: -122.214},
+      {lat: 21.291, lng: -157.821},
+      {lat: -18.142, lng: 178.431},
+      {lat: -27.467, lng: 153.027}
+    ];
+    var flightPath = new google.maps.Polyline({
+      path: flightPlanCoordinates,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+
+    flightPath.setMap(map);
+  }
+
+
+
+

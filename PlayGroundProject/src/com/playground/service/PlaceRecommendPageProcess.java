@@ -24,10 +24,8 @@ public class PlaceRecommendPageProcess implements CommandProcess {
 		boolean isLogin = false;
 		HttpSession session = request.getSession();
 		Boolean aCheck = false;
-		if (session.getMaxInactiveInterval() != 30 * 60) {
 			System.out.println("세션시간 : " + session.getMaxInactiveInterval());
 			session.setMaxInactiveInterval(30 * 60);
-		}
 		ArrayList<Place> PList = (ArrayList<Place>) session.getAttribute("PList");
 		int size = 0;
 		if (session.getAttribute("PList") == null) {

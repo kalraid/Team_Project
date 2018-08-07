@@ -232,7 +232,7 @@ border : 3px solid blue;
 				// from the array of alphabetical characters.
 				var marker = new google.maps.Marker({
 					position : location,
-					label : labels[labelIndex++ % labels.length],
+					label : labels[labelIndex++],
 					map : map
 				});
 				console.log(marker);
