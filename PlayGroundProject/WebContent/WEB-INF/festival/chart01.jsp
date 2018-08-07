@@ -14,10 +14,22 @@
 	<script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
 	
 <script>
-// [dskfsd, sjkfsd, fjskd]
-var aList = ${ aList };
+
+var goodList = ${ goodList };
 var nameList = ${ nameList };
-var chartList = ${ chartList};	
+var jsonNameList2 = ${jsonNameList2};
+var jsonCntList = ${jsonCntList};
+var jsonsumGood1 = ${jsonsumGood1};
+var jsonsumGood31 = ${jsonsumGood31};
+var jsonsumGood32 = ${jsonsumGood32};
+var nameSumList = ${nameSumList};
+
+
+var countlist = new Array();
+$(jsonCntList).each(function(index, FestivalCount){
+	countlist.push(FestivalCount.count);
+	});
+
 
 $(function(){
 	
@@ -44,7 +56,7 @@ $(function(){
 		                "margin-top":"7px",
 		                "margin-left":"9px",
 		                "font-family":"Arial",
-		                "text":"DEPARTMENT PERFORMANCE",
+		                "text":"지역별 좋아요 개수(good/10000)",
 		                "background-color":"none",
 		                "shadow":0,
 		                "text-align":"left",
@@ -53,9 +65,9 @@ $(function(){
 		                "font-color":"#707d94"
 		            },
 		            "scale-y":{
-		                "values":"0:300:100",
-		                "max-ticks":4,
-		                "max-items":4,
+		                "values":"100:800:100",
+		                "max-ticks":8,
+		                "max-items":8,
 		                "line-color":"none",
 		                "tick":{
 		                    "visible":false
@@ -86,11 +98,11 @@ $(function(){
 		            "scale-x":{
 		                "items-overlap":true,
 		                "max-items":9999,
-		                "values":["Apparel","Drug","Footwear","Gift Card","Home","Jewelry","Garden","Other"],
+		                "values":nameList,
 		                "offset-y":"1px",
 		                "line-color":"#d2dae2",
 		                "item":{
-		                    "font-color":"#8391a5",
+		                    "font-color":"#333333",
 		                    "font-family":"Arial",
 		                    "font-size":"11px",
 		                    "padding-top":"2px"
@@ -127,36 +139,41 @@ $(function(){
 		            },
 		            "series":[
 		                {
-		                    "values":[150,165,173,201,185,195,162,125],
+		                    "values": goodList,
 		                    "styles":[
 		                        {
-		                            "background-color":"#4dbac0"
+		                            "background-color":"#FF6600"
 		                        },
 		                        {
-		                            "background-color":"#25a6f7"
+		                            "background-color":"#990099"
 		                        },
 		                        {
-		                            "background-color":"#ad6bae"
+		                            "background-color":"#CC0033"
 		                        },
 		                        {
-		                            "background-color":"#707d94"
+		                            "background-color":"#FFFF00"
 		                        },
 		                        {
-		                            "background-color":"#f3950d"
+		                            "background-color":"#33FF33"
 		                        },
 		                        {
-		                            "background-color":"#e62163"
+		                            "background-color":"#CC66FF"
 		                        },
 		                        {
-		                            "background-color":"#4e74c0"
+		                            "background-color":"#3300FF"
 		                        },
 		                        {
-		                            "background-color":"#9dc012"
+		                            "background-color":"#330099"
 		                        }
 		                    ]
 		                }
 		            ]
 		        },
+		        
+		        
+		        
+		        
+		        /* 두번째 */
 		        {
 		            "type":"hbar",
 		            "background-color":"#fff",
@@ -169,7 +186,7 @@ $(function(){
 		            "title":{
 		                "margin-top":"7px",
 		                "margin-left":"9px",
-		                "text":"BRAND PERFORMANCE",
+		                "text":"지역별 축제 개수",
 		                "background-color":"none",
 		                "shadow":0,
 		                "text-align":"left",
@@ -190,7 +207,7 @@ $(function(){
 		                }
 		            },
 		            "scale-x":{
-		                "values":["Kenmore","Craftsman","DieHard","Land's End","Laclyn Smith","Joe Boxer"],
+		                "values": jsonNameList2,
 		                "line-color":"none",
 		                "tick":{
 		                    "visible":false
@@ -235,7 +252,7 @@ $(function(){
 		            },
 		            "series":[
 		                {
-		                    "values":[103902,112352,121823,154092,182023,263523],
+		                    "values":countlist,
 		                    "z-index":2,
 		                    "styles":[
 		                        {
@@ -257,12 +274,12 @@ $(function(){
 		                            "background-color":"#4dbac0"
 		                        }
 		                    ],
-		                    "tooltip-text":"$%node-value"
+		                    /* "tooltip-text":"$%node-value" */
 		                },
 		                {
 		                    "max-trackers":0,
-		                    "values":[300000,300000,300000,300000,300000,300000],
-		                    "data-rvalues":[103902,112352,121823,154092,182023,263523],
+		                    "values":[300,300,300,300,300,300],
+		                    "data-rvalues":countlist,
 		                    "background-color":"#d9e4eb",
 		                    "z-index":1,
 		                    "value-box":{
@@ -273,12 +290,19 @@ $(function(){
 		                        "font-color":"#8391a5",
 		                        "font-family":"Arial",
 		                        "font-size":"11px",
-		                        "text":"$%data-rvalues",
+		                        /* "text":"$%data-rvalues", */
 		                        "padding-bottom":"8px"
 		                    }
 		                }
 		            ]
 		        },
+		        
+		        
+		        
+		        
+		        
+		        
+		        /* 세번째 차트 */
 		        {
 		            "type":"line",
 		            "background-color":"#fff",
@@ -291,7 +315,7 @@ $(function(){
 		            "title":{
 		                "margin-top":"7px",
 		                "margin-left":"12px",
-		                "text":"TODAY'S SALES",
+		                "text":"지역별 월별 좋아요 합계 (good/10000)",
 		                "background-color":"none",
 		                "shadow":0,
 		                "text-align":"left",
@@ -309,7 +333,7 @@ $(function(){
 		                "margin":"50px 25px 70px 46px"
 		            },
 		            "scale-y":{
-		                "values":"0:100:25",
+		                "values":"0:250:50",
 		                "line-color":"none",
 		                "guide":{
 		                    "line-style":"solid",
@@ -393,24 +417,10 @@ $(function(){
 		                "visible":false
 		            },
 		            "series":[
+		           
 		                {
-		                    "values":[69,68,54,48,70,74,98,70,72,68,49,69],
-		                    "text":"Kenmore",
-		                    "line-color":"#4dbac0",
-		                    "line-width":"2px",
-		                    "shadow":0,
-		                    "marker":{
-		                        "background-color":"#fff",
-		                        "size":3,
-		                        "border-width":1,
-		                        "border-color":"#36a2a8",
-		                        "shadow":0
-		                    },
-		                    "palette":0
-		                },
-		                {
-		                    "values":[51,53,47,60,48,52,75,52,55,47,60,48],
-		                    "text":"Craftsman",
+		                    "values":jsonsumGood1,
+		                    "text":nameSumList[0],
 		                    "line-width":"2px",
 		                    "line-color":"#25a6f7",
 		                    "shadow":0,
@@ -425,8 +435,8 @@ $(function(){
 		                    "visible":1
 		                },
 		                {
-		                    "values":[42,43,30,50,31,48,55,46,48,32,50,38],
-		                    "text":"DieHard",
+		                    "values":jsonsumGood31,
+		                    "text":nameSumList[1],
 		                    "line-color":"#ad6bae",
 		                    "line-width":"2px",
 		                    "shadow":0,
@@ -441,8 +451,8 @@ $(function(){
 		                    "visible":1
 		                },
 		                {
-		                    "values":[25,15,26,21,24,26,33,25,15,25,22,24],
-		                    "text":"Land's End",
+		                    "values":jsonsumGood32,
+		                    "text":nameSumList[2],
 		                    "line-color":"#f3950d",
 		                    "line-width":"2px",
 		                    "shadow":0,

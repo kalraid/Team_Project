@@ -14,6 +14,8 @@ import com.playground.vo.AreaCode;
 import com.playground.vo.Festival;
 import com.playground.vo.FestivalInfo;
 
+
+
 public class FesDetailProcess implements CommandProcess {
 
 	@Override

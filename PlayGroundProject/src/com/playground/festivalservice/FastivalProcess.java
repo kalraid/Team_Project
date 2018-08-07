@@ -16,6 +16,8 @@ import com.playground.vo.ChartMonth;
 import com.playground.vo.Festival;
 import com.playground.vo.FestivalCount;
 
+import com.playground.festivalservice.AreaDistrictgetMethod;
+
 public class FastivalProcess implements CommandProcess {
 
 	@Override

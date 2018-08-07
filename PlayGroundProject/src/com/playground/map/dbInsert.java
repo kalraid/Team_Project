@@ -79,7 +79,7 @@ public class dbInsert {
 
 					DBManager.close(conn, pstmt);
 				}
-				Thread.sleep(200);
+				Thread.sleep(1000);
 			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -146,7 +146,7 @@ public class dbInsert {
 				}finally {
 					DBManager.close(conn, pstmt);
 				}
-				Thread.sleep(200);
+				Thread.sleep(1000);
 			}
 			
 		} catch (Exception e) {
