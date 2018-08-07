@@ -131,6 +131,7 @@ padding : 10px;
 
 
 </style>
+<
 <style>
 	/* 축제 게시판들이 올라오는곳  - w3school에 데모로 나오는 css를 적용함*/
 
