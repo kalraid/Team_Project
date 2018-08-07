@@ -86,7 +86,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <style>
 
-div {
+.dc {
 	padding: 10px 0;
 	color: #2d2c2d;
 	font-family: Tahoma;
@@ -162,54 +162,54 @@ div {
 	
 	<p id="title">${title }</p>
 	
-	<div id="googleMap" style="width:70%;height:380px;margin:0 auto;"></div>
+	<div id="googleMap" style="width:70%;height:380px;margin:0 auto;" class="dc"></div>
 
 	<c:if test="${empty f.eventplace }">
-		<div id="header" style="display:none">
+		<div id="header" style="display:none" class="dc">
 			<p>${f.eventplace }</p>
 		</div>
 	</c:if>
 	
 	<c:if test="${not empty f.eventplace }">
-		<div id="header">
+		<div id="header" class="dc">
 			<p>${f.eventplace }</p>
 		</div>
 	</c:if>
 	
 	<c:if test="${empty f.placeinfo }">
-		<div id="container" style="display:none">
+		<div id="container" style="display:none" class="dc">
 			${f.placeinfo }
 			<!--content -->
 		</div>
 	</c:if>	
 	
 	<c:if test="${not empty f.placeinfo }">
-		<div id="container">
+		<div id="container" class="dc">
 			${f.placeinfo }
 			<!--content -->
 		</div>
 	</c:if>	
 	
 	<c:if test="${empty f.program }">
-		<div id="content" style="display:none">
+		<div id="content" style="display:none" class="dc">
 				${f.program }
 		</div>
 	</c:if>
 	
 	<c:if test="${not empty f.program }">
-		<div id="content">
+		<div id="content" class="dc">
 				${f.program }
 		</div>
 	</c:if>
 	
 	<c:if test="${empty f.usetimefestival }">
-		<div id="footer" style="display:none">
+		<div id="footer" style="display:none" class="dc">
 			<p>${f.usetimefestival }</p>
 		</div>
 	</c:if>
 	
 	<c:if test="${not empty f.usetimefestival }">
-		<div id="footer">
+		<div id="footer" class="dc">
 			<p>${f.usetimefestival }</p>
 		</div>
 	</c:if>
