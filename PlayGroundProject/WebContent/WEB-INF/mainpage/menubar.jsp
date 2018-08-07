@@ -87,12 +87,14 @@ body {
 	{
 	color: #3C00FF
 }
-
+#header_menu {
+	/* width: 1280px; */
+}
 </style>
 
 <nav class="navbar navbar-fixed-top navbar-inverse navbar-custom"
 	role="navigation">
-	<div>
+	<div id="header_menu">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<a class="navbar-brand" href="index.mvc">Play Ground!</a>

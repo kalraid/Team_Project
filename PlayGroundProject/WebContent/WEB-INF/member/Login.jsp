@@ -6,7 +6,7 @@
 <link href="css/weather.css" rel="stylesheet">
 <style type="text/css">
  .logInBackground{
-  background-color: skyblue;
+  background: linear-gradient(to right, white, skyblue, skyblue, skyblue 90%, white);
  }
  #memberLoginTitle{
   text-align: center;
@@ -33,7 +33,7 @@
   background: linear-gradient(to right bottom, pink, white 70%, pink);
  }
  #logInBtn:hover{
-   box-shadow:inset -5px -5px 5px gray;
+   box-shadow:inset 0px 0px 10px gray;
  }
  .logInPadding{
   padding-top:15px;

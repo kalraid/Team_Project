@@ -5,7 +5,7 @@
 <script src="/js/datePicker.js"></script>    
 <style>
  .memberDetailBackground{
-  background-color: skyblue;
+  background: linear-gradient(to right, white, skyblue, skyblue, skyblue 90%, white);
  }
  #memberDetailTitle{
   text-align: center;

@@ -18,7 +18,7 @@
 <c:set var="gender" value="<%= gender %>"></c:set>
 <style>
  .memberInfoBackground{
-  background-color: skyblue;
+  background: linear-gradient(to right, white, skyblue, skyblue, skyblue 90%, white);
   
  }
  #memberInfoTitle{
