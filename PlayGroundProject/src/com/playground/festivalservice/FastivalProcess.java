@@ -12,7 +12,9 @@ import com.playground.dao.FestivalDao;
 import com.playground.service.CommandProcess;
 import com.playground.service.ForwardService;
 import com.playground.vo.AreaCode;
+import com.playground.vo.ChartMonth;
 import com.playground.vo.Festival;
+import com.playground.vo.FestivalCount;
 
 public class FastivalProcess implements CommandProcess {
 
@@ -77,43 +79,121 @@ public class FastivalProcess implements CommandProcess {
 		
 		
 		
-		//차트뿌리기
+		//차트뿌리기 (막대)
 		ArrayList<Festival> chartList = new ArrayList<Festival>();//acode, good 정보
 		ArrayList<AreaCode> aList = new ArrayList<AreaCode>(); //acode, aname 정보 
 		ArrayList<String> nameList = new ArrayList<String>(); //aname 정보
+		ArrayList<Integer> goodList1 = new ArrayList<Integer>(); //good 정보
 		aList = dao.getAreaCode();
 		chartList = dao.getChartResult();
-		System.out.println("aList 사이즈 : "+aList.size());
-		System.out.println("chartList 사이즈 : "+chartList.size());
+
 		
 		for(int i = 0; i<aList.size(); i++){ //17개
 			for(int j = 0; j<chartList.size(); j++){ //8개
 				
 				if(aList.get(i).getCode() == chartList.get(j).getAreaCode()){
+					int good = chartList.get(j).getGood();
+					String astr = aList.get(i).getName();
+					nameList.add(astr);
+					goodList1.add(good);
+				}
+			}
+		}
+		ArrayList<Integer> goodList = new ArrayList<Integer>();
+		for(int i = 0; i<goodList1.size(); i++){
+			int number =goodList1.get(i);
+			number = Math.abs(number/10000);
+			goodList.add(number);
+		}
+		
+		Gson gson = new Gson();
+		String jsonGoodList = gson.toJson(goodList);		
+		String jsonNameList = gson.toJson(nameList);
+		
+		// 자바스크립트에서 직접 접근할려면 -> json 형태로
+		request.setAttribute("goodList", jsonGoodList);
+		request.setAttribute("nameList", jsonNameList);
+		
+		
+		
+		// 지역별 축제 개수 차트 뿌리기
+		ArrayList<FestivalCount> cntList = new ArrayList<FestivalCount>();
+		nameList.clear();
+		cntList = dao.getChartResultCount();
+		
+		for(int i = 0; i<aList.size(); i++){ //17개
+			for(int j = 0; j<cntList.size(); j++){ //6개
+				if(cntList.get(j).getaCode() == aList.get(i).getCode()){
 					String astr = aList.get(i).getName();
 					nameList.add(astr);
 				}
 			}
 		}
-				
-		Gson gson = new Gson();
-		String jsonChartList = gson.toJson(chartList);		
-		String jsonAList = gson.toJson(aList);		
-		String jsonNameList = gson.toJson(nameList);
 		
-		//PrintWriter out = new PrintWriter(result);
+		String jsonNameList2 = gson.toJson(nameList);
+		String jsonCntList = gson.toJson(cntList);
+	
+		request.setAttribute("jsonNameList2", jsonNameList2);
+		request.setAttribute("jsonCntList", jsonCntList);
+		//지역별 축제 끝
 		
 		
-		// 자바스크립트에서 직접 접근할려면 -> json 형태로
-		request.setAttribute("chartList", jsonChartList);
-		request.setAttribute("aList", jsonAList);
-		request.setAttribute("nameList", jsonNameList);
+		//월별 지역별 good 합계
+		ArrayList<ChartMonth> monthArray = new ArrayList<ChartMonth>();
+		nameList.clear();
+		monthArray = dao.getChartMonth();
+		String astr1 = "";
+		String astr2 = "";
+		String astr3 = "";
 		
-		request.setAttribute("tChartList", chartList);
-		//차트 뿌리기 끝
-		System.out.println("chartList : " + jsonChartList);
-		System.out.println("aList : " + jsonAList);
-		System.out.println("nameList : " + jsonNameList);
+		for(int i = 0; i<aList.size(); i++){ //17개
+			for(int j = 0; j<monthArray.size(); j++){ //6개
+				if(aList.get(i).getCode() == 1){
+					astr1 = aList.get(i).getName();
+				} else if(aList.get(i).getCode() == 31){
+					astr2 = aList.get(i).getName();
+				} else if(aList.get(i).getCode() == 32){
+					astr3 = aList.get(i).getName();
+				}
+			}
+		}
+		nameList.add(astr1); nameList.add(astr2); nameList.add(astr3);
+		ArrayList<Integer> sumGood1 = new ArrayList<Integer>(); //좋아요 합계
+		ArrayList<Integer> sumGood31 = new ArrayList<Integer>();
+		ArrayList<Integer> sumGood32 = new ArrayList<Integer>();
+		for(int i=0; i<monthArray.size(); i++){
+			if(monthArray.get(i).getAcode() == 1){
+				int num = monthArray.get(i).getSumGood();
+				num = Math.abs(num/10000);
+				sumGood1.add(num);
+			} else if(monthArray.get(i).getAcode() == 31){
+				int num = monthArray.get(i).getSumGood();
+				num = Math.abs(num/10000);
+				sumGood31.add(num);
+			} else if(monthArray.get(i).getAcode() == 32){
+				int num = monthArray.get(i).getSumGood();
+				num = Math.abs(num/10000);
+				sumGood32.add(num);
+			}
+		}
+		
+		String jsonsumGood1 = gson.toJson(sumGood1);
+		String jsonsumGood31 = gson.toJson(sumGood31);
+		String jsonsumGood32 = gson.toJson(sumGood32);
+		String nameSumList = gson.toJson(nameList);
+		
+		
+		request.setAttribute("jsonsumGood1", jsonsumGood1);
+		request.setAttribute("jsonsumGood31", jsonsumGood31);
+		request.setAttribute("jsonsumGood32", jsonsumGood32);
+		request.setAttribute("nameSumList", nameSumList);
+		
+		System.out.println(jsonsumGood1);
+		System.out.println(jsonsumGood31);
+		System.out.println(jsonsumGood32);
+		System.out.println(nameSumList);
+		////월별 지역별 good 합계 끝
+		
 		
 		
 		ForwardService forward = new ForwardService();

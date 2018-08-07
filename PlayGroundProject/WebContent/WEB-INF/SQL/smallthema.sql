@@ -1,4 +1,53 @@
 
+/* 소테마 */
+CREATE TABLE smallthema (
+	s_thama_num NUMBER NOT NULL, /* 소테마번호 */
+	s_thama_name VARCHAR2(16 CHAR) NOT NULL, /* 소테마이름 */
+	thema_num NUMBER NOT NULL /* 테마번호 */
+);
+
+COMMENT ON TABLE smallthema IS '소테마';
+
+COMMENT ON COLUMN smallthema.s_thama_num IS '소테마번호';
+
+COMMENT ON COLUMN smallthema.s_thama_name IS '소테마이름';
+
+COMMENT ON COLUMN smallthema.thema_num IS '테마번호';
+
+CREATE UNIQUE INDEX PK_smallthema
+	ON smallthema (
+		s_thama_num ASC
+	);
+
+CREATE UNIQUE INDEX UIX_smallthema
+	ON smallthema (
+		s_thama_name ASC
+	);
+
+ALTER TABLE smallthema
+	ADD
+		CONSTRAINT PK_smallthema
+		PRIMARY KEY (
+			s_thama_num
+		);
+
+ALTER TABLE smallthema
+	ADD
+		CONSTRAINT UK_smallthema
+		UNIQUE (
+			s_thama_name
+		);
+
+ALTER TABLE smallthema
+	ADD
+		CONSTRAINT FK_thema_TO_smallthema
+		FOREIGN KEY (
+			thema_num
+		)
+		REFERENCES thema (
+			thema_num
+		);
+		
 select * FROM smallthema;
 
 delete from smallthema;

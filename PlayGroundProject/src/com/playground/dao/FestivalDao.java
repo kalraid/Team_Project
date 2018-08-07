@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.playground.vo.AreaCode;
+import com.playground.vo.ChartMonth;
 import com.playground.vo.Festival;
+import com.playground.vo.FestivalCount;
 import com.playground.vo.FestivalInfo;
 
 public class FestivalDao {
@@ -252,6 +254,61 @@ public class FestivalDao {
 		}
 		return array;
 	}
+	
+	//차트결과 : 지역별 축제의 개수
+	public ArrayList<FestivalCount> getChartResultCount(){
+		ArrayList<FestivalCount> array = new ArrayList<FestivalCount>();
+		String sql = "select * from(select rownum no, a_code, a.cnt from( select a_code, count(*) cnt from festival GROUP BY a_code ORDER BY cnt DESC)a) "
+				+ "where no between 1 and 6 order by a_code";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				FestivalCount f = new FestivalCount();
+				f.setaCode(rs.getInt("a_code"));
+				f.setCount(rs.getInt("cnt"));
+				array.add(f);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return array;
+	}
+	
+	//차트 결과 : 지역별 월별 good 합계
+	public ArrayList<ChartMonth> getChartMonth(){
+		ArrayList<ChartMonth> array = new ArrayList<ChartMonth>();
+		String sql = "select a_code, TO_CHAR(eventstart_date, 'YYYY-MM') month, sum(good) sgood from festival "
+				+ "WHERE TO_CHAR(eventstart_date, 'YYYY') = '2018' AND a_code IN(1, 31, 32) "
+				+ "GROUP BY a_code, TO_CHAR(eventstart_date, 'YYYY-MM') ORDER BY a_code";
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				ChartMonth f = new ChartMonth();
+				f.setAcode(rs.getInt("a_code"));
+				f.setMonth(rs.getString("month"));
+				f.setSumGood(rs.getInt("sgood"));
+				array.add(f);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return array;
+	}
+	
+	
+	
 
 	
 	/* public ArrayList<Festival> getFesSeachSumList(String sumArea){
