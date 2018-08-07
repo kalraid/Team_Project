@@ -145,6 +145,7 @@ font-weight:bold;
 			<input type="button" value="취소하기" onclick="memberList();"/></td>
 	  </tr>
 	 </table>
+	 <br><br>
 	</form>
 	</div>
 	</div>

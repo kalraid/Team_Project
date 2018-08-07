@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <style>
  .memberListBackground{
-  background-color: skyblue;
+  background: linear-gradient(to right, white, skyblue, skyblue, skyblue 90%, white);
   
  }
  #memberListTitle{
@@ -24,7 +24,6 @@
   margin:10px auto;
   font-size: 18px;
   font-weight: bold;
-  background: linear-gradient(to right bottom, skyblue, white, white, skyblue);
  }
  .memberSearch{
   text-align: center;

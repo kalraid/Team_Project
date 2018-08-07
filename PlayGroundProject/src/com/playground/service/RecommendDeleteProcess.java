@@ -1,5 +1,4 @@
 package com.playground.service;
-/*package service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-import dao.RecommendDao;
+import com.playground.dao.RecommendDao;
 
 public class RecommendDeleteProcess implements CommandProcess {
 
@@ -24,8 +23,8 @@ public class RecommendDeleteProcess implements CommandProcess {
 		String pageNum = request.getParameter("pageNum");
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
-		
-		
+		int no = Integer.parseInt(No);
+	/*	
 		if(No == null || No.equals("") || pass == null || pass.equals("")
 			|| pageNum == null || pageNum.equals("")) {
 
@@ -38,9 +37,9 @@ public class RecommendDeleteProcess implements CommandProcess {
 			out.println("</script>");
 			return null;
 		}
-		
+		*/
 		RecommendDao dao = RecommendDao.getInstance();
-		int no = Integer.parseInt(No);
+		
 		boolean isPassCheck = dao.isPassCheck(no, pass);
 		
 		if(! isPassCheck) {
@@ -62,7 +61,7 @@ public class RecommendDeleteProcess implements CommandProcess {
 				|| keyword == null || keyword.equals("")) ? false : true; 	
 		
 		
-		String url = "projectList.mvc?pageNum=" + pageNum;
+		String url = "RecommendList.mvc?pageNum=" + pageNum;
 
 		if(searchOption) {
 			
@@ -80,4 +79,3 @@ public class RecommendDeleteProcess implements CommandProcess {
 	}
 
 }
-*/

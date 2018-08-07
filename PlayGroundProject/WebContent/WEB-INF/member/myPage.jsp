@@ -34,7 +34,7 @@
   text-shadow: 0 0 5px white;
  }
  .memberInfoTable{
-  background: linear-gradient(to right bottom, skyblue, white 70%, skyblue);
+  background:transparent;
   margin:10px auto;
   font-size: 25px
  }
@@ -43,8 +43,10 @@
  }
  .memberInfoLink{
   font-size: 15px;
-  color:gray;
+  color: red;
+  text-align: right;
  }
+ 
 </style>
 <article>
  <form method="post">
@@ -53,7 +55,7 @@
     <br>
     <h1 id="memberInfoTitle">plaYgrOUnd</h1>
 	<h2 id="memberInfoSubTitle">My Page</h2>
-	  <table class="memberInfoTable">
+	  <table id="memberInfoTable" class="memberInfoTable">
 	   <tr>
 	    <th class="memberInfoPadding">* 이&nbsp;&nbsp;름 : </th>
 	    <td class="memberInfoPadding">${ m.name }</td>

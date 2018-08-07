@@ -16,15 +16,6 @@
 				<td colspan="4" class="boardTitle"><h2>게시 글쓰기</h2></td>
 			</tr>
 			<tr>
-				<td colspan="4">&nbsp;</td>
-			</tr>
-			
-			
-			<tr>
-			
-			</tr>
-			
-			<tr>
 				<td class="readTh">글&nbsp;&nbsp;&nbsp;쓴&nbsp;&nbsp;&nbsp;&nbsp;이 </td>
 				<td class="readTd">
 					<input type="text" max="3" name="people" size="20" id="people" maxlength="10"/>
@@ -41,7 +32,9 @@
 			</tr>			
 			
 			
-			
+			<tr>
+				<td colspan="4">비 밀 번 호 <input type="password"  name="pass"></td>
+			</tr>
 			
 			
 			<tr>

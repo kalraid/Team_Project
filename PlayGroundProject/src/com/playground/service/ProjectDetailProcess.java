@@ -20,25 +20,25 @@ public class ProjectDetailProcess implements CommandProcess {
 	public ForwardService requestProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-
-		/*
-		 * boolean isLogin = session.getAttribute("isLogin") != null ? (Boolean)
-		 * session.getAttribute("isLogin") : false;
-		 * 
-		 * if(! isLogin) {
-		 * 
-		 * 
-		 * response.setContentType("text/html; charset=utf-8"); PrintWriter out =
-		 * response.getWriter();
-		 * 
-		 * out.println("<script>");
-		 * out.println("alert('회원 전용 서비스 입니다 \n회원 로그인을 해주세요');");
-		 * out.println("history.back();"); out.println("</script>");
-		 * 
-		 * return null;
-		 * 
-		 * }
-		 */
+/*
+		
+		  boolean isLogin = session.getAttribute("isLogin") != null ? (Boolean)
+		  session.getAttribute("isLogin") : false;
+		  
+		  if(! isLogin) {
+		  
+		  
+		  response.setContentType("text/html; charset=utf-8"); PrintWriter out =
+		  response.getWriter();
+		  
+		  out.println("<script>");
+		  out.println("alert('회원 전용 서비스 입니다 \n회원 로그인을 해주세요');");
+		  out.println("history.back();"); out.println("</script>");
+		  
+		  return null;
+		  
+		  }*/
+		 
 		String no = request.getParameter("no");
 		String pageNum = request.getParameter("pageNum");
 		String type = request.getParameter("type");
@@ -46,7 +46,7 @@ public class ProjectDetailProcess implements CommandProcess {
 		System.out.println("no : " + no +  " , " + pageNum);
 
 		// no와 pageNum이 비어 있으면 비정상 요청임
-		if (no == null || no.equals("") || pageNum == null || pageNum.equals("")) {
+/*	if (no == null || no.equals("") || pageNum == null || pageNum.equals("")) {
 
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
@@ -56,7 +56,7 @@ public class ProjectDetailProcess implements CommandProcess {
 			out.println("	history.back();");
 			out.println("</script>");
 			return null;
-		}
+		}*/
 
 		boolean searchOption = (type == null || type.equals("") || keyword == null || keyword.equals("")) ? false
 				: true;

@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import com.playground.beans.Project;
 import com.playground.beans.ProjectReply;
+import com.playground.beans.Recommend;
 
 public class ProjectDao {
 	private Connection conn;
@@ -190,15 +191,15 @@ public class ProjectDao {
 
 	public void insertproject(Project Project) {
 
-		String prosql = "INSERT INTO gesipan(no , linklist , id, people ,gesimul,pass, dbdate,good)"
-				+ "VALUES(seq_gesipan.NEXTVAL,?,?,?,?,1,sysdate,0,?,NULL,0)";
+		String prosql = "INSERT INTO gesipan" 
+				+ " VALUES(seq_gesipan.NEXTVAL,?,?,?,?,1,SYSDATE,0,?,null,0)";
 
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(prosql);
-			pstmt.setString(1, Project.getLinklist());
-			pstmt.setString(2, Project.getId());
-			pstmt.setString(3, Project.getPeople());
+			pstmt.setString(1, Project.getId());
+			pstmt.setString(2, Project.getPeople());
+			pstmt.setString(3, Project.getLinklist());
 			pstmt.setString(4, Project.getGesimul());
 			pstmt.setString(5, Project.getPass());
 
@@ -220,7 +221,6 @@ public class ProjectDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 
 	}
@@ -371,7 +371,7 @@ public class ProjectDao {
 				reply.setProjectdbdate(rs.getTimestamp("projectdbdate"));
 				replyList.add(reply);
 
-			}// 어디서 문제인지 못찾겠네 syso좀 할게
+			} // 어디서 문제인지 못찾겠네 syso좀 할게
 
 		} catch (SQLException e) {
 
@@ -423,32 +423,28 @@ public class ProjectDao {
 		return re;
 
 	}
-	
+
 	public void addReply(ProjectReply p) {
-		
+
 		String replyInsertSql = "INSERT INTO ProjectReply  VALUES(ProjectReply_seq.NEXTVAL,?,?,?,SYSDATE )";
-		
+
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(replyInsertSql);
-			
+
 			pstmt.setInt(1, p.getProjectNo());
 			pstmt.setString(2, p.getProjectreply());
 			pstmt.setString(3, p.getProjectwriter());
-			
+
 			pstmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			DBManager.close(conn, pstmt,rs);
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
-		
-		
-	}
-	
-	
 
-	
+	}
+
 }

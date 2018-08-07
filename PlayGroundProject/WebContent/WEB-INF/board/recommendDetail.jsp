@@ -155,54 +155,74 @@ display: inline-block;
 		<c:if test="${ searchOption  }">
 			<input type="hidden" name="type" value="${  type }" />
 			<input type="hidden" name="keyword" value="${ keyword  }" />
-
 		</c:if>
+		
 	</form>
+	
 	<table class="contentTable">
+	
 		<tr>
 			<td colspan="4" class="boardTitle"><h2>글 내용 보기</h2></td>
 		</tr>
+		
 		<tr>
 			<td colspan="4">&nbsp;</td>
 		</tr>
+		
 		<tr>
 			<td class="contentTh">제&nbsp;&nbsp;&nbsp;목</td>
-			<td class="contentTd" colspan="3">${ project.linklist  }</td>
+			<td class="contentTd" colspan="3">${ recommend.linklist  }</td>
 		</tr>
+		
 		<tr>
 			<td class="contentTh">글쓴이</td>
-			<td class="contentTd">${ project.people }</td>
+			<td class="contentTd">${ recommend.people }</td>
 			<td class="contentTh">비밀번호</td>
 			<td class="contentTd"><input type="text" name="pass" id="pass"></td>
 		</tr>
+		
 		<tr>
 
 			<td class="contentTh">작성일</td>
 			<td class="contentTd"><fmt:formatDate
-					value="${ project.dbdate  }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					value="${ recommend.dbdate  }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			<td class="contentTh">조회수</td>
-			<td class="contentTd">${  project.good}</td>
+			<td class="contentTd">${  recommend.good}</td>
 
 		</tr>
 
 		<tr>
-			<td class="readContent" colspan="4"><pre>${ project.gesimul}</pre>
+			<td class="readContent" colspan="4"><pre>${ recommend.gesimul}</pre>
 			</td>
-		</tr>
+	</tr>
+	
+			<tr>
+	 	<td class="contentTh">파&nbsp;&nbsp;&nbsp;&nbsp;일</td>
+		<td class="contentTdSpan" colspan="3">
+		<c:if test="${ empty recommend.file }">
+			첨부파일 없음
+		</c:if>
+		<c:if test="${ not empty recommend.file }">
+			<a href="upload/${ recommend.file }">파일 다운로드</a><br/>
+			<a href="fileDownload.mvc?fileName=${ recommend.file }">파일 다운로드</a>
+		</c:if>
+		</td>		
+	</tr> 
+		
 		<tr>
 			<td colspan="4">&nbsp;</td>
 		</tr>
 		<tr>
 			<td colspan="4" class="tdSpan"><input type="button"
-				id="detailUpdate" data-no="${  no }" value="수정하기" /> &nbsp;&nbsp;<input
-				type="button" id="detailDelete" value="삭제하기" /> <!-- 일반 게시 글 리스트에서 온 요청이면 일반 게시 글 리스트로 돌려 보낸다. -->
+				id="RecommendDetailUpdate" data-no="${  no }" value="수정하기" /> &nbsp;&nbsp;<input
+				type="button" id="RecommendDetailDelete" value="삭제하기" /> <!-- 일반 게시 글 리스트에서 온 요청이면 일반 게시 글 리스트로 돌려 보낸다. -->
 				<c:if test="${ ! searchOption }">		
 				&nbsp;&nbsp;<input type="button" value="목록보기"
-						onclick="javascript:window.location.href='projectList.mvc?pageNum=${ pageNum }'" />
+						onclick="javascript:window.location.href='RecommendList.mvc?pageNum=${ pageNum }'" />
 				</c:if> <!-- 검색 리스트에서 온 요청이면 검색 리스트의 동일한 페이지로 돌려보낸다. --> <c:if
 					test="${ searchOption  }">
 				&nbsp;&nbsp;<input type="button" value="목록보기"
-						onclick="javascript:window.location.href='projectList.mvc?pageNum=${ pageNum  }&type=${ type  }&keyword=${  keyword }'" />
+						onclick="javascript:window.location.href='RecommendList.mvc?pageNum=${ pageNum  }&type=${ type  }&keyword=${  keyword }'" />
 					<!-- 
 					위의 쿼리 스트링을 작성할 때 같은 줄에서 띄어쓰기 하는 것은 문제되지
 					않지만 줄 바꿔서 작성하게 되면 스크립트 에러가 발생한다.
@@ -214,7 +234,7 @@ display: inline-block;
 			<td colspan="4" class="replyHeader">
 				<div id="recommendBox">
 					<div class="recommend"> <img src="images/red_button.jpg"
-						alt="추천하기" id="rec" />&nbsp;추천 <span id ="recText">(${project.recommend})</span>
+						alt="추천하기" id="rec" />&nbsp;추천 <span id ="recText">(${recommend.recommend})</span>
 					</div><div id="replyWrite"> &nbsp;댓글쓰기 </div>
 				</div>
 
@@ -224,7 +244,7 @@ display: inline-block;
 
 			</td>
 		</tr>
-		<c:if test="${empty projectreplyList }">
+		<c:if test="${empty recommendreplyList }">
 			<tr id="projectreplyList">
 				<td colspan="4">
 					<div id="notReply">이 게시글에 대한 댓글이 존재하지 않습니다</div>
@@ -232,24 +252,24 @@ display: inline-block;
 			</tr>
 		</c:if>
 		
-		<c:if test="${not empty projectreplyList }">
+		<c:if test="${not empty recommendreplyList }">
 			<tr id="repltList">
 				<td colspan="4">
 					<table id="replttable" >
-						<c:forEach var="p" items="${projectreplyList }">
-							<tr id="reply_${p.projectNo }">
+						<c:forEach var="r" items="${recommendreplyList }">
+							<tr id="reply_${r.recommendNo }">
 								<td>
 									<div class="replyUser" style="text-align:left;">
-										<span class="member">${p.projectwriter }</span>
+										<span class="member">${r.recommendwriter }</span>
 									</div>
 									<div class="replyModify" style="text-align:left;">
 										<span class="reply_date"> <fmt:formatDate
-												value="${p.projectdbdate }" pattern="yyyy-MM-dd HH:mm:ss" />
+												value="${r.recommenddbdate }" pattern="yyyy-MM-dd HH:mm:ss" />
 										</span> 
 									</div>
-									<div class="replyContent" id="div_${ p.projectNo }">
+									<div class="replyContent" id="div_${ r.recommendNo }">
 										<pre>
-											<span>${ p.projectreply }</span>
+											<span>${ r.recommendreply }</span>
 										</pre>
 									</div>
 

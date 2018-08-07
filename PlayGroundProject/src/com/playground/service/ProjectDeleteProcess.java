@@ -22,7 +22,7 @@ public class ProjectDeleteProcess implements CommandProcess {
 		String type = request.getParameter("type");
 		String keyword = request.getParameter("keyword");
 		
-		
+		/*
 		if(No == null || No.equals("") || pass == null || pass.equals("")
 			|| pageNum == null || pageNum.equals("")) {
 
@@ -34,7 +34,7 @@ public class ProjectDeleteProcess implements CommandProcess {
 			out.println("	history.back();");
 			out.println("</script>");
 			return null;
-		}
+		}*/
 		
 		ProjectDao dao = ProjectDao.getInstance();
 		int no = Integer.parseInt(No);

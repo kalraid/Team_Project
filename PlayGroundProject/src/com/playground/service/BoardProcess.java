@@ -11,17 +11,16 @@ import com.playground.beans.Project;
 import com.playground.dao.ProjectDao;
 
 public class BoardProcess implements CommandProcess {
-
+	final static int PAGE_COUNT = 10;
 	
 	@Override
 	public ForwardService requestProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		final int PAGE_COUNT = 10;
-		String pagenum = request.getParameter("pagenum");
+		String pageNum = request.getParameter("pageNum");
 		String tab = request.getParameter("tab");
 		String keyword = request.getParameter("keyword");
 		
-		if(pagenum == null) pagenum = "1";
+		if(pageNum == null) pageNum = "1";
 		if(tab == null) tab = "all";
 		if(keyword==null) keyword="";
 		ProjectDao dao = ProjectDao.getInstance();
@@ -33,16 +32,20 @@ public class BoardProcess implements CommandProcess {
 		if((count%PAGE_COUNT) > 0) page++;
 		
 		
-		ArrayList<Project> Projectlist = dao.getProject(Integer.parseInt(pagenum), tab, keyword);
+		ArrayList<Project> Projectlist = dao.getProject(Integer.parseInt(pageNum), tab, keyword);
 				
-		request.setAttribute("pagenum",pagenum);
+		request.setAttribute("pageNum",pageNum);
 		request.setAttribute("tab", tab);
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("page", page);
 		request.setAttribute("Projectlist", Projectlist);
 		
 		ForwardService forward = new ForwardService();
+		
+		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/index.jsp?body=board/projectList.jsp");
+		
+		
 		return forward;
 	}
 

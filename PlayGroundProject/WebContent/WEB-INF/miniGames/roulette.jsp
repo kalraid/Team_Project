@@ -230,7 +230,7 @@ function createWheel() {
         			alert("룰렛에 실패하셨습니다");
         		}
         	}else if(numwin >= 0 && numwin <= 36 ){
-        		if(rndnum == numwin){
+        		if(rndNum == numwin){
         			alert("축하합니다 \n숫자를 맞추셨습니다");
         		}else{
         			alert("룰렛에 실패하셨습니다");

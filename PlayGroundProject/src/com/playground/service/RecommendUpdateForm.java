@@ -1,5 +1,4 @@
 package com.playground.service;
-/*package service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Recommend;
-import dao.RecommendDao;
+import com.playground.beans.Recommend;
+import com.playground.dao.RecommendDao;
 
 public class RecommendUpdateForm implements CommandProcess {
 
@@ -28,18 +27,15 @@ public class RecommendUpdateForm implements CommandProcess {
 		String rPass = request.getParameter("rPass");
 		String pageNum = request.getParameter("pageNum");
 		
-		Project p = new Project();
-		ProjectDao dao = ProjectDao.getInstance();
+		Recommend p = new Recommend();
+		RecommendDao dao = RecommendDao.getInstance();
 		
-		p = dao.getproject(no);
-		
-		
-		
-		ForwardService forward = new ForwardService();
+		p = dao.getRecommend(no);
 		
 		request.setAttribute("p", p);
 		request.setAttribute("pageNum", pageNum);
 		
+		ForwardService forward = new ForwardService();
 		forward.setRedirect(false);
 		forward.setPath("/WEB-INF/index.jsp?body=board/recommendUpdate.jsp");
 		
@@ -47,4 +43,3 @@ public class RecommendUpdateForm implements CommandProcess {
 	}
 
 }
-*/

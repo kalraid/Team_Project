@@ -26,6 +26,8 @@ public class MainpageDao {
 				" max(good) as maxgood from festival group by a_code) b, area_code c"+
 				" where  a.a_code = c.code and a.a_code = b.a_code and b.rank<=3 and a.good = b.maxgood";
 		try {
+			conn = DBManager.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -34,7 +36,7 @@ public class MainpageDao {
 				String img = (rs.getString("feImg"));
 				String title = (rs.getString("title"));
 				String tel = (rs.getString("tel"));
-				String c_name = rs.getString("c_name");
+				String c_name = rs.getString("name");
 				int good = (rs.getInt("good"));
 				String name = (rs.getString("fe_place"));
 				Date start = (rs.getDate("eventStart_date"));

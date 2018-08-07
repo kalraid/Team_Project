@@ -70,23 +70,7 @@ a {
 	<br />
 
 	<table class="table">
-		<tr>
-			<td colspan="6">
-				<form action="#" style="text-align-last: center;">
-					<select class="projectForm">
-						<option value="all" ${tab.equals('all')?"selected":"" }>전체보기</option>
-						<option value="LINKLIST" ${tab.equals('all')?"selected":"" }>제목</option>
-						<option value="PEOPLE" ${tab.equals('all')?"selected":"" }>작성자</option>
-						<option value="GESIMUL" ${tab.equals('all')?"selected":"" }>내용</option>
-					</select> <input type="text" id="box" name="box" value="${keyword }">
-					<input type="submit" value="검색"><br />
-					<br />
-					<br />
-
-				</form>
-			</td>
-		</tr>
-
+		
 		<tr>
 			<td colspan="3" class="ListLink"><a href="projectList.mvc">리스트</a></td>
 			<td colspan="3" class="write"><a href="projectWrite.mvc">글쓰기</a></td>

@@ -37,10 +37,25 @@ $(function(){
 		window.open(url, "passCheck", "toolbar=no, location=no, status=no, memubar=no, width=500, height=300");
 	})
 	$("#adminDeleteBtn").click(function(){
+		
 		var id = $("#id").val();
+		var result = window.confirm(id + "회원을 삭제 하시겠습니까?");
 		var url = "memberAdminDelete.mvc?id="+id;
+		if(!result){
+			return false;
+		}
 		location.assign(url);
 	})
+	$("#adminUpDateBtn").click(function(){
+		var id = $("#id").val();
+		var admin = $("#admin").val();
+		var result = window.confirm(id + "회원의 등급을 수정 하시겠습니까?");
+		var url = "memberAdminUpDate.mvc?id="+id+"&admin="+admin;
+		if(!result){
+			return false;
+		}
+		location.assign(url);
+	});
 	$("#btnClose").on("click", function(){
 		var id = $(this).attr("data-id-value");
 		$("#id", opener.document).val(id);
@@ -195,7 +210,16 @@ $(function(){
 		}
 		$("#logoutURL").val("index.mvc");
 	});
-	
+	$("#memberDeleteBtn").click(function(){
+		var result = window.confirm("회원 탈퇴를 하시겠습니까?");
+		var id = $("#id").val();
+		var pass = $("#pass").val();
+		var url = "memberDeleteProcess.mvc?id="+id+"&pass="+pass;
+		if(! result){
+			return false;
+		}
+		location.assign(url);
+	});
 	$("#upDateForm").on("submit", function(){
 		var name = $("#name").val();
 		var hPassCheck = $("#hPassCheck").val();

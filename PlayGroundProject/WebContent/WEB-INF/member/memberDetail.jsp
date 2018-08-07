@@ -24,7 +24,7 @@
   margin:10px auto;
   font-size: 18px;
   font-weight: bold;
-  background: linear-gradient(to right bottom, skyblue, white, white, skyblue);
+  background:transparent;
  }
  #memberDetailTable tr th{
   padding-left: 20px;

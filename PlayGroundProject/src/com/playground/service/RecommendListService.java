@@ -1,4 +1,5 @@
 package com.playground.service;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -6,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.playground.beans.Project;
-import com.playground.dao.ProjectDao;
+import com.playground.beans.Recommend;
+import com.playground.dao.RecommendDao;
 
 public class RecommendListService implements CommandProcess {
 
@@ -16,7 +17,7 @@ public class RecommendListService implements CommandProcess {
 	@Override
 	public ForwardService requestProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		final int PAGE_COUNT = 10;
+			/*int PAGE_COUNT = 10;*/
 			String pageNum = request.getParameter("pageNum");
 			String tab = request.getParameter("tab");
 			String keyword = request.getParameter("keyword");
@@ -24,22 +25,22 @@ public class RecommendListService implements CommandProcess {
 			if(pageNum == null) pageNum = "1";
 			if(tab == null) tab = "all";
 			if(keyword==null) keyword="";
-			ProjectDao dao = ProjectDao.getInstance();
+			RecommendDao dao = RecommendDao.getInstance();
 			
-			int count = dao.getProjectCount(tab, keyword);
+			int count = dao.getRecommendCount(tab, keyword);
 			
 			int page = count/PAGE_COUNT;
 			
 			if((count%PAGE_COUNT) > 0) page++;
 			
 			
-			ArrayList<Project> Projectlist = dao.getProject(Integer.parseInt(pageNum), tab, keyword);
+			ArrayList<Recommend> RecommendList = dao.getRecommend(Integer.parseInt(pageNum), tab, keyword);
 					
 			request.setAttribute("pageNum",pageNum);
 			request.setAttribute("tab", tab);
 			request.setAttribute("keyword", keyword);
 			request.setAttribute("page", page);
-			request.setAttribute("Projectlist", Projectlist);
+			request.setAttribute("RecommendList", RecommendList);
 			
 			ForwardService forward = new ForwardService();
 			

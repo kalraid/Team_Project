@@ -19,7 +19,6 @@ public class MainPageProcess implements CommandProcess {
 				ArrayList<Object> FestivalList = dao.getMainPageFestival();
 		request.setAttribute("FList",FestivalList);
 		
-		
 		ForwardService forward = new ForwardService();
 		forward.setPath("/WEB-INF/index.jsp?body=mainpage/mainpagebody.jsp");
 		return forward;

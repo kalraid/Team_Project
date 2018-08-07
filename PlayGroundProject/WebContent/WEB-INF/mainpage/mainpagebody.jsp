@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 * {
 	margin: 0px;
@@ -206,36 +206,36 @@ padding : 10px;
 		</article>
 
 		
-		<!-- The da Section -->
+		<c:set var="p" value="${FList}"></c:set>
   <div id="tour">
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">​FESTIVALS  /  EVENTS FOR THIS MONTH!</h2>
+      <h2 class="w3-wide w3-center">요근래 인기 있는 지역별 축제들</h2>
       <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
         <div class="w3-third w3-margin-bottom">
-          <img src="images/mainpageslideimgs/9_sunnyshores_ca.jpg" alt="ca" style="width:100%" class="w3-hover-opacity">
+          <h3 style="text-align: center">${ p[0][3] }</h3>
+          <img src="${ p[0][0] }" alt="ca" style="width:100%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
-            <p><b>New York</b></p>
-            <p class="w3-opacity">Fri 27 Nov 2016</p>
-            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-            <button class="w3-button w3-black w3-margin-bottom">Buy Tickets</button>
+            <p><b>${ p[0][1] }</b></p>
+            <p class="w3-opacity">${ p[0][6] } ~ ${ p[0][7] }</p>
+            <p>연락처 : ${ p[0][2] }</p>
+            <p>추천수 : ${ p[0][4] }</p>
           </div>
         </div>
         <div class="w3-third w3-margin-bottom">
-          <img src="images/mainpageslideimgs/9_sunnyshores_ca.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
+          <img src="${ p[1][0] }" alt="Paris" style="width:100%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
-            <p><b>Paris</b></p>
-            <p class="w3-opacity">Sat 28 Nov 2016</p>
-            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
-          </div>
+            <p><b>${ p[1][1] }</b></p>
+            <p class="w3-opacity">${ p[1][6] } ~ ${ p[1][7] }<</p>
+			<p>연락처 : ${ p[1][3] }</p>
+            <p>추천수 : ${ p[1][4] }</p> 
+                     </div>
         </div>
         <div class="w3-third w3-margin-bottom">
-          <img src="images/mainpageslideimgs/9_sunnyshores_ca.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+          <img src="${ p[2][0] }" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
-            <p><b>San Francisco</b></p>
-            <p class="w3-opacity">Sun 29 Nov 2016</p>
-            <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            <p><b>${ p[2][1] }</b></p>
+            <<p>연락처 : ${ p[1][3] }</p>
+            <p>추천수 : ${ p[1][4] }</p> 
           </div>
         </div>
       </div>

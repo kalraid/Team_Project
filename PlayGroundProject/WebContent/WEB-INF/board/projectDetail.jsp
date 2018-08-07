@@ -138,6 +138,9 @@ display: inline-block;
 text-align: right;
 display: inline-block;
 }
+.contentTable{
+width: 100%;
+}
 </style>
 <head>
 <body>
@@ -157,24 +160,31 @@ display: inline-block;
 			<input type="hidden" name="keyword" value="${ keyword  }" />
 
 		</c:if>
+		
 	</form>
+	
 	<table class="contentTable">
+	
 		<tr>
 			<td colspan="4" class="boardTitle"><h2>글 내용 보기</h2></td>
 		</tr>
+		
 		<tr>
 			<td colspan="4">&nbsp;</td>
 		</tr>
+		
 		<tr>
 			<td class="contentTh">제&nbsp;&nbsp;&nbsp;목</td>
 			<td class="contentTd" colspan="3">${ project.linklist  }</td>
 		</tr>
+		
 		<tr>
 			<td class="contentTh">글쓴이</td>
 			<td class="contentTd">${ project.people }</td>
 			<td class="contentTh">비밀번호</td>
 			<td class="contentTd"><input type="text" name="pass" id="pass"></td>
 		</tr>
+		
 		<tr>
 
 			<td class="contentTh">작성일</td>
@@ -189,6 +199,7 @@ display: inline-block;
 			<td class="readContent" colspan="4"><pre>${ project.gesimul}</pre>
 			</td>
 		</tr>
+		
 		<tr>
 			<td colspan="4">&nbsp;</td>
 		</tr>
@@ -207,7 +218,8 @@ display: inline-block;
 					위의 쿼리 스트링을 작성할 때 같은 줄에서 띄어쓰기 하는 것은 문제되지
 					않지만 줄 바꿔서 작성하게 되면 스크립트 에러가 발생한다.
 				-->
-				</c:if></td>
+				</c:if>
+			</td>
 		</tr>
 
 		<tr>
@@ -238,36 +250,53 @@ display: inline-block;
 					<table id="replttable" >
 						<c:forEach var="p" items="${projectreplyList }">
 							<tr id="reply_${p.projectNo }">
+								
 								<td>
 									<div class="replyUser" style="text-align:left;">
 										<span class="member">${p.projectwriter }</span>
 									</div>
+									
 									<div class="replyModify" style="text-align:left;">
 										<span class="reply_date"> <fmt:formatDate
 												value="${p.projectdbdate }" pattern="yyyy-MM-dd HH:mm:ss" />
 										</span> 
 									</div>
+									
 									<div class="replyContent" id="div_${ p.projectNo }">
 										<pre>
 											<span>${ p.projectreply }</span>
 										</pre>
 									</div>
-
 								</td>
+								
 							</tr>
+							
 						</c:forEach>
+						
 					</table>
+					
 				</td>
+				
 			</tr>
+			
 		</c:if>
+		
 	</table>
+	
+	
+	
+	
+	
+	
+	
+	
 	<div id="replyForm">
 		<form name="replyWriteForm" id="replyWriteForm">
 			<input type="hidden" name="projectNo" id="projectNo" value="${ no  }"/>
 			 <input type="hidden" name="projectWriter" value="${ sessionScope.id  }" />
 			<table id="replyWriteTable">
 				<tr>
-					<td id="replyWriteTitle" colspan="2"><span>악의적인 댓글은 예고
+					<td id="replyWriteTitle" colspan="4"><span>악의적인 댓글은 예고
 							없이 삭제될 수 있으며 글쓰기 제한과 아이 디 삭제 처리됩니다.</span></td>
 				</tr>
 

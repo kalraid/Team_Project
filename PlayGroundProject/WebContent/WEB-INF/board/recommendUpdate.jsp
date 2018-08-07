@@ -4,8 +4,9 @@
 
 <c:set var="p" value="${p }"/>
 <article>
-<form name="updateForm" id="updateForm" action="projectUpdate.mvc"
-	method="post" >
+<form name="updateForm" id="updateForm" action="RecommendUpdate.mvc"
+	method="POST" 
+	${ not empty Recommend.File ?  "" : "enctype='multipart/form-data'"}>
 	<!--
 		no는 DB에서 게시 글을 수정하기 위해 필요하고 pageNum은 게시 글이 
 		수정된 후에 이전에 사용자가 머물렀던 게시 글 리스트의 동일한 페이지로
@@ -32,6 +33,8 @@
 			<input type="text" name="people" id="people" size="30" 
 				maxlength="10" value="${ p.people }"/>
 		</td>
+		
+		
 		<th class="readTh">비밀번호</th>
 		<td class="readTd">
 			<input type="password" name="pass" id="pass" size="30" 
@@ -54,12 +57,17 @@
 		</td>				
 	</tr>
 	
-	
+ 	<tr>
+		<th class="readTh">파일첨부</th>
+		<td class="readTd" colspan="3">
+			<input type="file" name="file" id="file" size="50" 
+				${ empty Recommend.File ? "" : "disabled" } />
+		</td>				
+	</tr> 
 
 	<tr>
-	
-			<td colspan="4">&nbsp;</td></tr>
-	<tr>
+			<td colspan="4">&nbsp;</td>
+	</tr>
 	<tr>		
 		<td class="tdSpan" colspan="4">
 			<input type="reset" value="다시쓰기" />
@@ -68,13 +76,13 @@
 			<c:if test="${ not searchOption }">		
 				&nbsp;&nbsp;<input type="button" value="목록보기" 
 					onclick="javascript:window.location.href=
-						'projectList.mvc?pageNum=${ pageNum }'"/>
+						'RecommendList.mvc?pageNum=${ pageNum }'"/>
 			</c:if>
 			<!-- 검색 리스트에서 온 요청이면 검색 리스트의 동일한 페이지로 돌려보낸다. -->
 			<c:if test="${ searchOption }">
 				&nbsp;&nbsp;<input type="button" value="목록보기" 
 					onclick="javascript:window.location.href=
-						'projectList.mvc?pageNum=${ pageNum }&type=${ type }&keyword=${ keyword }'"/>
+						'RecommendList.mvc?pageNum=${ pageNum }&type=${ type }&keyword=${ keyword }'"/>
 				<!-- 
 					위의 쿼리 스트링을 작성할 때 같은 줄에서 띄어쓰기 하는 것은 문제되지
 					않지만 줄 바꿔서 작성하게 되면 스크립트 에러가 발생한다.

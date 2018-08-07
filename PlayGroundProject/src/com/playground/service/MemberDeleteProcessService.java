@@ -45,12 +45,16 @@ public class MemberDeleteProcessService implements CommandProcess {
 			out.println("</script>");
 			return null;
 		}
+		
 		dao.memberDelete(passCheck, id);
 		session.invalidate();
+		response.setContentType("text/html; charset=utf-8");
+		
 		ForwardService forward = new ForwardService();
 		forward.setRedirect(true);
 		forward.setPath("index.mvc");
 		return forward;
 	}
+
 
 }

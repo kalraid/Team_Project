@@ -3,7 +3,7 @@
     
 <style>
  .memberInsertSuccessBackground{
-  background-color: skyblue;
+  background: linear-gradient(to right, white, skyblue, skyblue, skyblue 90%, white);
  }
  .memberInsertSuccessTitle{
   text-align: center;

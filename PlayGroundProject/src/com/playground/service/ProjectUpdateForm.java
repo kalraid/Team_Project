@@ -20,10 +20,15 @@ public class ProjectUpdateForm implements CommandProcess {
 		// 번호 제목 아이디 작성자 날짜 조회수 게시물 내용
 		
 		String rNo = request.getParameter("no");
-		System.out.println("rNo : " + rNo);
+		System.out.println("rNo : " + rNo );
 		int no = Integer.parseInt(rNo);
 		String rPass = request.getParameter("rPass");
+		
+		System.out.println("rPass : " + rPass);
+		
 		String pageNum = request.getParameter("pageNum");
+		
+		System.out.println("pageNum : " + pageNum);
 		
 		Project p = new Project();
 		ProjectDao dao = ProjectDao.getInstance();

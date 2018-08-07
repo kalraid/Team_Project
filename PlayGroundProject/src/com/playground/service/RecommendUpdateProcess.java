@@ -1,5 +1,4 @@
 package com.playground.service;
-/*package service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,13 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ProjectDao;
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import beans.Recommend;
-import dao.RecommendDao;
-import service.ForwardService;
+import com.playground.beans.Recommend;
+import com.playground.dao.RecommendDao;
+import com.playground.service.ForwardService;
 
 public class RecommendUpdateProcess implements CommandProcess {
 
@@ -23,13 +22,14 @@ public class RecommendUpdateProcess implements CommandProcess {
 	public ForwardService requestProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String contentType = request.getHeader("Content-Type");
-		System.out.println("contentType : " + contentType);	
-		ProjectDao dao = ProjectDao.getInstance();
-		Recommend Project = null;
+		System.out.println("contentType : " + contentType);
+		RecommendDao dao = RecommendDao.getInstance();
+		Recommend Recommend = null;
 		String  pass= null, linklist = null, people = null, good = null, id = null,
-				gesimul = null , sNo = null, pageNum = null, type=null, keyword=null;
+				gesimul = null , sNo = null, pageNum = null, type=null, keyword=null, file=null;
 		int no = 0;		
-		
+		gesimul = request.getParameter("gesimul");
+		file= request.getParameter("file");
 		
 		if(contentType.contains("multipart/form-data")) {
 			
@@ -52,10 +52,13 @@ public class RecommendUpdateProcess implements CommandProcess {
 			pageNum = multi.getParameter("pageNum");
 			type = multi.getParameter("type");
 			keyword = multi.getParameter("keyword");		
-			System.out.println("keyword : " + keyword);
+			gesimul = multi.getParameter("gesimul");
+			file = multi.getParameter("file");
+			
+			//System.out.println("keyword : " + keyword);
 			
 	
-			if(sNo == null || sNo.equals("") || pass == null || pass.equals("")
+		/*	if(sNo == null || sNo.equals("") || pass == null || pass.equals("")
 				|| pageNum == null || pageNum.equals("")) {
 
 			
@@ -67,7 +70,7 @@ public class RecommendUpdateProcess implements CommandProcess {
 				out.println("</script>");
 				return null;
 			}
-			
+			*/
 			no = Integer.parseInt(sNo);
 			
 			
@@ -78,7 +81,7 @@ public class RecommendUpdateProcess implements CommandProcess {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter out = response.getWriter();				
 				StringBuilder sb = new StringBuilder();
-				sb.append("<script>");
+				sb.append("<script>"); 
 				sb.append("	alert('비밀번호가 맞지 않습니다.');");
 				sb.append("	history.back();");
 				sb.append("</script>");
@@ -91,13 +94,16 @@ public class RecommendUpdateProcess implements CommandProcess {
 			good = multi.getParameter("good");		
 			
 			
-			Project = new Recommend();
-			Project.setNo(no);
-			Project.setPass(pass);
-			Project.setLinklist(linklist);
-			Project.setPeople(people);
-			Project.setGood(good);
-			Project.setGesimul(gesimul);
+			Recommend = new Recommend();
+			Recommend.setNo(no);
+			System.out.println("project.setNO : " + no);
+			Recommend.setPass(pass);
+			Recommend.setLinklist(linklist);
+			Recommend.setPeople(people);
+			Recommend.setGood(good);
+			Recommend.setGesimul(gesimul);
+			Recommend.setFile(file);
+			System.out.println("게시물내용: " + gesimul);
 				
 		
 			String fileName = multi.getFilesystemName("file");
@@ -105,9 +111,9 @@ public class RecommendUpdateProcess implements CommandProcess {
 			System.out.println("원본 파일명 : " + multi.getOriginalFileName("file"));
 			
 			
-			Project.setFile1(fileName != null ? fileName : null);
+			Recommend.setFile(fileName != null ? fileName : null);
 			
-			if(Project.getFile1() == null) {		
+			if(Recommend.getFile() == null) {		
 				System.out.println("파일이 업로드 되지 않았음");		
 			}
 			
@@ -131,7 +137,7 @@ public class RecommendUpdateProcess implements CommandProcess {
 			System.out.println("keyword : " + keyword);
 			
 		
-			if(sNo == null || sNo.equals("") || pass == null || pass.equals("")
+		/*	if(sNo == null || sNo.equals("") || pass == null || pass.equals("")
 					|| pageNum == null || pageNum.equals("")) {
 
 			
@@ -142,7 +148,7 @@ public class RecommendUpdateProcess implements CommandProcess {
 				out.println("	history.back();");
 				out.println("</script>");
 				return null;
-			}
+			}*/
 			
 			no = Integer.parseInt(sNo);
 			
@@ -166,27 +172,29 @@ public class RecommendUpdateProcess implements CommandProcess {
 			people = request.getParameter("people");		
 			good = request.getParameter("good");
 			
-		
-			Project = new Project();
 			
-			Project.setNo(no);
-			Project.setLinklist(linklist);
-			Project.setId(id);
-			Project.setPass(pass);
-			Project.setPeople(people);
-			Project.setGood(good);
-			Project.setGesimul(gesimul);
+		
+			Recommend = new Recommend();
+			
+			Recommend.setNo(no);
+			Recommend.setLinklist(linklist);
+			Recommend.setId(id);
+			Recommend.setPass(pass);
+			Recommend.setPeople(people);
+			Recommend.setGood(good);
+			Recommend.setGesimul(gesimul);
+			Recommend.setFile(file);
 			
 		}
 	
-		dao.UpdateProject(Project);
+		dao.UpdateRecommend(Recommend);
 
 	
 		boolean searchOption = (type == null || type.equals("") 
 				|| keyword == null || keyword.equals("")) ? false : true; 	
 		
 	
-		String url = "recommendList.mvc?pageNum=" + pageNum;
+		String url = "RecommendList.mvc?pageNum=" + pageNum;
 		
 		if(searchOption) {
 			
@@ -205,4 +213,3 @@ public class RecommendUpdateProcess implements CommandProcess {
 	}
 
 }
-*/

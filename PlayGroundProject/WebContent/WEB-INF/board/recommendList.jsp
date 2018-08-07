@@ -71,25 +71,8 @@ a {
 
 	<table class="table">
 		<tr>
-			<td colspan="6">
-				<form action="#" style="text-align-last: center;">
-					<select class="projectForm">
-						<option value="all" ${tab.equals('all')?"selected":"" }>전체보기</option>
-						<option value="LINKLIST" ${tab.equals('all')?"selected":"" }>제목</option>
-						<option value="PEOPLE" ${tab.equals('all')?"selected":"" }>작성자</option>
-						<option value="GESIMUL" ${tab.equals('all')?"selected":"" }>내용</option>
-					</select> <input type="text" id="box" name="box" value="${keyword }">
-					<input type="submit" value="검색"><br />
-					<br />
-					<br />
-
-				</form>
-			</td>
-		</tr>
-
-		<tr>
-			<td colspan="3" class="ListLink"><a href="recommendList.mvc">리스트</a></td>
-			<td colspan="3" class="write"><a href="recommendWrite.mvc">글쓰기</a></td>
+			<td colspan="3" class="ListLink"><a href="RecommendList.mvc">리스트</a></td>
+			<td colspan="3" class="write"><a href="RecommendWrite.mvc">글쓰기</a></td>
 		</tr>
 
 
@@ -101,28 +84,28 @@ a {
 			<th class="date">날짜</th>
 			<th class="good">조회수</th>
 		</tr>
-		<c:if test="${ not empty Projectlist }">
-			<c:forEach var="p" items="${ Projectlist }" varStatus="status">
+		<c:if test="${ not empty RecommendList }">
+			<c:forEach var="r" items="${ RecommendList }" varStatus="status">
 				<tr class="projectTr">
-					<td class="projectNo">${ p.no  }</td>
+					<td class="projectNo">${ r.no  }</td>
 					<td class="projectlinklist">
-					<a  href="projectDetail.mvc?no=${ p.no }&pageNum=${pageNum}">${p.linklist}</a></td>
-					<td class="projectid">${p.id }</td>
-					<td class="projectpeople">${p.people }</td>
-					<td class="projcetdbdate">${p.dbdate }</td>
-					<td class="projcetgood">${p.good }</td>
+					<a  href="RecommendDetail.mvc?no=${ r.no }&pageNum=${pageNum}">${r.linklist}</a></td>
+					<td class="projectid">${r.id }</td>
+					<td class="projectpeople">${r.people }</td>
+					<td class="projcetdbdate">${r.dbdate }</td>
+					<td class="projcetgood">${r.good }</td>
 				</tr>
 			</c:forEach>
 				<tr>
 				<td colspan="6">
 			<c:forEach var="num" begin="1" end="${page }">
 					<input type="button" value="${num }"
-						onclick="location.href='recommendList.mvc?pageNum=${num}'">				
+						onclick="location.href='RecommendList.mvc?pageNum=${num}'">				
 			</c:forEach>
 			</td>
 			</tr>
 		</c:if>
-		<c:if test="${ empty Projectlist }">
+		<c:if test="${ empty RecommendList }">
 			<tr>
 				<td colspan="6" class="listTdSpan">게시 글이 존재하지 않습니다.</td>
 			</tr>
