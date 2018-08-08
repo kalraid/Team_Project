@@ -20,7 +20,7 @@ public class AddPlaceList implements AjaxProcess {
 		String address = request.getParameter("address");
 		double lat = Double.parseDouble(request.getParameter("lat"));
 		double lng = Double.parseDouble(request.getParameter("lng"));
-		StringBuilder img = new StringBuilder(request.getParameter("img"));
+		String img = request.getParameter("img");
 		Place p = new Place();
 		p.setName(name);
 		p.setAddress(address);

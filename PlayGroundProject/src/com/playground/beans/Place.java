@@ -3,7 +3,7 @@ package com.playground.beans;
 public class Place {
 	private String name;
 	private String address;
-	private StringBuilder img;
+	private String img;
 	private double latitude;
 	private double longitude;
 	
@@ -31,10 +31,10 @@ public class Place {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public StringBuilder getImg() {
+	public String getImg() {
 		return img;
 	}
-	public void setImg(StringBuilder img2) {
+	public void setImg(String img2) {
 		this.img = img2;
 	}
 	

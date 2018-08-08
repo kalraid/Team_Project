@@ -1,10 +1,15 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="sun.security.util.Length"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ page import="com.playground.beans.Place" %>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/placeRecommend.js"></script>
+<% ArrayList<Place> PL = (ArrayList<Place>)session.getAttribute("PList");
+	pageContext.setAttribute("PL", PL);
+%>
 <style>
 .main {
 	margin: 0px auto 0;
@@ -322,35 +327,33 @@
 					map : map
 				});
 			}
-			function Geocoding(){
-				
-				
-			}
+			
 		</script>
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU&callback=initMap">
 		</script>
-		<c:if test="${not empty sessionScope.PList}">
+		<c:set var="P" value="${sessionScope.PList }" />
+		<c:if test="${not empty P}">
 			<div class="selectboxdiv">
 				<div id="inner_sbdiv">
 					<div class="selectbox first_sb">
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='0'>
 								<c:if test="${pSize >=1 }">
-								<c:if test="${not fn:contains(sessionScope.PList[0].img, '.jpg')">
+								<c:if test="${not P[0].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[0].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[0].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains($(sessionScope.PList[0].img), '.jpg')">
+								<c:if test="${P[0].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[0].img}'>
+										src = 'imges/${P[0].img}'>
 								</c:if>		
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=1 }">
-									<div>${sessionScope.PList[0].name}</div>
+									<div>${P[0].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -363,21 +366,21 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value='5'>
 								<c:if test="${pSize >=6 }">
-									<c:if test="${not fn:contains(sessionScope.PList[5].img, '.jpg')">
+									<c:if test="${not P[5].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[5].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[5].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains($(sessionScope.PList[5].img), '.jpg')">
+								<c:if test="${P[5].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[5].img}'>
+										src = 'imges/${p[5].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=6 }">
-									<div>${sessionScope.PList[5].name}</div>
+									<div>${P[5].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -392,20 +395,20 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='1'>
 								<c:if test="${pSize >=2 }">
-									<c:if test="${not fn:contains(sessionScope.PList[1].img, '.jpg')">
+									<c:if test="${not P[1].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[1].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[1].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[1].img, '.jpg')">
+								<c:if test="${P[1].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[1].img}'>
+										src = 'imges/${P[1].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=2 }">
-									<div>${sessionScope.PList[1].name}</div>
+									<div>${P[1].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -417,20 +420,20 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value='6'>
 								<c:if test="${pSize >=7 }">
-									<c:if test="${not fn:contains(sessionScope.PList[6].img, '.jpg')">
+									<c:if test="${not P[6].img.contains('.jpg')}">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[6].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[6].img, '.jpg')">
+								<c:if test="${P[6].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[6].img}'>
+										src = 'imges/${P[6].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=7 }">
-									<div>${sessionScope.PList[6].name}</div>
+									<div>${P[6].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -444,20 +447,20 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='2'>
 								<c:if test="${pSize >=3 }">
-									<c:if test="${not fn:contains(sessionScope.PList[2].img, '.jpg')">
+									<c:if test="${not P[2].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[2].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[2].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[2].img, '.jpg')">
+								<c:if test="${P[2].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[2].img}'>
+										src = 'imges/${P[2].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=3 }">
-									<div>${sessionScope.PList[2].name}</div>
+									<div>${P[2].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -469,20 +472,20 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value='7'>
 								<c:if test="${pSize >=8 }">
-									<c:if test="${not fn:contains(sessionScope.PList[7].img, '.jpg')">
+									<c:if test="${not P[7].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[7].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[7].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[7].img, '.jpg')">
+								<c:if test="${P[7].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[7].img}'>
+										src = 'imges/${P[7].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=8 }">
-									<div>${sessionScope.PList[7].name}</div>
+									<div>${P[7].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -496,20 +499,20 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='3'>
 								<c:if test="${pSize >=4 }">
-									<c:if test="${not fn:contains(sessionScope.PList[3].img, '.jpg')">
+									<c:if test="${not P[3].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[3].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[3].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[3].img, '.jpg')">
+								<c:if test="${P[3].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[3].img}'>
+										src = 'imges/${P[3].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=4 }">
-									<div>${sessionScope.PList[3].name}</div>
+									<div>${P[3].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -521,20 +524,20 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value=8>
 								<c:if test="${pSize >=9 }">
-									<c:if test="${not fn:contains(sessionScope.PList[8].img, '.jpg')">
+									<c:if test="${not P[8].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[8].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[8].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[8].img, '.jpg')">
+								<c:if test="${P[8].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[8].img}'>
+										src = 'imges/${P[8].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=9 }">
-									<div>${sessionScope.PList[8].name}</div>
+									<div>${P[8].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -548,20 +551,20 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value=4>
 								<c:if test="${pSize >=5 }">
-									<c:if test="${not fn:contains(sessionScope.PList[4].img, '.jpg')">
+									<c:if test="${not P[4].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[4].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[4].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[8].img, '.jpg')">
+								<c:if test="${P[4].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[4].img}'>
+										src = 'imges/${P[4].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=5 }">
-									<div>${sessionScope.PList[4].name}</div>
+									<div>${P[4].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
@@ -573,20 +576,20 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value=9>
 								<c:if test="${pSize >=10 }">
-								<c:if test="${not fn:contains(sessionScope.PList[9].img, '.jpg')">
+								<c:if test="${not P[9].img.contains('.jpg')}">
 									<img
-										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[9].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
+										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${P[9].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:contains(sessionScope.PList[9].img, '.jpg')">
+								<c:if test="${P[9].img.contains('.jpg')}">
 									<img
-										src = 'imges/${sessionScope.PList[9].img}'>
+										src = 'imges/${P[9].img}'>
 								</c:if>	
 								</c:if>
 							</div>
 							<div class="selectbox_bottom">
 								<c:if test="${pSize >=10 }">
-									<div>${sessionScope.PList[9].name}</div>
+									<div>${P[9].name}</div>
 									<div class="box_buttons replace_button">
 										<input type="button" value="뒷장보기" class="back_buttons">&nbsp;&nbsp;<input
 											type="button" value="삭제하기" class="del_buttons"
