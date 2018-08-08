@@ -6,11 +6,11 @@
   background-color: skyblue;
  }
  #minigamesLink >a> img{
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border:2px solid black;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 60px;
+  margin-right: 60px;
  }
  .minigamesP{
   font-size: 20px;
@@ -38,7 +38,6 @@
   <a href="roulette.mvc">
    <img src="images/roulette.gif"/>
   </a>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="mole.mvc">
    <img src="images/mole.jpg">
   </a>
