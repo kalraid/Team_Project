@@ -6,6 +6,7 @@ CREATE TABLE smallthema (
 	thema_num NUMBER NOT NULL /* 테마번호 */
 );
 
+
 COMMENT ON TABLE smallthema IS '소테마';
 
 COMMENT ON COLUMN smallthema.s_thama_num IS '소테마번호';
@@ -65,7 +66,8 @@ select smallthema_seq.currval from dual;
 
 ALTER SEQUENCE smallthema_seq INCREMENT BY 1;
 commit;
-
+ALTER TABLE smallthema RENAME COLUMN S_THAMA_Num TO S_THEMA_Num;
+ALTER TABLE smallthema RENAME COLUMN S_THAMA_NAME TO S_THEMA_NAME;
 -- 실제 자료 currval
 insert into smallthema values(smallthema_seq.currval, '고양이카페',1);
 -- insert into smallthema values(smallthema_seq.NEXTVAL, '고양이카페',1);
