@@ -281,12 +281,6 @@ $(document).on("click", ".selectbox_top", function() {
 						"&language=ko" +
 						"&transit_mode=tram" +
 						"&driving=transit";
-					/*https://maps.googleapis.com/maps/api/directions/json
-					 * ?origin=37.5127094,126.9449436
-					 * &destination=37.4797689,126.9813782
-					 * &mode=transit
-					 * &key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU */
-					// https://maps.googleapis.com/maps/api/directions/json?origin=37.5127094,126.9449436&destination=37.4797689,126.9813782&mode=transit&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU
 					$.ajax({
 						url : "pasingDirect.ajax",
 						type : "post",

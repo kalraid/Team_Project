@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%-- <script src="https://code.jquery.com/jquery-3.3.1.min.js">	</script> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 #top_box{
@@ -78,10 +80,17 @@ magin: 0 auto;
 		<li>
 			<c:if test="${not empty pl.placeImg }">
 				<div class="left_box">
-				<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=130&photoreference=${pl.placeImg}
-				&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU" class="imgs">
-				
-				</div>
+						<c:if test="${fn:length(sessionScope.PList[0].img)}>=20">
+						<img
+							src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=130&photoreference=${pl.placeImg}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU"
+							class="imgs">
+						</c:if>
+						<c:if test="${fn:length(sessionScope.PList[0].img)}<20">
+						<img
+							src="imges/${pl.placeImg}"
+							class="imgs">
+						</c:if>
+					</div>
 			</c:if>
 			<c:if test="${ empty pl.placeImg }">
 				<div class="left_box"><img src ="images/red_button.jpg" class="imgs"></div>
