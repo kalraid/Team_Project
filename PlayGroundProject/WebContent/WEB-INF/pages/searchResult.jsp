@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <script src="https://code.jquery.com/jquery-3.3.1.min.js">	</script> --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-	<style>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<style>
 ul li {
 	list-style: none;
 }
@@ -34,18 +33,18 @@ ul li {
 	<ul>
 		<c:forEach var="pl" items="${List}" varStatus="status">
 			<li><c:if test="${not empty pl.placeImg }">
-					<div class="left_box">
-						<c:if test="${fn:length(sessionScope.PList[0].img)}>=20">
-						<img
-							src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=130&photoreference=${pl.placeImg}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU"
-							class="imgs">
-						</c:if>
-						<c:if test="${fn:length(sessionScope.PList[0].img)}<20">
-						<img
-							src="imges/${pl.placeImg}"
-							class="imgs">
-						</c:if>
-					</div>
+					<c:if test="${not fn:contains(pl.placeImg, '.jpg')}">
+						<div class="left_box">
+							<img
+								src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&maxheight=130&photoreference=${pl.placeImg}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU"
+								class="imgs">
+						</div>
+					</c:if>
+					<c:if test="${fn:contains(pl.placeImg, '.jpg')}">
+						<div class="left_box">
+							<img src="images/${pl.placeImg}" class="imgs">
+						</div>
+					</c:if>
 				</c:if> <c:if test="${ empty pl.placeImg }">
 					<div class="left_box">
 						<img src="images/red_button.jpg" class="imgs">

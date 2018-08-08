@@ -337,12 +337,12 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='0'>
 								<c:if test="${pSize >=1 }">
-								<c:if test="${fn:length(sessionScope.PList[0].img)}>=20">
+								<c:if test="${not fn:contains(sessionScope.PList[0].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[0].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[0].img)}<20">
+								<c:if test="${fn:contains($(sessionScope.PList[0].img), '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[0].img}'>
 								</c:if>		
@@ -363,12 +363,12 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value='5'>
 								<c:if test="${pSize >=6 }">
-									<c:if test="${fn:length(sessionScope.PList[5].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[5].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[5].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[5].img)}<20">
+								<c:if test="${fn:contains($(sessionScope.PList[5].img), '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[5].img}'>
 								</c:if>	
@@ -392,12 +392,12 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='1'>
 								<c:if test="${pSize >=2 }">
-									<c:if test="${fn:length(sessionScope.PList[1].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[1].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[1].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[1].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[1].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[1].img}'>
 								</c:if>	
@@ -417,12 +417,12 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value='6'>
 								<c:if test="${pSize >=7 }">
-									<c:if test="${fn:length(sessionScope.PList[6].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[6].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[6].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[6].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[6].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[6].img}'>
 								</c:if>	
@@ -444,12 +444,12 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='2'>
 								<c:if test="${pSize >=3 }">
-									<c:if test="${fn:length(sessionScope.PList[2].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[2].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[2].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[2].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[2].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[2].img}'>
 								</c:if>	
@@ -469,12 +469,12 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value='7'>
 								<c:if test="${pSize >=8 }">
-									<c:if test="${fn:length(sessionScope.PList[7].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[7].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[7].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[7].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[7].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[7].img}'>
 								</c:if>	
@@ -496,12 +496,12 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value='3'>
 								<c:if test="${pSize >=4 }">
-									<c:if test="${fn:length(sessionScope.PList[3].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[3].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[3].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[3].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[3].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[3].img}'>
 								</c:if>	
@@ -521,12 +521,12 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value=8>
 								<c:if test="${pSize >=9 }">
-									<c:if test="${fn:length(sessionScope.PList[8].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[8].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[8].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[8].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[8].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[8].img}'>
 								</c:if>	
@@ -548,12 +548,12 @@
 						<div class="box front" id="ft">
 							<div class="selectbox_top" data-value=4>
 								<c:if test="${pSize >=5 }">
-									<c:if test="${fn:length(sessionScope.PList[4].img)}>=20">
+									<c:if test="${not fn:contains(sessionScope.PList[4].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[4].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[4].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[8].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[4].img}'>
 								</c:if>	
@@ -573,12 +573,12 @@
 						<div class="box end" id="ed">
 							<div class="selectbox_top" data-value=9>
 								<c:if test="${pSize >=10 }">
-								<c:if test="${fn:length(sessionScope.PList[9].img)}>=20">
+								<c:if test="${not fn:contains(sessionScope.PList[9].img, '.jpg')">
 									<img
 										src='https://maps.googleapis.com/maps/api/place/photo?maxwidth=148&maxheight=148&photoreference=${sessionScope.PList[9].img}&key=AIzaSyBhdedgmrTytwJsq_mhBknZ8RZ4spbmjqU'
 										class="imgs">
 										</c:if>
-								<c:if test="${fn:length(sessionScope.PList[9].img)}<20">
+								<c:if test="${fn:contains(sessionScope.PList[9].img, '.jpg')">
 									<img
 										src = 'imges/${sessionScope.PList[9].img}'>
 								</c:if>	
