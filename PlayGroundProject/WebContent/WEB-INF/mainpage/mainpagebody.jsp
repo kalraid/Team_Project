@@ -223,7 +223,7 @@ ul {
 				<div class="w3-row-padding w3-padding-32" style="margin: 0 -16px">
 					<div class="w3-third w3-margin-bottom">
 						<h3 style="text-align: center">${ F[0][3] }</h3>
-						<img src="${ F[0][0] }" alt="ca" style="width: 100%"
+						<img src="${ F[0][0] }" alt="ca" style="width: 100%; height: 150px;"
 							class="w3-hover-opacity">
 						<div class="w3-container w3-white">
 							<p>
@@ -235,26 +235,28 @@ ul {
 						</div>
 					</div>
 					<div class="w3-third w3-margin-bottom">
-						<img src="${ F[1][0] }" alt="Paris" style="width: 100%"
+					<h3 style="text-align: center">${ F[1][3] }</h3>
+						<img src="${ F[1][0] }" alt="Paris" style="width: 100%; height: 150px;"
 							class="w3-hover-opacity">
 						<div class="w3-container w3-white">
 							<p>
 								<b>${ F[1][1] }</b>
 							</p>
 							<p class="w3-opacity">${ F[1][6] }~${ F[1][7] }<</p>
-							<p>연락처 : ${ F[1][3] }</p>
+							<p>연락처 : ${ F[1][2] }</p>
 							<p>추천수 : ${ F[1][4] }</p>
 						</div>
 					</div>
 					<div class="w3-third w3-margin-bottom">
-						<img src="${ F[2][0] }" alt="San Francisco" style="width: 100%"
+					<h3 style="text-align: center">${ F[2][3] }</h3>
+						<img src="${ F[2][0] }" alt="San Francisco" style="width: 100%; height:150px;"
 							class="w3-hover-opacity">
 						<div class="w3-container w3-white">
 							<p>
 								<b>${ F[2][1] }</b>
 							</p>
-							<p>연락처 : ${ F[1][3] }</p>
-							<p>추천수 : ${ F[1][4] }</p>
+							<p>연락처 : ${ F[2][2] }</p>
+							<p>추천수 : ${ F[2][4] }</p>
 						</div>
 					</div>
 				</div>
