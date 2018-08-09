@@ -7,9 +7,7 @@
 <%@ page import="com.playground.beans.Place" %>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/placeRecommend.js"></script>
-<% ArrayList<Place> PL = (ArrayList<Place>)session.getAttribute("PList");
-	pageContext.setAttribute("PL", PL);
-%>
+<script src="js/jquery-ui.min.js"></script>
 <style>
 .main {
 	margin: 0px auto 0;

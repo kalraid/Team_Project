@@ -131,7 +131,7 @@ ul {
 	width: 100%;
 	height: 160px;
 	text-align: center;
-	color: white;
+	color: yellow;
 }
 </style>
 

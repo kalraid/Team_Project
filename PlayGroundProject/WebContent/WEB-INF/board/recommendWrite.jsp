@@ -11,7 +11,7 @@
 	<form name="projectWrite" action="RecommendWriteProcess.mvc" id="projectWrite" 
 	method="POST" 
 	${ not empty Recommend.File ?  "" : "enctype='multipart/form-data'"}>
-		<input type="hidden" name="id" value="${sessionScope.id }"/>
+		<input type="hidden" name="id" value="${board.id }"/>
 		<table class="readTable">
 			
 			<tr>

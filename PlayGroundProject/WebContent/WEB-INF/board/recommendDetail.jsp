@@ -231,76 +231,16 @@ display: inline-block;
 		</tr>
 
 		<tr>
-			<td colspan="4" class="replyHeader">
+			<td colspan="4" class="replyHeader" >
 				<div id="recommendBox">
 					<div class="recommend"> <img src="images/red_button.jpg"
-						alt="추천하기" id="rec" />&nbsp;추천 <span id ="recText">(${recommend.recommend})</span>
-					</div><div id="replyWrite"> &nbsp;댓글쓰기 </div>
+						alt="추천하기" id="rec" />&nbsp;추천 
+					</div>
 				</div>
-
-				<div id="replyTitle">
-					<h3>이 글에 대한 댓글 리스트</h3>
-				</div>
-
 			</td>
 		</tr>
-		<c:if test="${empty recommendreplyList }">
-			<tr id="projectreplyList">
-				<td colspan="4">
-					<div id="notReply">이 게시글에 대한 댓글이 존재하지 않습니다</div>
-				</td>
-			</tr>
-		</c:if>
-		
-		<c:if test="${not empty recommendreplyList }">
-			<tr id="repltList">
-				<td colspan="4">
-					<table id="replttable" >
-						<c:forEach var="r" items="${recommendreplyList }">
-							<tr id="reply_${r.recommendNo }">
-								<td>
-									<div class="replyUser" style="text-align:left;">
-										<span class="member">${r.recommendwriter }</span>
-									</div>
-									<div class="replyModify" style="text-align:left;">
-										<span class="reply_date"> <fmt:formatDate
-												value="${r.recommenddbdate }" pattern="yyyy-MM-dd HH:mm:ss" />
-										</span> 
-									</div>
-									<div class="replyContent" id="div_${ r.recommendNo }">
-										<pre>
-											<span>${ r.recommendreply }</span>
-										</pre>
-									</div>
-
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</td>
-			</tr>
-		</c:if>
+	
 	</table>
-	<div id="replyForm">
-		<form name="replyWriteForm" id="replyWriteForm">
-			<input type="hidden" name="projectNo" id="projectNo" value="${ no  }"/>
-			 <input type="hidden" name="projectWriter" value="${ sessionScope.id  }" />
-			<table id="replyWriteTable">
-				<tr>
-					<td id="replyWriteTitle" colspan="2"><span>악의적인 댓글은 예고
-							없이 삭제될 수 있으며 글쓰기 제한과 아이 디 삭제 처리됩니다.</span></td>
-				</tr>
-
-				<tr>
-					<td id="replyWriteContent"><textarea name="replyContent"
-							id="replyContent" rows="4"></textarea></td>
-
-					<td id="replyWriteImage"><input type="image"
-						src="images/reply_btn_write.gif" id="replyWriteButton" alt="댓글 입력" />
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+	
 </body>
 </html>

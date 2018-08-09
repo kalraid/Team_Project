@@ -100,8 +100,9 @@ a {
 				<tr>
 				<td colspan="6">
 			<c:forEach var="num" begin="1" end="${page }">
+				
 					<input type="button" value="${num }"
-						onclick="location.href='projectList.mvc?pageNum=${num}'">				
+						onclick="location.href='projectList.mvc?pageNum=${num}'">
 			</c:forEach>
 			</td>
 			</tr>
