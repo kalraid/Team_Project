@@ -37,7 +37,7 @@ DROP SEQUENCE seq_gesipan;
 
 UPDATE gesipan SET  linklist='휴ㅏ', id='eew',pass='1234' ,people='영', dbdate=SYSDATE , good='32', gesimul='좋아ㅕㅇㄴ' WHERE no="" ;
 
-
+-- 댓글 테이블
 
 
 CREATE TABLE ProjectReply(

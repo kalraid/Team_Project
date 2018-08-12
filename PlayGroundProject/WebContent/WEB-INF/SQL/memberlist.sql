@@ -68,6 +68,8 @@ COMMENT ON COLUMN memberlist.phone IS '전화번호';
 
 COMMENT ON COLUMN memberlist.admin IS '회원등급';
 
+CREATE SEQUENCE memberList_seq;
+
 CREATE UNIQUE INDEX PK_memberlist
 	ON memberlist (
 		memnum ASC

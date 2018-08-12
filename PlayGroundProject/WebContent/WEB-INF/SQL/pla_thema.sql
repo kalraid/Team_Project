@@ -4,7 +4,7 @@
 --------------------------------------------------------
 --  DDL for Table PLA_THEMA
 --------------------------------------------------------
-
+  DROP TABLE PLA_THEMA;
   CREATE TABLE "HR"."PLA_THEMA" 
    (	"THE_NUM" NUMBER, 
 	"PLACE_NUM" NUMBER, 
@@ -19,6 +19,9 @@
    COMMENT ON COLUMN "HR"."PLA_THEMA"."PLACE_NUM" IS '장소번호';
    COMMENT ON COLUMN "HR"."PLA_THEMA"."S_THEMA_NUM" IS '소테마번호';
    COMMENT ON TABLE "HR"."PLA_THEMA"  IS '테마정보';
+   
+   CREATE SEQUENCE p_thema_SEQ;
+   
 REM INSERTING into HR.PLA_THEMA
 SET DEFINE OFF;
 Insert into HR.PLA_THEMA (THE_NUM,PLACE_NUM,S_THEMA_NUM) values (9,130,39);

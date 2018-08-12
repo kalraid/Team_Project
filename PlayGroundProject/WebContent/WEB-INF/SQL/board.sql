@@ -4,7 +4,7 @@
 --------------------------------------------------------
 --  DDL for Table BOARD
 --------------------------------------------------------
-
+  DROP TABLE board
   CREATE TABLE "HR"."BOARD" 
    (	"TABLE_NUM" NUMBER, 
 	"TABLE_NAME" VARCHAR2(12 CHAR)
