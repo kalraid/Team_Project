@@ -1,0 +1,113 @@
+/* header */
+header {
+	margin-top: 20px;
+	border-bottom: 1px solid blue;
+	height: 130px;
+	background: linear-gradient(172deg, #e2ffff, #ffffff 40%)
+}
+
+header img {
+	border: none;
+}
+
+header #logo {
+	margin-top: 10px;
+	margin-left: 10px;
+	float: left;
+	width: 150px;
+	height: 80px;
+}
+
+header #header_link {
+	float: right;
+	margin-right: 10px;
+	width: 650px;
+}
+
+header #header_link span {
+	display: inline-block;
+	padding: 0 8px;
+}
+
+header #header_link ul, header #header_nav ul {
+	float: right;
+	list-style: none;
+}
+
+header #header_link li, header #header_nav li {
+	float: left;
+	padding: 0 8px;
+	border-right: 1px solid #999;
+}
+
+header #header_link ul li.no_line, header #header_nav li.no_line {
+	border-right: none;
+}
+
+header #header_nav {
+	clear: left;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+	 position: relative;
+}
+
+header .submenu ul li{
+	font: 12px arial, sans-serif;
+}
+
+header #header_nav > ul {
+	font-size: 1.3em;
+	margin: 5px auto;
+	font-weight: bolder;
+}
+
+header #header_nav ul  li {
+	padding: 0 50px;
+	float: left; 
+	line-height: 30px; 
+	vertical-align: middle;
+	text-align: center; 
+	-position: relative; 
+	cursor: pointer;
+}
+
+header #header_nav > ul>li:hover{
+	background-color: #f5f5f5;
+	
+}
+
+header .submenu{
+	position: absolute; 
+	height: 0px; 
+	overflow: hidden; 
+	transition: height .2s; 
+	-webkit-transition: height .2s; 
+	-moz-transition: height .2s; 
+	-o-transition: height .2s; 
+	width: 770px; 
+	left: 0; 
+	margin: 10px 0;
+
+}
+
+header .submenu li:nth-last-child(1){
+	border-right:none;
+}
+
+header #DrugInformation:hover >.submenu{
+	height: 32px;      
+}
+header #HealthInformation:hover >.submenu{
+	height: 32px;      
+}
+header #HealthScreenings:hover >.submenu{
+	height: 32px;      
+}
+header #MapsInformation:hover >.submenu{
+	height: 32px;      
+}
+header #Community:hover >.submenu{
+	height: 32px;      
+}
+
