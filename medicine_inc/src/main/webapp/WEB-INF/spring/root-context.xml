@@ -17,7 +17,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSourceJndi" />
 		<property name="mapperLocations" value="classpath:repository/mappers/**/*Mapper.xml" />
-		<property name="typeAliasesPackage" value="com.springstudy.bbs.domain" />
+		<property name="typeAliasesPackage" value="com.medicine_inc.bbs.domain" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
