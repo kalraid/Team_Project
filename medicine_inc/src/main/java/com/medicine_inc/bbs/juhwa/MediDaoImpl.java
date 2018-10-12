@@ -1,4 +1,4 @@
-package com.medicine_inc.bbs.dao;
+package com.medicine_inc.bbs.juhwa;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.medicine_inc.bbs.service;
+package com.medicine_inc.bbs.juhwa;
 
 import java.util.List;
 

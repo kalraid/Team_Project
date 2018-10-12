@@ -1,8 +1,7 @@
-package com.medicine_inc.bbs.service;
+package com.medicine_inc.bbs.juhwa;
 
 import java.util.List;
 
-import com.medicine_inc.bbs.dao.MediDao;
 import com.medicine_inc.bbs.domain.Medi;
 
 
