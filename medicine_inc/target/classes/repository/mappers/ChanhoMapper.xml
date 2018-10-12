@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.medicine_inc.bbs.mapper.ChanhoMapper" >
+	<select id="SelectIllList" resultType="IllList" resultMap="IllResultMap">
+		SELECT 
+		*
+		FROM ill_list
+		ORDER BY code	
+	</select>
+	
+
+
+<resultMap id="IllResultMap" type="IllList">
+	<id property="code" column="code" />
+	<result property="illClass" column="ill_class" />
+	<result property="name" column="name" />
+	<result property="nameEn" column="name_en" />
+	<result property="relatedDiseases" column="related_diseases" />
+	<result property="symptom" column="symptom" />
+	<result property="cause" column="cause" />
+	<result property="diagnosis" column="diagnosis" />
+	<result property="cure" column="cure" />
+</resultMap>
+
+</mapper>	
