@@ -1,14 +1,14 @@
 package com.medicine_inc.bbs.Controller;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.medicine_inc.bbs.chanho.IllDaoService;
-import com.medicine_inc.bbs.domain.IllList;
 
 @Controller
 public class HoController {
@@ -33,12 +33,15 @@ public class HoController {
 		}
 	
 	@RequestMapping(value= {"/ill", "/Ill"})
-	public String ill(Model model){
-		List<IllList> illist = illDaoService.IllList();
-		System.out.println(illist+",  "+illist.size()+",  "+illist.toString());
+	public String ill(Model model,
+			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum,
+			@RequestParam(value="keyword", required=false, defaultValue="") String keyword){
+		Map<String, Object> modelMap = illDaoService.IllList(pageNum, keyword);
 		
 		
-		model.addAttribute("iList", illist);
+		model.addAttribute("iList", modelMap.get("IllList"));
+		model.addAllAttributes(modelMap);	
+		
 		return "/Chanho/ill";
 		}
 	
