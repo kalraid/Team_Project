@@ -15,8 +15,24 @@
   SELECT * FROM stretching ORDER BY stretchingnum LIMIT #{startRow}, #{num}
  </select>
  
+ <select id="jiapList" parameterType="hashmap" resultMap="JiapResultMap">
+  SELECT * FROM jiap ORDER BY jiapnum LIMIT #{startRow}, #{num}
+ </select>
+ 
+ <select id="getJiapCount" resultType="int">
+  SELECT count(jiapnum) FROM jiap
+ </select>
+ 
  <select id="getStretchingCount" resultType="int">
   SELECT count(stretchingnum) FROM stretching
+ </select>
+ 
+ <select id="getFirstaid" resultType="Firstaid" resultMap="FirstaidResultMap">
+  SELECT * FROM firstaid WHERE firstaidnum = #{firstaidnum}
+ </select>
+ 
+ <select id="getStretching" resultType="Firstaid" resultMap="StretchingResultMap">
+  SELECT * FROM stretching WHERE stretchingnum = #{stretchingnum}
  </select>
  
  <resultMap id="FirstaidResultMap" type="Firstaid">
@@ -45,4 +61,8 @@
   <result property="stretchingcontent8" column="stretchingcontent8"/>
  </resultMap>
  
+ <resultMap type="Jiap" id="JiapResultMap">
+  <id property="jiapnum" column="jiapnum"/>
+  <result property="jiaptc" column="jiaptc"/>
+ </resultMap>
 </mapper>	

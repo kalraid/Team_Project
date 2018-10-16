@@ -15,11 +15,16 @@
       ${f.firstaidnum}
      </td>
      <td class="firstaidListImg">
+     <a href="firstaidDetail?firstaidnum=${f.firstaidnum}&pageNum=${currentPage}">
       <img src="resources/images/firstaid/firstaid${f.firstaidnum}_1.jpg" />
+     </a>
      </td>
      <td class="firstaidListTitle">
+     <a href="firstaidDetail?firstaidnum=${f.firstaidnum}&pageNum=${currentPage}">
       ${f.firstaidtitle }
+     </a>
      </td>
+     
     </tr>
    </c:forEach>
    <tr>

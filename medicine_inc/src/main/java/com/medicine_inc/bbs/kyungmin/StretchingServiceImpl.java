@@ -54,4 +54,9 @@ public class StretchingServiceImpl implements StretchingService {
 			return null;
 		}
 	}
+	
+	@Override
+	public Stretching getStretching(int stretchingnum) {
+		return stretchingDao.getStretching(stretchingnum);
+	}
 }

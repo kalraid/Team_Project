@@ -15,10 +15,14 @@
       ${s.stretchingnum}
      </td>
      <td class="stretchingListImg">
+     <a href="stretchingDetail?stretchingnum=${s.stretchingnum}&pageNum=${currentPage}">
       <img src="resources/images/stretching/stretching${s.stretchingnum}_1.jpg" />
+     </a>
      </td>
      <td class="stretchingListTitle">
+     <a href="stretchingDetail?stretchingnum=${s.stretchingnum}&pageNum=${currentPage}">
       ${s.stretchingtitle }
+     </a>
      </td>
     </tr>
    </c:forEach>

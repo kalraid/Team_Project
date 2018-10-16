@@ -9,4 +9,6 @@ public interface StretchingDao {
 	public abstract List<Stretching> stretchingList(int startRow, int num);
 	
 	public abstract int getStretchingCount();
+	
+	public abstract Stretching getStretching(int stretchingnum);
 }

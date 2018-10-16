@@ -1,5 +1,6 @@
 package com.medicine_inc.bbs.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.medicine_inc.bbs.domain.Firstaid;
+import com.medicine_inc.bbs.domain.Jiap;
+import com.medicine_inc.bbs.domain.Stretching;
 import com.medicine_inc.bbs.kyungmin.FirstaidService;
+import com.medicine_inc.bbs.kyungmin.JiapService;
 import com.medicine_inc.bbs.kyungmin.StretchingService;
 
 @Controller
@@ -22,12 +26,19 @@ public class KyungController {
 	@Autowired
 	private StretchingService stretchingService;
 	
+	@Autowired
+	private JiapService jiapService;
+	
 	public void setFirstaidService(FirstaidService firstaidService) {
 		this.firstaidService = firstaidService;
 	}
 	
 	public void setStretchingService(StretchingService stretchingService) {
 		this.stretchingService = stretchingService;
+	}
+	
+	public void setJiapService(JiapService jiapService) {
+		this.jiapService = jiapService;
 	}
 	
 	@SuppressWarnings("unused")
@@ -43,6 +54,15 @@ public class KyungController {
 	return "/Kyungmin/firstaidList";
 	}
 	
+	
+	
+	@RequestMapping(value= {"/jiapList","/jiap"})
+	public String jiapList(Model model,@RequestParam(value="pageNum", required=false,defaultValue="1") int pageNum) {
+		Map<String, Object> modelMap = jiapService.jiapList(pageNum);
+		model.addAllAttributes(modelMap);
+		return "/Kyungmin/jiapList";
+	}
+	
 	@RequestMapping(value= 
 		{"/HealthScreening","/healthScreening","/Healthscreening","/healthscreening"})
 	public String healthScreening(Model model){
@@ -50,11 +70,6 @@ public class KyungController {
 	return "/Kyungmin/healthScreening";
 	}
 
-	@RequestMapping(value= {"/jiab","/Jiab"})
-	public String jiab(Model model){
-	
-	return "/Kyungmin/jiab";
-	}
 	@RequestMapping(value= {"/quiz","/Quiz"})
 	public String quiz(Model model){
 	
@@ -68,5 +83,20 @@ public class KyungController {
 	return "/Kyungmin/stretchingList";
 	}
 	
-	
+	@RequestMapping("/firstaidDetail")
+	public String firstaidDetail(Model model, int firstaidnum, @RequestParam(value="pageNum", required=false, defaultValue="1")
+	int pageNum) {
+		Firstaid f = firstaidService.getFirstaid(firstaidnum);
+		model.addAttribute("f",f);
+		model.addAttribute("pageNum",pageNum);
+		return "/Kyungmin/firstaidDetail";
+	}
+	@RequestMapping("/stretchingDetail")
+	public String stretchingDetail(Model model, int stretchingnum,@RequestParam(value="pageNum", required=false, defaultValue="1")
+	int pageNum) {
+		Stretching s = stretchingService.getStretching(stretchingnum);
+		model.addAttribute("s",s);
+		model.addAttribute("pageNum",pageNum);
+		return "/Kyungmin/stretchingDetail";
+	}
 }

@@ -13,6 +13,7 @@ import com.medicine_inc.bbs.domain.Firstaid;
 @Repository
 public class FirstaidDaoImpl implements FirstaidDao {
 
+	
 	private final String NAME_SPACE = "com.medicine_inc.bbs.mapper.ParkKyoungminMapper";
 	
 	private SqlSessionTemplate sqlSession;
@@ -32,5 +33,9 @@ public class FirstaidDaoImpl implements FirstaidDao {
 	
 	public int getFirstaidCount() {
 		return sqlSession.selectOne(NAME_SPACE+".getFirstaidCount");
+	}
+	
+	public Firstaid getFirstaid(int firstaidnum) {
+		return sqlSession.selectOne(NAME_SPACE + ".getFirstaid", firstaidnum);
 	}
 }
