@@ -35,11 +35,12 @@ public class HoController {
 	@RequestMapping(value= {"/ill", "/Ill"})
 	public String ill(Model model,
 			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum,
-			@RequestParam(value="keyword", required=false, defaultValue="") String keyword){
-		Map<String, Object> modelMap = illDaoService.IllList(pageNum, keyword);
+			@RequestParam(value="keyword", required=false, defaultValue="") String keyword,
+			@RequestParam(value="type", required=false, defaultValue="") String type,
+			@RequestParam(value="hid", required=false, defaultValue="0") int hid){
+		Map<String, Object> modelMap = illDaoService.IllList(pageNum, keyword,type, hid);
+
 		
-		
-		model.addAttribute("iList", modelMap.get("IllList"));
 		model.addAllAttributes(modelMap);	
 		
 		return "/Chanho/ill";

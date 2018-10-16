@@ -9,11 +9,34 @@
 		*
 		FROM ill_list
 		<where>
-			<if test="Pas == 1">
+			<if test="Pas == 3">
 				name between #{first} AND #{last}
 			</if>
-			<if test="Pas == 0">
+			<if test="Pas == 2">
+				name like CONCAT(#{keyword}, '%')
+			</if>
+			<if test="Pas == 1">
+				<if test="type =='name'">
 				name like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='nameEn'">
+				name_en like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='relatedDiseases'">
+				related_diseases like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='symptom'">
+				symptom like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='cause'">
+				cause like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='diagnosis'">
+				diagnosis like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='cure'">
+				cure like CONCAT('%', #{keyword}, '%')
+				</if>
 			</if>
 		</where>
 		ORDER BY code
@@ -24,11 +47,34 @@
 			COUNT(code) 
 		FROM ill_list
 		<where>
-			<if test="Pas == 1">
+			<if test="Pas == 3">
 				name between #{first} AND #{last}
 			</if>
-			<if test="Pas == 0">
+			<if test="Pas == 2">
+				name like CONCAT(#{keyword}, '%')
+			</if>
+			<if test="Pas == 1">
+				<if test="type =='name'">
 				name like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='nameEn'">
+				name_en like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='relatedDiseases'">
+				related_diseases like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='symptom'">
+				symptom like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='cause'">
+				cause like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='diagnosis'">
+				diagnosis like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="type =='cure'">
+				cure like CONCAT('%', #{keyword}, '%')
+				</if>
 			</if>
 		</where>
 				ORDER BY code
