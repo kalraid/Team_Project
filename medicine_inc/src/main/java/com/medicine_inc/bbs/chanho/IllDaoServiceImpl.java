@@ -3,6 +3,7 @@ package com.medicine_inc.bbs.chanho;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class IllDaoServiceImpl implements IllDaoService {
 	}
 
 	@Override
-	public Map<String, Object> IllList(int pageNum, String keyword) {
+	public Map<String, Object> IllList(int pageNum, String keyword, String type, int hid) {
 
 		// 요청 파라미터의 pageNum을 현재 페이지로 설정
 		int currentPage = pageNum;
@@ -39,12 +40,10 @@ public class IllDaoServiceImpl implements IllDaoService {
 		int startRow = (currentPage - 1) * PAGE_SIZE;
 		int listCount = 0;
 
-		listCount = illdao.getIllCount(keyword);
-		
-		
+		listCount = illdao.getIllCount(keyword, type, hid);
+		System.out.println(listCount);
 		if (listCount > 0) {
-			List<IllList> IllList = illdao.IllList(startRow, pageNum, keyword);
-
+			List<IllList> IllList = illdao.IllList(startRow, pageNum, keyword, type);
 			int pageCount = listCount / PAGE_SIZE + (listCount % PAGE_SIZE == 0 ? 0 : 1);
 
 			int startPage = (currentPage / PAGE_GROUP) * PAGE_GROUP + 1
@@ -68,10 +67,14 @@ public class IllDaoServiceImpl implements IllDaoService {
 			try {
 				modelMap.put("keyword", URLEncoder.encode(keyword, "utf-8"));
 				modelMap.put("word", keyword);
+				modelMap.put("type", type);
+				modelMap.put("hid", hid);
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			
 			return modelMap;	
 		}else {
 			return null;

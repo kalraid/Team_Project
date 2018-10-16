@@ -5,5 +5,5 @@ import java.util.Map;
 public interface IllDaoService {
 
 	
-	public abstract Map<String, Object> IllList(int pageNum, String keyword);
+	public abstract Map<String, Object> IllList(int pageNum, String keyword, String type, int hid);
 }
