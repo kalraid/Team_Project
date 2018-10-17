@@ -2,8 +2,10 @@ package com.medicine_inc.bbs.chanho;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,49 +20,43 @@ public class IllDaoImpl implements IllDao {
 	String last;
 	private final String NAME_SPACE = "com.medicine_inc.bbs.mapper.ChanhoMapper";
 
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	@Autowired
+	public IllDaoImpl() {};
+	
 	public void setSqlSession(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 
 	// 질병정보를 가져와서 list로 뿌려주는 메소드 ( 매퍼 if처리로 ㄱ ㄴ ㄷ ㄹ 순으로도 가능하게, 항목분류도 가능하게)
 	@Override
-	public List<IllList> IllList(int startRow, int pageNum, String keyword, String type) {
+	public List<IllList> IllList(int startRow, int PAGE_SIZE, String keyword, String type) {
 
-		// hid =1 자음검색
-		// != 1 일떄 type!= "" 이면 검색기능검색
-		// != 1 인데 type =="" 이면 일반접속
+		// Pas = 1 검색기능 검색
+		// Pas = 2 일떄 영어 / 숫자 초성검색(버튼)
+		// Pas = 3 한글 자음 검색(버튼)
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("startRow", startRow);
-		params.put("pageNum", pageNum);
+		params.put("PAGE_SIZE", PAGE_SIZE);
 		params.put("Pas", Pas);
-		System.out.println(Pas);
 		if (Pas == 3) {
 			params.put("first", first);
 			params.put("last", last);
-			System.out.println("hids = 1이고, startRow는 " + startRow + ", pageNum은" + pageNum + 
-								" 이며 first는 " + first + " last는 " + last);
 		} else if (Pas == 2) {
 			params.put("keyword", keyword);
-			System.out.println("선택된 keyword는 " + keyword + " 이며, hid는  1이고,"
-					+ " startRow는 " + startRow + ", pageNum은" + pageNum + " 이며 keyword는 " + keyword);			
 		} else if (Pas == 1) {
 			params.put("keyword", keyword);
 			params.put("type", type);
-			System.out.println("선택된 keyword는 " + keyword + " 이며, hid는  1이고, type은 "+type
-					+ " startRow는 " + startRow + ", pageNum은" + pageNum + " 이며 keyword는 " + keyword);
 
 		}
 		return sqlSession.selectList(NAME_SPACE + ".SelectIllList", params);
 	}
 
 	@Override
-	public int getIllCount(String keyword, String type, int hid) {
-
-		Map<String, Object> params = new HashMap<String, Object>();
+	public int getIllCount(String keyword, String type, int hid, int startRow, int PAGE_SIZE) {
+				Map<String, Object> params = new HashMap<String, Object>();
 		Pas=0;
 		first = "";
 		last = "";
@@ -84,8 +80,17 @@ public class IllDaoImpl implements IllDao {
 		}
 		params.put("Pas", Pas);
 		params.put("keyword", keyword);
+		params.put("startRow", startRow);
+		params.put("PAGE_SIZE", PAGE_SIZE);
+				
 		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount", params);
+	}
 
+	@Override
+	public IllList IllListDetail(int code) {
+		
+		
+		return sqlSession.selectOne(NAME_SPACE + ".selectOneIlllist", code);
 	}
 
 }

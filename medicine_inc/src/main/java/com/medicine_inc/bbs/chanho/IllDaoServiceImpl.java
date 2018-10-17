@@ -26,6 +26,7 @@ public class IllDaoServiceImpl implements IllDaoService {
 	@Autowired
 	private IllDao illdao;
 
+	public IllDaoServiceImpl() {};
 	public IllDao getIlldao() {
 		return illdao;
 	}
@@ -40,10 +41,9 @@ public class IllDaoServiceImpl implements IllDaoService {
 		int startRow = (currentPage - 1) * PAGE_SIZE;
 		int listCount = 0;
 
-		listCount = illdao.getIllCount(keyword, type, hid);
-		System.out.println(listCount);
+		listCount = illdao.getIllCount(keyword, type, hid, startRow, PAGE_SIZE);
 		if (listCount > 0) {
-			List<IllList> IllList = illdao.IllList(startRow, pageNum, keyword, type);
+			List<IllList> IllList = illdao.IllList(startRow, PAGE_SIZE, keyword, type);
 			int pageCount = listCount / PAGE_SIZE + (listCount % PAGE_SIZE == 0 ? 0 : 1);
 
 			int startPage = (currentPage / PAGE_GROUP) * PAGE_GROUP + 1
@@ -63,24 +63,22 @@ public class IllDaoServiceImpl implements IllDaoService {
 			modelMap.put("endPage", endPage);
 			modelMap.put("currentPage", currentPage);
 			modelMap.put("listCount", listCount);
-			modelMap.put("PAGE_GROUP", PAGE_GROUP);
-			try {
-				modelMap.put("keyword", URLEncoder.encode(keyword, "utf-8"));
-				modelMap.put("word", keyword);
-				modelMap.put("type", type);
-				modelMap.put("hid", hid);
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
+			modelMap.put("pageGroup", PAGE_GROUP);
+			modelMap.put("pageNum", pageNum);
+			modelMap.put("word", keyword);
+			modelMap.put("type", type);
+			modelMap.put("hid", hid);
 			return modelMap;	
 		}else {
 			return null;
 		}
 
 		
+	}
+	@Override
+	public IllList IllListDetail(int code) {
+		
+		return illdao.IllListDetail(code);
 	}
 
 }

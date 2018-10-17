@@ -101,20 +101,77 @@
 		</form>
 	</div>
 
-	<table class="listTable">
+	<table class="listTable table table-bordered table-hover">
+		<tr>
+			<th>번호</th>
+			<th>병명(한글)</th>
+			<th>병명(영어)</th>
+			<th>관련된 질병</th>
+			<th>증상</th>
+		</tr>
 		<c:if test="${ not empty IllList }">
 			<c:forEach var="i" items="${IllList}" varStatus="status">
 				<tr class="listTr">
 					<td class="listTdNo">${i.code}</td>
-					<td class="listTdNo">${i.name}</td>
-					<td class="listTdNo">${i.nameEn}</td>
+					<td class="listTdNo">
+					<a href="illdetail?pageNum=${pageNum}&type=${type}&keyword=${keyword}&hid=${hid}&no=${i.code}">
+					${i.name}
+					</a>
+					</td>
+					<td class="listTdNo">
+					<a href="illdetail?pageNum=${pageNum}&type=${type}&keyword=${keyword}&hid=${hid}&no=${i.code}">
+					${i.nameEn}
+					</a>
+					</td>
 					<td class="listTdNo">${i.relatedDiseases}</td>
 					<td class="listTdNo">${i.symptom}</td>
+					<%--
 					<td class="listTdNo">${i.cause}</td>
 					<td class="listTdNo">${i.diagnosis}</td>
-					<td class="listTdNo">${i.cure}</td>
+					<td class="listTdNo">${i.cure}</td> --%>
 				</tr>
 			</c:forEach>
+			<tr>
+		<td colspan="5" class="listPage">
+			<%--
+			/* 현재 페이지 그룹의 시작 페이지가 pageGroup보다 크다는 것은
+			 * 이전 페이지 그룹이 존재한다는 것으로 현재 페이지 그룹의 시작 페이지에
+			 * pageGroup을 마이너스 하여 링크를 설정하면 이전 페이지 그룹의
+			 * startPage로 이동할 수 있다.
+		 	 **/
+		 	 --%>
+		 	<c:if test="${ startPage > pageGroup }">
+				<a href="ill?pageNum=${ startPage - pageGroup }
+					&type=${ type }&keyword=${ keyword }">[이전]</a>
+			</c:if>	
+			<%--
+			/* 현재 페이지 그룹의 startPage 부터 endPage 만큼 반복하면서
+		 	 * 현재 페이지와 같은 그룹에 속한 페이지를 화면에 출력하고 링크를 설정한다.
+		 	 * 현재 페이지는 링크를 설정하지 않는다.
+		 	 **/
+		 	--%>
+			<c:forEach var="i" begin="${ startPage }" end="${ endPage }">
+				<c:if test="${ i == currentPage }">
+					[ ${ i } ]
+				</c:if>			
+				<c:if test="${ i != currentPage }">
+					<a href="ill?pageNum=${ i }&type=${ type }
+						&keyword=${ keyword }&hid=${hid}">[ ${ i } ]</a>
+				</c:if>			
+			</c:forEach>
+			<%-- 
+			/* 현재 페이지 그룹의 마지막 페이지가 전체 페이지 보다 작다는 것은
+			 * 다음 페이지 그룹이 존재한다는 것으로 현재 페이지 그룹의 시작 페이지에
+			 * pageGroup을 플러스 하여 링크를 설정하면 다음 페이지 그룹의
+			 * startPage로 이동할 수 있다.
+		 	 **/
+		 	 --%>
+			<c:if test="${ endPage < pageCount }">
+				<a href="ill?pageNum=${ startPage + pageGroup }
+					&type=${ type }&keyword=${ keyword }&hid=${hid}">[다음]</a>
+			</c:if>		
+		</td>
+	</tr>
 		</c:if>
 		<c:if test="${ empty IllList }">
 			<tr>

@@ -3,8 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.medicine_inc.bbs.mapper.ChanhoMapper">
-	<select id="SelectIllList" resultType="IllList"
-		resultMap="IllResultMap">
+	<select id="SelectIllList" resultType="IllList" resultMap="IllResultMap">
 		SELECT
 		*
 		FROM ill_list
@@ -40,9 +39,11 @@
 			</if>
 		</where>
 		ORDER BY code
+		LIMIT #{startRow}, #{PAGE_SIZE}
 	</select>
 	
 	<select id="getBoardCount" parameterType="hashmap" resultType="int">
+				
 		SELECT 
 			COUNT(code) 
 		FROM ill_list
@@ -53,6 +54,7 @@
 			<if test="Pas == 2">
 				name like CONCAT(#{keyword}, '%')
 			</if>
+			
 			<if test="Pas == 1">
 				<if test="type =='name'">
 				name like CONCAT('%', #{keyword}, '%')
@@ -76,8 +78,19 @@
 				cure like CONCAT('%', #{keyword}, '%')
 				</if>
 			</if>
+			
 		</where>
 				ORDER BY code
+		
+		
+					
+	</select>
+
+	<select id="selectOneIlllist" resultType="IllList" resultMap="IllResultMap">
+			SELECT 
+				*
+				FROM ill_list
+				where code = #{code}
 	</select>
 
 
