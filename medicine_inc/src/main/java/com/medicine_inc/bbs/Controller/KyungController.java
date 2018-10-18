@@ -70,11 +70,17 @@ public class KyungController {
 	return "/Kyungmin/healthScreening";
 	}
 
-	@RequestMapping(value= {"/quiz","/Quiz"})
+	@RequestMapping(value= {"/quiz","/Quiz","/quizList"})
 	public String quiz(Model model){
 	
-	return "/Kyungmin/quiz";
+	return "/Kyungmin/quizList";
 	}
+	
+	@RequestMapping(value= {"/eyeTest"})
+	public String eyeTest(Model model) {
+		return "/Kyungmin/eyeTest";
+	}
+	
 	@RequestMapping(value= {"/stretching","/Stretching","/stretchingList"})
 	public String stretching(Model model,@RequestParam(value="pageNum", required=false, defaultValue="1")int pageNum){
 	 Map<String, Object> modelMap = stretchingService.stretchinList(pageNum);
