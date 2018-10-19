@@ -81,6 +81,11 @@ public class KyungController {
 		return "/Kyungmin/eyeTest";
 	}
 	
+	@RequestMapping(value= {"/realEyeTest"})
+	public String realEyeTest(Model model) {
+		return "/Kyungmin/realEyeTest";
+	}
+	
 	@RequestMapping(value= {"/stretching","/Stretching","/stretchingList"})
 	public String stretching(Model model,@RequestParam(value="pageNum", required=false, defaultValue="1")int pageNum){
 	 Map<String, Object> modelMap = stretchingService.stretchinList(pageNum);
