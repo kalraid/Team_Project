@@ -37,7 +37,7 @@
 		<ul>
 			<li id="DrugInformation">약품 정보
 				<ul class="submenu">
-					<li><a href="medicineSearch">의약품</a></li>
+					<li><a href="search">의약품</a></li>
 					<li class="no_line"><a href="healthSupport">건강 보조제</a></li>		
 				</ul>
 			</li>

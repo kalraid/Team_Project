@@ -1,0 +1,59 @@
+#search_title { 
+color : white;
+font-size :20px;
+font-weight: bold; 
+}
+
+#box1 {
+	display : inline-flex;
+	width : 200px;
+	background-color : #9BDBF4;
+}
+#box2 {
+	width : 300px;
+	display: inline;
+	border : 1px black;
+	text-align: right;
+	
+	
+}
+#smallimg {
+	width : 20px; 
+}
+.smallimg{
+	width : 20px;
+}
+#red1 {
+	font-family :cursive;
+	color : red;
+	font-weight : bold;
+}
+#line{
+	background : #9BDBF4;
+	height : 5px;
+	margin : 0px auto;
+}
+#img2{
+	margin : 10px 10px 10px 10px;
+	
+}
+/* #img1{
+	display :inline-block;
+	float: left;
+} */
+.container {
+	width : 500px;
+	
+}
+.submitbutton{
+	text-align :right;
+}
+.btn-img{
+	width : 25px;
+	height : 25px;
+}
+#detailImage{
+	width : 500px;
+	height: auto;
+}
+

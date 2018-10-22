@@ -1,22 +1,23 @@
 package com.medicine_inc.bbs.Controller;
 
+import java.net.URLEncoder;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.medicine_inc.bbs.domain.Medi;
+import com.medicine_inc.bbs.juhwa.MediService;
 
 @Controller
 public class JuController {
 	@SuppressWarnings("unused")
 	private final static String DEFAULT_PATH = "/resources/upload/";
 	
-<<<<<<< Upstream, based on origin/Team
-	@RequestMapping(value= 
-		{"/MedicineSearch","/medicineSearch","/Medicinesearch","/medicinesearch"})
-	public String medicineSearch(Model model){
-	
-	return "/Juhwa/medicineSearch";
-	}
-=======
 	@Autowired
 	private MediService mediService;
 	
@@ -24,11 +25,24 @@ public class JuController {
 		this.mediService = mediService;
 	}
 	
->>>>>>> 7a142b5 4545
 	
+	@RequestMapping(value = {"/mediList","/list"})
+	public String medi(Model model, 
+			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum,
+			@RequestParam(value="mediCode", required=false, defaultValue="null") String mediCode,
+			@RequestParam(value="mediEff", required=false, defaultValue="null") String mediEff,
+			@RequestParam(value="mediName", required=false, defaultValue="null") String mediName,
+			@RequestParam(value="mediMaker", required=false, defaultValue="null") String mediMaker) {
+		
+		System.out.println(mediCode);
+		
+		Map<String, Object> modelMap = mediService.mediList(pageNum, mediCode, mediName, mediEff, mediMaker);
+		
+		model.addAllAttributes(modelMap);
+		
+		return "/Juhwa/medicineSearch";
+	}
 	
-<<<<<<< Upstream, based on origin/Team
-=======
 	@RequestMapping(value = {"/search"})
 	public String searchMedi() {
 		
@@ -67,5 +81,4 @@ public class JuController {
 		return "/Juhwa/mediDetail";
 
 	}
->>>>>>> 7a142b5 4545
 }

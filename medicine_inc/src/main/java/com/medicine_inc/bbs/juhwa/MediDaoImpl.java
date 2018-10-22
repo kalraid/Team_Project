@@ -6,12 +6,14 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.medicine_inc.bbs.domain.*;
 
+@Repository
 public class MediDaoImpl implements MediDao {
 
-	private final String NAME_SPACE = "com.medicine.cor.mapper.MediMapper";
+	private final String NAME_SPACE = "com.medicine_inc.bbs.mapper.JuMapper";
 	private SqlSessionTemplate sqlSession;
 	
 	@Autowired
@@ -20,19 +22,34 @@ public class MediDaoImpl implements MediDao {
 	}
 	
 	@Override
-	public List<Medi> mediList(int no, int startRow) {
+	public List<Medi> mediList(int startRow, int num, String mediCode, String mediName, String mediEff, String mediMaker) {
 		// TODO Auto-generated method stub
-		Map<String , Object> params = new HashMap<String,Object>();
+		Map<String , Object> params = new HashMap<String, Object>();
 		params.put("startRow", startRow);
-		params.put("no", no);
+		params.put("num", num);
+		params.put("mediCode", mediCode);
+		params.put("mediName", mediName);
+		params.put("mediEff", mediEff);
+		params.put("mediMaker", mediMaker);
 		
 		
 		return sqlSession.selectList(NAME_SPACE +".mediList", params);
 	}
 	
 	@Override
-	public Medi getMedi(int no) {
-		return null;
+	public int getMediCount(String mediCode, String mediName, String mediEff, String mediMaker) {
+		
+		Map<String , String> params = new HashMap<String, String>();
+		params.put("mediCode", mediCode);
+		params.put("mediName", mediName);
+		params.put("mediEff", mediEff);
+		params.put("mediMaker", mediMaker);
+		
+		return  sqlSession.selectOne(NAME_SPACE +".getMediCount", params);
 	}
-
+	
+	@Override
+	public Medi getMedi(int no) {
+		return sqlSession.selectOne(NAME_SPACE +".getMedi", no);
+	}
 }
