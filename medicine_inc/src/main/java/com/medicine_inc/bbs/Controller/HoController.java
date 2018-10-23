@@ -85,7 +85,7 @@ public class HoController {
 
 	@RequestMapping(value = { "/cheeting", "/Cheeting" })
 	public String cheeting(Model model) {
-
+		
 		return "/Chanho/cheeting";
 	}
 }
