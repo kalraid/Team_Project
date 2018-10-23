@@ -8,5 +8,10 @@
    <a href="eyeTest">Real 시력 테스트</a>
   </td>
  </tr>
+ <tr>
+  <td>
+   <a href="photoTest">사진 시력 테스트</a>
+  </td>
+ </tr>
 </table>
 </article>
