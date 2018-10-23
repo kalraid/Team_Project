@@ -13,5 +13,10 @@
    <a href="photoTest">사진 시력 테스트</a>
   </td>
  </tr>
+ <tr>
+  <td>
+   <a href="puzzle">퍼즐</a>
+  </td>
+ </tr>
 </table>
 </article>
