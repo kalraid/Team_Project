@@ -1,0 +1,79 @@
+	.chat_middle .chat_top{
+		height: 90%;
+		border: 1px solid black;
+		padding: 10px;
+	}	
+	.chat_middle .chat_bottom{
+		height:10%;
+		margin: 10px auto 0;
+		text-align: center;
+	}
+	.text_box{
+		width: 90%;
+		height : 3em;
+	}
+	.chat{
+	border: 1px solid black;
+	margin: 0 15px;
+	}
+	.inner_box{
+	border: 1px solid black;
+	padding: 10px;
+	height: 500px;
+	}
+	.chat_top{
+	overflow: auto;
+	}
+	.chat_right{
+	/* 	width:100%; */
+		
+	}
+	#chat_right_inner_box{
+		border: 1px solid black;
+		
+	}
+	#chat_right_inner_box > div{
+		height: 475px;
+		padding: 0px;
+		overflow: auto;
+	}
+	#chat_right_inner_box > table{
+		padding:0px;
+	}
+	
+	.left_top{
+		height: 10%;
+		margin: 0 0 5px;
+	}
+		
+	.left_middle{
+		height: 80%;
+		margin: 5px 0;
+	}
+	
+	.left_middle > table{
+		overflow: auto;
+	}	
+	.left_top{
+		height: 10%;
+		margin: 0 0 15px;
+	}
+	
+	#roomnameinput{
+		width: 60%;
+		height: 30px;
+	}
+	#createroombutton{
+		width: 35%;
+		padding: 1px;
+		height: 30px;
+	}
+	
+	.mySend{
+		text-align:right;
+		padding: 10px 5px;
+		border-radius: 5px;
+	}
+	.otherSend{
+		text-align:left;	
+	}

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.medicine_inc.bbs.domain.IllList;
 
@@ -81,4 +82,11 @@ public class IllDaoServiceImpl implements IllDaoService {
 		return illdao.IllListDetail(code);
 	}
 
+	@Override
+	public String chat(String name) {
+		
+		return "hi";
+	}
+	
+	
 }

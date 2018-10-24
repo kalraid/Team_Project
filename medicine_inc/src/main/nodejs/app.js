@@ -10,7 +10,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -47,11 +46,12 @@ module.exports = app;
 var server= http.createServer(app).listen(app.get('port'), function(){
 	console.log('서버가 시작되었습니다. 포트 : '+app.get('port'));
 	
-	/*database.init(app,config);*/
 });
 
+
+
 function sendResponse(socket, command, code, message){
-	var statusObj = {command : command, code : code, message : message};
+	var statusObj = {socket : socket, command : command, code : code, message : message};
 	socket.emit('response', statusObj);
 }
 
@@ -62,90 +62,51 @@ io.sockets.on('connection', function(socket){
 	console.log('connection info : ', socket.request.connection._peername );
 	socket.remoteAddress = socket.request.connection._peername.address;
 	socket.remotePort = socket.request.connection._peername.port;
-	var login_ids={};
+	
 	socket.on('message', function(message){
 		console.log('message 이벤트를 받았습니다.');
 		console.dir(message);
-		
-		if(message.recepient === 'All'){
-			console.dir('나를 포함한 모든 클라이언트에게 messge 이벤트를 전송합니다.');
-			io.sockets.emit('message', message);
-			
-		} else{
-			if(message.command ==='chat'){
-					
-			
-			if(login_ids[message.recepient]){
-				io.sockets.connected[login_ids[message.recepient]].emit('message',message);
-				sendResponse(socket, 'message', '200', '메세지를 전송했습니다.');
-				
-			}else{
-				sendResponse(socket, 'login', '404', '상대방의 로그인 id를 찾을수 없습니다.');
-			}
-			
-		}else if(message.command ==='groupchat'){
-			io.sockets.in(message.recepient).emit('message',message);
-			sendResponse(socket, 'message', '200', '방 ['+message.recepient+']의 모든 사용자에게 메세지 전송');
-		}
-		}
+		message= {
+				type : 'text',
+				data : message.data,
+				id : message.id,
+				time : getTimeStamp()
+		};
+		/*io.sockets.in(message).emit('message',message);*/
+		io.sockets.emit('message',message);
 	});
 	
-
-	
+	var login_ids = [];
+	login_ids.push("홍만이");
+	login_ids.push("김꺽정");
+	login_ids.push("박홍실");
 	socket.on('login', function(login){
-		console.log('로그인 이벤트를 받았습니다');
-		console.dir(login);
-		
-		console.log('접속한 소켓의 id : '+ socket.id);
-		login_ids =socket.id;
-		socket.login_id = login.id;
-		
-		console.log('접속한 클라이언트 id 개수 : %d', Object.keys(login_ids).length);
-		
-		sendResponse(socket, 'login', '200', '로그인 되었습니다.');
+		login_ids.push(login.loginid);
+		var message = login.loginid+"님이 로그인 되었습니다";	
+		var output = {
+				login_ids : login_ids,
+				message : message,
+				time : getTimeStamp()
+		};
+		socket.emit('loginList', output);
 	});
-
-  socket.on('loginout', function(loginout){
-		console.log('로그아웃 이벤트를 받았습니다');
-		console.dir(loginout);
-		
-		console.log('접속한 소켓의 id : '+ socket.id);
-		
-		/*delete login_ids[socket.id];*/
-		
-		sendResponse(socket, 'login', '200', '로그아웃 되었습니다.');
-	});
-
 	
+
 	socket.on('room', function(room){
-		console.log('room 이벤트를 받았습니다');
-		console.dir(room);
-		var curroom;
 		if(room.command ==='create'){
-			if(io.sockets.adapter.rooms[room.roomid]){
+			if(io.sockets.adapter.rooms[room.roomname]){
 				console.log('방이 이미 만들어져 있습니다.');
 			}else{
 			console.log('방을 새로 만듭니다');
 			
-			socket.join(room.roomid);
+			socket.join(room.roomname);
 			
-			curroom=io.sockets.adapter.rooms[room.roomid];
-			curroom.id = room.roomid;
+			var curroom=io.sockets.adapter.rooms[room.roomname];
+			curroom.id = room.roomname;
 			curroom.name = room.roomname;
 			curroom.owner= room.roomowner;
 			
 			}
-		}else if(room.command ==='update'){
-			curroom=io.sockets.adapter.rooms[room.roomid];
-			curroom.id = room.roomid;
-			curroom.name = room.roomname;
-			curroom.owner= room.roomowner;
-		
-		}else if(room.command ==='delete'){
-			socket.leave(room.roomid);
-		if(io.sockets.adapter.room[room.roomid]){
-			delete io.sockets.adapter.rooms[room.roomid];
-		}
 		}else if(room.command ==='join'){
 			socket.join(room.roomid);
 			sendResponse(socket, 'room', '200', '방에 입장하였습니다.');
@@ -156,34 +117,28 @@ io.sockets.on('connection', function(socket){
 		}
 		
 		var roomList = getRoomList();
-		console.dir(roomList);
 		
 		var output={command : 'list', rooms: roomList};
 		console.log('클라이언트로 보낼 데이터 : '+JSON.stringify(output));
 		io.sockets.emit('room', output);
 		
+		
 	});
 });
 
-function getRoomList(){
-	console.dir(io.sockets.adapter.rooms);
-	var roomList = [];
+function getRoomList() {
+    console.dir(io.sockets.adapter.rooms);
 	
-	Object.keys(io.sockets.adapter.rooms).forEach(function(roomid){
-		console.log('current roomd id : ' + roomid);
-		var outRoom = io.sockets.adapter.rooms[roomid];
-		
-		var foundDefault = false;
-		var index = 0;
-		
-		Object.keys(outRoom.sockets).forEach(function(key){
-			console.log('#'+index+' : '+key +' , '+ outRoom.sockets[key]);
-			
-			if(roomid = key){
-				foundDefault = true;
-				console.log('this is default room.');
-				
-			}
+    var roomList = [];
+    Object.keys(io.sockets.adapter.rooms).forEach(function(roomId) { // 각각의 방에 대해 처리
+        var outRoom = io.sockets.adapter.rooms[roomId];
+        var foundDefault = false;
+        var index = 0;
+        Object.keys(outRoom).forEach(function(key) {
+             if(roomId == key) { 
+                  foundDefault = true;
+             }
+
 			index ++;
 			
 		});
@@ -194,10 +149,14 @@ function getRoomList(){
 		}
 	});
 	
-	console.log('[ROOM LIST]');
-	console.dir(roomList);
-	
 	return roomList;
 }
 
 
+function getTimeStamp() {
+	var today = new Date();
+	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	var CurrentDateTime = date+' '+time;
+	return CurrentDateTime;
+}

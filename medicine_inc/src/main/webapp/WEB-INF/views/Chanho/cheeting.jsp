@@ -5,415 +5,60 @@
 <head>
 <meta charset="UTF-8">
 <title>채팅방</title>
-<script src="http://192.168.0.67:3010/socket.io/socket.io.js" ></script>
+<script src="http://192.168.0.67:3010/socket.io/socket.io.js"></script>
+<script src="resources/js/jquery-3.2.1.min.js"></script>
+<script src="resources/js/cheting.js"></script>
 <script src="jquery-3.3.1.min.js"></script>
-<style>
-	#titleText{
-	font-size : 1.4em;
-	font-weight : bold;
-	color: #777;
-	}
-	
-	#contentsText{
-	color: #999;
-	
-	}
-	#result{
-	height:10em;
-	overflow : auto;
-	}
-	.discussion{
-	list-style : none;
-	background : #ededed;
-	margin : 0;
-	pading : 0 0 50px 0;
-	
-	}
-	
-	.discussion li{
-	padding : 0.5em;
-	overflow : hidden;
-	display : flex;
-	
-	}
-	.discussion avatar{
-	width : 40px;
-	position : relative;
-	
-	}
-	
-	.discussion avater img{
-	display : block;
-	width: 100%;
-	}
-	
-	.self 
-	{
-	position: relative;
-	width: 290px;
-	height: 120px;
-	padding: 0px;
-	background: #FFFFFF;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	}
-	
-	.self:after 
-	{
-	content: '';
-	position: absolute;
-	border-style: solid;
-	border-width: 25px 15px 0;
-	border-color: #FFFFFF transparent;
-	display: block;
-	width: 0;
-	z-index: 1;
-	bottom: -25px;
-	left: 130px;
-	}
-	
-	
-	.other
-	{
-	position: relative;
-	width: 300px;
-	height: 130px;
-	padding: 0px;
-	background: #FFFFFF;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	}
-	
-	.other:after 
-	{
-	content: '';
-	position: absolute;
-	border-style: solid;
-	border-width: 15px 0 15px 25px;
-	border-color: transparent #FFFFFF;
-	display: block;
-	width: 0;
-	z-index: 1;
-	right: -25px;
-	top: 50px;
-	}
-</style>
-<script>
-	var host;
-	var port;
-	var socket;
-	$(function(){
-		$('#connectButton').bind('click', function(event) {
-			println('connectButton이 클릭됨');
-			host = $('#hostInput').val();
-			port = $('#portInput').val();
-
-			connectToServer();
-		});
-
-		$("#sendButton").bind('click', function(event) {
-			var chattype = $('#chattype option:selected').val();
-			var sender = $('#senderInput').val();
-			var recepient = $('#recepientInput').val();
-			var data = $('#dataInput').val();
-
-			var output = {
-				sender : sender,
-				recepient : recepient,
-				command : chattype,
-				type : 'text',
-				data : data
-			};
-			console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-
-			if (socket == undefined) {
-				alert('서버에 연결되어 있지 않습니다. 먼저 서버에 연결하세요');
-				return;
-			}
-			;
-			addToDiscussion('self', data);
-			socket.emit('message', output);
-		});
-
-		$("#loginbutton").bind('click', function(event) {
-			var id = $('#idinput').val();
-			var password = $('#passwordinput').val();
-			var alias = $('#aliasinput').val();
-			var today = $('#todayinput').val();
-
-			var output = {
-				id : id,
-				password : password,
-				alias : alias,
-				today : today
-			};
-			console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-			if (socket == undefined) {
-				alert('서버에 연결되어 있지 않습니다. 서버연결해주세요ㅗ');
-				return;
-
-			}
-			socket.emit('login', output);
-		});
-
-		$("#logoutbutton").bind('click', function(event) {
-			var id = $('#idinput').val();
-
-			var output = {
-				id : id
-			};
-			console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-			if (socket == undefined) {
-				alert('서버에 연결되어 있지 않습니다. 서버연결해주세요ㅗ');
-				return;
-
-			}
-			socket.emit('loginout', output);
-		});
-
-		$('#createroombutton').bind('click', function(event) {
-			var roomid = $('#roomidinput').val();
-			var roomname = $('#roomnameinput').val();
-			var id = $('#idinput').val();
-
-			var output = {
-				command : 'create',
-				roomid : roomid,
-				roomname : roomname,
-				roomowner : id
-			};
-
-			console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-			if (socket == undefined) {
-				alert('서버에 연결되어 있지 않습니다. 서버연결해주세요ㅗ');
-				return;
-
-			}
-			socket.emit('room', output);
-		});
-
-		$('#updateroombutton').bind('click', function(event) {
-			var roomid = $('#roomidinput').val();
-			var roomname = $('#roomnameinput').val();
-			var id = $('#idinput').val();
-
-			var output = {
-				command : 'update',
-				roomid : roomid,
-				roomname : roomname,
-				roomowner : id
-			};
-
-			console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-			if (socket == undefined) {
-				alert('서버에 연결되어 있지 않습니다. 서버연결해주세요ㅗ');
-				return;
-
-			}
-			socket.emit('room', output);
-		});
-
-		$('#deleteroombutton').bind('click', function(event) {
-			var roomid = $('#roomidinput').val();
-			var roomname = $('#roomnameinput').val();
-			var id = $('#idinput').val();
-
-			var output = {
-				command : 'delete',
-				roomid : roomid,
-				roomname : roomname,
-				roomowner : id
-			};
-
-			console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-			if (socket == undefined) {
-				alert('서버에 연결되어 있지 않습니다. 서버연결해주세요ㅗ');
-				return;
-
-			}
-			socket.emit('room', output);
-		});
-
-		$('#joinRoomButton').bind('click', function(event){
-			var roomId = $('#roomIdInput').val();
-			
-			var output={command : 'join', roomId : roomId};
-			console.log('서버로 보낼 데이터 : '+JSON.stringify(output));
-			
-			if(socket ==undefined){
-				alert('서버에 연결되어 있지 않습니다 서버연결좀');
-				return;
-			}
-			
-			socket.emit('room', output);
-			
-		});
-		
-		$('#leaveRoomButton').bind('click', function(event){
-			var roomId = $('#roomIdInput').val();
-			
-			var output={command : 'leave', roomId : roomId};
-			console.log('서버로 보낼 데이터 : '+JSON.stringify(output));
-			
-			if(socket ==undefined){
-				alert('서버에 연결되어 있지 않습니다 서버연결좀');
-				return;
-			}
-			
-			socket.emit('room', output);
-			
-		});
-
-	});
-	
-	function connectToServer() {
-		var options = {
-			'forceNew' : true
-		};
-		var url = 'http://' + host + ':' + port;
-		socket = io(url, options);
-
-		socket.on('connect', function() {
-			println('웹 소켓 서버에 연결되었 습니다. : ' + url);
-
-			socket.on('message', function(message) {
-				console.log(JSON.stringify(message));
-				
-				/* println('<p>수신 메세지 : ' + message.sender + ', '
-						+ message.recepient + ', ' + message.command + ', '
-						+ message.type + ', ' + message.data + '</p>'); */
-				addToDiscussion("other", message.data);
-
-			});
-		});
-
-		socket.on('disconnect', function() {
-			println('웹 소켓 연결이 종료되었습니다.');
-		});
-
-		socket.on('response', function(response) {
-			console.log(JSON.stringify(response));
-			println('응답메세지를 받았습니다. : ' + response.command + ',' + response.code
-					+ ', ' + response.message);
-
-		});
-		
-		socket.on('room', function(data) {
-			console.log(JSON.stringify(data));
-
-			println('<p>방 이벤트 : ' + data.command + '</p>');
-			println('<p>방 이벤트 : ' + data.command + '</p>');
-
-			if (data.command == 'list') {
-				var roomcount = data.rooms.length;
-				$('#roomlist').html('<p>방 리스트 ' + roomcount + '개</p>');
-				for (var i = 0; i < roomcount; i++) {
-					$('#roomlist').append(
-							'<p>방 #' + i + ' : ' + data.rooms[i].id + ', '
-									+ data.rooms[i].name + ', '
-									+ data.rooms[i].owner + '</p>');
-
-				}
-			}
-
-		});
-		
-		
-	};
-
-	function println(data) {
-		console.log(data);
-		$('#result').append('<p>' + data + '</p>');
-	};
-	
-	function addToDiscussion(writer, msg){
-	println("addToDiscussion 호출됨 : "+writer + ", "+msg);
-	
-	var img = 'resources/images/chating/man_two.jpg';
-	if(writer =='other'){
-		img = 'resources/images/chating/man_three.jpg';
-		
-	}
-	
-	var contents = "<li class='"+writer +"'>"
-	+" <div class='avatar'>"
-	+"  <img src='"+img+"'/>"
-	+" </div>"
-	+" <div class='messages'>"
-	+"   <p>"+msg+"</p>"
-	+"     <time datatime='2018-10-23 17:12'>17시 12분</time>"
-	+" </div>"
-	+"</li>";
-	
-	println('추가할 HTML : '+contents);
-	$(".discussion").prepend(contents);
-	}
-</script>
+<link rel="stylesheet" type="text/css" href="resources/css/cheeting.css" />
 </head>
+<script>
+var id= "${sessionScope.id}";
+</script>
 <body>
-	<div class="container">
-		<div id="cardbox" class="ui blue fluid card">
-			<div class="content">
-				<div class="left floated author">
-					<img id="iconImage" class="ui avatar image" src="resources/images/chating/man_one.jpg">
+	<div class="row chat">
+		<div class="col-md-2 inner_box chat_left">
+			<div class="left_top">
+				<span><input type="text" id="roomnameinput" value="방 이름" ></span>
+				<input type="button" id="createroombutton" value="만들기">
+			</div>
+			<div class="left_middle">
+				<table class="listTable table table-bordered table-hover text-center">
+					<tr >
+						<td class="roomList" id="1">방 1</td>
+					</tr>
+					<tr>
+						<td class="roomList" id="2">방2</td>
+					</tr>
+					<tr>
+						<td class="roomList" id="3">방3</td>
+					</tr>
+				</table>
+			</div>
+			<div class="left_bottom">
+				<span><input type="button" id="joinRoomButton" value="입장"></span>
+				<span><input type="button" id="leaveRoomButton" value="나가기"></span>
+			</div>
+		</div>
+		<div class="col-md-8 inner_box chat_middle" >
+			<div class="chat_top">
+				<div id="result"></div>
+			</div>
+			<div class="chat_bottom">
+				<span><input type="text" id="dataInput" value="안녕!" class="text_box"></span>
+				&nbsp;&nbsp;
+				<input type="button" id="sendButton" value="전송">
+			</div>
+		</div>
+		<div class="col-md-2 inner_box chat_right">
+			<div id="chat_right_inner_box">
+				<div>
+				<table class="listTable table table-bordered table-hover text-center" id="userList">
+					<tr>
+						<td>로그인 되지 않았습니다.</td>
+					</tr>
+				</table>
 				</div>
-				<div id="titleText" class="header">일대일 채팅</div>
-				<div id="contentsText" class="description">연결 및 로그인 후 메세지를 보내세요.</div>
 			</div>
-	<div>
-		<div class="ui input">
-			<input type="text" id="hostInput" value="192.168.0.67">
-		</div>
-		<div class="ui input">
-			<input	type="text" id="portInput" value="3010">
-		</div>
-		<br><br>
-			<input class="ui primary button" type="button" id="connectButton" value="연결하기">
-		<div>
-			<input type="text" id="idinput" value="test01"> <input
-				type="password" id="passwordinput" value="123456"> <input
-				type="text" id="aliasinput" value="소녀시대"> <input type="text"
-				id="todayinput" value="좋은날!"> <input type="button"
-				id="loginbutton" value="로그인"> <input type="button"
-				id="logoutbutton" value="로그아웃">
-		</div>
-		<div>
-			<input type="text" id="roomidinput" value="meeting01"> <input
-				type="text" id="roomnameinput" value="청춘들의 대화"> <input
-				type="button" id="createroombutton" value="방 만들기"> <input
-				type="button" id="updateroombutton" value="방 이름 바꾸기"> <input
-				type="button" id="deleteroombutton" value="방 없애기">
-		</div>
-		<div>
-				<input type="button" id="joinRoomButton" value="방 입장하기">
-				<input type="button" id="leaveRoomButton" value="방 나가기">
-		</div>
-		<br>
-		<div>
-			<div>
-				<span>보내는 사람 아이디 : </span> <input type="text" id="senderInput"
-					value="test01">
-			</div>
-		</div>
-		<div>
-			<span>받는 사람 아이디 : </span> <input type="text" id="recepientInput"
-				value="All">
-		</div>
-		<select name ="chattype" id="chattype">
-			<option value="chat">채팅</option>
-			<option value="groupchat" selected>그룹 채팅</option>
-		</select>
-		<div>
-			<span>메세지 데이터 : </span> <input type="text" id="dataInput" value="안녕!">
-		</div>
-		<br> <input type="button" id="sendButton" value="전송">
-	</div>
-
-		<hr />
-		<h4 class="ui horizontal divider header">메세지</h4>
-		<div  class="ui segment" id="result"></div>
 		</div>
 	</div>
 </body>
