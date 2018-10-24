@@ -49,8 +49,11 @@ $(function() {
 	$('.roomListTd').bind('click', function(event) {
 
 		roomId = this.id;
+		alert(1);
 		$(".roomListTd").css("color", "black");
+		alert(2);
 		$(this).css("color", "red");
+		alert(3);
 	});
 	var leaveroom;
 

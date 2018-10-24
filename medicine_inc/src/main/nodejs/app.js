@@ -103,7 +103,7 @@ io.sockets.on('connection', function(socket){
 
 	socket.on('room', function(room){
 		if(room.command ==='create'){
-			createRoom(room);
+			createRoom(room, socket);
 		}else if(room.command ==='join'){
 			socket.join(room.roomid);
 			sendResponse(socket, 'room', '200', '방에 입장하였습니다.');
@@ -149,20 +149,18 @@ function getRoomList() {
         var foundDefault = false;
         var index = 0;
         Object.keys(outRoom).forEach(function(key) {
-             if(roomId == key) { 
+            console.log(" key " + key+ " index : "+index+ " roomId : "+roomId);
+        	if(roomId == key) {
                   foundDefault = true;
              }
-
 			index ++;
 			
 		});
 	
-		
 		if(!foundDefault){
 			roomList.push(outRoom);
 		}
 	});
-	
 	return roomList;
 }
 
