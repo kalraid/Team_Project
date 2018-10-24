@@ -91,6 +91,11 @@ public class KyungController {
 		return "forward:WEB-INF/views/Kyungmin/realEyeTest.jsp";
 	}
 	
+	@RequestMapping(value= {"/slidingPuzzle"})
+	public String slidingPuzzle(Model model) {
+		return "forward:WEB-INF/views/Kyungmin/slidingPuzzle.jsp";
+	}
+	
 	@RequestMapping(value= {"/stretching","/Stretching","/stretchingList"})
 	public String stretching(Model model,@RequestParam(value="pageNum", required=false, defaultValue="1")int pageNum){
 	 Map<String, Object> modelMap = stretchingService.stretchinList(pageNum);
