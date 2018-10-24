@@ -22,15 +22,15 @@ var id= "${sessionScope.id}";
 				<input type="button" id="createroombutton" value="만들기">
 			</div>
 			<div class="left_middle">
-				<table class="listTable table table-bordered table-hover text-center">
-					<tr >
-						<td class="roomList" id="1">방 1</td>
+				<table class="listTable table table-bordered table-hover text-center" id="roomList">
+					<tr>
+						<td class="roomListTd" id="1">방 1</td>
 					</tr>
 					<tr>
-						<td class="roomList" id="2">방2</td>
+						<td class="roomListTd" id="2">방2</td>
 					</tr>
 					<tr>
-						<td class="roomList" id="3">방3</td>
+						<td class="roomListTd" id="3">방3</td>
 					</tr>
 				</table>
 			</div>
@@ -51,7 +51,7 @@ var id= "${sessionScope.id}";
 		</div>
 		<div class="col-md-2 inner_box chat_right">
 			<div id="chat_right_inner_box">
-				<div>
+				<div id="userDiv">
 				<table class="listTable table table-bordered table-hover text-center" id="userList">
 					<tr>
 						<td>로그인 되지 않았습니다.</td>

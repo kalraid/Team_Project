@@ -58,15 +58,21 @@ function sendResponse(socket, command, code, message){
 var io = socket.listen(server);
 console.log('socket.io 요청을 받을 준비 끝');
 
+
+var login_ids = [];
+login_ids.push("홍만이");
+login_ids.push("김꺽정");
+login_ids.push("박홍실");
+
 io.sockets.on('connection', function(socket){
 	console.log('connection info : ', socket.request.connection._peername );
 	socket.remoteAddress = socket.request.connection._peername.address;
 	socket.remotePort = socket.request.connection._peername.port;
-	
+
 	socket.on('message', function(message){
 		console.log('message 이벤트를 받았습니다.');
 		console.dir(message);
-		message= {
+		message = {
 				type : 'text',
 				data : message.data,
 				id : message.id,
@@ -76,37 +82,28 @@ io.sockets.on('connection', function(socket){
 		io.sockets.emit('message',message);
 	});
 	
-	var login_ids = [];
-	login_ids.push("홍만이");
-	login_ids.push("김꺽정");
-	login_ids.push("박홍실");
+	
+	
 	socket.on('login', function(login){
-		login_ids.push(login.loginid);
+		if(login_ids.indexOf(login.loginid)== -1){
+			login_ids.push(login.loginid);
+		}
+		createRoom(login, socket);
+		
 		var message = login.loginid+"님이 로그인 되었습니다";	
 		var output = {
 				login_ids : login_ids,
 				message : message,
-				time : getTimeStamp()
+				time : getTimeStamp(),
+				rooms : getRoomList()
 		};
-		socket.emit('loginList', output);
+		io.sockets.emit('loginList', output);
 	});
 	
 
 	socket.on('room', function(room){
 		if(room.command ==='create'){
-			if(io.sockets.adapter.rooms[room.roomname]){
-				console.log('방이 이미 만들어져 있습니다.');
-			}else{
-			console.log('방을 새로 만듭니다');
-			
-			socket.join(room.roomname);
-			
-			var curroom=io.sockets.adapter.rooms[room.roomname];
-			curroom.id = room.roomname;
-			curroom.name = room.roomname;
-			curroom.owner= room.roomowner;
-			
-			}
+			createRoom(room);
 		}else if(room.command ==='join'){
 			socket.join(room.roomid);
 			sendResponse(socket, 'room', '200', '방에 입장하였습니다.');
@@ -126,9 +123,26 @@ io.sockets.on('connection', function(socket){
 	});
 });
 
+function createRoom(room, socket){
+	if(io.sockets.adapter.rooms[room.roomname]){
+		console.log('방이 이미 만들어져 있습니다.');
+		socket.join(room.roomname);
+	}else{
+	console.log('방을 새로 만듭니다');
+	
+	socket.join(room.roomname);
+	
+	var curroom=io.sockets.adapter.rooms[room.roomname];
+	curroom.id = room.roomname;
+	curroom.name = room.roomname;
+	curroom.owner= room.roomowner;
+	
+	}
+}
+
+
 function getRoomList() {
     console.dir(io.sockets.adapter.rooms);
-	
     var roomList = [];
     Object.keys(io.sockets.adapter.rooms).forEach(function(roomId) { // 각각의 방에 대해 처리
         var outRoom = io.sockets.adapter.rooms[roomId];
