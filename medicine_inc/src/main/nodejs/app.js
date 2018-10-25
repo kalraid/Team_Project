@@ -50,7 +50,7 @@ var server= http.createServer(app).listen(app.get('port'), function(){
 
 
 
-function sendResponse(message,roomname){
+function sendResponse(message, roomname){
 	var statusObj = {message : message};
 	io.sockets.in(roomname).emit('response', statusObj);
 }
@@ -59,16 +59,15 @@ var io = socket.listen(server);
 console.log('socket.io 요청을 받을 준비 끝');
 
 
-var login_ids = [];
-login_ids.push("홍만이");
-login_ids.push("김꺽정");
-login_ids.push("박홍실");
+
+
 
 io.sockets.on('connection', function(socket){
 	console.log('connection info : ', socket.request.connection._peername );
 	socket.remoteAddress = socket.request.connection._peername.address;
 	socket.remotePort = socket.request.connection._peername.port;
 
+	
 	socket.on('message', function(message){
 		console.log('message 이벤트를 받았습니다.');
 		console.dir(message);
@@ -76,71 +75,117 @@ io.sockets.on('connection', function(socket){
 				type : 'text',
 				data : message.data,
 				id : message.id,
-				time : getTimeStamp()
+				time : getTimeStamp(),
+				leaveroom : message.leaveroom
 		};
-		/*io.sockets.in(message).emit('message',message);*/
-		io.sockets.emit('message',message);
+		io.sockets.in(message.leaveroom).emit('message',message);
 	});
 	
 	
 	
 	socket.on('login', function(login){
-		if(login_ids.indexOf(login.loginid)== -1){
-			login_ids.push(login.loginid);
-		}
 		createRoom(login, socket);
-		
-		var message = login.loginid+"님이 로그인 되었습니다";	
+		var login_ids = getRoomUserList(login.roomname, "set", login.id);
+		var message = login.id+"님이 로그인 되었습니다";	
 		var output = {
 				login_ids : login_ids,
 				message : message,
 				time : getTimeStamp(),
 				rooms : getRoomList()
 		};
-		io.sockets.emit('loginList', output);
+		io.sockets.in(login.roomname).emit('loginList', output);
 	});
 	
 
 	socket.on('room', function(room){
-		if(room.command ==='create'){
+		var login_ids = [];
+		if(room.command =='create'){
 			createRoom(room, socket);
-		}else if(room.command ==='join'){
-			console.log(room.roomname);
+		}else if(room.command=='join'){
 			socket.join(room.roomname);
-			console.dir(io.sockets.adapter.rooms);
-			sendResponse(room.roomname+'방에 '+room.id+'님이 입장하셨습니다.');
-		}else if(room.command==='leave'){
-			socket.leave(room.roomname);
-			sendResponse(room.roomname+'방에서 '+room.id+'님이 나가셨습니다.');
 		}
 		
-		var roomList = getRoomList();
 		
-		var output={command : 'list', rooms: roomList};
-		io.sockets.emit('room', output);
-		
+		console.log('room 이름 ' + room.roomname+" , "+room.leaveroom);
+			
+			afterRoomUser = getRoomUserList(room.roomname, "set", room.id);
+			beforeRoomUser = getRoomUserList(room.leaveroom, "del", room.id);
+			console.log("afterRoomUser : " + afterRoomUser + "   beforeRoomUser : "+beforeRoomUser);
+			
+			sendResponse(room.roomname+'방에 '+room.id+'님이 입장하셨습니다.', room.roomname);
+			sendResponse(room.id+'님이 나가셨습니다.', room.leaveroom);
+			socket.leave(room.leaveroom);
+			
+			
+			
+			var outputBefore = {
+					login_ids : beforeRoomUser,
+					rooms : getRoomList()
+			};
+			
+			var outputAfter = {
+					login_ids : afterRoomUser,
+					rooms : getRoomList()
+			};
+			
+		io.sockets.in(room.leaveroom).emit('room',outputBefore);
+		io.sockets.in(room.roomname).emit('room',outputAfter);
 		
 	});
 });
 
 function createRoom(room, socket){
-	if(io.sockets.adapter.rooms[room.roomname]){
+	if(!io.sockets.adapter.rooms[room.roomname]){
 		socket.join(room.roomname);
-	}else{
-	socket.join(room.roomname);
-	
-	var curroom=io.sockets.adapter.rooms[room.roomname];
-	curroom.id = room.roomname;
-	curroom.name = room.roomname;
-	curroom.owner= room.roomowner;
-	
+		var curroom=io.sockets.adapter.rooms[room.roomname];
+		var roomUserList=[];
+		curroom.id = room.roomname;
+		curroom.name = room.roomname;
+		curroom.owner= room.roomowner;
+		curroom.userList = roomUserList;
 	}
+	socket.join(room.roomname);
+}
+
+
+function getRoomUserList(roomname, command, id){
+	var roomUserList=[];
+	var curroom=io.sockets.adapter.rooms[roomname];
+	console.log(io.sockets.adapter.rooms[roomname]);
+	roomUserList = curroom.userList;
+	if(command == "get"){
+		console.log("roomUserList() : "+roomUserList);
+		return roomUserList;
+	}else if(command == "set"){
+		if(roomUserList.indexOf(id)!=-1){
+			return roomUserList;
+		}
+		roomUserList.push(id);
+		console.log("roomUserList() : "+roomUserList);
+		curroom.userList = roomUserList;
+		return roomUserList;	
+	}else if(command =="del"){
+		var curroom=io.sockets.adapter.rooms[roomname];
+		roomUserList = curroom.userList;
+		console.log("옮기는 사람 : "+id);
+		var index = roomUserList.indexOf(id);
+		console.log("index : "+index);
+		console.log("1 roomUserList() : "+roomUserList);
+		roomUserList.splice(index ,1);
+		console.log("2 옮기기전 장소의 유저이름들() : "+roomUserList);
+		curroom.userList = roomUserList;
+		return roomUserList;	
+	}
+	
+	
 }
 
 
 function getRoomList() {
     var roomList = [];
-    Object.keys(io.sockets.adapter.rooms).forEach(function(roomId) { // 각각의 방에 대해 처리
+    Object.keys(io.sockets.adapter.rooms).forEach(function(roomId) { // 각각의
+																		// 방에 대해
+																		// 처리
         
     	var outRoom = io.sockets.adapter.rooms[roomId];
         var foundDefault = false;

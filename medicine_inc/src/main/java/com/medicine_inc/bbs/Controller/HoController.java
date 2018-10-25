@@ -82,14 +82,14 @@ public class HoController {
 
 	@RequestMapping(value = { "/epidemicMaps", "/EpidemicMaps", "/epidemicmaps", "/Epidemicmaps" })
 	public String epidemicMaps(Model model, HttpSession session) {
-		session.setAttribute("id","뮤");
+		session.setAttribute("id","미");
 		return "/Chanho/epidemicMaps";
 	}
 
 	@RequestMapping(value = { "/cheeting", "/Cheeting" })
 	public String cheeting(HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		session.setAttribute("id",id);
+		/*session.setAttribute("id",id);*/
 		return "/Chanho/cheeting";
 	}
 }

@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/cheeting.css" />
 </head>
 <script>
-var id= "${sessionScope.id}";
+var id2 = "${sessionScope.id}";
 </script>
 <body>
 	<div class="row chat">
@@ -33,10 +33,6 @@ var id= "${sessionScope.id}";
 						<td class="roomListTd" id="3">방3</td>
 					</tr>
 				</table>
-			</div>
-			<div class="left_bottom">
-				<span><input type="button" id="joinRoomButton" value="입장"></span>
-				<span><input type="button" id="leaveRoomButton" value="나가기"></span>
 			</div>
 		</div>
 		<div class="col-md-8 inner_box chat_middle" >

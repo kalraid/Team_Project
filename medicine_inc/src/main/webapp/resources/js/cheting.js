@@ -5,16 +5,17 @@ var roomId;
 $(function() {
 	host = '192.168.0.67';
 	port = '3010';
-
 	connectToServer();
-
+	
+	var leaveroom = "메인";
 	$("#sendButton").bind('click', function(event) {
 		var data = $('#dataInput').val();
 
 		var output = {
 			type : 'text',
 			data : data,
-			id : id
+			id : id2,
+			leaveroom : leaveroom
 		};
 
 		if (socket == undefined) {
@@ -26,67 +27,58 @@ $(function() {
 		socket.emit('message', output);
 
 	});
-
+	
+	
 	$('#createroombutton').bind('click', function(event) {
 		var roomname = $('#roomnameinput').val();
-		var id2 = id;
-
+		if(roomname == leaveroom){
+			return;
+		}
+		var id = id2;
 		var output = {
 			command : 'create',
 			roomname : roomname,
 			roomid : roomname,
 			roomowner : id2,
-			id : id
+			leaveroom : leaveroom,
+			id : id2
 		};
-
 		if (socket == undefined) {
 			connectToServer();
 			return;
 		}
-
+		leaveroom = roomname;
 		socket.emit('room', output);
 	});
+	
 	var roomName;
+	
 	$(document).on("click", ".roomListTd", function(event) {
-		roomName = $(this).attr("value");
+		roomname = $(this).attr("value");
+		if((roomname !=null || leaveroom != null) &&roomname == leaveroom){
+			return;
+		}
 		$(".roomListTd").css("color", "black");
 		$(this).css("color", "red");
 		
-	});
-	var leaveroom;
-
-	$('#joinRoomButton').bind('click', function(event) {
 		var output = {
 			command : 'join',
-			roomname : roomName,
-			id : id
+			roomname : roomname,
+			id : id2,
+			leaveroom : leaveroom
 		};
 
 		if (socket == undefined) {
 			connectToServer();
 			return;
 		}
-		socket.emit('room', output);
+		
 		leaveroom = roomName;
-	});
-
-	$('#leaveRoomButton').bind('click', function(event) {
-		var output = {
-			command : 'leave',
-			roomname : leaveroom,
-			id : id
-		};
-		console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
-
-		if (socket == undefined) {
-			connectToServer();
-			return;
-		}
-
 		socket.emit('room', output);
-
+		
 	});
 
+	
 });
 
 function connectToServer() {
@@ -98,7 +90,7 @@ function connectToServer() {
 
 	socket.on('connect', function() {
 		var output = {
-			loginid : id,
+			id : id2,
 			roomname : '메인',
 			roomid : '메인',
 			roomowner : '관리자'
@@ -108,7 +100,7 @@ function connectToServer() {
 	});
 
 	socket.on('message', function(message) {
-		if (message.id == id) {
+		if (message.id == id2) {
 			addToDiscussion("me", message);
 		} else {
 			addToDiscussion("other", message);
@@ -120,7 +112,6 @@ function connectToServer() {
 	});
 
 	socket.on('response', function(response) {
-		console.log(JSON.stringify(response));
 		println('System : ' + response.message);
 	});
 
@@ -130,8 +121,13 @@ function connectToServer() {
 		println(data.message);
 	});
 	
+	socket.on('userList', function(data){
+		userList(data);
+	});
+	
 	socket.on('room', function(data) {
-		roomList(data);
+			roomList(data);
+			userList(data);
 	});
 
 };
@@ -161,14 +157,12 @@ function roomList(data) {
 }
 
 function println(data) {
-	console.log(data);
 	$('#result').append('<p>' + data + '</p>');
 
 };
 
 function addToDiscussion(writer, data) {
 	var img;
-	console.log(writer);
 	if (writer == 'other') {
 		img = 'resources/images/chating/man_two.jpg';
 		var contents = "<li class='otherSend other'>"
