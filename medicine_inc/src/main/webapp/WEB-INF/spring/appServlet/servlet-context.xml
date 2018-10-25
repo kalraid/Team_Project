@@ -22,11 +22,19 @@
 	p:suffix=".jsp">
 		<beans:property name="contentType" value="text/html;charset=UTF-8"/>
 	</beans:bean>
-		
+	
+	<!-- 네이버 로그인 -->
+	<beans:bean id="naverLoginBO" class="com.medicine_inc.bbs.Changmyoung.NaverLoginBO"/>
 		
 	<view-controller path="/" view-name="redirect:main" />
 	<redirect-view-controller path="/index" redirect-url="/main"/>
 	<redirect-view-controller path="/default" redirect-url="/main"/>
+	
+	
+	<!-- 로그인요청 -->
+	<view-controller path="/login" view-name="redirect:login" />
+	<!-- 회원가입 요청 -->
+	<view-controller path="/joinForm" view-name="Changmyoung/joinForm" />
 
 	<beans:bean id="loginCheckInterceptor" 
 		class="com.medicine_inc.bbs.interceptor.LoginCheckInterceptor" />

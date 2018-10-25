@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="java.net.URLEncoder" %>
-<%@ page import="java.security.SecureRandom" %>
-<%@ page import="java.math.BigInteger" %>
-
-
-<!--  네이버 로그인  -->
-
 <html lang="kr">
 	<head>
 	<meta charset="UTF-8">
@@ -149,7 +142,7 @@ body {
 .two .form-group input:focus {
   color: #FFFFFF;
 }
-.form-group button {
+button {
   outline: none;
   background: #4285F4;
   width: 100%;
@@ -163,6 +156,7 @@ body {
   line-height: inherit;
   text-transform: uppercase;
   cursor: pointer;
+  margin:40px auto;
 }
 .two .form-group button {
   background: #FFFFFF;
@@ -299,77 +293,40 @@ body {
 </head>
 <body>
 
-
 <!-- Form-->
 <div class="form">
   <div class="form-toggle"></div>
-  <div class="form-panel one">
-    <div class="form-header">
-      <h1>Account Login</h1>
-    </div>
-    <div class="form-content">
-      <form name="loginForm" id="loginForm" action="loginResult" method="post">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="id" name="id" required="required"/>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="pass" required="required"/>
-        </div>
-        <div class="form-group">
-          <label class="form-remember">
-            <input type="checkbox"/>Remember Me
-          </label><a href="#" class="form-recovery">Forgot Password?</a>
-        </div>
-        <div class="form-group">
-          <button type="submit" value="로그인">login
-          </button>
-        </div>
-     </form>
-     </div>
-    </div>
-	<div class="form-group">
-        <a href="${url}"><img height="50" src="resources/images/naverBtn.PNG"/></a>
-     </div>
-
 
 <!-- 회원가입 폼 -->  
-  <div class="form-panel two">
+  <div class="form-panel one">
     <div class="form-header">
-      <h1>회 원 가 입</h1>
+      <h1>회 원 정 보</h1>
     </div>
     <div class="form-content">
       <form class="login-form" action="joinInfo" name="joinForm" method="post">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="name" name="name" required="required"/>
+          <input type="text" id="name" name="name" required="required" value="${ sessionScope.m.name }"/>
         </div>
          <div class="form-group">
           <label for="username">I D</label>
-          <input type="text" id="id" name="id" required="required"/>
+          <input type="text" id="id" name="id" required="required" value="${ sessionScope.m.id }"/>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="pass" name="pass" required="required"/>
-        </div>
-        <div class="form-group">
-          <label for="cpassword">Confirm Password</label>
-          <input type="password" id="cpass" name="cpass" required="required"/>
+          <input type="password" id="pass" name="pass" required="required" value="${ sessionScope.m.pass }"/>
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required="required"/>
+          <input type="email" id="email" name="email" required="required" value="${ sessionScope.m.email }"/>
         </div>
-        <div class="form-group">
-          <button type="submit">가 입 하 기</button>
-        </div>
-        
-      </form>
+        </form>
+      <div class="form-group">
+          <button type="submit" onclick="document.location.href='joinResult'" >가 입 완 료 하 기</button>
+      </div>
     </div>
   </div>
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script type="text/javascript">

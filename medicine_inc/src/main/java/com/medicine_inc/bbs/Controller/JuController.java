@@ -32,13 +32,14 @@ public class JuController {
 			@RequestParam(value="mediCode", required=false, defaultValue="null") String mediCode,
 			@RequestParam(value="mediEff", required=false, defaultValue="null") String mediEff,
 			@RequestParam(value="mediName", required=false, defaultValue="null") String mediName,
-			@RequestParam(value="mediMaker", required=false, defaultValue="null") String mediMaker) {
+			@RequestParam(value="mediMaker", required=false, defaultValue="null") String mediMaker
+			) {
 		
-		System.out.println(mediCode);
 		
 		Map<String, Object> modelMap = mediService.mediList(pageNum, mediCode, mediName, mediEff, mediMaker);
 		
 		model.addAllAttributes(modelMap);
+		System.out.println("Controller에서 "+pageNum+mediCode +"받을 수 있어요"+modelMap.get("listCount"));
 		
 		return "/Juhwa/medicineSearch";
 	}

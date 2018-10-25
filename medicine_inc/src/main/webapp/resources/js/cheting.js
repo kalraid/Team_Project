@@ -35,7 +35,8 @@ $(function() {
 			command : 'create',
 			roomname : roomname,
 			roomid : roomname,
-			roomowner : id2
+			roomowner : id2,
+			id : id
 		};
 
 		if (socket == undefined) {
@@ -45,34 +46,35 @@ $(function() {
 
 		socket.emit('room', output);
 	});
-
-	$('.roomListTd').bind('click', function(event) {
-
-		roomId = this.id;
+	var roomName;
+	$(document).on("click", ".roomListTd", function(event) {
+		roomName = $(this).attr("value");
 		$(".roomListTd").css("color", "black");
 		$(this).css("color", "red");
+		
 	});
 	var leaveroom;
 
 	$('#joinRoomButton').bind('click', function(event) {
 		var output = {
 			command : 'join',
-			roomId : roomId
+			roomname : roomName,
+			id : id
 		};
-		console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
 
 		if (socket == undefined) {
 			connectToServer();
 			return;
 		}
 		socket.emit('room', output);
-		leaveroom = roomId;
+		leaveroom = roomName;
 	});
 
 	$('#leaveRoomButton').bind('click', function(event) {
 		var output = {
 			command : 'leave',
-			roomId : leaveroom
+			roomname : leaveroom,
+			id : id
 		};
 		console.log('서버로 보낼 데이터 : ' + JSON.stringify(output));
 
@@ -151,7 +153,7 @@ function roomList(data) {
 		$('.left_middle').empty();
 		var contents = '<table class="listTable table table-bordered table-hover text-center" id="roomList">';
 		for (var i = 0; i < roomcount; i++) {
-			contents += "<tr>" + "	<td class='roomListTd'> [" + i + "] " + data.rooms[i].name
+			contents += "<tr>" + "	<td class='roomListTd' value='"+data.rooms[i].name+"'> [" + i + "] " + data.rooms[i].name
 					+ "</td>" + "</tr>";
 		}
 		contents += "</table>";
