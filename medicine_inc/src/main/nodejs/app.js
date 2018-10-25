@@ -50,9 +50,9 @@ var server= http.createServer(app).listen(app.get('port'), function(){
 
 
 
-function sendResponse(socket, command, code, message){
-	var statusObj = {socket : socket, command : command, code : code, message : message};
-	socket.emit('response', statusObj);
+function sendResponse(message,roomname){
+	var statusObj = {message : message};
+	io.sockets.in(roomname).emit('response', statusObj);
 }
 
 var io = socket.listen(server);
@@ -105,18 +105,18 @@ io.sockets.on('connection', function(socket){
 		if(room.command ==='create'){
 			createRoom(room, socket);
 		}else if(room.command ==='join'){
-			socket.join(room.roomid);
-			sendResponse(socket, 'room', '200', '방에 입장하였습니다.');
-			
+			console.log(room.roomname);
+			socket.join(room.roomname);
+			console.dir(io.sockets.adapter.rooms);
+			sendResponse(room.roomname+'방에 '+room.id+'님이 입장하셨습니다.');
 		}else if(room.command==='leave'){
-			socket.leave(room.roomid);
-			sendResponse(socket, 'room', '200', '방에서 나가셧습니다.');
+			socket.leave(room.roomname);
+			sendResponse(room.roomname+'방에서 '+room.id+'님이 나가셨습니다.');
 		}
 		
 		var roomList = getRoomList();
 		
 		var output={command : 'list', rooms: roomList};
-		console.log('클라이언트로 보낼 데이터 : '+JSON.stringify(output));
 		io.sockets.emit('room', output);
 		
 		
@@ -125,11 +125,8 @@ io.sockets.on('connection', function(socket){
 
 function createRoom(room, socket){
 	if(io.sockets.adapter.rooms[room.roomname]){
-		console.log('방이 이미 만들어져 있습니다.');
 		socket.join(room.roomname);
 	}else{
-	console.log('방을 새로 만듭니다');
-	
 	socket.join(room.roomname);
 	
 	var curroom=io.sockets.adapter.rooms[room.roomname];
@@ -142,14 +139,14 @@ function createRoom(room, socket){
 
 
 function getRoomList() {
-    console.dir(io.sockets.adapter.rooms);
     var roomList = [];
     Object.keys(io.sockets.adapter.rooms).forEach(function(roomId) { // 각각의 방에 대해 처리
-        var outRoom = io.sockets.adapter.rooms[roomId];
+        
+    	var outRoom = io.sockets.adapter.rooms[roomId];
         var foundDefault = false;
         var index = 0;
+        
         Object.keys(outRoom).forEach(function(key) {
-            console.log(" key " + key+ " index : "+index+ " roomId : "+roomId);
         	if(roomId == key) {
                   foundDefault = true;
              }
@@ -157,9 +154,11 @@ function getRoomList() {
 			
 		});
 	
-		if(!foundDefault){
+		if(!foundDefault && outRoom.id != undefined){
 			roomList.push(outRoom);
 		}
+		
+		
 	});
 	return roomList;
 }
