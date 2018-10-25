@@ -10,21 +10,20 @@
 		<ul>			
 			<c:if test="${ sessionScope.isLogin }" >
 			<li>			
-				<span id="message">안녕하세요 ${ sessionScope.member.name }님</span>
-			</li>				
-			</c:if>			
+				<span id="message">안녕하세요 ${ sessionScope.name }님</span>
+			</li>
+			</c:if>
+			<c:if test="${ sessionScope.isNaverLogin }" >
+			</c:if>
+						
 			<li>	
-			<!--
-				이 애플리케이션은 여러 경로에서 로그인/로그아웃을 해야 하기 때문에
-				ContextRoot를 기준으로 절대경로를 지정했다.	
-			-->				
 				<a href='${pageContext.servletContext.contextPath}/
 					${ sessionScope.isLogin ? "logout" : "login" }'>
 					${ sessionScope.isLogin ? "로그아웃" : "로그인" }</a>
 			</li>			
 			<li>
 				<c:if test="${ not sessionScope.isLogin }" >	
-					<a href="signUp">회원가입</a>
+					<a href="joinForm">회원가입</a>
 				</c:if>
 				<c:if test="${ sessionScope.isLogin }" >
 					<a href="memberUpdateForm?id=${ sessionScope.member.id }">마이페이지</a>
@@ -45,7 +44,7 @@
 				<ul class="submenu">
 					<li><a href="firstAid">응급처치</a></li>
 					<li><a href="stretching">스트레칭</a></li>
-					<li><a href="jiab">손지압</a></li>
+					<li><a href="jiap">손지압</a></li>
 					<li><a href="food">음식</a></li>
 					<li class="no_line"><a href="ill">질병</a></li>		
 				</ul>

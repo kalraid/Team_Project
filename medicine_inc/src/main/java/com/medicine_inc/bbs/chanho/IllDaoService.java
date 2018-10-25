@@ -10,4 +10,7 @@ public interface IllDaoService {
 	public abstract Map<String, Object> IllList(int pageNum, String keyword, String type, int hid);
 	
 	public abstract IllList IllListDetail(int code);
+	
+	
+	public abstract String chat(String name);
 }

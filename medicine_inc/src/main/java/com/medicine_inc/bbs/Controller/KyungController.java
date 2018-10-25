@@ -76,6 +76,11 @@ public class KyungController {
 	return "/Kyungmin/quizList";
 	}
 	
+	@RequestMapping(value= {"/photoTest"})
+	public String photoTest(Model model) {
+		return "/Kyungmin/photoTest";
+	}
+	
 	@RequestMapping(value= {"/eyeTest"})
 	public String eyeTest(Model model) {
 		return "/Kyungmin/eyeTest";
@@ -83,7 +88,12 @@ public class KyungController {
 	
 	@RequestMapping(value= {"/realEyeTest"})
 	public String realEyeTest(Model model) {
-		return "/Kyungmin/realEyeTest";
+		return "forward:WEB-INF/views/Kyungmin/realEyeTest.jsp";
+	}
+	
+	@RequestMapping(value= {"/slidingPuzzle"})
+	public String slidingPuzzle(Model model) {
+		return "forward:WEB-INF/views/Kyungmin/slidingPuzzle.jsp";
 	}
 	
 	@RequestMapping(value= {"/stretching","/Stretching","/stretchingList"})
