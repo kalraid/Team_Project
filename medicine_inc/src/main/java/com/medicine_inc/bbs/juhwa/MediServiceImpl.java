@@ -83,5 +83,33 @@ public class MediServiceImpl implements MediService {
 	public Medi getMedi(int no) {
 		return dao.getMedi(no);
 	}
-
+	
+	@Override
+	public Map<String, Object> mediList2(int pageNum){
+		int currentPage = pageNum;
+		int startRow = (currentPage - 1) * PAGE_SIZE;
+		int listCount = 0; 
+		
+		listCount = dao.getMediCount2();
+						
+			List<Medi> mediList2 = dao.mediList2(startRow, PAGE_SIZE);
+			
+			int pageCount  = listCount /PAGE_SIZE +(listCount % PAGE_SIZE == 0? 0:1);
+			int startPage = (currentPage / PAGE_GROUP) * PAGE_GROUP + 1 - (currentPage % PAGE_GROUP == 0 ? PAGE_GROUP : 0);
+			int endPage = startPage + PAGE_GROUP - 1;
+			if(endPage > pageCount) { endPage = pageCount; }
+			
+			Map<String, Object> modelMap2 = new HashMap<String, Object>();
+				modelMap2.put("mediList2", mediList2);
+				modelMap2.put("pageCount", pageCount);
+				modelMap2.put("startPage", startPage);
+				modelMap2.put("endPage", endPage);
+				modelMap2.put("currentPage", currentPage);
+				modelMap2.put("listCount", listCount);
+				modelMap2.put("pageGroup", PAGE_GROUP);
+				
+			
+		
+		return modelMap2;
+	}
 }

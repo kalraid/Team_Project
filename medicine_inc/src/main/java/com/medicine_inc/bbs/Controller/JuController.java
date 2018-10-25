@@ -50,6 +50,23 @@ public class JuController {
 		return "/Juhwa/mediSearch";
 	}
 	
+	@RequestMapping(value = {"/search2"})
+	public String searchMedi2() {
+		
+		return "/Juhwa/mediIntro";
+	}
+	
+	@RequestMapping(value = {"/allList"})
+	public String medi(Model model, @RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum) {
+		
+	
+		Map<String, Object> modelMap = mediService.mediList2(pageNum);
+		
+ 		model.addAllAttributes(modelMap);
+		
+		return "/Juhwa/medicineSearch";
+	}
+	
 	@RequestMapping("/mediDetail") 
 	public String MediDetail(Model model, int no,
 			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum,

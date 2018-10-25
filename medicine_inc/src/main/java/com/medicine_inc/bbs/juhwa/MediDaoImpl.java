@@ -36,17 +36,15 @@ public class MediDaoImpl implements MediDao {
 		System.out.println(mediCode+","+mediEff);
 		
 		int search = 0;
-		if(mediCode!=null) {
+		if(mediCode != null) {
 			search = 1;
+		}else if(mediCode ==null) {
+			search =0;
 		}
 		
 		params.put("search", search);
 		
-		List<Medi> list = sqlSession.selectList(NAME_SPACE +".mediList", params);
-		System.out.println("가져온  list size : "+list.size());
-		for(int i =0; i<list.size(); i++) {
-			System.out.println(list.get(i).getMediName());
-		}
+		
 		return sqlSession.selectList(NAME_SPACE +".mediList", params);
 	}
 	
@@ -72,4 +70,19 @@ public class MediDaoImpl implements MediDao {
 	public Medi getMedi(int no) {
 		return sqlSession.selectOne(NAME_SPACE +".getMedi", no);
 	}
+	
+	@Override
+	public List<Medi> mediList2(int startRow, int num){
+		Map<String , Object> params = new HashMap<String, Object>();
+		params.put("startRow", startRow);
+		params.put("num", num);
+		
+		return sqlSession.selectList(NAME_SPACE +".mediList2",params);
+	};
+	
+	@Override
+	public int getMediCount2() {
+		
+		return sqlSession.selectOne(NAME_SPACE +".getMediCount");
+	};
 }

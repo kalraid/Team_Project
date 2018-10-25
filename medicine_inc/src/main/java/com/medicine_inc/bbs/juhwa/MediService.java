@@ -10,7 +10,7 @@ import com.medicine_inc.bbs.domain.Medi;
 public interface MediService {
 	
 	public abstract Map<String, Object> mediList(int pageNum, String mediCode, String mediName, String mediEff, String mediMaker);
-	
+	public abstract Map<String, Object> mediList2(int pageNum);
 	public abstract Medi getMedi(int no);
 	
 	

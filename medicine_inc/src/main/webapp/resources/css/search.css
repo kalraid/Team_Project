@@ -94,3 +94,23 @@
 	font-weight: bold;
 	text-align : center;
 }
+
+#detailbtn{
+	margin : 50px 50px auto;
+	text-align : center;
+	
+	
+}
+.detailbtn {
+	height : 300px;
+	width : 300px;
+	margin : 25px 10px 10px 10px;
+	background-color: #db96e4;
+	font-size: 14px;
+	font-family:fantasy;
+	
+}
+.detailbtn:hover {
+	background-color : #f5a3ad;
+	font-size : 25px;
+}

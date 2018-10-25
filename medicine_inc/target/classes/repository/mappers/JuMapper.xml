@@ -18,6 +18,11 @@
 		limit #{startRow}, #{num}
 		</select>
 		
+		<select id="mediList2" resultType="Medi" resultMap="mediResultMap">
+		select * from medi
+		limit #{startRow}, #{num}
+		</select>
+		
 		<select id="getMedi" resultType="Medi" resultMap="mediResultMap">
 		SELECT * FROM medi WHERE no = #{no}
 		</select>
@@ -32,7 +37,10 @@
 		and medi_maker like concat('%',#{mediMaker},'%')
 		</if>
 		</where>
+		</select>
 		
+		<select id="getMediCount2" parameterType ="hashmap" resultType ="int">
+		select count(no) from medi
 		</select>
 
 	<resultMap id="mediResultMap" type="Medi">
