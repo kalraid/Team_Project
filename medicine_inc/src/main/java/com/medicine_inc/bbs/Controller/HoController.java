@@ -3,6 +3,9 @@ package com.medicine_inc.bbs.Controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
+import java.util.Scanner;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,20 +75,21 @@ public class HoController {
 	}
 
 	@RequestMapping(value = { "/food", "/Food" })
-	public String food(Model model) {
-
+	public String food(Model model, HttpSession session) {
+		session.setAttribute("id","홍길동");
 		return "/Chanho/food";
 	}
 
 	@RequestMapping(value = { "/epidemicMaps", "/EpidemicMaps", "/epidemicmaps", "/Epidemicmaps" })
-	public String epidemicMaps(Model model) {
-
+	public String epidemicMaps(Model model, HttpSession session) {
+		session.setAttribute("id","뮤");
 		return "/Chanho/epidemicMaps";
 	}
 
 	@RequestMapping(value = { "/cheeting", "/Cheeting" })
-	public String cheeting(Model model) {
-
+	public String cheeting(HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		session.setAttribute("id",id);
 		return "/Chanho/cheeting";
 	}
 }

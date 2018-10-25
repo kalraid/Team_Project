@@ -9,8 +9,6 @@
 		<spring:message code="bbs.list.title" />
 	</h2>
 
-
-
 	<div>
 		<form action="ill" method="get" id="">
 			<div class="center-block text-center">

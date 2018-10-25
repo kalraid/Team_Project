@@ -36,7 +36,7 @@
 		<ul>
 			<li id="DrugInformation">약품 정보
 				<ul class="submenu">
-					<li><a href="medicineSearch">의약품</a></li>
+					<li><a href="search">의약품</a></li>
 					<li class="no_line"><a href="healthSupport">건강 보조제</a></li>		
 				</ul>
 			</li>
@@ -44,7 +44,7 @@
 				<ul class="submenu">
 					<li><a href="firstAid">응급처치</a></li>
 					<li><a href="stretching">스트레칭</a></li>
-					<li><a href="jiab">손지압</a></li>
+					<li><a href="jiap">손지압</a></li>
 					<li><a href="food">음식</a></li>
 					<li class="no_line"><a href="ill">질병</a></li>		
 				</ul>

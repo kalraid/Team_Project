@@ -1,0 +1,130 @@
+.chat_middle .chat_top {
+	height: 90%;
+	border: 1px solid black;
+	padding: 10px;
+	background-color: #f5f5dc;
+}
+
+.chat_middle .chat_bottom {
+	height: 10%;
+	margin: 10px auto 0;
+	text-align: center;
+}
+
+.chat_left{
+	background-color: #f5f5dc;
+}
+.chat_right{
+	background-color: #f5f5dc;
+}
+.text_box {
+	width: 90%;
+	height: 3em;
+}
+
+.chat {
+	border: 1px solid black;
+	margin: 0 15px;
+}
+
+.inner_box {
+	border: 1px solid black;
+	padding: 10px;
+	height: 500px;
+}
+
+.chat_top {
+	overflow: auto;
+}
+
+.chat_right {
+	/* 	width:100%; */
+	
+}
+
+#chat_right_inner_box {
+	border: 1px solid black;
+}
+
+#chat_right_inner_box>div {
+	height: 475px;
+	padding: 0px;
+	overflow: auto;
+}
+
+#chat_right_inner_box>table {
+	padding: 0px;
+}
+
+.left_top {
+	height: 10%;
+}
+
+.left_middle {
+	height: 84%;
+	margin: 10px 0;
+	overflow: auto;
+	background-color: #ffffff;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.left_top {
+	height: 30px;
+}
+
+#userDiv{
+	background-color: #ffffff;
+}
+
+#roomnameinput {
+	width: 60%;
+	height: 30px;
+}
+
+#createroombutton {
+	width: 35%;
+	padding: 1px;
+	height: 30px;
+}
+
+
+
+// 대화내용 css
+.other, .my{
+	padding: 0px;
+	margin: 0px;
+}
+.mySend {
+	text-align: right;
+	padding: 10px 5px;
+	border-radius: 5px;
+	list-style: none;
+}
+
+.myMessages {
+	padding: 5px;
+	background: #FFFF00;
+	width: 300px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	text-align: left;
+	float: right;
+}
+
+.otherSend {
+	text-align: left;
+	list-style: none;
+}
+
+.otherMessages {
+	padding: 5px;
+	background: #FFFFFF;
+	width: 300px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	float: left;
+}
+
