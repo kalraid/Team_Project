@@ -16,7 +16,7 @@ public class ChangController {
 	
 	return "/Changmyoung/depressed";
 	}
-	
+
 	@RequestMapping(value= {"/login","/Login"})
 	public String login(Model model){
 	

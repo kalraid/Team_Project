@@ -29,14 +29,16 @@ public class MediServiceImpl implements MediService {
 	public Map<String, Object> mediList(int pageNum, String mediCode, String mediName, String mediEff, String mediMaker) {
 		
 		int currentPage = pageNum;
-		
 		int startRow = (currentPage - 1) * PAGE_SIZE;
-		int listCount =0; 
+		int listCount = 0; 
+		
 		boolean searchOption = (mediCode.equals("null") || mediName.equals("null")||mediEff.equals("null")||mediMaker.equals("null")) ? false : true; 
 		
 		listCount = dao.getMediCount(mediCode, mediName, mediEff, mediMaker);
 		
-		if(listCount>0) {
+		System.out.println("service 에서 getmediCount 가져 옵니다"+listCount);
+		
+		if(listCount>=0) {
 			List<Medi> mediList = dao.mediList(startRow, PAGE_SIZE, mediCode, mediName, mediEff, mediMaker);
 			
 			int pageCount  = listCount /PAGE_SIZE +(listCount % PAGE_SIZE == 0? 0:1);
@@ -54,20 +56,23 @@ public class MediServiceImpl implements MediService {
 				modelMap.put("pageGroup", PAGE_GROUP);
 				modelMap.put("searchOption", searchOption);
 			
-			if(searchOption) {
-				try {
-					modelMap.put("mediName",URLEncoder.encode(mediName, "utf-8"));
-					modelMap.put("mediEff",URLEncoder.encode(mediEff, "utf-8"));
-					modelMap.put("mediMaker",URLEncoder.encode(mediMaker, "utf-8"));
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace(); 
-				} 
+			
+					
+					try {
+						modelMap.put("mediMaker",URLEncoder.encode(mediMaker, "utf-8"));
+						modelMap.put("mediName",URLEncoder.encode(mediName, "utf-8"));
+						modelMap.put("mediEff",URLEncoder.encode(mediEff, "utf-8"));
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			
 					modelMap.put("name", mediName);
 					modelMap.put("eff", mediEff);
 					modelMap.put("maker", mediMaker);
 					modelMap.put("code", mediCode);
 			
-			}
+			
 			return modelMap;
 		}else {
 			return null;

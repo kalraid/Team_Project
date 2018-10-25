@@ -7,20 +7,14 @@
 		<select id="mediList" resultType="Medi" resultMap="mediResultMap">
 		select * from medi 
 		<where>
-		<if test ="medi_code !=null">
-			medi_code like concat('%',#{mediCode},'%')
-		</if>
-		<if test ="medi_name !=null">
-			and medi_name like concat('%',#{mediName},'%')
-		</if>
-		<if test ="medi_eff !=null">
-			and medi_eff like concat('%',#{mediEff},'%')
-		</if>
-		<if test ="medi_maker !=null">
-			and medi_maker like concat('%',#{mediMaker},'%')
+		<if test="search==1">
+		medi_code like concat('%',#{mediCode},'%') 
+		and medi_name like concat('%',#{mediName},'%') 
+		and medi_eff like concat('%',#{mediEff},'%') 
+		and medi_maker like concat('%',#{mediMaker},'%')
 		</if>
 		</where>
-		order by no desc
+		
 		limit #{startRow}, #{num}
 		</select>
 		
@@ -31,19 +25,14 @@
 		<select id="getMediCount" parameterType ="hashmap" resultType ="int">
 		select count(no) from medi 
 		<where>
-		<if test ="medi_code !=null">
-			medi_code like concat('%',#{mediCode},'%')
-		</if>
-		<if test ="medi_name !=null">
-			and medi_name like concat('%',#{mediName},'%')
-		</if>
-		<if test ="medi_eff !=null">
-			and medi_eff like concat('%',#{mediEff},'%')
-		</if>
-		<if test ="medi_maker !=null">
-			and medi_maker like concat('%',#{mediMaker},'%')
+		<if test="search == 'pass'">
+		medi_code like concat('%',#{mediCode},'%') 
+		and medi_name like concat('%',#{mediName},'%') 
+		and medi_eff like concat('%',#{mediEff},'%') 
+		and medi_maker like concat('%',#{mediMaker},'%')
 		</if>
 		</where>
+		
 		</select>
 
 	<resultMap id="mediResultMap" type="Medi">

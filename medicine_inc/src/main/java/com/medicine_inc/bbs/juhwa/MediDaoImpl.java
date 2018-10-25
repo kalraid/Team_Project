@@ -16,6 +16,7 @@ public class MediDaoImpl implements MediDao {
 	private final String NAME_SPACE = "com.medicine_inc.bbs.mapper.JuMapper";
 	private SqlSessionTemplate sqlSession;
 	
+	
 	@Autowired
 	public void setSqlSession(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
@@ -29,10 +30,23 @@ public class MediDaoImpl implements MediDao {
 		params.put("num", num);
 		params.put("mediCode", mediCode);
 		params.put("mediName", mediName);
-		params.put("mediEff", mediEff);
+		params.put("mediEff", mediEff); 
 		params.put("mediMaker", mediMaker);
 		
+		System.out.println(mediCode+","+mediEff);
 		
+		int search = 0;
+		if(mediCode!=null) {
+			search = 1;
+		}
+		
+		params.put("search", search);
+		
+		List<Medi> list = sqlSession.selectList(NAME_SPACE +".mediList", params);
+		System.out.println("가져온  list size : "+list.size());
+		for(int i =0; i<list.size(); i++) {
+			System.out.println(list.get(i).getMediName());
+		}
 		return sqlSession.selectList(NAME_SPACE +".mediList", params);
 	}
 	
@@ -45,6 +59,12 @@ public class MediDaoImpl implements MediDao {
 		params.put("mediEff", mediEff);
 		params.put("mediMaker", mediMaker);
 		
+		String search = "not";
+		if(mediCode!=null) {
+			search = "pass";
+		}
+		params.put("search", search);
+		System.out.println(String.valueOf(search));
 		return  sqlSession.selectOne(NAME_SPACE +".getMediCount", params);
 	}
 	

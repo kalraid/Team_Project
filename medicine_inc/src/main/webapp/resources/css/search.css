@@ -1,21 +1,30 @@
-#search_title { 
-color : white;
-font-size :20px;
-font-weight: bold; 
+.subtitle{
+	color : white;
+	font-size :20px;
+	font-weight: bold; 
+	margin : 0 10px 0 0;
 }
 
 #box1 {
 	display : inline-flex;
-	width : 200px;
-	background-color : #9BDBF4;
+	background-color : #1883d7;/* #032d55; *//* #9BDBF4; */
+	
 }
 #box2 {
-	width : 300px;
-	display: inline;
-	border : 1px black;
-	text-align: right;
-	
-	
+	float:right;
+	margin:30px 0 0 0;
+}
+#box3{
+	margin:10px 10px 10px 0;
+	text-align:center;
+}
+#box4{
+	margin : 50px 0px;
+	text-align:right;
+}
+.img2{
+	margin:10px 10px 10px 0;
+	width : 67px;
 }
 #smallimg {
 	width : 20px; 
@@ -27,9 +36,10 @@ font-weight: bold;
 	font-family :cursive;
 	color : red;
 	font-weight : bold;
+	font-size: 13px;
 }
 #line{
-	background : #9BDBF4;
+	background : #032d55;
 	height : 5px;
 	margin : 0px auto;
 }
@@ -37,13 +47,13 @@ font-weight: bold;
 	margin : 10px 10px 10px 10px;
 	
 }
-/* #img1{
-	display :inline-block;
-	float: left;
-} */
+.img1{
+	width: 45px;
+	margin : 5px 5px 5px 5px;
+	
+} 
 .container {
 	width : 500px;
-	
 }
 .submitbutton{
 	text-align :right;
@@ -56,4 +66,31 @@ font-weight: bold;
 	width : 500px;
 	height: auto;
 }
+#searchoption1{
+	margin : 35px 0px;
+	text-align : center;
+}
+.listPage{
+	text-align: center;
+	
+}
+.detailtable{
+	margin : 50px auto;
+	text-align : center;
+}
+.detailtable th {
+	font-size : 13.7px;
+	font-weight: bold;
+	padding : 2.5px 10px 2.5px 20px;	
+}
+.detailtable:first-child {
+	font-size : 300px;
+	font-weight: bold;
+	padding : 2.5px 10px 2.5px 20px;	
+} 
 
+#largemediCode {
+	font-size : 13.7px;
+	font-weight: bold;
+	text-align : center;
+}

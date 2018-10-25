@@ -8,50 +8,44 @@
 
 
 <article>
-<div id="box1"><img class ="img1" src = "resources/images/medi.png"/> <div id ="search_title">약품 상세 정보</div> </div>
+<div id="box1"><div class="subtitle"><img class ="img1" src = "resources/images/medi.png"/> 약품 상세 정보</div> </div>
 <hr id ="line"></hr>
 
 <form name="checkForm" id="checkForm"> 
 	<input type="hidden" name="no" id="no" value="${ medi.no }"/> 
 	<input type="hidden" name="pageNum" value="${ pageNum }" />
-	
 	<input type="hidden" name="mediCode" value="${ mediCode }" />
 	<input type="hidden" name="mediName" value="${ mediName }" />
 	<input type="hidden" name="mediEff" value="${ mdiEff }" />
 	<input type="hidden" name="mediMaker" value="${ mediMaker }" />
-		
-	
 </form>
 
-<table class ="table">
-	
+<table class ="detailtable ">
+	<!--  class ="table table-bordered " id ="detailtable" -->
 	<tr>
 		<td rowspan ="5"><img src="${ medi.mediImage }" id ="detailImage"/></td>
-		<td>품목기준코드</td>
-		<td>${medi.mediCode }</td>
+		<th>품목기준코드</th>
+		<td id ="largemediCode">${medi.mediCode }</td>
 	</tr>
 	<tr>
-		<td>품목명</td>
+		<th>품목명</th>
 		<td>${medi.mediName }</td>
 	</tr>
 	<tr>
-		<td>약표분류코드</td>
+		<th>약효분류코드</th>
 		<td>${medi.mediEffCode }</td>
 	</tr>
 	<tr>
-		<td>약품 효능</td>
+		<th>약품 효능</th>
 		<td>${medi.mediEff }</td>
 	</tr>
 	<tr>
-		<td>전문/일반 분류</td>
+		<th>전문/일반 분류</th>
 		<td>${medi.mediDiv }</td>
 	</tr>
 
-	<tr>
-		<td><input type="button" value="목록보기" onclick= "javascript:window.location.href='mediList?pageNum=${pageNum}&mediCode=${ mediCode }&mediName=${ name }&mediEff=${ eff }&mediMaker=${ maker }'"/>
-		</td>
-	</tr>
-
 </table>
+
+<div id="box4"><button class="btn btn-info subbutton"  onclick= "javascript:window.location.href='mediList?pageNum=${pageNum}&mediCode=${ mediCode }&mediName=${ name }&mediEff=${ eff }&mediMaker=${ maker }'">검색리스트&nbsp;<img class="btn-img" src="resources/images/back.png"></button></div>
  
 </article>
