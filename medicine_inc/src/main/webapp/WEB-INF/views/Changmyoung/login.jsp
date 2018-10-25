@@ -295,6 +295,11 @@ body {
   color: #4285F4 !important;
 }
 
+.naverbtn{
+	
+}
+
+
 </style>
 </head>
 <body>
@@ -329,11 +334,17 @@ body {
      </form>
      </div>
     </div>
+    <!-- 네이버 로그인 버튼 -->
 	<div class="form-group">
-        <a href="${url}"><img height="50" src="resources/images/naverBtn.PNG"/></a>
-     </div>
-
-
+        <a href="${url}"><img class ="naverbtn" height="50" src="resources/images/naverBtn.PNG"/></a>
+    </div>
+    <!-- 구글로그인 버튼 -->
+    <div class="form-group">
+  		<a href="${google_url}">
+  		<button id="btnJoinGoogle" class="btn btn-primary btn-round" style="width: 100%">
+        <i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a> 
+	</div>
+	
 <!-- 회원가입 폼 -->  
   <div class="form-panel two">
     <div class="form-header">

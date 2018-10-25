@@ -5,12 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.google.api.Google;
+import org.springframework.social.google.api.impl.GoogleTemplate;
+import org.springframework.social.google.api.plus.Person;
+import org.springframework.social.google.api.plus.PlusOperations;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.AccessGrant;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,11 +39,27 @@ import com.medicine_inc.bbs.exception.MemberNotFoundException;
 import com.medicine_inc.bbs.exception.MemberPassCheckFailException;
 
 @Controller
-//@SessionAttributes({"member", "m"})
 
 public class ChangController {
 	@SuppressWarnings("unused")
 	private final static String DEFAULT_PATH = "/resources/upload/";
+	
+	//네이버 
+	/* NaverLoginBO */
+	private NaverLoginBO naverLoginBO;
+	private String apiResult = null;
+    
+    @Autowired
+    private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+        this.naverLoginBO = naverLoginBO;
+    }
+    
+    // 구글
+    @Autowired
+   	private GoogleConnectionFactory googleConnectionFactory;
+   	@Autowired
+   	private OAuth2Parameters googleOAuth2Parameters;
+   	private OAuth2Operations oauthOperations;
 	
 	@RequestMapping(value= 
 		{"/depressed","/Depressed"})
@@ -40,13 +67,6 @@ public class ChangController {
 	
 		return "/Changmyoung/depressed";
 	}
-
-	@RequestMapping(value= {"/login","/Login"})
-	public String login(Model model){
-	
-		return "/Changmyoung/login";
-	}
-
 	
 	////////////  회원 MEMBER
 	
@@ -222,37 +242,9 @@ public class ChangController {
 //		}
 //		return "";
 //	}
-	
-	//네이버 아디로 로그인 컨트롤러
-	
-	/* NaverLoginBO */
-	private NaverLoginBO naverLoginBO;
-	private String apiResult = null;
-    
-    @Autowired
-    private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
-        this.naverLoginBO = naverLoginBO;
-    }
-    
-    //네이버 로그인 요청
-    @RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
-    public String login(Model model, HttpSession session) {
-        
-        /* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
-        String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-        
-        //https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
-        //redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-        System.out.println("네이버:" + naverAuthUrl);
-        
-        model.addAttribute("url", naverAuthUrl);
 
-        /* 생성한 인증 URL을 View로 전달 */
-        return "Changmyoung/login";
-    }
-    
-    
-    @RequestMapping(value = "navercallback", method = { RequestMethod.GET, RequestMethod.POST })
+	//네이버 콜백
+    @RequestMapping(value = "/navercallback", method = { RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
             throws IOException {
  
@@ -281,14 +273,97 @@ public class ChangController {
 
         session.setAttribute("isLogin", true);
         session.setAttribute("id", profile.get("id") );
-        session.setAttribute("name",profile.get("name"));
+        session.setAttribute("name",profile.get("name") +"(구글)");
         
         return "redirect:/";
     }
 
+    
+	// 구글 Callback호출 메소드
+	@RequestMapping(value = "/googleSignInCallback",  method = { RequestMethod.GET, RequestMethod.POST })
+    public String doSessionAssignActionPage(HttpServletRequest request,HttpSession session) throws Exception {
+
+		System.out.println("구글 callback");
+		
+		String code = request.getParameter("code");
+		System.out.println("받은 code값: " + code);
+		
+		 oauthOperations = googleConnectionFactory.getOAuthOperations();
+	     AccessGrant accessGrant = oauthOperations.exchangeForAccess(code, googleOAuth2Parameters.getRedirectUri(),
+	                null);
+	 
+	     String accessToken = accessGrant.getAccessToken();
+	     Long expireTime = accessGrant.getExpireTime();
+
+	     if (expireTime != null && expireTime < System.currentTimeMillis()) {
+	            accessToken = accessGrant.getRefreshToken();
+	            System.out.printf("accessToken is expired. refresh token = {}", accessToken);
+	 
+	        }
+	        Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
+	        Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
+	        System.out.println(connection);
+	 
+	        PlusOperations plusOperations = google.plusOperations();
+	        Person profile = plusOperations.getGoogleProfile();
+	        System.out.println("사용자 uid : " + profile.getId());
+	        System.out.println("사용자 이름: " + profile.getDisplayName());
+	        System.out.println("사용자 Email : " + profile.getAccountEmail());
+	        //System.out.println("사용자 Profile : " + profile.getImageUrl());
+	 
+	        session.setAttribute("isLogin", true);
+	        session.setAttribute("id", profile.getId() );
+	        session.setAttribute("name",profile.getDisplayName() +"(구글)");
+	        
+	        // Access Token 취소
+//	        try {
+//	            System.out.println("Closing Token....");
+//	            String revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=" + accessToken + "";
+//	            URL url = new URL(revokeUrl);
+//	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//	            conn.setRequestMethod("GET");
+//	            conn.setDoOutput(true);
+//	 
+//	            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+//	            String inputLine;
+//	            StringBuffer response = new StringBuffer();
+//	            while ((inputLine = in.readLine()) != null) {
+//	                response.append(inputLine);
+//	            }
+//	            in.close();
+//	        } catch (Exception e) {
+//	 
+//	            e.printStackTrace();
+//	        }
+	        
+
+		return "redirect:/";
+	}
+	
 	//카카오톡 로그인
 	@RequestMapping(value="kakaologin", method= {RequestMethod.GET,RequestMethod.POST})
 	public String kakaoLogin(HttpSession session) {
 		return "Changmyoung/kakaologin";
+	}
+	
+	
+	///////// 로그인 처리( 소셜 로그인 까지 )
+	@RequestMapping(value = {"/login","/Login"}, method = { RequestMethod.GET, RequestMethod.POST })
+    public String login(Model model, HttpSession session) {
+		
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+        String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+        
+        System.out.println("네이버:" + naverAuthUrl);
+        model.addAttribute("url", naverAuthUrl);
+        
+        //구글코드 
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+		
+		System.out.println("구글url :" + url);
+		model.addAttribute("google_url", url);
+
+	return "/Changmyoung/login";
 	}
 }

@@ -44,4 +44,16 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- 구글 로그인  연결 설정-->
+	<bean id = "googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="393938698321-rdeeio4fadb32n7r50d7imsq885cb4l0.apps.googleusercontent.com"/>
+		<constructor-arg value="GBeP5bvKJ8CHvSzRxwjaJqGC"/>    
+	</bean>
+ 
+	<bean id = "googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login"></property>
+		<property name="redirectUri" value="http://localhost:8080/medicine_inc/googleSignInCallback"/>
+	</bean>
+	
 </beans>

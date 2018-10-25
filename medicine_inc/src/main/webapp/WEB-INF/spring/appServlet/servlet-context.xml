@@ -25,7 +25,7 @@
 	
 	<!-- 네이버 로그인 -->
 	<beans:bean id="naverLoginBO" class="com.medicine_inc.bbs.Changmyoung.NaverLoginBO"/>
-		
+			
 	<view-controller path="/" view-name="redirect:main" />
 	<redirect-view-controller path="/index" redirect-url="/main"/>
 	<redirect-view-controller path="/default" redirect-url="/main"/>
