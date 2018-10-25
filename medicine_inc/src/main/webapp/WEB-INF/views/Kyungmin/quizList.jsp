@@ -6,6 +6,18 @@
 	 $("#slidingPuzzle").click(function(){
 		 window.open("slidingPuzzle");
 	 });
+	 
+	 $("#jigsawPuzzle").click(function(){
+		 window.open("jigsawPuzzle");
+	 });
+	 
+	 $("#eyeTest").click(function(){
+		 window.location.href("eyeTest");
+	 });
+	 
+	 $("#photoTest").click(function(){
+		 window.location.href("photoTest");
+	 });
  });
 </script>
 <link href="resources/css/weather.css" rel="stylesheet">
@@ -22,17 +34,22 @@
 <table id = "quizListTable">
  <tr>
   <td>
-   <a href="eyeTest">Real 시력 테스트</a>
+   <a id="eyeTest">Real 시력 테스트</a>
   </td>
  </tr>
  <tr>
   <td>
-   <a href="photoTest">사진 시력 테스트</a>
+   <a id="photoTest">사진 시력 테스트</a>
   </td>
  </tr>
  <tr>
   <td>
    <a id="slidingPuzzle">슬라이딩 퍼즐</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a id="jigsawPuzzle">직소 퍼즐</a>
   </td>
  </tr>
 </table>
