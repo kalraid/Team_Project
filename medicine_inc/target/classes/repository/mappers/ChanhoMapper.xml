@@ -105,5 +105,22 @@
 		<result property="diagnosis" column="diagnosis" />
 		<result property="cure" column="cure" />
 	</resultMap>
+	<!-- 
+	// parameterType	구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래스명이나 별칭
+	// resultType	이 구문에 의해 리턴되는 기대타입의 패키지 경로를 포함한 전체 클래스명이나 별칭. collection인 경우 collection 타입 자체가 아닌 collection 이 포함된 타입이 될 수 있다. resultType이나 resultMap을 사용하라.
+	// resultMap	외부 resultMap 의 참조명. 결과맵은 마이바티스의 가장 강력한 기능이다. resultType이나 resultMap을 사용하라.
+	
+	 -->
+	<select id="getFoodList" resultMap="foodMap" parameterType="hashmap" >
+		SELECT * FROM food;
+	</select>
 
+
+	<resultMap id="foodMap" type="food">
+		<id property="foodId" column="food_id" />
+		<result property="diseaseGroup" column="질환" />
+		<result property="disease" column="질병" />
+		<result property="name" column="이름" />
+		<result property="effect" column="효능" />
+	</resultMap>
 </mapper>	

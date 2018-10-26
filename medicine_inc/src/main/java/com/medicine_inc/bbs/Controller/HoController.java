@@ -2,8 +2,8 @@ package com.medicine_inc.bbs.Controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.medicine_inc.bbs.chanho.IllDaoService;
+import com.medicine_inc.bbs.chanho.foodService;
 import com.medicine_inc.bbs.domain.IllList;
+import com.medicine_inc.bbs.domain.food;
 
 @Controller
 public class HoController {
@@ -25,6 +27,9 @@ public class HoController {
 	@Autowired
 	private IllDaoService illDaoService;
 
+	@Autowired
+	private foodService foodService;
+	
 	public HoController() {
 	};
 
@@ -32,6 +37,10 @@ public class HoController {
 		this.illDaoService = illDaoService;
 	}
 
+	public void setFoodService(foodService foodService) {
+		this.foodService = foodService;
+	}
+	
 	@RequestMapping(value = { "/sitemap", "/Sitemap" })
 	public String sitemap(Model model) {
 
@@ -76,7 +85,12 @@ public class HoController {
 
 	@RequestMapping(value = { "/food", "/Food" })
 	public String food(Model model, HttpSession session) {
+		
+		List<food> foodList = foodService.foodList();
+		model.addAttribute("food",foodList);
 		session.setAttribute("id","홍길동");
+		
+		
 		return "/Chanho/food";
 	}
 
@@ -92,4 +106,6 @@ public class HoController {
 		/*session.setAttribute("id",id);*/
 		return "/Chanho/cheeting";
 	}
+
+	
 }
