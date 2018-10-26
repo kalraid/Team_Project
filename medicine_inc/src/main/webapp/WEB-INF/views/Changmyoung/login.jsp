@@ -303,6 +303,7 @@ body {
 </style>
 </head>
 <body>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 
 <!-- Form-->
@@ -344,6 +345,11 @@ body {
   		<button id="btnJoinGoogle" class="btn btn-primary btn-round" style="width: 100%">
         <i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a> 
 	</div>
+	<!-- 카카오톡 로그인 버튼 -->
+	<a id="custom-login-btn" href="javascript:loginWithKakao()">
+		<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+	</a>
+	
 	
 <!-- 회원가입 폼 -->  
   <div class="form-panel two">
@@ -384,6 +390,7 @@ body {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script type="text/javascript">
+
 $(document).ready(function() {
   var panelOne = $('.form-panel.two').height(),
     panelTwo = $('.form-panel.two')[0].scrollHeight;
@@ -409,6 +416,20 @@ $(document).ready(function() {
     }, 200);
   });
 });
+
+//사용할 앱의 JavaScript 키를 설정해 주세요.
+	Kakao.init('96c2ae36303cf8ea5b4ad872c5b58da1');
+	function loginWithKakao() {
+	  // 로그인 창을 띄웁니다.
+	  Kakao.Auth.login({
+	    success: function(authObj) {
+	      alert(JSON.stringify(authObj));
+	    },
+	    fail: function(err) {
+	      alert(JSON.stringify(err));
+	    }
+  	});
+	}
 </script>
 </body>
 </html>
