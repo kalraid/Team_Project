@@ -30,8 +30,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
-
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.medicine_inc.bbs.Changmyoung.KakaoLoginProfile;
 import com.medicine_inc.bbs.Changmyoung.MemberService;
 import com.medicine_inc.bbs.Changmyoung.NaverLoginBO;
 import com.medicine_inc.bbs.domain.Member;
@@ -335,21 +336,33 @@ public class ChangController {
 //	 
 //	            e.printStackTrace();
 //	        }
-	        
 
 		return "redirect:/";
 	}
 	
-	//카카오톡 로그인
-	@RequestMapping(value="kakaologin", method= {RequestMethod.GET,RequestMethod.POST})
-	public String kakaoLogin(HttpSession session) {
-		return "Changmyoung/kakaologin";
+	//카카오톡 로그인 callback
+	@RequestMapping(value ="/kakaologin" , produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
+	public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+
+	  System.out.println("kakao COde:" + code);		
+	  //JsonNode token = KakaoLoginProfile.getAccessToken(code);
+
+	 /* JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
+	  System.out.println(profile);
+	  UserVO vo = KakaoLogin.changeData(profile);
+	  vo.setUser_snsId("k"+vo.getUser_snsId());
+
+	  System.out.println(session);
+	  session.setAttribute("login", vo);
+	  System.out.println(vo.toString());
+*/
+//	  vo = service.kakaoLogin(vo);  
+	  return "redirect:/";
 	}
 	
-	
-	///////// 로그인 처리( 소셜 로그인 까지 )
+	///////// 로그인 처리( 소셜 로그인(네이버, 구글) )
 	@RequestMapping(value = {"/login","/Login"}, method = { RequestMethod.GET, RequestMethod.POST })
-    public String login(Model model, HttpSession session) {
+    public String login(  Model model, HttpSession session) {
 		
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
         String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
@@ -363,6 +376,9 @@ public class ChangController {
 		
 		System.out.println("구글url :" + url);
 		model.addAttribute("google_url", url);
+		
+		//카카오톡 로그인
+	
 
 	return "/Changmyoung/login";
 	}
