@@ -299,6 +299,15 @@ body {
 	
 }
 
+.modal-auth .sns-auth.facebook {
+    background: #416dc2 url(/assets/img/web_v3/icon/sns-facebook.png) no-repeat 15px 50%;
+}
+.modal-auth .sns-auth {
+    display: block;
+    line-height: 42px;
+    color: #fff;
+    text-align: center;
+}
 
 </style>
 </head>
@@ -346,9 +355,13 @@ body {
         <i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a> 
 	</div>
 	<!-- 카카오톡 로그인 버튼 -->
-	<a id="custom-login-btn" href="javascript:loginWithKakao()">
+	<!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
+		<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
+	</a> -->
+	<a id="custom-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=1f4127b3e1da2ccf40156175135aa16f&redirect_uri=http://localhost:8080/medicine_inc/kakaologin&response_type=code ">
 		<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
 	</a>
+	<a href="javascript:loginWithKakao()" >카톡로그아웃</a>
 	
 	
 <!-- 회원가입 폼 -->  
@@ -417,19 +430,6 @@ $(document).ready(function() {
   });
 });
 
-//사용할 앱의 JavaScript 키를 설정해 주세요.
-	Kakao.init('96c2ae36303cf8ea5b4ad872c5b58da1');
-	function loginWithKakao() {
-	  // 로그인 창을 띄웁니다.
-	  Kakao.Auth.login({
-	    success: function(authObj) {
-	      alert(JSON.stringify(authObj));
-	    },
-	    fail: function(err) {
-	      alert(JSON.stringify(err));
-	    }
-  	});
-	}
 </script>
 </body>
 </html>

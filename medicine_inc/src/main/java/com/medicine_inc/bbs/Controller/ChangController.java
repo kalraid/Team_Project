@@ -274,7 +274,7 @@ public class ChangController {
 
         session.setAttribute("isLogin", true);
         session.setAttribute("id", profile.get("id") );
-        session.setAttribute("name",profile.get("name") +"(구글)");
+        session.setAttribute("name",profile.get("name") +"(네이버)");
         
         return "redirect:/";
     }
@@ -299,7 +299,6 @@ public class ChangController {
 	     if (expireTime != null && expireTime < System.currentTimeMillis()) {
 	            accessToken = accessGrant.getRefreshToken();
 	            System.out.printf("accessToken is expired. refresh token = {}", accessToken);
-	 
 	        }
 	        Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
 	        Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
@@ -315,28 +314,7 @@ public class ChangController {
 	        session.setAttribute("isLogin", true);
 	        session.setAttribute("id", profile.getId() );
 	        session.setAttribute("name",profile.getDisplayName() +"(구글)");
-	        
-	        // Access Token 취소
-//	        try {
-//	            System.out.println("Closing Token....");
-//	            String revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=" + accessToken + "";
-//	            URL url = new URL(revokeUrl);
-//	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//	            conn.setRequestMethod("GET");
-//	            conn.setDoOutput(true);
-//	 
-//	            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-//	            String inputLine;
-//	            StringBuffer response = new StringBuffer();
-//	            while ((inputLine = in.readLine()) != null) {
-//	                response.append(inputLine);
-//	            }
-//	            in.close();
-//	        } catch (Exception e) {
-//	 
-//	            e.printStackTrace();
-//	        }
-
+	      
 		return "redirect:/";
 	}
 	
@@ -344,19 +322,17 @@ public class ChangController {
 	@RequestMapping(value ="/kakaologin" , produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
 	public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 
-	  System.out.println("kakao COde:" + code);		
-	  //JsonNode token = KakaoLoginProfile.getAccessToken(code);
-
-	 /* JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
-	  System.out.println(profile);
-	  UserVO vo = KakaoLogin.changeData(profile);
-	  vo.setUser_snsId("k"+vo.getUser_snsId());
-
-	  System.out.println(session);
-	  session.setAttribute("login", vo);
-	  System.out.println(vo.toString());
-*/
-//	  vo = service.kakaoLogin(vo);  
+	  System.out.println("카톡로그인 Code:" + code);		
+	  JsonNode token = KakaoLoginProfile.getAccessToken(code);
+	  System.out.println("카톡로그인 토큰:" + token);
+	  
+	  JsonNode profile = KakaoLoginProfile.getKakaoUserInfo(token.path("access_token").toString());
+	  System.out.println("카톡 rest정보: " + profile);
+	  System.out.println("카톡 이름(닉네임): " + profile.get("properties").get("nickname"));
+	  
+	  session.setAttribute("isLogin", true);
+      session.setAttribute("name", profile.get("properties").get("nickname")+"(카톡)" );
+	  
 	  return "redirect:/";
 	}
 	
@@ -376,8 +352,6 @@ public class ChangController {
 		
 		System.out.println("구글url :" + url);
 		model.addAttribute("google_url", url);
-		
-		//카카오톡 로그인
 	
 
 	return "/Changmyoung/login";

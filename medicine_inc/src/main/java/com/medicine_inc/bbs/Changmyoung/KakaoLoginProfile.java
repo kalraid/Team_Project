@@ -26,7 +26,7 @@ public class KakaoLoginProfile {
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		postParams.add(new BasicNameValuePair("client_id", "1f4127b3e1da2ccf40156175135aa16f")); // REST API KEY
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/medicine_inc/login")); // 리다이렉트 URI
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/medicine_inc/kakaologin")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
 		final HttpClient client = HttpClientBuilder.create().build();
@@ -56,7 +56,40 @@ public class KakaoLoginProfile {
 		}
 
 		return returnNode;
-
 	}
-	
+	public static JsonNode getKakaoUserInfo(String autorize_code) {
+
+		final String RequestUrl = "https://kapi.kakao.com/v1/user/me";
+
+		final HttpClient client = HttpClientBuilder.create().build();
+		final HttpPost post = new HttpPost(RequestUrl);
+
+		// add header
+		post.addHeader("Authorization", "Bearer " + autorize_code);
+
+		JsonNode returnNode = null;
+
+		try {
+			final HttpResponse response = client.execute(post);
+			final int responseCode = response.getStatusLine().getStatusCode();
+
+			System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
+			System.out.println("Response Code : " + responseCode);
+
+			// JSON 형태 반환값 처리
+			ObjectMapper mapper = new ObjectMapper();
+			returnNode = mapper.readTree(response.getEntity().getContent());
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// clear resources
+		}
+		return returnNode;
+	}
+
 }

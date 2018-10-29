@@ -13,8 +13,6 @@
 				<span id="message">안녕하세요 ${ sessionScope.name }님</span>
 			</li>
 			</c:if>
-			<c:if test="${ sessionScope.isNaverLogin }" >
-			</c:if>
 						
 			<li>	
 				<a href='${pageContext.servletContext.contextPath}/
