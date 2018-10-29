@@ -31,7 +31,7 @@
  }
 #photo{
  margin-top:30px;
- margin-left:1400px;
+ margin-left:470px;
  margin-right:30px;
  float:right;
  width:400px;

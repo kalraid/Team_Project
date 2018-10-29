@@ -2,8 +2,122 @@
     pageEncoding="UTF-8"%>
 <script>
  $(function(){
+	 var healthScore = 100;
 	 $("#jindanBtn").click(function(){
-		 alert($("#stroke").val());
+		 if($("#stroke").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#heart").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#hypertension").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#diabetes_mellitus").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#dyslipidemia").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#tuberculosis").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#gita").is(":checked")){
+			 healthScore = healthScore - 20;
+		 }
+		 if($("#stroke1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#heart1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#hypertension1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#diabetes_mellitus1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#dyslipidemia1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#tuberculosis1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#gita1").is(":checked")){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("#stroke2").is(":checked")){
+			 healthScore = healthScore - 10;
+		 }
+		 if($("#heart2").is(":checked")){
+			 healthScore = healthScore - 10;
+		 }
+		 if($("#hypertension2").is(":checked")){
+			 healthScore = healthScore - 10;
+		 }
+		 if($("#diabetes_mellitus2").is(":checked")){
+			 healthScore = healthScore - 10;
+		 }
+		 if($("#gita2").is(":checked")){
+			 healthScore = healthScore - 10;
+		 }
+		 if($("input[type=radio][name=type_B]:checked").val() == "yes"){
+			 healthScore = healthScore - 15;
+		 }
+		 if($("input[type=radio][name=smoke]:checked").val() == "yNoSomke"){
+			 healthScore = healthScore - 10; 
+		 }
+		 if($("input[type=radio][name=smoke]:checked").val() == "yYSomke"){
+			 healthScore = healthScore - 15; 
+		 }
+		 if($("#noSmokeTime").val() != ""){
+			 var nst = $("#noSmokeTime").val();
+			 var nsp = $("#noSmokePiece").val() * 0.00015 * 365;
+			 var noY = nst * nsp
+			 healthScore = healthScore - noY;
+		 }
+		 if($("#SmokeTime").val() != ""){
+			 var nst = $("#SmokeTime").val();
+			 var nsp = $("#SmokePiece").val() * 0.00025 * 365;
+			 var noY = nst * nsp
+			 healthScore = healthScore - noY;
+		 }
+		 if($("input[type=radio][name=drinkCount]:checked").length != 0){
+			 var dc = $("input[type=radio][name=drinkCount]:checked").val();
+			 var dg = $("#drinkGlass").val() * 0.1;
+			 var dcg = dc * dg;
+			 healthScore = healthScore - dcg;
+		 }
+		 if($("input[type=radio][name=hardTraining]:checked").length != 0){
+			 var ht = $("input[type=radio][name=hardTraining]:checked").val();
+			 var httime = $("#hardTrainingTime").val() * 0.1;
+			 var hdt = ht * httime;
+			 healthScore = healthScore + hdt;
+		 }
+		 if($("input[type=radio][name=nomalTraining]:checked").length != 0){
+			 var ht = $("input[type=radio][name=nomalTraining]:checked").val();
+			 var httime = $("#nomalTrainingTime").val() * 0.05;
+			 var hdt = ht * httime;
+			 healthScore = healthScore + hdt;
+		 }
+		 if($("input[type=radio][name=training]:checked").length != 0){
+			 var training = $("input[type=radio][name=training]:checked").val() * 1;
+			 healthScore = healthScore + training;
+		 }
+		 if(Math.round(healthScore) < 20){
+			 alert(Math.round(healthScore)+"점\n당신은 목숨은 바람 앞의 등불 혹은 파리채 앞의 파리정도 입니다\n지금 당장 유서를 준비하시고 보험에 가입하세요");
+		 }else if(Math.round(healthScore) >= 20 && Math.round(healthScore) < 30  ){
+			 alert(Math.round(healthScore)+"점\n당신은 걸어다니는 시체입니다.\n지금 당장 병원에 가시거나 교회 및 성당에 가서 정화되세요");
+		 }else if(Math.round(healthScore) >= 30 && Math.round(healthScore) < 50){
+			 alert(Math.round(healthScore)+"점\n당신의 건강은 좋은 쪽, 나쁜 쪽 둘 중 하나를 고르라면 나쁜편에 속합니다\n생활 습관을 고치면 충분히 좋아질 전망입니다");
+		 }else if(Math.round(healthScore) >=50 && Math.round(healthScore)< 70){
+			 alert(Math.round(healthScore)+"점\n당신의 건강은 뭐~ 그럭저럭입니다\n지금처럼만 살더라도 크게 영향이 가지는 않을 듯? 합니다");
+		 }else if(Math.round(healthScore) >= 70 && Math.round(healthScore) < 90){
+			 alert(Math.round(healthScore)+"점\n당신은 아주 건강합니다\n생활습관을 조금 고치면은 앞으로도 건강하게 살 수 있을 겁니다");
+		 }else if(Math.round(healthScore) >= 90){
+			 alert(Math.round(healthScore)+"점\n당신은 건강 그 자체입니다\n당신의 건강만큼의 지능과 어느 정도의 운이 있다면 아마 살아가는데 큰 어려움 없이 지낼 수 있을겁니다");
+		 }
+		 location.reload();
 	 });
  });
 </script>
@@ -77,9 +191,9 @@
   </tr>
   <tr>
    <td colspan="2">
-    <label><input type="radio" id="tyep_B" name="tyep_B" value="yes">예</label>
-    <label><input type="radio" id="tyep_B" name="tyep_B" value="no">아니오</label>
-    <label><input type="radio" id="tyep_B" name="tyep_B" value="idk">모름</label>
+    <label><input type="radio" id="type_B" name="type_B" value="yes">예</label>
+    <label><input type="radio" id="type_B" name="type_B" value="no">아니오</label>
+    <label><input type="radio" id="type_B" name="type_B" value="idk">모름</label>
    </td>
   </tr>
   <tr>
@@ -109,7 +223,7 @@
     금연 전까지 담배를 몇년이나 피우셨습니까?
    </td>
    <td>
-    *숫자로 입력해 주세요<input type="text" id="noSmokeTime">년
+    *숫자로 입력해 주세요<input type="number" id="noSmokeTime">년
    </td>
   </tr>
   <tr>
@@ -117,7 +231,7 @@
     금연하시기 전 평균 하루 흡연량은 몇 개비였습니까?
    </td>
    <td>
-    *숫자로 입력해 주세요<input type="text" id="noSmokePiece.">개비
+    *숫자로 입력해 주세요<input type="number" id="noSmokePiece">개비
    </td>
   </tr>
   <tr>
@@ -130,7 +244,7 @@
     몇 년째 담배를 피우고 계십니까?
    </td>
    <td>
-    *숫자로 입력해 주세요<input type="text" id="SmokeTime">년
+    *숫자로 입력해 주세요<input type="number" id="SmokeTime">년
    </td>
   </tr>
   <tr>
@@ -138,12 +252,17 @@
     평균 하루 흡연량은 몇개비입니까?
    </td>
    <td>
-    *숫자로 입력해 주세요<input type="text" id="SmokePiece.">개비
+    *숫자로 입력해 주세요<input type="number" id="SmokePiece">개비
    </td>
   </tr>
   <tr>
    <td colspan="2">
     음주관련 문항
+   </td>
+  </tr>
+  <tr>
+   <td colspan="2">
+    1주에 평균 며칠이나 술을 마십니까?
    </td>
   </tr>
   <tr>
@@ -165,7 +284,7 @@
   </tr>
   <tr>
    <td colspan="2">
-    *숫자로 입력해 주세요<input type="text" id="drinkGlass">병
+    *숫자로 입력해 주세요<input type="number" id="drinkGlass">병
    </td>
   </tr>
   <tr>
@@ -197,7 +316,7 @@
   </tr>
   <tr>
    <td colspan="2">
-    *숫자로 입력해 주세요<input type="text" id="hardTrainingTime">분
+    *숫자로 입력해 주세요<input type="number" id="hardTrainingTime">분
    </td>
   </tr>
   <tr>
@@ -224,7 +343,7 @@
   </tr>
   <tr>
    <td colspan="2">
-    *숫자로 입력해 주세요<input type="text" id="nomalTrainingTime">분
+    *숫자로 입력해 주세요<input type="number" id="nomalTrainingTime">분
    </td>
   </tr>
   <tr>
