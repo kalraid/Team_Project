@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+
+
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <style type="text/css">
 * { font-size: 15px; }
