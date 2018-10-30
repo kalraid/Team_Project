@@ -50,7 +50,7 @@
 			<li id="HealthScreenings">건강 검진
 				<ul class="submenu">
 					<li><a href="healthScreening">모의 건강 검진</a></li>
-					<li><a href="news">의료 뉴스</a></li>
+					<li><a href="medicalNews">의료 뉴스</a></li>
 					<li class="no_line"><a href="depressed">우울증 통계</a></li>		
 				</ul>
 			</li>

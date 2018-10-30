@@ -1,6 +1,7 @@
 package com.medicine_inc.bbs.Controller;
 
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.medicine_inc.bbs.domain.Medi;
 import com.medicine_inc.bbs.juhwa.MediService;
+import com.medicine_inc.bbs.juhwa.Crawl;
 
 @Controller
 public class JuController {
@@ -24,7 +26,11 @@ public class JuController {
 	public void setMediService(MediService mediService) {
 		this.mediService = mediService;
 	}
-	
+	@Autowired
+	private Crawl crawl;
+	public void setCrawl(Crawl crawl) {
+		this.crawl = crawl;
+	}
 	
 	@RequestMapping(value = {"/mediList","/list"})
 	public String medi(Model model, 
@@ -98,5 +104,26 @@ public class JuController {
 		
 		return "/Juhwa/mediDetail";
 
+	}
+	@RequestMapping(value= {"/medicalNews"}) 
+	public String crawl(Model model) {
+		System.out.println("crawl 실행한다");
+		
+		Map<String, Object> map1 = new HashMap();
+		
+		try {
+		
+			map1 = crawl.crawlmethod();
+			
+		} catch (Exception e) {
+	
+			e.printStackTrace();
+			System.out.println(e);
+		}
+		
+		
+		model.addAllAttributes(map1);
+		
+		return "/Juhwa/medicalNews";
 	}
 }
