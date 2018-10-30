@@ -62,12 +62,7 @@ public class ChangController {
    	private OAuth2Parameters googleOAuth2Parameters;
    	private OAuth2Operations oauthOperations;
 	
-	@RequestMapping(value= 
-		{"/depressed","/Depressed"})
-	public String depressed(Model model){
 	
-		return "/Changmyoung/depressed";
-	}
 	
 	////////////  회원 MEMBER
 	

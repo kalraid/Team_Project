@@ -132,6 +132,57 @@ io.sockets.on('connection', function(socket){
 		io.sockets.in(room.roomname).emit('room',outputAfter);
 		
 	});
+	
+	
+	socket.on('pyStart', function(output){
+		var ps = require('python-shell');
+		console.log(process.cwd());
+		var path = require('path');
+		/** 현재 실행한 파일의 이름과 Path*/
+		console.log('finaname : ' + __filename);
+		 
+		/** 현재 실행한 파일의 Path */
+		console.log('dirname : ' + __dirname);
+		if(output.select == 'city'){
+			var options = {
+
+					  mode: 'text',
+
+					  pythonPath: '',
+
+					  pythonOptions: ['-u'],
+
+					  scriptPath: '/',
+
+					  args: [output.city]
+
+					};
+		}else if(output.select == 'ill'){
+			var options = {
+
+					  mode: 'text',
+
+					  pythonPath: '',
+
+					  pythonOptions: ['-u'],
+
+					  scriptPath: '/',
+
+					  args: [output.ill]
+
+					};
+		};
+		
+		ps.PythonShell.run('illPy.py',options, function(err,results){
+			if(err) throw err;
+			console.log('results : %j', results);
+			
+			
+			io.sockets.emit('pyEnd',results);
+		});
+		
+		
+	});
 });
 
 function createRoom(room, socket){
@@ -215,4 +266,8 @@ function getTimeStamp() {
 	var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 	var CurrentDateTime = date+' '+time;
 	return CurrentDateTime;
+}
+
+function pyStart(){
+	
 }

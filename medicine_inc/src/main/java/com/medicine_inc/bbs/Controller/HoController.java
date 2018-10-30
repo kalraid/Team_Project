@@ -107,5 +107,11 @@ public class HoController {
 		return "/Chanho/cheeting";
 	}
 
+	@RequestMapping(value= 
+		{"/depressed","/Depressed"})
+	public String depressed(Model model){
+	
+		return "/Changmyoung/depressed";
+	}
 	
 }
