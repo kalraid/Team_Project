@@ -1,6 +1,7 @@
 package com.medicine_inc.bbs.domain;
 
 public class Hospital {
+	private int no;
 	private int clcd;
 	private String clcdname;
 	private String sguname;
@@ -11,13 +12,14 @@ public class Hospital {
 	private String name;
 	private String addr;
 	private String hosurl;
-	private int post;
+	private int post; //우편번호
 	
 	public Hospital() {}
 
-	public Hospital(int clcd, String clcdname, String sguname, String sidoname, String tel, String xpos, String ypos,
+	public Hospital(int no, int clcd, String clcdname, String sguname, String sidoname, String tel, String xpos, String ypos,
 			String name, String addr, String hosurl, int post) {
 		super();
+		this.no = no;
 		this.clcd = clcd;
 		this.clcdname = clcdname;
 		this.sguname = sguname;
@@ -29,6 +31,14 @@ public class Hospital {
 		this.addr = addr;
 		this.hosurl = hosurl;
 		this.post = post;
+	}
+	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	public int getClcd() {
@@ -121,10 +131,9 @@ public class Hospital {
 
 	@Override
 	public String toString() {
-		return "Hospital [clcd=" + clcd + ", clcdname=" + clcdname + ", sguname=" + sguname + ", sidoname=" + sidoname
-				+ ", tel=" + tel + ", xpos=" + xpos + ", ypos=" + ypos + ", name=" + name + ", addr=" + addr
-				+ ", hosurl=" + hosurl + ", post=" + post + "]";
+		return "Hospital [no=" + no + ", clcd=" + clcd + ", clcdname=" + clcdname + ", sguname=" + sguname
+				+ ", sidoname=" + sidoname + ", tel=" + tel + ", xpos=" + xpos + ", ypos=" + ypos + ", name=" + name
+				+ ", addr=" + addr + ", hosurl=" + hosurl + ", post=" + post + "]";
 	}
-	
-	
+
 }

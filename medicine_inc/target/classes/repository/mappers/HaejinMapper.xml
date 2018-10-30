@@ -5,11 +5,56 @@
 <mapper namespace="com.medicine_inc.bbs.mapper.HaejinMapper">
 
 	<select id="radiansList" resultType="Pharmacy" resultMap="pharmacyResultMap" parameterType="hashmap">
-		SELECT *,(6371*acos(cos(radians(37.535744))*cos(radians(ypos))*cos(radians(xpos)
-		-radians(127.082496))+sin(radians(37.535744))*sin(radians(ypos))))
+		SELECT *,(6371*acos(cos(radians(#{xpos}))*cos(radians(ypos))*cos(radians(xpos)
+		-radians(#{ypos}))+sin(radians(#{xpos}))*sin(radians(ypos))))
 		AS distance FROM pharmacy
-		HAVING distance <![CDATA[<=]]> 0.3 ORDER BY distance LIMIT 0,10
+		HAVING distance <![CDATA[<=]]> 0.5 ORDER BY distance LIMIT 0,10
 	</select>
+	
+	<select id="radiansListHospital" resultType="Hospital" resultMap="hospitalResultMap" parameterType="hashmap">
+		SELECT *,(6371*acos(cos(radians(#{xpos}))*cos(radians(ypos))*cos(radians(xpos)
+		-radians(#{ypos}))+sin(radians(#{xpos}))*sin(radians(ypos))))
+		AS distance FROM hospital
+		HAVING distance <![CDATA[<=]]> 0.5 ORDER BY distance LIMIT 0,20
+	</select>
+	
+	<select id="getPharmacy" resultType="Pharmacy" resultMap="pharmacyResultMap">
+		SELECT * FROM pharmacy WHERE no = #{no} 
+	</select>
+	<select id="getHospital" resultType="Hospital" resultMap="hospitalResultMap">
+		SELECT * FROM hospital WHERE no = #{no} 
+	</select>
+	
+	<insert id="insertGreply" parameterType="GuestReply" useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO greply(bno, btype, pass, content, date) 
+			 VALUES(#{bno}, #{btype}, #{pass}, #{content}, SYSDATE())
+	</insert>
+	
+	<select id="greplyList" resultType="GuestReply" resultMap="guestReplyMap" parameterType="hashmap">
+		SELECT * FROM greply  WHERE bno = #{bno} AND btype = #{btype} ORDER BY no DESC
+	</select>
+	
+	<select id="greplyPassCheck" resultType="Integer">
+		SELECT pass FROM greply WHERE no = #{no}
+	</select>
+	
+	<delete id="deletegReply">
+		DELETE FROM greply WHERE no = #{no}
+	</delete>
+	
+	<update id="reUpdate" parameterType="GuestReply">
+		UPDATE greply SET content = #{content}, date = SYSDATE() WHERE no = #{no}
+	</update>
+	
+	<select id="pSearchList" parameterType="hashmap" resultType="Pharmacy" resultMap="pharmacyResultMap">
+		SELECT * from pharmacy WHERE sidoname = #{sidoname} and name LIKE CONCAT('%', #{name}, '%')  
+			ORDER BY no desc LIMIT #{startRow}, #{num}
+	</select>
+	
+	<select id="pgetListCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) from pharmacy WHERE sidoname = #{sidoname} and name LIKE CONCAT('%', #{name}, '%')
+	</select>
+	
 	
 	<resultMap id="pharmacyResultMap" type="Pharmacy">
 		<id property="no" column="no" />
@@ -25,7 +70,31 @@
 		<result property="ypos" column="ypos" />
 	</resultMap>
 
-
+	<resultMap id="hospitalResultMap" type="Hospital">
+		<id property="no" column="no" />
+		<result property="clcd" column="clcd" />
+		<result property="clcdname" column="clcdname" />
+		<result property="sguname" column="sgguCdNm" />
+		<result property="sidoname" column="sidoCdNm" />
+		<result property="tel" column="telno" />
+		<result property="xpos" column="xpos" />
+		<result property="ypos" column="ypos" />
+		<result property="name" column="name" />
+		<result property="hosurl" column="hospurl" />
+		<result property="addr" column="addr" />
+		<result property="post" column="postNo" />
+	</resultMap>
+	
+	<resultMap id="guestReplyMap" type="GuestReply">
+		<id property="no" column="no" />
+		<result property="bno" column="bno" />
+		<result property="btype" column="btype" />
+		<result property="pass" column="pass" />
+		<result property="content" column="content" />
+		<result property="date" column="date" />
+	</resultMap>
+	
+	
 
 
 

@@ -1,0 +1,73 @@
+/* #map{width:900px; height:800px; border: 1px solid black; margin: 15px auto;} */
+#detailDiv {width:900px; border:1px solid black; margin:5px auto;}
+#replyDiv{width:900px; border:1px solid black; margin:5px auto;}
+.w3-ul li:last-child{border-bottom:none;}
+.w3-ul li{list-style-type:none;margin:7px;border-bottom:1px solid green; font-size:17px;}
+#table1{width:100%;}
+#grTable {
+	width: 100%;
+	/* margin: 0px;
+	padding: 0px; */
+	font-size: 12px;
+	border-collapse: collapse;
+	border: 1px solid #EAEAEA;
+}
+
+#grTable tr:not(:last-child){ border-bottom:1px solid black;}
+
+.grModify {
+	float: right;
+	width: 99%;
+	height: 30px;
+	line-height: 30px;
+	padding-right: 10px;
+	text-align: right;
+	background: #EFEFEF;
+}
+.grContent {
+	width: 100%;
+	clear: both;
+	line-height: 20px;	
+	padding: 5px 10px 5px 10px;	
+	/* line-height: 30px; */
+}
+#grForm {
+	width: 800px;
+	margin: 0 auto;
+	display: none;
+}
+#grWriteTable {
+	width: 100%;
+	height: 26px;
+	line-height: 26px;
+	border: 0px;
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+}
+#grWriteTitle {
+	background: #F7F7F7;
+	padding: 3px;	
+	text-align: center;
+}
+#grWriteContent {
+	width: 100%;
+	height: 100%;
+}
+#grWritePass {
+	width: 100%;
+	height: 100%;
+}
+#grContent {	
+	width: 100%;	
+	padding: 0px;
+	word-break: break-all;
+}
+#grWriteButton {
+	width: 70px;
+	height: 40px;
+	border: 0px;
+	float:right;
+}
+#grnotReply {
+	padding: 10px;
+}
