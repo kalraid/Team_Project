@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.medicine_inc.bbs.mapper.AeheeMapper" >
+
+	
+	<select id="getBoard" resultType="HealthSupport" resultMap="boardResultMap">
+		SELECT 
+			no,
+			name,
+			consumer_price AS consumerPrice,
+			selling_price AS sellingPrice,
+			capacity,
+			shape,  
+			image,
+			big_image AS bigImage,
+			cate_code AS cateCode,
+			explanation
+		FROM p_table3 
+		WHERE no = #{no}
+	</select>
+	
+	
+	<insert id="insertBoard" parameterType="HealthSupport"
+		useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO p_table3(name, consumer_price, selling_price, 
+				capacity, shape, image, big_image, cate_code, explanation)
+				
+			VALUES(#{name}, #{consumerPrice}, #{sellingPrice}, #{capacity}, #{shape}, #{image}, #{bigImage}, #{cateCode}, #{explanation})
+	</insert>
+	
+	
+	<select id="isPassCheck" resultType="String">
+		SELECT 
+			pass
+		FROM p_table3
+		WHERE no = #{no}
+	</select>
+	
+	<select id="boardList" parameterType="hashmap" resultType="HealthSupport">
+		SELECT
+			no,
+			name,
+			consumer_price AS consumerPrice,
+			selling_price AS sellingPrice,
+			capacity,
+			shape,  
+			image,
+			big_image AS bigImage,
+			cate_code AS cateCode,
+			explanation
+		FROM p_table3
+		
+		<where>
+			<if test="cateCode != 0">
+				 cate_code = #{cateCode}
+			</if>	
+		</where>
+		ORDER BY 	no DESC
+		LIMIT #{startRow}, #{num} 
+	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		SELECT
+			COUNT(no)
+		FROM p_table3		
+		
+		<where>
+			<if test="cateCode != 0">
+				 cate_code = #{cateCode}
+			</if>			
+		</where>				
+	</select>
+	
+	
+	<select id="cateCodeCountMap" resultType="hashmap">
+		SELECT cate_code AS cateCode, COUNT(cate_code) AS count 
+		FROM p_table3
+		GROUP BY cate_code
+		ORDER BY cateCode;
+	</select>
+	
+	
+	
+	<update id="updateBoard" parameterType="HealthSupport">
+		UPDATE p_table3 SET title=#{title}, content=#{content}, reg_date=SYSDATE()			
+		WHERE no=#{no}
+	</update>
+	
+	
+	<delete id="deleteBoard">
+		DELETE FROM p_table3
+		WHERE no = #{no}
+	</delete>
+	
+	
+	<resultMap id="boardResultMap" type="HealthSupport">
+		<id property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="writer" column="writer" />
+		<result property="content" column="content" />
+		<result property="regDate" column="reg_date" />
+		<result property="regCount" column="reg_count" />
+		<result property="pass" column="pass" />
+		<result property="file1" column="file1" />
+	</resultMap>
+
+</mapper>
