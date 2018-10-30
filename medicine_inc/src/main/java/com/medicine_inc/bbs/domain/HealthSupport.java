@@ -13,10 +13,12 @@ public class HealthSupport {
 	private String bigImage;		
 	private int cateCode;
 	private String explanation;
+	private String pass;
 	
 	public HealthSupport() { }
 	public HealthSupport(int no, String name, int consumerPrice, int sellingPrice,
-			String capacity, String shape, String image, String bigImage, int cateCode, String explanation) {
+			String capacity, String shape, String image, String bigImage, int cateCode, String explanation,
+			String pass) {
 		this.no = no;
 		this.name = name;
 		this.consumerPrice = consumerPrice;
@@ -27,11 +29,19 @@ public class HealthSupport {
 		this.bigImage = bigImage;
 		this.cateCode = cateCode;
 		this.explanation = explanation;
+		this.pass = pass;
 		
 	}
 	
 	
 	
+	
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		pass = pass;
+	}
 	public String getExplanation() {
 		return explanation;
 	}
@@ -92,6 +102,7 @@ public class HealthSupport {
 	public void setCateCode(int cateCode) {
 		this.cateCode = cateCode;
 	}
+	
 	
 	
 }

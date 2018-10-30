@@ -3,18 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <article>
-<form name="updateForm" id="updateForm" action="update"
-	method="post">
-	<input type="hidden" name="no" value="${ board.no }" />
+<form name="updateForm" id="updateForm" action="update" method="post">
+	<%-- <input type="hidden" name="no" value="${ board.no }" />
 	<input type="hidden" name="pageNum" value="${ pageNum }" />
-	
-	<c:if test="${ searchOption }">
+	 --%>
+	<%-- <c:if test="${ searchOption }">
 		<input type="hidden" name="type" value=${ type }" />
 		<input type="hidden" name="keyword" value=${ keyword }" />
-	</c:if>
+	</c:if> --%>
 	
 	
-<table class="readTable">
+<%-- <table class="readTable">
 	<tr>
 		<td colspan="4" class="boardTitle">
 			<!-- 
@@ -26,35 +25,38 @@
 		</td>
 	</tr>
 	<tr><td colspan="4">&nbsp;</td></tr>
+	
 	<tr>
-		<th class="readTh">글쓴이</th>
-		<td class="readTd">
-			<input type="text" name="writer" id="writer" size="30" 
-				maxlength="10" value="${ board.writer }" readonly/>
-		</td>
-		<th class="readTh">비밀번호</th>
-		<td class="readTd">
-			<input type="password" name="pass" id="pass" size="30" 
-				maxlength="10" />
-		</td>
+		<th>제품 명</th>
+		<td><input type="text" name="name" id="name" size="50" maxlength="50" value="${ board.name }"/></td>				
 	</tr>
 	<tr>
-		<th class="readTh">제&nbsp;&nbsp;목</th>
-		<td class="readTd" colspan="3">
-			<input type="text" name="title" id="title" size="50" 
-				maxlength="50" value="${ board.title }"/>
+		<th class="readTh">정가</th><td class="readTd" colspan="3">
+			<textarea name="consumerPrice" id="consumerPrice" rows="20" 
+				cols="72">${ board.consumerPrice } </textarea>
 		</td>				
-	</tr>
-	<tr>
-		<th class="readTh">내&nbsp;&nbsp;용</th>
-		<td class="readTd" colspan="3">
-			<textarea name="content" id="content" rows="20" 
-				cols="72">${ board.content } </textarea>
-		</td>				
-	</tr>
+	</tr> --%>
+	<!--  ---------------------------------------------------------------------------->
+	 <ul>
+<li><font size="6" face="Arial" style="bold">${board.name }</font></li>
+<li><font size="3" face="Arial" style="bold">${board.explanation }</font></li>
+ </ul>
+ 
+ <a href ="HealthSupport_detail?no=${i.no}"><img alt="${board.bigImage}" src="resources/images/Aehee/${board.bigImage }">
+ 
+ <table>
+ 	<ul>
+ 	<li><font size="4" face="Arial" style="bold">정가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<del>${board.consumerPrice }&nbsp;원</del></font></li><br/>
+ 	<li><font size="4" face="Arial" style="bold">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.sellingPrice }&nbsp;원</font></li><br/>
+ 	<li><font size="4" face="Arial" style="bold">용량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.capacity }</font></li><br/>
+ 	<li><font size="4" face="Arial" style="bold">형태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.shape }</font></li>
+ 
+ 	
+ 	</ul>
+ </table>
 	<tr>
 			<td colspan="4">&nbsp;</td></tr>
-	<tr>
+	
 	<tr>		
 		<td class="tdSpan" colspan="4">
 			<input type="reset" value="다시쓰기" />

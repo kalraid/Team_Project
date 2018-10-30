@@ -156,8 +156,8 @@ private final static String DEFAULT_PATH = "/resources/images/";
 		
 	
 	
-	//updateForm으로부터 요청을 받아 게시글 수정을 처리하는 메서드
-	@RequestMapping(value="HealthSupport_writeForm", method=RequestMethod.POST)
+	//detail로부터 폼으로 가는 메서드
+	@RequestMapping(value="HealthSupport_writeForm", method=RequestMethod.GET)
 	public String updateBoard(HttpServletResponse response, 
 			PrintWriter out, HealthSupport healthSupport,
 			RedirectAttributes reAttrs, 
@@ -185,8 +185,46 @@ private final static String DEFAULT_PATH = "/resources/images/";
 		
 		reAttrs.addAttribute("pageNum", pageNum);		
 		//reAttrs.addFlashAttribute("test", "1회용 파라미터 받음 - test");
-		return "redirect:HealthSupport";
+		return "redirect:HealthSupport_writeForm";
 	}
+	
+	@RequestMapping(value="HealthSupport_updateForm", method=RequestMethod.POST)
+	public String updateBoard(Model model, HttpServletResponse response,
+	PrintWriter out, HealthSupport healthSupport, int no) {
+	// BoardService 클래스를 이용해 게시판 테이블에서 비밀번호가 맞는지 체크한다.
+	boolean result = HealthSupportService.isPassCheck(healthSupport.getNo(), healthSupport.getPass());
+	// 비밀번호가 맞지 않으면
+	if(! result) {
+	/* 컨트롤러에서 null을 반환하거나 메서드의 반환 타입이 void일 경우
+	* Writer나 OutputStream을 이용해 응답 결과를 직접 작성할 수 있다.
+	* DispatcherServlet을 경유해 리소스 자원에 접근하는 경우에
+	* 자바스크립트의 history.back()은 약간의 문제를 일으킬 수 있다.
+	* history 객체를 이용하는 경우 서버로 요청을 보내는 것이 아니라
+	* 브라우저의 접속 이력에서 이전 페이지로 이동되기 때문에 발생한다.
+	**/
+	response.setContentType("text/html; charset=utf-8");
+	out.println("<script>");
+	out.println("alert('비밀번호가 맞지 않습니다.');");
+	out.println("history.back();");
+	out.println("</script>");
+	return null;
+	}
+	/* Service 클래스를 이용해 게시 글 수정 폼에 출력할
+	* no에 해당하는 게시 글을 가져온다.
+	**/
+	healthSupport = healthSupportService.getBoard(no);
+	/* 파라미터로 받은 모델 객체에 뷰로 보낼 모델을 저장한다.
+	* 모델에는 도메인 객체나 비즈니스 로직을 처리한 결과를 저장한다.
+	**/
+	model.addAttribute("healthSupport", healthSupport);
+	/* servlet-context.xml에 설정한 ViewResolver에서 prefix와 suffix에
+	* 지정한 정보를 제외한 뷰 이름을 문자열로 반환하면 된다.
+	*
+	* 아래와 같이 뷰 이름을 반환하면 포워드 되어 제어가 뷰 페이지로 이동한다.
+	**/
+	return "HealthSupport_updateForm";
+	}
+	
 	
 	
 	

@@ -27,4 +27,8 @@ public interface HealthSupportService {
 	public abstract void deleteBoard(int no);
 	
 	public abstract Map<String, Object> boardList(int pageNum, int cateCode);
+	public static boolean isPassCheck(int no, String pass) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

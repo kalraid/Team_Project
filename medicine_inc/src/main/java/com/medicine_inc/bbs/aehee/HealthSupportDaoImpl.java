@@ -76,7 +76,7 @@ public class HealthSupportDaoImpl implements HealthSupportDao {
 	@Override
 	public HealthSupport getBoard(int no) {
 		return sqlSession.selectOne(NAME_SPACE + ".getBoard", no);
-	};
+	}
 	
 	
 	@Override

@@ -34,7 +34,7 @@ tr {
 </style>
 <article>
 
-	<table>
+	<table class="listTable table table-bordered table-hover">
 		<tr>
 			<td colspan="5" class="tdSpan">
 				<a href="boardList?cateCode=1001">멀티비타민(${ codeMap.get('1001') })</a>&nbsp;&nbsp;&nbsp;
@@ -49,7 +49,7 @@ tr {
 		</tr>
 	</table>
 
-	<table>
+	<table class="listTable table table-bordered table-hover">
 		<!-- -------------------------------------------------------------------------------- -->
 			<c:if test="${ not empty boardList }">
 				<c:forEach var="i" items="${ boardList }" varStatus="status">

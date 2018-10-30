@@ -30,7 +30,10 @@ public abstract List<HealthSupport> boardList(int startRow, int num, int cateCod
 	 * - 게시 글의 비밀번호가 맞으면 : true를 반환
 	 * - 게시 글의 비밀번호가 맞지 않으면 : false를 반환
 	 **/
-	public boolean isPassCheck(int no, String pass);
+	public static boolean isPassCheck(int no, String pass) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	/* 게시 글 수정 요청 시 호출되는 메서드
 	 * 게시 글 수정 요청 시 수정된 내용을 Board 객체로 받아 DB에 수정하는 메서드 

@@ -15,7 +15,7 @@
 			capacity,
 			shape,  
 			image,
-			big_image AS bigImage,
+			big_image AS bigimage,
 			cate_code AS cateCode,
 			explanation
 		FROM p_table3 
@@ -28,7 +28,7 @@
 		INSERT INTO p_table3(name, consumer_price, selling_price, 
 				capacity, shape, image, big_image, cate_code, explanation)
 				
-			VALUES(#{name}, #{consumerPrice}, #{sellingPrice}, #{capacity}, #{shape}, #{image}, #{bigImage}, #{cateCode}, #{explanation})
+			VALUES(#{name}, #{consumerPrice}, #{sellingPrice}, #{capacity}, #{shape}, #{image}, #{big_image}, #{cateCode}, #{explanation})
 	</insert>
 	
 	
@@ -48,7 +48,7 @@
 			capacity,
 			shape,  
 			image,
-			big_image AS bigImage,
+			big_image AS bigimage,
 			cate_code AS cateCode,
 			explanation
 		FROM p_table3
@@ -85,7 +85,8 @@
 	
 	
 	<update id="updateBoard" parameterType="HealthSupport">
-		UPDATE p_table3 SET title=#{title}, content=#{content}, reg_date=SYSDATE()			
+		UPDATE p_table3 SET name=#{name}, consumerPrice=#{consumer_price}, sellingPrice=#{selling_price},
+		, capacity=#{capacity}, shape=#{shape}, image=#{image}, big_image=#{big_image}, cateCode=#{cate_code}, explanation=#{explanation}
 		WHERE no=#{no}
 	</update>
 	
@@ -98,13 +99,15 @@
 	
 	<resultMap id="boardResultMap" type="HealthSupport">
 		<id property="no" column="no" />
-		<result property="title" column="title" />
-		<result property="writer" column="writer" />
-		<result property="content" column="content" />
-		<result property="regDate" column="reg_date" />
-		<result property="regCount" column="reg_count" />
-		<result property="pass" column="pass" />
-		<result property="file1" column="file1" />
+		<result property="name" column="name" />
+		<result property="consumerPrice" column="consumer_price" />
+		<result property="sellingPrice" column="selling_price" />
+		<result property="capacity" column="capacity" />
+		<result property="shape" column="shape" />
+		<result property="image" column="image" />
+		<result property="bigimage" column="big_image" />
+		<result property="cateCode" column="cate_code" />
+		<result property="explanation" column="explanation" />
 	</resultMap>
 
 </mapper>

@@ -93,4 +93,8 @@ public class HealthSupportServiceImpl implements HealthSupportService {
 		
 		return modelMap;
 	}
+	
+	public boolean isPassCheck(int no, String pass) {
+		return HealthSupportDao.isPassCheck(no, pass);
+	}
 }
