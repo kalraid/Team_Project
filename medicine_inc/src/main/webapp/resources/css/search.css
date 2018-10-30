@@ -94,23 +94,35 @@
 	font-weight: bold;
 	text-align : center;
 }
-
-#detailbtn{
-	margin : 50px 50px auto;
-	text-align : center;
+/* mediIntro css  */
+.detailbtn{
+	text-align:center;
 	
-	
-}
-.detailbtn {
-	height : 300px;
+} 
+.detailbtn1{
 	width : 300px;
-	margin : 25px 10px 10px 10px;
-	background-color: #db96e4;
-	font-size: 14px;
-	font-family:fantasy;
+	height : 300px;
+	margin : 50px auto;
+	background-color: #fa89f7;
+	color: white;
+	font-weight: 900;
+	font-size: 15px;
+	text-shadow: 6px 2px 2px #ff80c0;
 	
 }
-.detailbtn:hover {
-	background-color : #f5a3ad;
-	font-size : 25px;
+.detailbtn1:hover {
+	background-color : #ff9999;
+	font-size: 30px;
+	text-shadow: 6px 2px 2px #ef5669; 
+	color: white;
+}
+
+.detail-img:hover{
+	width : 100px;
+	height: 100px;
+}
+
+#title2:first-of-type {
+	font-size : 11px;
+	font-weight :normal;
 }
