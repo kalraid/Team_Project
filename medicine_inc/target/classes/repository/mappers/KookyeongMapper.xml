@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.medicine_inc.bbs.mapper.KookyeongMapper">
+	<select id="boardList" resultType="JiwonBoard"
+		resultMap="boardResultMap">
+		SELECT
+		*
+		FROM jiwonboard
+		ORDER BY bno DESC
+	</select>
+
+	<select id="getBoard" resultType="JiwonBoard" resultMap="boardResultMap">
+		SELECT
+		*
+		FROM
+		jiwonboard
+		WHERE bno = #{bno}
+	</select>
+	<resultMap id="boardResultMap" type="JiwonBoard">
+		<id property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="writer" column="writer" />
+		<result property="content" column="content" />
+		<result property="regDate" column="reg_date" />
+		<result property="regCount" column="reg_count" />
+		<result property="pass" column="pass" />
+		<result property="file1" column="file1" />
+	</resultMap>
+	<insert id="insertBoard" parameterType="JiwonBoard"
+		useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO jiwonboard(title,
+		writer, content,
+		reg_date, read_count, pass)
+		VALUES(#{title}, #{writer},
+		#{content},
+		SYSDATE(), #{viewcnt}, #{pass})
+	</insert>
+	<select id="isPassCheck" resultType="String">
+		SELECT
+		pass
+		FROM jiwonboard
+		WHERE bno = #{bno}
+	</select>
+	<update id="updateBoard" parameterType="JiwonBoard">
+UPDATE jiwonboard
+SET title = #{title}, content = #{content},
+reg_date = SYSDATE()
+WHERE bno = #{bno}
+</update>
+<delete id="deleteBoard">
+DELETE FROM jiwonboard
+WHERE bno = #{bno}
+</delete>
+<!-- <select id="boardList" parameterType="hashmap" resultType="Board">
+SELECT
+no,
+title,
+writer,
+content,
+regdate ,
+viewcnt ,
+pass,
+file1
+FROM jiwonboard
+ORDER BY no DESC 
+LIMIT #{startRow}, #{num}
+</select>
+
+<select id="getBoardCount" resultType="int">
+SELECT
+COUNT(bno)
+FROM jiwonboard
+</select>
+ -->
+
+
+</mapper>
+
