@@ -77,8 +77,9 @@ private final static String DEFAULT_PATH = "/resources/images/";
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("searchOption", searchOption);
 		
-		if(searchOption) {
-			
+		System.out.println("boardDatail : " + healthSupport.getConsumerPrice()   + ",  " + healthSupport.getSellingPrice());
+		
+		if(searchOption) {			
 			model.addAttribute("keyword", URLEncoder.encode(keyword, "utf-8"));
 			model.addAttribute("type", type);
 			model.addAttribute("word", keyword);

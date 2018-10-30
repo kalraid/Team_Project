@@ -90,7 +90,8 @@ public class HealthSupportServiceImpl implements HealthSupportService {
 		modelMap.put("listCount", listCount);
 		modelMap.put("PAGE_GROUP", PAGE_GROUP);			
 		modelMap.put("codeMap", codeMap);
-		
+		modelMap.put("cateCode", cateCode);
+		System.out.println("cateCode : " + cateCode);
 		return modelMap;
 	}
 	

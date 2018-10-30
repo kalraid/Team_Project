@@ -29,8 +29,7 @@ public class HealthSupport {
 		this.bigImage = bigImage;
 		this.cateCode = cateCode;
 		this.explanation = explanation;
-		this.pass = pass;
-		
+		this.pass = pass;		
 	}
 	
 	
@@ -40,7 +39,7 @@ public class HealthSupport {
 		return pass;
 	}
 	public void setPass(String pass) {
-		pass = pass;
+		this.pass = pass;
 	}
 	public String getExplanation() {
 		return explanation;

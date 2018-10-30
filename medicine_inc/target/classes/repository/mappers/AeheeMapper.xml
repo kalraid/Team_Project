@@ -6,7 +6,7 @@
 <mapper namespace="com.medicine_inc.bbs.mapper.AeheeMapper" >
 
 	
-	<select id="getBoard" resultType="HealthSupport" resultMap="boardResultMap">
+	<select id="getBoard" resultType="HealthSupport">
 		SELECT 
 			no,
 			name,
@@ -15,7 +15,7 @@
 			capacity,
 			shape,  
 			image,
-			big_image AS bigimage,
+			big_image AS bigImage,
 			cate_code AS cateCode,
 			explanation
 		FROM p_table3 
@@ -48,7 +48,7 @@
 			capacity,
 			shape,  
 			image,
-			big_image AS bigimage,
+			big_image AS bigImage,
 			cate_code AS cateCode,
 			explanation
 		FROM p_table3

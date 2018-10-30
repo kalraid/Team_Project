@@ -37,11 +37,11 @@ tr {
 	<table class="listTable table table-bordered table-hover">
 		<tr>
 			<td colspan="5" class="tdSpan">
-				<a href="boardList?cateCode=1001">멀티비타민(${ codeMap.get('1001') })</a>&nbsp;&nbsp;&nbsp;
-				<a href="boardList?cateCode=1002">비타민B/엽산(${ codeMap.get('1002') })</a>&nbsp;&nbsp;&nbsp;
-				<a href="boardList?cateCode=1003">비타민C/D/E(${ codeMap.get('1003') })</a>&nbsp;&nbsp;&nbsp;
-				<a href="boardList?cateCode=1004">칼슘/마그네슘(${ codeMap.get('1004') })</a>&nbsp;&nbsp;&nbsp;
-				<a href="boardList?cateCode=1005">철분/아연/셀렌(${ codeMap.get('1005') })</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="healthSupport?cateCode=1001">멀티비타민(${ codeMap.get('1001') })</a>&nbsp;&nbsp;&nbsp;
+				<a href="healthSupport?cateCode=1002">비타민B/엽산(${ codeMap.get('1002') })</a>&nbsp;&nbsp;&nbsp;
+				<a href="healthSupport?cateCode=1003">비타민C/D/E(${ codeMap.get('1003') })</a>&nbsp;&nbsp;&nbsp;
+				<a href="healthSupport?cateCode=1004">칼슘/마그네슘(${ codeMap.get('1004') })</a>&nbsp;&nbsp;&nbsp;
+				<a href="healthSupport?cateCode=1005">철분/아연/셀렌(${ codeMap.get('1005') })</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 			</td>
 			<td colspan="2" class="boardListLink"><a href="HealthSupport">리스트</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,18 +63,18 @@ tr {
 					</tr>
 				</c:forEach>
 				<tr>
-					<td><c:if test="${ startPage > pageGroup }"><a href="HealthSupport?pageNum=${ startPage - pageGroup }"> [이전]</a></c:if>
+					<td><c:if test="${ startPage > pageGroup }"><a href="HealthSupport?pageNum=${ startPage - pageGroup }&cateCode=${cateCode}"> [이전]</a></c:if>
 					 <c:forEach var="i" begin="${ startPage }" end="${ endPage }">
 							<c:if test="${ i == currentPage }">[ ${ i } ]</c:if>
-							<c:if test="${ i != currentPage }"><a href="HealthSupport?pageNum=${ i }">[ ${ i } ]</a></c:if>
+							<c:if test="${ i != currentPage }"><a href="HealthSupport?pageNum=${ i }&cateCode=${cateCode}">[ ${ i } ]</a></c:if>
 						</c:forEach> 
-			<c:if test="${ endPage < pageCount }"><a href="HealthSupport?pageNum=${ startPage + pageGroup }"> [다음]</a></c:if>
+			<c:if test="${ endPage < pageCount }"><a href="HealthSupport?pageNum=${ startPage + pageGroup }&cateCode=${cateCode}"> [다음]</a></c:if>
 					</td>
 				</tr>
 			</c:if>
 			<c:if test="${ empty boardList }">
 				<tr>
-					<td colspan="5" class="listTdSpan">게시 글이 존재하지 않습니다.</td>
+					<td colspan="5" class="listTdSpan">건강상품이 존재하지 않습니다.</td>
 				</tr>
 			</c:if>
 			<!-- -------------------------------------------------------------- -->
