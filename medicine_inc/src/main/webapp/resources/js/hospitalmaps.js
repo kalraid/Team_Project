@@ -9,9 +9,27 @@ navigator.geolocation.getCurrentPosition( function(pos){
 			long = pos.coords.longitude;
 		});
 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+          lat = position.coords.latitude,
+          long = position.coords.longitude
+    }, function(e) {
+       tryGeolocation();
+    });
+}
+
 $(function () {
 
-
+	//geolocation 추가
+	var tryGeolocation = function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+             browserGeolocationSuccess,
+            browserGeolocationFail,
+            {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
+        }
+      };
 	
 	
 	
