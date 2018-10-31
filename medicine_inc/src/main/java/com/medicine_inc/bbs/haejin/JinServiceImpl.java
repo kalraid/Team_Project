@@ -88,11 +88,11 @@ public class JinServiceImpl implements JinService{
 					- (currentPage % PAGE_GROUP == 0 ? PAGE_GROUP : 0);
 			int endPage = startPage + PAGE_GROUP - 1;
 		
-			if(endPage < pageCount) {
+			if(endPage > pageCount) {
 				endPage = pageCount;
 				}
-			System.out.println("ServiceImpl endPage : "+endPage);
-			System.out.println("ServiceImpl pageCount : "+pageCount);
+			System.out.println("ServiceImpl startPage : "+startPage);
+			System.out.println("ServiceImpl pageGroup : "+PAGE_GROUP);
 			Map<String, Object> modelMap = new HashMap<String, Object>();
 			modelMap.put("pSearchList", pSearchList);
 			modelMap.put("pageCount", pageCount);
