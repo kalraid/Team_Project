@@ -19,4 +19,5 @@ function openEyeTest(){
 6.화면 밑에 있는 화살표를 클릭하셔서 0.1~0.4 시력표와 0.5~2.0 시력표의 화면을 전환하여 측정하세요.<br>
 7.마우스 포인터를 지시봉으로 사용하여 친구와 함께 시력을 측정해보세요.<br><br>
 <input type="button" id="realEyetestBtn" value="시작하기" onclick="openEyeTest();"/>
+ <input type="button" value="목록보기" onclick="javascript:window.location.href='quizList'"/>
 </article>

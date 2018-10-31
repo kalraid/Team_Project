@@ -26,7 +26,7 @@
 <style type="text/css">
  body{
   height:100%;
-  background-image:url("resources/images/leaf/halloween.jpg");
+  background-image:url("resources/images/leaf/halloween3.jpg");
   background-size: 100% 100%;
  }
 #photo{

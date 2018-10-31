@@ -14,11 +14,23 @@ function introOnOff(btnId){
 }
 </script>
 <article>
- <h1>사진 시력 테스트</h1><br><br><br>
- <h2>다음 사진들을 보고 무엇이 보이나요?</h2><br><br><br>
- <h3>이 테스트는 순수하게 재미만을 위한 것이므로 정확한 방법이 아닙니다. <br>
-    이 점 양해해 주시기 바랍니다.</h3>
  <table>
+  <tr>
+   <td>
+   사진 시력 테스트
+   </td>
+  </tr>
+  <tr>
+   <td>
+   다음 사진들을 보고 무엇이 보이나요?
+   </td>
+  </tr>
+  <tr>
+   <td>
+  이 테스트는 순수하게 재미만을 위한 것이므로 정확한 방법이 아닙니다. <br>
+    이 점 양해해 주시기 바랍니다.
+   </td>
+  </tr>
   <tr>
    <td>
     <img src="resources/images/realEyeTest/testLine.jpg"/>
@@ -104,4 +116,5 @@ function introOnOff(btnId){
    </td>
   </tr>
  </table>
+ <input type="button" value="목록보기" onclick="javascript:window.location.href='quizList'"/>
 </article>

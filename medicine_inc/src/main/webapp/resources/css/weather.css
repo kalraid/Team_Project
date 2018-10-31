@@ -31,7 +31,7 @@
     animation-iteration-count: infinite;
 }
 .weather:after {
-    opacity: 0.8;
+    opacity: 1.6;
     -webkit-animation-name: weather2;
     animation-name: weather2;
 }

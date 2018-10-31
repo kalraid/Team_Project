@@ -12,11 +12,11 @@ body {
   margin: 0 auto 10px;
   text-align: center;
   font-family: 'Arial', sans-serif;
-  background: #f5f5f5;
+  background-image:url("resources/images/leaf/halloween.jpg");
+  background-size: 100%;
 }
 .wrap-jigsaw {
   position: relative;
-  /* overflow: hidden; */
   display: inline-block;
   -webkit-user-select: none;     
   -ms-user-select: none;     
@@ -104,6 +104,8 @@ body {
 .level-item {
   display: inline-block;
   margin: 0 10px;
+  color: white;
+  font-size: 30px;
 }
 @-webkit-keyframes bounce {
   0% {

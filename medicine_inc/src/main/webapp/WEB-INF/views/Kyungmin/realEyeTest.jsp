@@ -5,13 +5,51 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="resources/css/styleEyeTest.css" type="text/css">
 </head>
+<script type="text/javascript" src="resources/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 var imgPath="resources/images/realEyeTest/";
+$(function(){
+	$(document).keydown(function(e){if (e.keyCode === 122){$("#content").toggle();}});
+	$(document).keyup(function(e){if (e.keyCode === 122){$("#content2").toggle();}});
+});
+$(function(){
+	$("#content3").toggle(); 
+	$(document).keyup(function(e){if (e.keyCode === 122){$("#content3").toggle();}});
+});
+window._gat=window._gat||{_getTracker:function(){return {_trackPageview:function(){}}}};
+function change(iName,imgA,imgB) 
+{ 
+	iObj = document.images[iName]; 
+	n    = iObj.src.lastIndexOf("/") + 1; 
+	iSrc = iObj.src.substring(n,iObj.src.length); 
+	 if (iSrc == imgA) iObj.src = imgPath + imgB; 
+	 else iObj.src = imgPath + imgA;
+} 
+function changeAll(){ 
+	
+  change('img1','27-1.jpg','27-2.jpg'); 
+  change('img2','move1.jpg','move2.jpg'); 
+} 
+function zoomInAndOut(string) { 
+	for(i = 1; i <3; i++) { 
+	    var image = document.getElementById("myImage"+i) 
+	    var currentWidth = image.width; 
+	    var currentHeight = image.height; 
+	  if (string == "in") { 
+	    var width = parseInt(currentWidth * 1.025); //2.5%씩 넓이 증가 
+	    var height = parseInt(currentHeight * 1.025); //2.5%씩 높이 증가 
+	  } 
+	  else if (string == "out") { 
+	    var width = parseInt(currentWidth * 0.97); //2.5%씩 넓이 감소 
+	    var height = parseInt(currentHeight * 0.97); //2.5%씩 높이 감소 
+	  } 
+	  image.width = width; 
+	  image.height = height; 
+	 } 
+	} 
 </script>
-<script type="text/javascript" src="resources/js/jquery-3.2.1.min.js"></script>
 <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" >
 <a name="g4_head"></a>
-<!-- 상단 배경 시작 -->
 <table border=0 cellpadding=0 cellspacing=0 width=100%>
  <tr>
   <td align="center">
@@ -66,59 +104,11 @@ var imgPath="resources/images/realEyeTest/";
      </table>
      <br>
     </div>
-<script type="text/javascript"> 
-$(function(){
-	$(document).keydown(function(e){if (e.keyCode === 122){$("#content").toggle();}});
-	$(document).keyup(function(e){if (e.keyCode === 122){$("#content2").toggle();}});
-});
-</script>
-<script type="text/javascript"> 
-$(function(){
-	$("#content3").toggle(); 
-	$(document).keyup(function(e){if (e.keyCode === 122){$("#content3").toggle();}});
-});
-</script> 
-<script type="text/javascript">/* CloudFlare analytics upgrade */
-window._gat=window._gat||{_getTracker:function(){return {_trackPageview:function(){}}}};
-</script>
-<script>
-function change(iName,imgA,imgB) 
-{ 
-	iObj = document.images[iName]; 
-	n    = iObj.src.lastIndexOf("/") + 1; 
-	iSrc = iObj.src.substring(n,iObj.src.length); 
-	 if (iSrc == imgA) iObj.src = imgPath + imgB; else iObj.src = imgPath + imgA;
-} 
-function changeAll(){ 
-	
-  change('img1','27-1.jpg','27-2.jpg'); 
-  change('img2','move1.jpg','move2.jpg'); 
-} 
-</script> 
     <table>
      <tr>
       <td align="center" valign="top">
        <img id="myImage2" src="resources/images/realEyeTest/27-1.jpg" width="1195" height="873" border="0" onfocus="this.blur();" style="cursor:url(arrow.cur);" name="img1"><br>
        <img src="resources/images/realEyeTest/move1.jpg" border="0" onfocus="this.blur();" style="cursor:pointer;cursor:hand;" onClick="changeAll()" name="img2"><br>  
-<SCRIPT> 
-function zoomInAndOut(string) { 
-for(i = 1; i <3; i++) { 
-    var image = document.getElementById("myImage"+i) 
-    var currentWidth = image.width; 
-    var currentHeight = image.height; 
-  if (string == "in") { 
-    var width = parseInt(currentWidth * 1.025); //2.5%씩 넓이 증가 
-    var height = parseInt(currentHeight * 1.025); //2.5%씩 높이 증가 
-  } 
-  else if (string == "out") { 
-    var width = parseInt(currentWidth * 0.97); //2.5%씩 넓이 감소 
-    var height = parseInt(currentHeight * 0.97); //2.5%씩 높이 감소 
-  } 
-  image.width = width; 
-  image.height = height; 
- } 
-} 
-</SCRIPT>
       </td>
      </tr>
     </table>
