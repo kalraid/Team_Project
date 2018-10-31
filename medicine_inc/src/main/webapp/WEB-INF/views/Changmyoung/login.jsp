@@ -1,27 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.security.SecureRandom" %>
 <%@ page import="java.math.BigInteger" %>
 
-
-<!--  네이버 로그인  -->
-
-<html lang="kr">
-	<head>
-	<meta charset="UTF-8">
-	<title>http://www.blueb.co.kr</title>
+<div id="fb-root"></div>
 
 <style rel="stylesheet">
-
-body {
-  color: rgba(0, 0, 0, 0.6);
-  font-family: "Roboto", sans-serif;
-  line-height: 1.6em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 .overlay, .form-panel.one:before {
   position: absolute;
@@ -33,7 +18,7 @@ body {
   height: 100%;
 }
 
-.form {
+.form_login {
   z-index: 15;
   position: relative;
   background: #FFFFFF;
@@ -41,7 +26,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 100px auto 10px;
+  margin: 30px auto 50px;
   overflow: hidden;
 }
 .form-toggle {
@@ -185,8 +170,9 @@ body {
   text-decoration: none;
 }
 .form-panel {
-  padding: 60px calc(5% + 60px) 60px 60px;
+  padding: 30px calc(5% + 60px) 60px 60px;
   box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2)
 }
 .form-panel.one:before {
   content: '';
@@ -201,49 +187,7 @@ body {
   opacity: 1;
   visibility: visible;
 }
-.form-panel.two {
-  z-index: 5;
-  position: absolute;
-  top: 0;
-  left: 95%;
-  background: #4285F4;
-  width: 100%;
-  min-height: 100%;
-  padding: 60px calc(10% + 60px) 60px 60px;
-  -webkit-transition: 0.3s ease;
-          transition: 0.3s ease;
-  cursor: pointer;
-}
-.form-panel.two:before, .form-panel.two:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 60px;
-  left: 1.5%;
-  background: rgba(255, 255, 255, 0.2);
-  height: 30px;
-  width: 2px;
-  -webkit-transition: 0.3s ease;
-          transition: 0.3s ease;
-}
-.form-panel.two:after {
-  left: 3%;
-}
-.form-panel.two:hover {
-  left: 93%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-.form-panel.two:hover:before, .form-panel.two:hover:after {
-  opacity: 0;
-}
-.form-panel.two.active {
-  left: 10%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  cursor: default;
-}
-.form-panel.two.active:before, .form-panel.two.active:after {
-  opacity: 0;
-}
+
 .form-header {
   margin: 0 0 40px;
 }
@@ -295,34 +239,45 @@ body {
   color: #4285F4 !important;
 }
 
-.naverbtn{
-	
+.sns-form {
+    padding: 30px calc(5% + 60px) 60px 60px;
+    box-sizing: border-box;
 }
-
-.modal-auth .sns-auth.facebook {
-    background: #416dc2 url(/assets/img/web_v3/icon/sns-facebook.png) no-repeat 15px 50%;
+.sns-header{
+	margin 0 0 40px;
 }
-.modal-auth .sns-auth {
-    display: block;
-    line-height: 42px;
-    color: #fff;
-    text-align: center;
+.sns-header h1{
+	padding: 4px 0;
+    color: #2457BD;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase
+}
+.sns-content {
+	padding: 40px 0 0 0 ;
+}
+.form-group2 {
+  margin: 0 0 10px;
 }
 
 </style>
-</head>
-<body>
+
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-
 <!-- Form-->
-<div class="form">
+<article>
+
+<div class="form_login">
   <div class="form-toggle"></div>
+  
   <div class="form-panel one">
+  
     <div class="form-header">
       <h1>Account Login</h1>
     </div>
+    
     <div class="form-content">
+      
       <form name="loginForm" id="loginForm" action="loginResult" method="post">
         <div class="form-group">
           <label for="username">Username</label>
@@ -341,64 +296,40 @@ body {
           <button type="submit" value="로그인">login
           </button>
         </div>
-     </form>
-     </div>
-    </div>
-    <!-- 네이버 로그인 버튼 -->
-	<div class="form-group">
-        <a href="${url}"><img class ="naverbtn" height="50" src="resources/images/naverBtn.PNG"/></a>
-    </div>
-    <!-- 구글로그인 버튼 -->
-    <div class="form-group">
-  		<a href="${google_url}">
-  		<button id="btnJoinGoogle" class="btn btn-primary btn-round" style="width: 100%">
-        <i class="fa fa-google" aria-hidden="true"></i>Google Login</button></a> 
-	</div>
-	<!-- 카카오톡 로그인 버튼 -->
-	<!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
-		<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-	</a> -->
-	<a id="custom-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=1f4127b3e1da2ccf40156175135aa16f&redirect_uri=http://localhost:8080/medicine_inc/kakaologin&response_type=code ">
-		<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/>
-	</a>
-	<a href="javascript:loginWithKakao()" >카톡로그아웃</a>
-	
-	
-<!-- 회원가입 폼 -->  
-  <div class="form-panel two">
-    <div class="form-header">
-      <h1>회 원 가 입</h1>
-    </div>
-    <div class="form-content">
-      <form class="login-form" action="joinInfo" name="joinForm" method="post">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="name" name="name" required="required"/>
-        </div>
-         <div class="form-group">
-          <label for="username">I D</label>
-          <input type="text" id="id" name="id" required="required"/>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="pass" name="pass" required="required"/>
-        </div>
-        <div class="form-group">
-          <label for="cpassword">Confirm Password</label>
-          <input type="password" id="cpass" name="cpass" required="required"/>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required="required"/>
-        </div>
-        <div class="form-group">
-          <button type="submit">가 입 하 기</button>
-        </div>
-        
       </form>
+     </div>
+     
     </div>
+
+ <div class="sns-form">  
+  <div class="sns-header">
+  	<h1> Social  Login </h1> </div>
+
+  <div class="sns-content">
+  <!-- 네이버 로그인 버튼 -->
+  	<div class="form-group2">
+        <a href="${url}">
+        <img class ="naverbtn" height=58px; src="resources/images/naver_btn.PNG"/></a>
+        
+    <!-- 카카오톡 로그인 버튼 -->
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=1f4127b3e1da2ccf40156175135aa16f&redirect_uri=http://localhost:8080/medicine_inc/kakaologin&response_type=code ">
+		<img class ="kakaobtn" height=62px; src="resources/images/kakao_btn.png"/></a>
+	 </div>
+	
+    <!-- 구글로그인 버튼 -->
+    
+    <div class="form-group2">
+  		<a href="${google_url}">
+  		<img class ="googlebtn" height=63px; src="resources/images/google_btn.png"/></a>
+  	
+  	<!-- 페이스북 로그인 버튼 -->
+  		<a href="${face_url}">
+  		<img class ="facebookbtn" height=60px; src="resources/images/face_btn.png"/></a>
+  	</div>
   </div>
 </div>
+</div>
+</article>	
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
@@ -431,5 +362,3 @@ $(document).ready(function() {
 });
 
 </script>
-</body>
-</html>

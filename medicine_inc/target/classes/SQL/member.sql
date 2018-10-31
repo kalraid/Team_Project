@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS member(
 	id VARCHAR(20) PRIMARY KEY,
 	name VARCHAR(10) NOT NULL,
 	pass VARCHAR(20) NOT NULL,
-	email VARCHAR(30) NOT NULL,
-	is_admin char(1) default 'F'
+	email VARCHAR(30) NOT NULL
+	
 )engine=InnoDB default char set=utf8;
 
-INSERT INTO member VALUES('leecm', '이창명', '1234', 
-	'leecm8989@daum.net' ,'T'	
+INSERT INTO member VALUES('admin', '관리자', '1234',
+	'admin@increpas.com' 
 	);
     
     
