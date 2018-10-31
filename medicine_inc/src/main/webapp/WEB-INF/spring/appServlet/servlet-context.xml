@@ -28,13 +28,15 @@
 			
 	<view-controller path="/" view-name="redirect:main" />
 	<redirect-view-controller path="/index" redirect-url="/main"/>
-	<redirect-view-controller path="/default" redirect-url="/main"/>
-	
+	<redirect-view-controller path="/default" redirect-url="/main"/>	
 	
 	<!-- 로그인요청 -->
 	<view-controller path="/login" view-name="redirect:login" />
 	<!-- 회원가입 요청 -->
 	<view-controller path="/joinForm" view-name="Changmyoung/joinForm" />
+
+	<!-- 건강보조제 뷰 전용컨트롤러 -->
+	<view-controller path="/HealthSupportWriteForm" view-name="Aehee/HealthSupportWriteForm" />
 
 	<beans:bean id="loginCheckInterceptor" 
 		class="com.medicine_inc.bbs.interceptor.LoginCheckInterceptor" />

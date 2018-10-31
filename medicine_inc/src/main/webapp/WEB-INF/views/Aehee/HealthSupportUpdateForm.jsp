@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <article>
-<form name="updateForm" id="updateForm" action="update" method="post">
+<form name="updateForm" id="updateForm" action="HealthSupportUpdate" method="post">
 	<%-- <input type="hidden" name="no" value="${ board.no }" />
 	<input type="hidden" name="pageNum" value="${ pageNum }" />
 	 --%>
@@ -37,26 +37,28 @@
 		</td>				
 	</tr> --%>
 	<!--  ---------------------------------------------------------------------------->
-	 <ul>
-<li><font size="6" face="Arial" style="bold">${board.name }</font></li>
-<li><font size="3" face="Arial" style="bold">${board.explanation }</font></li>
+<ul>
+	<li><font size="6" face="Arial" style="bold">${board.name }</font></li>
+	<li><font size="3" face="Arial" style="bold">${board.explanation }</font></li>
  </ul>
  
- <a href ="HealthSupport_detail?no=${i.no}"><img alt="${board.bigImage}" src="resources/images/Aehee/${board.bigImage }">
+ <a href ="HealthSupportDetail?no=${i.no}"><img alt="${board.bigImage}" src="resources/images/Aehee/${board.bigImage }"></a>
  
  <table>
- 	<ul>
- 	<li><font size="4" face="Arial" style="bold">정가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<del>${board.consumerPrice }&nbsp;원</del></font></li><br/>
- 	<li><font size="4" face="Arial" style="bold">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.sellingPrice }&nbsp;원</font></li><br/>
- 	<li><font size="4" face="Arial" style="bold">용량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.capacity }</font></li><br/>
- 	<li><font size="4" face="Arial" style="bold">형태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.shape }</font></li>
- 
- 	
- 	</ul>
+ 	<tr>
+ 		<td>
+		 	<ul>
+		 	<li><font size="4" face="Arial" style="bold">정가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<del>${board.consumerPrice }&nbsp;원</del></font></li>
+		 	<li><font size="4" face="Arial" style="bold">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.sellingPrice }&nbsp;원</font></li>
+		 	<li><font size="4" face="Arial" style="bold">용량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.capacity }</font></li>
+		 	<li><font size="4" face="Arial" style="bold">형태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.shape }</font></li> 	
+		 	</ul>
+ 		</td>
+ 	</tr>
  </table>
+ <table>
 	<tr>
-			<td colspan="4">&nbsp;</td></tr>
-	
+			<td colspan="4">&nbsp;</td>	
 	<tr>		
 		<td class="tdSpan" colspan="4">
 			<input type="reset" value="다시쓰기" />
@@ -64,12 +66,12 @@
 			<c:if test="${ not searchOption }">
 			&nbsp;&nbsp;<input type="button" value="목록보기" 
 					onclick="javascript:window.location.href=
-					'boardList?pageNum=${pageNum}'"/>		
+					'healthSupport?pageNum=${pageNum}'"/>		
 			</c:if>
 			<c:if test="${ searchOption }">
 			&nbsp;&nbsp;<input type="button" value="목록보기" 
 					onclick="javascript:window.location.href=
-					'boardList?pageNum=${pageNum}&type=${ type }&keyword=${keyword }'"/>		
+					'healthSupport?pageNum=${pageNum}&type=${ type }&keyword=${keyword }'"/>		
 			</c:if>		
 		</td>
 	</tr>

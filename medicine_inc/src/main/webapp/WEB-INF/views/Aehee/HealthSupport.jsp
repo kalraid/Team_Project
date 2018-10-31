@@ -46,8 +46,8 @@ tr {
 				<a href="healthSupport?cateCode=1005">철분/아연/셀렌(${ codeMap.get('1005') })</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 			</td>
-			<td colspan="2" class="boardListLink"><a href="HealthSupport">리스트</a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<td colspan="3" class="listWrite"><a href="HealthSupport_writeProcess">글쓰기</a></td>
+			<td colspan="2" class="boardListLink"><a href="HealthSupport"><strong>리스트</strong></a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<td colspan="3" class="listWrite"><a href="HealthSupportWriteForm"><strong>글쓰기</strong></a></td>
 		</tr>
 	</table>
 
@@ -56,21 +56,30 @@ tr {
 			<c:if test="${ not empty boardList }">
 				<c:forEach var="i" items="${ boardList }" varStatus="status">
 					<tr >
-						<td>${ i.no }.</td>
-						<td class="tdHeader"><a href ="HealthSupport_detail?no=${i.no}"><img alt="${i.image }" src="resources/images/Aehee/${i.image }"></a></td>
+						<td><h4>${ i.no }.</h4></td>
+						<td class="tdHeader"><a href ="HealthSupportDetail?no=${i.no}"><img alt="${i.image }" src="resources/images/Aehee/${i.image }"></a></td>
 						
-						<td><a	href="HealthSupport_detail?no=${ i.no }&pageNum=${currentPage}"> ${ i.name }</a></td>						
-						<td><del>${ i.consumerPrice  }&nbsp;원</del></td>
-						<td><font size="7" face="Arial" style="bold">${ i.sellingPrice}&nbsp;원</font></td>
+						<td><a	href="HealthSupportDetail?no=${ i.no }&pageNum=${currentPage}"><h4> ${ i.name }<h4></a></td>						
+						<td>
+							<h5><del><fmt:formatNumber value="${ i.consumerPrice }" type="number" />&nbsp;원</del></h5>
+						</td>
+						<td>
+							<h4><fmt:formatNumber value="${ i.sellingPrice}" type="number" />&nbsp;원<h4>
+						</td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td><c:if test="${ startPage > pageGroup }"><a href="HealthSupport?pageNum=${ startPage - pageGroup }&cateCode=${cateCode}"> [이전]</a></c:if>
+					<td colspan="5">
+					<c:if test="${ startPage > pageGroup }">
+						<a href="HealthSupport?pageNum=${ startPage - pageGroup }&cateCode=${cateCode}"> [이전]</a>
+					</c:if>
 					 <c:forEach var="i" begin="${ startPage }" end="${ endPage }">
 							<c:if test="${ i == currentPage }">[ ${ i } ]</c:if>
 							<c:if test="${ i != currentPage }"><a href="HealthSupport?pageNum=${ i }&cateCode=${cateCode}">[ ${ i } ]</a></c:if>
-						</c:forEach> 
-			<c:if test="${ endPage < pageCount }"><a href="HealthSupport?pageNum=${ startPage + pageGroup }&cateCode=${cateCode}"> [다음]</a></c:if>
+					</c:forEach> 
+					<c:if test="${ endPage < pageCount }">
+						<a href="HealthSupport?pageNum=${ startPage + pageGroup }&cateCode=${cateCode}"> [다음]</a>
+					</c:if>
 					</td>
 				</tr>
 			</c:if>
