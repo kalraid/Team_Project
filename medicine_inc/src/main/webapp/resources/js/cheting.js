@@ -3,8 +3,8 @@ var port;
 var socket;
 var roomId;
 $(function() {
-	// host = '192.168.0.67';
-	host='121.170.211.197';
+	host = '192.168.0.67';
+	//host='121.170.211.197';
 	port = '3010';
 	connectToServer();
 	

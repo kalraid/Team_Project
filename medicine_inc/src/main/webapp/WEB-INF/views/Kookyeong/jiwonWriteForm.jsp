@@ -2,7 +2,8 @@
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <article>
-<form name="writeForm" action="writeProcess" id="writeForm"
+<h2>글쓰기</h2>
+<form name="jiwonWriteForm" action="jiwonWriteProcess" id="jiwonWriteForm"
 method="post">
 <table class="readTable">
 <tr>
@@ -27,13 +28,12 @@ titleMessages.properties 메시지 자원에 접근해 code 속성 지정한
 <td class="readTd">
 <input type="password" name="pass" size="30" id="pass"
 maxlength="10"/>
-- 103 -
 </td>
 </tr>
 <tr>
 <td class="readTh">제&nbsp;&nbsp;&nbsp;&nbsp;목</td>
 <td class="readTd" colspan=3>
-<input type="text" name="title" size="90" id="title" maxlength="50"/>
+<input type="text" name="title" size="80" id="title" maxlength="50"/>
 </td>
 </tr>
 <tr>

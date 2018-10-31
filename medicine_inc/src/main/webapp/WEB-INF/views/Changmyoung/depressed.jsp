@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="http://121.170.211.197:3010/socket.io/socket.io.js"></script>
+<script src="http://192.168.0.67:3010/socket.io/socket.io.js"></script>
 <script>
 var socket;
 $(function(){
-	// host = '192.168.0.67';
+	host = '192.168.0.67';
 	port = '3010';
 	
-	host='121.170.211.197';
+	// host='121.170.211.197';
 	connectToServer();
 	
 	$('#pyStart').on('click',function(){

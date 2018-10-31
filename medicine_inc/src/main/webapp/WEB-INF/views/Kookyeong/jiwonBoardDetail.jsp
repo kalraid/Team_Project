@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <article>
 <form name="checkForm" id="checkForm">
-<input type="hidden" name="no" id="no" value="${ board.bno }"/>
+<input type="hidden" name="bno" id="bno" value="${ jiwonboard.bno }"/>
 <input type="hidden" name="pass" id="rPass" />
 </form>
 <table class="contentTable">
@@ -28,7 +28,7 @@ titleMessages.properties 메시지 자원에 접근해 code 속성 지정한
 </tr>
 <tr>
 <td class="contentTh">글쓴이</td>
-<td class="contentTd">${ board.writer }</td>
+<td class="contentTd">${board.writer }</td>
 <td class="contentTh">작성일</td>
 <td class="contentTd"><fmt:formatDate value="${ board.regDate }"
 pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -45,7 +45,7 @@ pattern="yyyy-MM-dd HH:mm:ss" /></td>
 <c:if test="${ empty board.file1 }">
 첨부파일 없음
 </c:if>
-<c:if test="${ not empty board.file1 }">
+<c:if test="${ not empty jiwonboard.file1 }">
 <a href="upload/${ board.file1 }">파일 다운로드</a>
 </c:if>
 </td>
@@ -62,8 +62,8 @@ pattern="yyyy-MM-dd HH:mm:ss" /></td>
 <td colspan="4" class="tdSpan">
 <input type="button" id="detailUpdate" value="수정하기"/>
 &nbsp;&nbsp;<input type="button" id="detailDelete" value="삭제하기" />
-&nbsp;&nbsp;<input type="button" value="목록보기"
-onclick="javascript:window.location.href='boardList'"/>
+&nbsp;&nbsp;<input type="button" value="목록보기" onclick=
+"javascript:window.location.href='boardList?pageNum=${pageNum}'"/>
 </td>
 </tr>
 </table>
