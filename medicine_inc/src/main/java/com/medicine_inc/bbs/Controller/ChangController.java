@@ -56,15 +56,12 @@ public class ChangController {
     private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
         this.naverLoginBO = naverLoginBO;
     }
-    
     // 구글
     @Autowired
    	private GoogleConnectionFactory googleConnectionFactory;
    	@Autowired
    	private OAuth2Parameters googleOAuth2Parameters;
    	private OAuth2Operations oauthOperations;
-	
-	
 	
 	////////////  회원 MEMBER
 	
