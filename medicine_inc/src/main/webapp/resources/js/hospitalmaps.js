@@ -19,17 +19,19 @@ if (navigator.geolocation) {
     });
 }
 
+//geolocation 추가
+var tryGeolocation = function() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+         browserGeolocationSuccess,
+        browserGeolocationFail,
+        {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
+    }
+  };
+
 $(function () {
 
-	//geolocation 추가
-	var tryGeolocation = function() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-             browserGeolocationSuccess,
-            browserGeolocationFail,
-            {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
-        }
-      };
+
 	
 	
 	
