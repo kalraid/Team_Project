@@ -134,52 +134,30 @@ io.sockets.on('connection', function(socket){
 	});
 	
 	
+	const {PythonShell} = require('python-shell'); 
+	var pyshell = new PythonShell('illPy.py'); 
+
 	socket.on('pyStart', function(output){
-		var ps = require('python-shell');
-		console.log(process.cwd());
-		var path = require('path');
-		/** 현재 실행한 파일의 이름과 Path*/
-		console.log('finaname : ' + __filename);
-		 
+		args2 = "안녕";
+		args3 = "hello";
 		/** 현재 실행한 파일의 Path */
-		console.log('dirname : ' + __dirname);
 		if(output.select == 'city'){
-			var options = {
+			args1 = output.city;
+			console.log(args1)
 
-					  mode: 'text',
-
-					  pythonPath: '',
-
-					  pythonOptions: ['-u'],
-
-					  scriptPath: '/',
-
-					  args: [output.city]
-
-					};
 		}else if(output.select == 'ill'){
-			var options = {
-
-					  mode: 'text',
-
-					  pythonPath: '',
-
-					  pythonOptions: ['-u'],
-
-					  scriptPath: '/',
-
-					  args: [output.ill]
-
-					};
-		};
+			args1 = output.ill;
+			console.log(args1)
+		}
 		
-		ps.PythonShell.run('illPy.py',options, function(err,results){
-			if(err) throw err;
-			console.log('results : %j', results);
-			
-			
-			io.sockets.emit('pyEnd',results);
-		});
+
+			pyshell.on('message', function (message) { 
+			    console.log(message); 
+			}); 
+
+			pyshell.send('hello'); 
+	
+		
 		
 		
 	});
