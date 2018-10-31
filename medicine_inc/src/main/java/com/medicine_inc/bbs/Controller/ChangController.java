@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -40,6 +41,7 @@ import com.medicine_inc.bbs.exception.MemberNotFoundException;
 import com.medicine_inc.bbs.exception.MemberPassCheckFailException;
 
 @Controller
+@SessionAttributes({"member", "m"})
 
 public class ChangController {
 	@SuppressWarnings("unused")

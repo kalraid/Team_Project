@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS member(
 	id VARCHAR(20) PRIMARY KEY,
 	name VARCHAR(10) NOT NULL,
 	pass VARCHAR(20) NOT NULL,
-	email VARCHAR(30) NOT NULL
+	email VARCHAR(30) NOT NULL,
+	is_admin char(1) default 'F'
 	
 )engine=InnoDB default char set=utf8;
 
