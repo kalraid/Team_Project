@@ -4,7 +4,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <link rel="stylesheet" type="text/css" href="resources/css/search.css" />
+<script>
+function goBack(){
+	window.history.back()
+}
 
+</script>
 
 
 <article>
@@ -46,6 +51,6 @@
 
 </table>
 
-<div id="box4"><button class="btn btn-info subbutton"  onclick= "javascript:window.location.href='mediList?pageNum=${pageNum}&mediCode=${ mediCode }&mediName=${ name }&mediEff=${ eff }&mediMaker=${ maker }'">검색리스트&nbsp;<img class="btn-img" src="resources/images/back.png"></button></div>
+<div id="box4"><button class="btn btn-info subbutton"  onclick= "goBack()">검색리스트&nbsp;<img class="btn-img" src="resources/images/back.png"></button></div>
  
 </article>
