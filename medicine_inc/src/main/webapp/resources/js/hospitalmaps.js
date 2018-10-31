@@ -73,7 +73,6 @@ $(function () {
 					var infowindow = new naver.maps.InfoWindow({
 					    content: contentString
 					});
-				    //marker.addListener('mouseout', onMouseOut); 마우스 벗어났을때
 					
 					naver.maps.Event.addListener(marker, "click", function(e) {
 					    if (infowindow.getMap()) {
