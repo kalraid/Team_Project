@@ -2,9 +2,6 @@ package com.medicine_inc.bbs.domain;
 
 import java.sql.Timestamp;
 
-/* 하나의 게시 글 정보를 저장하는 클래스(Domain, VO, Beans, DTO)
- * 게시 글 정보를 저장하고 있는 테이블의 필드와 1:1 맵핑되는 Domain 클래스
- **/
 public class JiwonBoard {
 
 	private int bno;
@@ -14,15 +11,13 @@ public class JiwonBoard {
 	private Timestamp regDate;
 	private int viewcnt;
 	private String pass;
-	private String file1;
 	private int recommend;
 	private int thank;
 
 	public JiwonBoard() {
 	}
 
-	public JiwonBoard(int bno, String title, String content, String writer, Timestamp regDate, int read_Count,
-			String pass, String file1) {
+	public JiwonBoard(int bno, String title, String content, String writer, Timestamp regDate, int viewcnt, String pass) {
 		this.bno = bno;
 		this.title = title;
 		this.content = content;
@@ -30,7 +25,6 @@ public class JiwonBoard {
 		this.regDate = regDate;
 		this.viewcnt = viewcnt;
 		this.pass = pass;
-		this.file1 = file1;
 	}
 
 	public int getBno() {
@@ -73,11 +67,11 @@ public class JiwonBoard {
 		this.regDate = regDate;
 	}
 
-	public int getviewcnt() {
+	public int getViewcnt() {
 		return viewcnt;
 	}
 
-	public void setviewcnt(int viewcnt) {
+	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
 	}
 
@@ -86,15 +80,7 @@ public class JiwonBoard {
 	}
 
 	public void setPass(String pass) {
-		this.pass = pass;	
-	}
-
-	public String getFile1() {
-		return file1;
-	}
-
-	public void setFile1(String file1) {
-		this.file1 = file1;
+		this.pass = pass;
 	}
 
 	public int getRecommend() {
@@ -113,4 +99,5 @@ public class JiwonBoard {
 		this.thank = thank;
 	}
 
+	
 }

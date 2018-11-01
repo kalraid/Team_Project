@@ -2,10 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" type="text/css" href="resources/css/header.css" />
+<style>
+#mainName{
+	position: relative;
+	left: 200px;
+	top: 5px;
+	
+}
+</style>
 <header>
 	<div id="logo">		
-		<a href="${ pageContext.servletContext.contextPath }/">
-		<img src="resources/images/logo.png" alt="Books2U" /></a></div>			
+		<span><a href="${ pageContext.servletContext.contextPath }/">
+		<img src="resources/images/logo.png" alt="Books2U" /></a></span>
+		
+	</div>
+			
 	<div id="header_link">
 		<ul>			
 			<c:if test="${ sessionScope.isLogin }" >
@@ -30,6 +41,7 @@
 			<li class="no_line"><a href="sitemap">사이트맵</a></li>		
 		</ul>
 	</div>
+	<div id="mainName"><h1 >Medicine_inc</h1></div>
 	<div id="header_nav">
 		<ul>
 			<li id="DrugInformation">약품 정보
@@ -62,8 +74,7 @@
 			</li>
 			<li id="Community" class="no_line">커뮤니티
 				<ul class="submenu">
-					<li><a href="notice">공지사항</a></li>
-					<li><a href="boardList">자유게시판</a></li>
+					<li><a href="jiwonBoardList">자유게시판</a></li>
 					<li><a href="cheeting">채팅방</a></li>
 					<li class="no_line"><a href="quiz">퀴즈방</a></li>
 				</ul>

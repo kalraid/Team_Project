@@ -16,7 +16,6 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.JsonNode;
 
 public class KakaoLoginProfile {
 	
@@ -26,7 +25,7 @@ public class KakaoLoginProfile {
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		postParams.add(new BasicNameValuePair("client_id", "1f4127b3e1da2ccf40156175135aa16f")); // REST API KEY
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/medicine_inc/kakaologin")); // 리다이렉트 URI
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://192.168.0.67:8080/medicine_inc/kakaologin")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 
 		final HttpClient client = HttpClientBuilder.create().build();

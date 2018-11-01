@@ -40,11 +40,19 @@
 	.main{
 		border-collapse: collapse;
 	}
+	#mersImg:hover{
+		cursor: pointer;
+	}
+	
 </style>
 <script>
 $(document).ready(function(){
 	$('.news').load('medicalNews article');
 	$('.searchIn').load('search #innerLine');
+	
+	$('#mersImg').click(function(){
+		window.location.href = 'http://www.cdc.go.kr/CDC/mobile/info/CdcKrHealth0300.jsp?menuIds=HOME006-MNU2802-MNU3035-MNU2869';
+	});
 });
 </script>
 <article id="topArticle">
@@ -53,7 +61,9 @@ $(document).ready(function(){
 		<div class="col-md-12 searchIn"></div>
 	</div>
 	<div class="row main">
-		<div class="col-md-6"></div>
+		<div class="col-md-6">
+			<img src="resources/images/mers.jpg" style="width:488px;height:398px" id="mersImg">
+		</div>
 		<div class="col-md-6">
 			<div id="illInfo">
 				<div><h4>질병 정보</h4></div>
