@@ -18,7 +18,7 @@ public class NaverLoginBO {
 
 	 private final static String CLIENT_ID = "y1_igMrrybhnCZOlhpZW";       //네이버API Client ID
 	 private final static String CLIENT_SECRET = "YlxbhC3d_N";                      
-	 private final static String REDIRECT_URI = "http://localhost:8080/medicine_inc/navercallback";
+	 private final static String REDIRECT_URI = "http://192.168.0.67:8080/medicine_inc/navercallback";
 	 private final static String SESSION_STATE = "oauth_state";
 	/* 프로필 조회 API URL */
 	 private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";/// Api 종류 기본 !!

@@ -28,7 +28,7 @@
 		INSERT INTO p_table3(name, consumer_price, selling_price, 
 				capacity, shape, image, big_image, cate_code, explanation)
 				
-			VALUES(#{name}, #{consumerPrice}, #{sellingPrice}, #{capacity}, #{shape}, #{image}, #{big_image}, #{cateCode}, #{explanation})
+			VALUES(#{name}, #{consumerPrice}, #{sellingPrice}, #{capacity}, #{shape}, #{image}, #{bigImage}, #{cateCode}, #{explanation})
 	</insert>
 	
 	

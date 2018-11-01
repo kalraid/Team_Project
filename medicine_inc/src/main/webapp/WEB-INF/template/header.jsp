@@ -51,7 +51,7 @@
 				<ul class="submenu">
 					<li><a href="healthScreening">모의 건강 검진</a></li>
 					<li><a href="medicalNews">의료 뉴스</a></li>
-					<li class="no_line"><a href="depressed">우울증 통계</a></li>		
+					<li class="no_line"><a href="depressed">암 통계 그래프</a></li>		
 				</ul>
 			</li>
 			<li id="MapsInformation">지도 정보

@@ -32,11 +32,14 @@ tr {
 }
 
 
-
+.AeheeImages{
+	width: 300px;
+	height:400px;
+}
 </style>
 <article>
 
-	<table class="listTable table table-bordered table-hover">
+	<table class="listTable table">
 		<tr>
 			<td colspan="5" class="tdSpan">
 				<a href="healthSupport?cateCode=1001">멀티비타민(${ codeMap.get('1001') })</a>&nbsp;&nbsp;&nbsp;
@@ -46,7 +49,7 @@ tr {
 				<a href="healthSupport?cateCode=1005">철분/아연/셀렌(${ codeMap.get('1005') })</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 			</td>
-			<td colspan="2" class="boardListLink"><a href="HealthSupport"><strong>리스트</strong></a></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<td colspan="2" class="boardListLink"><a href="HealthSupport"><strong>리스트</strong></a></td>
 			<td colspan="3" class="listWrite"><a href="HealthSupportWriteForm"><strong>글쓰기</strong></a></td>
 		</tr>
 	</table>
@@ -57,14 +60,14 @@ tr {
 				<c:forEach var="i" items="${ boardList }" varStatus="status">
 					<tr >
 						<td><h4>${ i.no }.</h4></td>
-						<td class="tdHeader"><a href ="HealthSupportDetail?no=${i.no}"><img alt="${i.image }" src="resources/images/Aehee/${i.image }"></a></td>
+						<td class="tdHeader AeheeImages"><a href ="HealthSupportDetail?no=${i.no}"><img alt="${i.image }" class="AeheeImages" src="resources/images/Aehee/${i.image }"></a></td>
 						
-						<td><a	href="HealthSupportDetail?no=${ i.no }&pageNum=${currentPage}"><h4> ${ i.name }<h4></a></td>						
+						<td><a	href="HealthSupportDetail?no=${ i.no }&pageNum=${currentPage}"><h4> ${ i.name }</h4></a></td>						
 						<td>
 							<h5><del><fmt:formatNumber value="${ i.consumerPrice }" type="number" />&nbsp;원</del></h5>
 						</td>
 						<td>
-							<h4><fmt:formatNumber value="${ i.sellingPrice}" type="number" />&nbsp;원<h4>
+							<h4><fmt:formatNumber value="${ i.sellingPrice}" type="number" />&nbsp;원</h4>
 						</td>
 					</tr>
 				</c:forEach>

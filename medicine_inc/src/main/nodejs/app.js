@@ -60,8 +60,6 @@ console.log('socket.io 요청을 받을 준비 끝');
 
 
 
-
-
 io.sockets.on('connection', function(socket){
 	console.log('connection info : ', socket.request.connection._peername );
 	socket.remoteAddress = socket.request.connection._peername.address;
@@ -134,32 +132,43 @@ io.sockets.on('connection', function(socket){
 	});
 	
 	
-	const {PythonShell} = require('python-shell'); 
-	var pyshell = new PythonShell('illPy.py'); 
+	socket.on('pyTest', function(output){
 
-	socket.on('pyStart', function(output){
-		args2 = "안녕";
-		args3 = "hello";
-		/** 현재 실행한 파일의 Path */
+		var myPythonScriptPath = 'script2.py';
+
+		const {PythonShell} = require('python-shell');
+		var pyshell = new PythonShell(myPythonScriptPath);
+
+	
 		if(output.select == 'city'){
 			args1 = output.city;
-			console.log(args1)
-
+			pyshell.send(JSON.stringify([1,args1]));
 		}else if(output.select == 'ill'){
 			args1 = output.ill;
-			console.log(args1)
-		}
-		
+			pyshell.send(JSON.stringify([0,args1]));
 
-			pyshell.on('message', function (message) { 
-			    console.log(message); 
-			}); 
-
-			pyshell.send('hello'); 
+		};
+		io.sockets.emit('pyEnd');	
 	
-		
-		
-		
+	
+		pyshell.on('message', function (message) {
+		    // received a message sent from the Python script (a simple "print" statement)
+		    console.log(message);
+		    
+		});
+
+		// end the input stream and allow the process to exit
+		pyshell.end(function (err) {
+		    if (err){
+		        throw err;
+		    };
+		    
+		    io.sockets.emit('pyEnd');
+		    
+		    console.log('finished');
+		    
+		    io.sockets.emit('pyEnd');
+		});
 	});
 });
 

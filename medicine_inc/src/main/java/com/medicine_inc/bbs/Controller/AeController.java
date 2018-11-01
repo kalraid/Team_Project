@@ -27,7 +27,7 @@ import com.medicine_inc.bbs.domain.HealthSupport;
 public class AeController {
 	@SuppressWarnings("unused")
 	
-private final static String DEFAULT_PATH = "/resources/images/";
+private final static String DEFAULT_PATH = "/resources/images/Aehee";
 	
 	
 	@Autowired

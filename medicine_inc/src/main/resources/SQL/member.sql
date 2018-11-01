@@ -5,7 +5,7 @@ use spring;
 # 테이블 생성
 DROP TABLE IF EXISTS member;
 CREATE TABLE IF NOT EXISTS member(
-	id VARCHAR(20) PRIMARY KEY,
+	id VARCHAR(20) AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(10) NOT NULL,
 	pass VARCHAR(20) NOT NULL,
 	email VARCHAR(30) NOT NULL,
@@ -14,8 +14,9 @@ CREATE TABLE IF NOT EXISTS member(
 )engine=InnoDB default char set=utf8;
 
 INSERT INTO member VALUES('admin', '관리자', '1234',
-	'admin@increpas.com' 
+	'admin@increpas.com' ,'T'
 	);
     
     
 commit;
+select * from member;
