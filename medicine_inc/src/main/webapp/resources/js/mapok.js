@@ -5,7 +5,12 @@ if (navigator.geolocation) {
           lat = position.coords.latitude,
           long = position.coords.longitude
     }, function(e) {
-       tryGeolocation();
+    	 if (navigator.geolocation) {
+   	      navigator.geolocation.getCurrentPosition(
+   	         browserGeolocationSuccess,
+   	        browserGeolocationFail,
+   	        {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
+   	    }
     });
 }
 
@@ -13,16 +18,7 @@ if (navigator.geolocation) {
 var sx;
 var sy;
 $(function(){
-	
-	
-	var tryGeolocation = function() {
-	    if (navigator.geolocation) {
-	      navigator.geolocation.getCurrentPosition(
-	         browserGeolocationSuccess,
-	        browserGeolocationFail,
-	        {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
-	    }
-	  };
+
 
 sy = lat;
 sx = long;

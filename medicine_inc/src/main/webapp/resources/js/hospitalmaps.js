@@ -4,20 +4,23 @@ var long;
 var tabactive;
 
 /*geolocation을 사용하여 현재위치 가져오기*/
-navigator.geolocation.getCurrentPosition( function(pos){
+/*navigator.geolocation.getCurrentPosition( function(pos){
 			lat = pos.coords.latitude;
 			long = pos.coords.longitude;
-		});
+		});*/
 
-/*if (navigator.geolocation) {
+
+
+if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
 
           lat = position.coords.latitude,
           long = position.coords.longitude
     }, function(e) {
-       tryGeolocation();
+       lat = 37.48525;
+       long = 126.8992833;
     });
-}*/
+}
 
 $(function () {
 	
