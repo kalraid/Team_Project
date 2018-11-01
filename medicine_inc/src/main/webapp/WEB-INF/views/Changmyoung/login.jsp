@@ -312,7 +312,7 @@
         <img class ="naverbtn" height=58px; src="resources/images/naver_btn.PNG"/></a>
         
     <!-- 카카오톡 로그인 버튼 -->
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=1f4127b3e1da2ccf40156175135aa16f&redirect_uri=http://localhost:8080/medicine_inc/kakaologin&response_type=code ">
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=1f4127b3e1da2ccf40156175135aa16f&redirect_uri=http://192.168.0.67:8080/medicine_inc/kakaologin&response_type=code ">
 		<img class ="kakaobtn" height=62px; src="resources/images/kakao_btn.png"/></a>
 	 </div>
 	
