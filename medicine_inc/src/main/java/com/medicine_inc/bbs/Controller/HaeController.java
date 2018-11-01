@@ -3,8 +3,10 @@ package com.medicine_inc.bbs.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import org.springframework.util.SystemPropertyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.medicine_inc.bbs.domain.GuestReply;
 import com.medicine_inc.bbs.domain.Pharmacy;
@@ -45,7 +49,7 @@ public class HaeController {
 	}
 	
 	@RequestMapping(value="/phDetail",  method = RequestMethod.GET)
-	public String phDetail(Model model, String no, String tabactive, HttpServletRequest req) {
+	public String phDetail(Model model, String no, String tabactive, String mapok) {
 		List<Object> sList = new ArrayList<Object>();
 		if(tabactive.equals("0")) {
 			sList.add(service.getPharmacy(no));
@@ -62,6 +66,7 @@ public class HaeController {
 		model.addAttribute("greplyList", greplyList);
 		model.addAttribute("sList", sList);
 		model.addAttribute("tabactive", tabactive);
+		model.addAttribute("mapok", mapok);
 		//System.out.println(sList);
 		return "/Haejin/phDetail";
 	}

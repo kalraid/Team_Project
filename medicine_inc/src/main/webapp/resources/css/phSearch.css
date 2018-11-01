@@ -1,0 +1,15 @@
+.clickPages:hover{cursor:pointer;}
+.clickAfterA:hover{cursor:pointer;}
+.clickBeforeA:hover{cursor:pointer;}
+.listPage{padding:10px; text-align:center; font-size:14px; background-color:gray; color:white;}
+.tdLine{font-size:14px; padding:12px; }
+.tdLine:hover,
+.close:focus{background-color:#E7EAED; cursor:pointer;}
+/* .listPage .ai{padding:13px;} */
+.listPage .ai:focus{color: red;}
+.listPage .a2:focus{color:red;}
+/* .listPage .a2{padding:13px;} */
+/* .listPage .ai:first-child{padding:15px 15px 15px 30px;} */
+.inputRadio{padding:5px;}
+.radioDiv{float:left;}
+.dcc{margin:10px auto;}

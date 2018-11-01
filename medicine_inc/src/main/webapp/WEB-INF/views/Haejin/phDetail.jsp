@@ -4,11 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>  
 <link rel="stylesheet" type="text/css" href="resources/css/phdetail.css" />
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=eCpZh1GoE4UX4hSfNtVs"></script>
 <script type="text/javascript" src="resources/js/phDetail.js"></script>
+<script type="text/javascript" src="resources/js/mapok.js"></script>
 <div style="margin:30px;"><h1 style="text-align:center; font-size:30px; color:green;">상세정보 페이지</h1>
 </div>
 <div>
 
+<c:if test="${not empty mapok}">
+<div>  
+	<div id="map" style="width:100%;height:800px;"></div>
+</div>
+</c:if>
 
 <div id="detailDiv">
 <c:if test="${tabactive eq '0'}">
@@ -18,8 +25,8 @@
 	<h1 style="margin:0px auto; text-align:center;">병원 상세 정보</h1>
 </c:if>
 	<form name="searchPos" id="searchPos">
-		<input type="hidden" name="y" id="y" value="${sList[0].xpos }" />
-		<input type="hidden" name="x" id="x" value="${sList[0].ypos }" />
+		<input type="hidden" name="y" id="ey" value="${sList[0].xpos }" />
+		<input type="hidden" name="x" id="ex" value="${sList[0].ypos }" />
 	</form>
 	<ul class="w3-ul" style="padding:0px;margin:0px auto;">
     <li>병원명	:	${sList[0].name}</li>

@@ -157,6 +157,8 @@ $(function(){
 			success: function(resultData, status, xhr) {			
 				$("#grTable").empty();
 				$.each(resultData, function(index, value) {
+					console.log("index : "+index);
+					if(resultData){
 					// 날짜 데이터를 출력 포맷에 맞게 수정
 					var date = new Date(value.date);
 					var strDate = date.getFullYear() + "-" + ((date.getMonth() + 1 < 10) 
@@ -185,11 +187,16 @@ $(function(){
 						+ "</td>"
 					+ "</tr>";
 					
-					$("#grTable").append(result);								
+					$("#grTable").append(result);			
+					}
 				});				
 				// 댓글 쓰기가 완료되면 댓글 쓰기 폼을 숨긴다.
 				$("#grForm").slideUp(300).add("#grContent").val("");
 				console.log("write : " + $("#grForm").length);
+				if($("#grContent").length >= 0){
+					document.location.reload();
+				}
+				
 			},
 			error: function(xhr, status, error) {
 				alert("ajax 실패 : " + status + " - " + xhr.status);

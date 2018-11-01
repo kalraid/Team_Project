@@ -25,5 +25,6 @@ public interface JinService {
 	
 	//검색리스트 + 페이징
 	public abstract Map<String, Object> pSearchList(String sidoname, String name, int pageNum);
+	public abstract Map<String, Object> aniSearchList(String sidoname, String name, int pageNum);
 	//public abstract int pgetListCount(String sidoname, String name);
 }

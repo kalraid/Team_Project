@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.SystemPropertyUtils;
 
+import com.medicine_inc.bbs.domain.AnimalHospital;
 import com.medicine_inc.bbs.domain.GuestReply;
 import com.medicine_inc.bbs.domain.Hospital;
 import com.medicine_inc.bbs.domain.Pharmacy;
@@ -107,6 +108,24 @@ public class JinDaoImpl implements JinDao{
 		int count = sqlSession.selectOne(NAME_SPACE + ".pgetListCount", params);
 		System.out.println("pageDaoImpl : "+count);
 		return sqlSession.selectOne(NAME_SPACE + ".pgetListCount", params);
+	}
+
+	@Override
+	public List<AnimalHospital> aniSearchList(String sidoname, String name, int startRow, int num) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("sidoname", sidoname);
+		params.put("name", name);
+		params.put("startRow", startRow);
+		params.put("num", num);
+		return sqlSession.selectList(NAME_SPACE + ".aniSearchList", params);
+	}
+
+	@Override
+	public int aniSearchCount(String sidoname, String name) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("sidoname", sidoname);
+		params.put("name", name);
+		return sqlSession.selectOne(NAME_SPACE + ".aniSearchCount", params);
 	}
 	
 	

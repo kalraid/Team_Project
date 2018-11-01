@@ -28,6 +28,7 @@
 
     <!-- Main CSS-->
     <link href="resources/css/main2.css" rel="stylesheet" media="all">
+    <link href="resources/css/phSearch.css" rel="stylesheet">
         <!-- Jquery JS-->
     <script src="resources/js/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
@@ -68,48 +69,41 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
-                            <form method="POST" id="pSearch">
+                            <form method="POST" id="pSearch" class="pSearch">
                             <input type="hidden" name="sidoname" id="sidoname" value="${area}" />
                                 <div class="input-group">
                                     <label class="label">약국 명:</label>
-                                    <input class="input--style-1" type="text" name="name" placeholder="ex)무지개약국" required="required">
+                                    <input id="inputPh" class="input--style-1" type="text" name="name" placeholder="ex)메디" required="required">
                                 </div>
                                 
                                 <button class="btn-submit" type="submit">search</button>
                             </form>
                         </div>
+                        
                         <div class="tab-pane" id="tab3">
                             <form method="POST" id="hSearch">
                             <input type="hidden" name="sidoname" id="sidoname" value="${area}" />
                                 <div class="input-group">
                                     <label class="label">origin:</label>
-                                    <input class="input--style-1" type="text" name="name" placeholder="City or airport" required="required">
+                                    <input  id="inputHos" class="input--style-1" type="text" name="name" placeholder="City or airport" required="required">
                                 </div>
                                 
-                                <div class="p-t-5">
-                                    <label class="checkbox-container m-r-45">First Class
-                                        <input type="checkbox" name="first-class">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="checkbox-container m-r-45">Business
-                                        <input type="checkbox" name="business">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="checkbox-container">Economy
-                                        <input type="checkbox" checked="checked" name="economy">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                
+                                <div class="radioDiv">
+                                        <div class="dcc"><input type="radio" name="radioValue" checked class="inputRadio">First Class</div>
+                                        <div class="dcc"><input type="radio" name="radioValue" class="inputRadio">First Class</div>
+                                        <div class="dcc"><input type="radio" name="radioValue" class="inputRadio">First Class</div>
+                                   </div>
+                				               
                                 <button class="btn-submit" type="submit">search</button>
                             </form>
                         </div>
+                        
                         <div class="tab-pane" id="tab2">
-                            <form method="POST" id="aSearch">
+                            <form method="POST" id="aSearch" class="pSearch">
                             <input type="hidden" name="sidoname" id="sidoname" value="${area}" />
                                 <div class="input-group">
-                                    <label class="label">origin:</label>
-                                    <input class="input--style-1" type="text" name="origin" placeholder="City or airport" required="required">
+                                    <label class="label">동물병원 명:</label>
+                                    <input  id="inputAni"  class="input--style-1" type="text" name="origin" placeholder="ex)동물" required="required">
                                 </div>
                                 
                                 <button class="btn-submit m-t-0" type="submit">search</button>

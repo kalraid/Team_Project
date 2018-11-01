@@ -55,6 +55,15 @@
 		SELECT COUNT(*) from pharmacy WHERE sidoname = #{sidoname} and name LIKE CONCAT('%', #{name}, '%')
 	</select>
 	
+	<select id="aniSearchList" parameterType="hashmap" resultType="AnimalHospital" resultMap="animalMap">
+		SELECT * from animal WHERE addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%')  
+			ORDER BY no desc LIMIT #{startRow}, #{num}
+	</select>
+	
+	<select id="aniSearchCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) from animal WHERE addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%')
+	</select>
+	
 	
 	<resultMap id="pharmacyResultMap" type="Pharmacy">
 		<id property="no" column="no" />
@@ -94,6 +103,12 @@
 		<result property="date" column="date" />
 	</resultMap>
 	
+	<resultMap id="animalMap" type="AnimalHospital">
+		<id property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="phone" column="phone" />
+		<result property="addr" column="addr" />
+	</resultMap>
 	
 
 

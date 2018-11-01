@@ -1,4 +1,4 @@
-/* #map{width:900px; height:800px; border: 1px solid black; margin: 15px auto;} */
+#map{width:900px; height:800px; border: 1px solid black; margin: 15px auto;}
 #detailDiv {width:900px; border:1px solid black; margin:5px auto;}
 #replyDiv{width:900px; border:1px solid black; margin:5px auto;}
 .w3-ul li:last-child{border-bottom:none;}

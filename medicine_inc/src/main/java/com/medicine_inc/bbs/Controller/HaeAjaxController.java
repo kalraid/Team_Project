@@ -1,6 +1,7 @@
 package com.medicine_inc.bbs.Controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.medicine_inc.bbs.domain.GuestReply;
 import com.medicine_inc.bbs.domain.Hospital;
@@ -85,11 +87,18 @@ public class HaeAjaxController {
 	
 	@RequestMapping("/pSearch.ajax")
 	@ResponseBody
-	public  Map<String, Object> pSearchList (Model model, String sidoname, String name, @RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum){
-		Map<String, Object> modelMap= service.pSearchList(sidoname, name, pageNum);
-		model.addAllAttributes(modelMap);
+	public  Map<String, Object> pSearchList (int tabnum, String sidoname, String name, @RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum){
+		Map<String, Object> modelMap= new HashMap<String, Object>();
+		System.out.println("tab의 Number : "+tabnum);
+		if(tabnum == 0) {
+			modelMap = service.pSearchList(sidoname, name, pageNum);
+		} else if(tabnum == 2) {
+			modelMap = service.aniSearchList(sidoname, name, pageNum);
+		}
 		return modelMap;
 	}
+	
+	
 	
 	
 }
