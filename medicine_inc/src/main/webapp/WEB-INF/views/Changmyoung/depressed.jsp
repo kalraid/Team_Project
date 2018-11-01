@@ -100,8 +100,8 @@ function connectToServer() {
 </script>
 <style>
 	.staticImages{
-		width: 500px;
-		height: 500px;
+		width: 950px;
+		height: 600px;
 		
 	}
 </style>
