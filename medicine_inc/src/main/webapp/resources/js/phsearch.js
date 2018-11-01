@@ -4,10 +4,16 @@
 var sx;
 var sy;
 /*geolocation을 사용하여 현재위치 가져오기*/
-navigator.geolocation.getCurrentPosition( function(pos){
-			sy = pos.coords.latitude;
-			sx = pos.coords.longitude;
-	});
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+          lat = position.coords.latitude,
+          long = position.coords.longitude
+    }, function(e) {
+       lat = 37.48525;
+       long = 126.8992833;
+    });
+}
 var ex;
 var ey;
 $(function(){
