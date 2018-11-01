@@ -96,6 +96,6 @@ public class HealthSupportServiceImpl implements HealthSupportService {
 	}
 	
 	public boolean isPassCheck(int no, String pass) {
-		return HealthSupportDao.isPassCheck(no, pass);
+		return healthSupportDao.isPassCheck(no, pass);
 	}
 }

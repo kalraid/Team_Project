@@ -11,9 +11,11 @@
 	}
 </style>
 <article>
-	<h2>
-		<spring:message code="food.list.title" />
-	</h2>
+	<div style="text-align:center">
+		<h2>
+			특정 질환에 좋은 음식들
+		</h2><br>
+	</div>
 
 	<table class="listTable table table-bordered table-hover">
 		<tr>

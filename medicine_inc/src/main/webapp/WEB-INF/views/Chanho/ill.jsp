@@ -5,10 +5,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <script src="resources/js/ill.js"></script>
 <article>
-	<h2>
-		<spring:message code="bbs.list.title" />
-	</h2>
-
+	<div style="text-align:center">
+		<h2>
+			질병 리스트
+		</h2><br>
+	</div>
 	<div>
 		<form action="ill" method="get" id="">
 			<div class="center-block text-center">
