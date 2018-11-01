@@ -28,14 +28,24 @@ h1:nth-of-type() {
 .title2 dl:not(:last-child){border-bottom:1.5px solid blue;
 
 }
+dl{
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin:0px;
+}
 </style>
 <article>
-	<h2 class ="title1">보건 뉴스 리스트</h2>
-	<div class="title2">
+	<table class="table table-hover">
+	<tr>
+	<th><h2 class ="title1">보건 뉴스 리스트</h2></th></tr>
+	<tr></tr>
+	</table>
+	<table class="table"><tr>
 		<c:forEach var="e" items="${ elem4 }" >
+				<td>
 				${ e.getElementsByTag("dl") }
+				</td>
 		</c:forEach>
-		
-	</div>
-	
+		</tr>
+	</table>
 </article>

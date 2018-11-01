@@ -114,4 +114,6 @@ public class HoController {
 		return "/Changmyoung/depressed";
 	}
 	
+	
+	
 }

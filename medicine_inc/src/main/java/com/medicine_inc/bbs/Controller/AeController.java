@@ -190,7 +190,7 @@ private final static String DEFAULT_PATH = "/resources/images/Aehee";
 	public String updateBoard(Model model, HttpServletResponse response,
 		PrintWriter out, HealthSupport healthSupport, int no) {
 		// BoardService 클래스를 이용해 게시판 테이블에서 비밀번호가 맞는지 체크한다.
-		boolean result = HealthSupportService.isPassCheck(healthSupport.getNo(), healthSupport.getPass());
+		boolean result = healthSupportService.isPassCheck(healthSupport.getNo(), healthSupport.getPass());
 		// 비밀번호가 맞지 않으면
 		if(! result) {
 			/* 컨트롤러에서 null을 반환하거나 메서드의 반환 타입이 void일 경우

@@ -1,15 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="resources/css/main.css" />    
-<article>
-	<div class="row main">
-		<div class="col-md-12"></div>
-	</div>
-	<div class="row main">
-		<div class="col-md-12"></div>
-	</div>
-	<div class="row main">
-		<div class="col-md-12"></div>
+<style>
+	article{
+	border-collapse: collapse;
+	}
+	.tat{
+		width: 100px;
+		margin: 0 0 5px;
+	}
+	
+	.tats{
+		width: 200px;
+		margin: 5px;
+	}
+	.news{
+		height: 400px;
+		overflow: scroll;
+		border: none;
+	}
+	.title1{
+	text-align: center;
+	}
+	.search, .searchIn, #innerLine{
+		height: 480px !important;
+		border: none;
+	}
+	#searchDetail{
+		width: auto;
+	}
+	.submitbutton{
+	text-align: center;
+	}
+	
+	#topArticle{
+		
+	}
+	.main{
+		border-collapse: collapse;
+	}
+</style>
+<script>
+$(document).ready(function(){
+	$('.news').load('medicalNews article');
+	$('.searchIn').load('search #innerLine');
+});
+</script>
+<article id="topArticle">
+	<div class="row main search">
+		<h2>약품 검색 </h2>
+		<div class="col-md-12 searchIn"></div>
 	</div>
 	<div class="row main">
 		<div class="col-md-6"></div>
@@ -43,12 +84,31 @@
 			</div>
 			<div id="healthInfo">
 				<div><h4>건강 정보</h4></div>
-				<div></div>
+				<div>
+				<button type="button" class="btn btn-default tat" onclick="javascript:location.href='firstAid'">응급처치</button>
+				&nbsp;
+				<button type="button" class="btn btn-default tat" onclick="javascript:location.href='stretching'">스트레칭</button>
+				&nbsp;
+				<button type="button" class="btn btn-default tat" onclick="javascript:location.href='jiap'">지압</button>
+				</div>
+				<div>
+				<button type="button" class="btn btn-default tat" onclick="javascript:location.href='food'">음식 정보</button>
+				&nbsp;
+				<button type="button" class="btn btn-default tat" onclick="javascript:location.href='ill'">질병 정보</button>
+				</div>
 			</div>
 			<div id="mapInfo">
 				<div><h4>지도 정보</h4></div>
-				<div></div>
+				<div>
+				<button type="button" class="btn btn-default tats" onclick="javascript:location.href='hospitalmaps'">약국 및 병원지도</button>
+				<button type="button" class="btn btn-default tats" onclick="javascript:location.href='epidemicMaps'">전염병 지도</button>
+				</div>
 			</div>
+		</div>
+	</div>
+	<div class="row main news">
+		<div class="col-md-12 newsIn">
+
 		</div>
 	</div>
 </article>

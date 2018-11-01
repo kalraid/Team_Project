@@ -3,11 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<style>
+	
+	.stImages{
+		width: 600px;
+		height:400px;
+	}
+</style>
 <article>
- <h1>스트레칭</h1>
- <h3>Stretching</h3><br><br>
- 
- <table id="stretchingTable">
+ <div style="text-align:center">
+	 <h1>스트레칭</h1>
+	 <h3>Stretching</h3><br><br>
+ </div>
+ <table id="stretchingTable" class="table ">
   <c:if test="${not empty stretchingList }">
    <c:forEach var="s" items="${stretchingList }" varStatus="status">
     <tr class="stretchingListTr">
@@ -16,7 +24,7 @@
      </td>
      <td class="stretchingListImg">
      <a href="stretchingDetail?stretchingnum=${s.stretchingnum}&pageNum=${currentPage}">
-      <img src="resources/images/stretching/stretching${s.stretchingnum}_1.jpg" />
+      <img class='stImages' src="resources/images/stretching/stretching${s.stretchingnum}_1.jpg" />
      </a>
      </td>
      <td class="stretchingListTitle">

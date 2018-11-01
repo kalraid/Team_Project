@@ -21,7 +21,8 @@
 		 		<del>		 			
 		 			<fmt:formatNumber value="${ board.consumerPrice }" type="number" />&nbsp;원
 		 		</del></font></li>
-		 	<li><font size="4" face="Arial" style="bold">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.sellingPrice }&nbsp;원</font></li>
+		 	<li><font size="4" face="Arial" style="bold">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 		<fmt:formatNumber value="${board.sellingPrice }" type="number" />&nbsp;원</font></li>
 		 	<li><font size="4" face="Arial" style="bold">용량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.capacity }</font></li>
 		 	<li><font size="4" face="Arial" style="bold">형태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.shape }</font></li>
 		</ul>
