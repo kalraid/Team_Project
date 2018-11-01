@@ -7,8 +7,8 @@ var sy;
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
 
-          lat = position.coords.latitude,
-          long = position.coords.longitude
+          sx = position.coords.latitude,
+          sy = position.coords.longitude
     }, function(e) {
        sx = 37.48525;
        sy = 126.8992833;
