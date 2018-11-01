@@ -1,27 +1,21 @@
+var sx;
+var sy;
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
 
-          lat = position.coords.latitude,
-          long = position.coords.longitude
+          sy = position.coords.latitude,
+          sx = position.coords.longitude
     }, function(e) {
-    	 if (navigator.geolocation) {
-   	      navigator.geolocation.getCurrentPosition(
-   	         browserGeolocationSuccess,
-   	        browserGeolocationFail,
-   	        {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
-   	    }
+       sy = 37.48525;
+       sx = 126.8992833;
     });
 }
 
 
-var sx;
-var sy;
 $(function(){
 
 
-sy = lat;
-sx = long;
 console.log(sx+","+sy);
 var ey = $("#ex").val();
 var ex = $("#ey").val();
