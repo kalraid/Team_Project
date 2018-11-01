@@ -10,8 +10,8 @@ if (navigator.geolocation) {
           lat = position.coords.latitude,
           long = position.coords.longitude
     }, function(e) {
-       lat = 37.48525;
-       long = 126.8992833;
+       sx = 37.48525;
+       sy = 126.8992833;
     });
 }
 var ex;
@@ -21,7 +21,7 @@ $(function(){
 ex = $("#y").val();
 ey = $("#x").val();
 console.log(ey+","+ex);
-
+console.log(sy+","+sx);
 
 var data;
 var key = "ubPSn96E0YfuQSU%2BXL0fSss6zwqlnZ3sEk6%2BtR6QSm8";
