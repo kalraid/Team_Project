@@ -9,17 +9,20 @@ if (navigator.geolocation) {
     });
 }
 
-var tryGeolocation = function() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-         browserGeolocationSuccess,
-        browserGeolocationFail,
-        {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
-    }
-  };
+
 var sx;
 var sy;
 $(function(){
+	
+	
+	var tryGeolocation = function() {
+	    if (navigator.geolocation) {
+	      navigator.geolocation.getCurrentPosition(
+	         browserGeolocationSuccess,
+	        browserGeolocationFail,
+	        {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true});
+	    }
+	  };
 
 sy = lat;
 sx = long;

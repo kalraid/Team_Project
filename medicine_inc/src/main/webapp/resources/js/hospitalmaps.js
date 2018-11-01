@@ -4,12 +4,12 @@ var long;
 var tabactive;
 
 /*geolocation을 사용하여 현재위치 가져오기*/
-/*navigator.geolocation.getCurrentPosition( function(pos){
+navigator.geolocation.getCurrentPosition( function(pos){
 			lat = pos.coords.latitude;
 			long = pos.coords.longitude;
 		});
-*/
-if (navigator.geolocation) {
+
+/*if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
 
           lat = position.coords.latitude,
@@ -17,7 +17,7 @@ if (navigator.geolocation) {
     }, function(e) {
        tryGeolocation();
     });
-}
+}*/
 
 $(function () {
 	
