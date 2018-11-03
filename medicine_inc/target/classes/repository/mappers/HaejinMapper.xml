@@ -64,6 +64,35 @@
 		SELECT COUNT(*) from animal WHERE addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%')
 	</select>
 	
+	<select id="hosSearchList" parameterType="hashmap" resultType="Hospital" resultMap="hospitalResultMap">
+		SELECT * from hospital 
+		<where>
+		<if test="clcdname == '의원'">
+			addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%') 
+			and clcdname LIKE CONCAT('%', #{clcdname}, '%') and classification LIKE CONCAT('%', #{classification}, '%')
+		</if>
+		<if test="clcdname != '의원'">
+			 addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%') 
+			and clcdname LIKE CONCAT('%', #{clcdname}, '%') 
+		</if>
+		</where>
+			ORDER BY no desc LIMIT #{startRow}, #{num}
+	</select>
+	
+	<select id="hosSearchCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) from hospital 
+		<where>
+		<if test="clcdname == '의원'">
+			addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%') 
+			and clcdname LIKE CONCAT('%', #{clcdname}, '%') and classification LIKE CONCAT('%', #{classification}, '%')
+		</if>
+		<if test="clcdname != '의원'">
+			 addr LIKE CONCAT('%', #{sidoname}, '%') and name LIKE CONCAT('%', #{name}, '%') 
+			and clcdname LIKE CONCAT('%', #{clcdname}, '%') 
+		</if>
+		</where>
+	</select>
+	
 	
 	<resultMap id="pharmacyResultMap" type="Pharmacy">
 		<id property="no" column="no" />

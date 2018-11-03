@@ -4,16 +4,10 @@
 var sx;
 var sy;
 /*geolocation을 사용하여 현재위치 가져오기*/
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-
-          sx = position.coords.latitude,
-          sy = position.coords.longitude
-    }, function(e) {
-       sx = 37.48525;
-       sy = 126.8992833;
-    });
-}
+navigator.geolocation.getCurrentPosition( function(pos){
+			sy = pos.coords.latitude;
+			sx = pos.coords.longitude;
+	});
 var ex;
 var ey;
 $(function(){
@@ -21,7 +15,7 @@ $(function(){
 ex = $("#y").val();
 ey = $("#x").val();
 console.log(ey+","+ex);
-console.log(sy+","+sx);
+
 
 var data;
 var key = "ubPSn96E0YfuQSU%2BXL0fSss6zwqlnZ3sEk6%2BtR6QSm8";

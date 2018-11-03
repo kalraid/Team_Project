@@ -127,6 +127,30 @@ public class JinDaoImpl implements JinDao{
 		params.put("name", name);
 		return sqlSession.selectOne(NAME_SPACE + ".aniSearchCount", params);
 	}
+
+	@Override
+	public List<Hospital> hosSearchList(String sidoname, String name, int startRow, int num, String clcdname, String classification) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("sidoname", sidoname);
+		params.put("name", name);
+		params.put("startRow", startRow);
+		params.put("num", num);
+		params.put("clcdname", clcdname);
+		params.put("classification", classification);
+		System.out.println("검색명s : "+clcdname+",  "+classification);
+		return sqlSession.selectList(NAME_SPACE + ".hosSearchList", params);
+	}
+
+	@Override
+	public int hosSearchCount(String sidoname, String name, String clcdname, String classification) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("sidoname", sidoname);
+		params.put("name", name);
+		params.put("clcdname", clcdname);
+		params.put("classification", classification);
+		System.out.println("검색명s : "+clcdname+",  "+classification);
+		return sqlSession.selectOne(NAME_SPACE + ".hosSearchCount", params);
+	}
 	
 	
 	

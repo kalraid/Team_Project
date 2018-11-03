@@ -87,13 +87,15 @@ public class HaeAjaxController {
 	
 	@RequestMapping("/pSearch.ajax")
 	@ResponseBody
-	public  Map<String, Object> pSearchList (int tabnum, String sidoname, String name, @RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum){
+	public  Map<String, Object> pSearchList (int tabnum, String sidoname, String name, String clcdname, String classification, 
+			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum){
 		Map<String, Object> modelMap= new HashMap<String, Object>();
-		System.out.println("tab의 Number : "+tabnum);
 		if(tabnum == 0) {
 			modelMap = service.pSearchList(sidoname, name, pageNum);
 		} else if(tabnum == 2) {
 			modelMap = service.aniSearchList(sidoname, name, pageNum);
+		} else if(tabnum == 1) {
+			modelMap = service.hosSearchList(sidoname, name, pageNum, clcdname, classification);
 		}
 		return modelMap;
 	}

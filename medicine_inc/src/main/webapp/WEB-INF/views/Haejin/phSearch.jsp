@@ -81,17 +81,47 @@
                         </div>
                         
                         <div class="tab-pane" id="tab3">
-                            <form method="POST" id="hSearch">
+                            <form method="POST" id="hSearch" class="pSearch">
                             <input type="hidden" name="sidoname" id="sidoname" value="${area}" />
                                 <div class="input-group">
-                                    <label class="label">origin:</label>
-                                    <input  id="inputHos" class="input--style-1" type="text" name="name" placeholder="City or airport" required="required">
+                                    <label class="label">병원 명:</label>
+                                    <input  id="inputHos" class="input--style-1" type="text" name="name" placeholder="병원" required="required">
                                 </div>
                                 
                                 <div class="radioDiv">
-                                        <div class="dcc"><input type="radio" name="radioValue" checked class="inputRadio">First Class</div>
-                                        <div class="dcc"><input type="radio" name="radioValue" class="inputRadio">First Class</div>
-                                        <div class="dcc"><input type="radio" name="radioValue" class="inputRadio">First Class</div>
+                                        <div class="dcc"><input type="radio" name="radioType" checked class="inputRadio" value="종합병원">종합병원</div>
+                                        <div class="dcc"><input type="radio" name="radioType" class="inputRadio" value="요양병원">요양병원</div>
+                                        <div class="dcc"><input type="radio" name="radioType" class="inputRadio" value="치과">치과</div>
+                                        <div class="dcc"><input type="radio" name="radioType" class="inputRadio" value="한방">한방</div>
+                                        <div class="dcc"><input type="radio" name="radioType" class="inputRadio" value="보건기관">보건기관</div>
+                                        <div class="dcc"><input type="radio" name="radioType" class="inputRadio" value="조산원">조산원</div>
+                                        <div class="dcc"><input type="radio" name="radioType" class="inputRadio" value="의원">의원</div>
+                                   </div>
+                                   
+                                   <div id="dropDiv">
+                                   	<select name="hospi" id="selectHospi">
+                                   		<option value="안과">안과</option>
+                                   		<option value="피부과">피부과</option>
+                                   		<option value="내과">내과</option>
+                                   		<option value="성형외과">성형외과</option>
+                                   		<option value="마취과">마취과</option>
+                                   		<option value="비뇨기과">비뇨기과</option>
+                                   		<option value="소아과">소아과</option>
+		                                <option value="정형외과">정형외과</option>
+		                                <option value="영상의학과">영상의학과</option>
+		                                <option value="가정의학과">가정의학과</option>
+		                                <option value="이비인후과">이비인후과</option>
+		                                <option value="산부인과">산부인과</option>
+		                                <option value="흉부외과">흉부외과</option>
+		                                <option value="신경외과">신경외과</option>
+		                                <option value="재활의학과">재활의학과</option>
+		                                <option value="정신과">정신과</option>
+		                                <option value="신경과">신경과</option>
+		                                <option value="병리과">병리과</option>
+		                                <option value="진단검사의학과">진단검사의학과</option>
+		                                <option value="핵의학과">핵의학과</option>
+		                                <option value="결핵과">결핵과</option>
+                                   	</select>
                                    </div>
                 				               
                                 <button class="btn-submit" type="submit">search</button>

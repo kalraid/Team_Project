@@ -55,7 +55,7 @@ public class HaeController {
 			sList.add(service.getPharmacy(no));
 		} else if(tabactive.equals("1")) {
 			sList.add(service.getHospital(no));
-		}
+		} 
 		//geolocation을 사용하여 현재위치 가져오기 => 근처 역으로 이동
 		//클릭시 경로를 찾아주게 하기(버튼사용x) 폴리선
 		//tabactive를 조건줘서 약국과 병원 조회

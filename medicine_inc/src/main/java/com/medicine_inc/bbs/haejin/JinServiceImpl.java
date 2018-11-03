@@ -141,5 +141,39 @@ public class JinServiceImpl implements JinService{
 				return null;
 	}
 
+	@Override
+	public Map<String, Object> hosSearchList(String sidoname, String name,  int pageNum, String clcdname, String classification) {
+		int currentPage = pageNum;
+		int startRow = (currentPage - 1) * PAGE_SIZE;
+		int listCount = dao.hosSearchCount(sidoname, name, clcdname, classification);
+		System.out.println("listCount 총 개수 : "+listCount);
+		if(listCount >0) {
+			List<Hospital> pSearchList = dao.hosSearchList(sidoname, name, startRow, PAGE_SIZE, clcdname, classification);
+			int pageCount = listCount / PAGE_SIZE + (listCount % PAGE_SIZE == 0 ? 0 : 1);
+			int startPage = (currentPage / PAGE_GROUP) * PAGE_GROUP + 1
+					- (currentPage % PAGE_GROUP == 0 ? PAGE_GROUP : 0);
+			int endPage = startPage + PAGE_GROUP - 1;
+		
+			if(endPage > pageCount) {
+				endPage = pageCount;
+				}
+			System.out.println("endPage : " + endPage);
+			System.out.println("ServiceImpl startPage : "+startPage);
+			System.out.println("ServiceImpl pageGroup : "+PAGE_GROUP);
+			Map<String, Object> modelMap = new HashMap<String, Object>();
+			modelMap.put("pSearchList", pSearchList);
+			modelMap.put("pageCount", pageCount);
+			modelMap.put("startPage", startPage);
+			modelMap.put("endPage", endPage);
+			modelMap.put("currentPage", currentPage);
+			modelMap.put("listCount", listCount);
+			modelMap.put("pageGroup", PAGE_GROUP);
+			return modelMap;
+		}
+		return null;
+	}
+
+	
+
 
 }

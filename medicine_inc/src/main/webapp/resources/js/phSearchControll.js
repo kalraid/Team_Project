@@ -4,23 +4,35 @@ var name;
 var beforPageNum;
 var afterPageNum;
 var i;
+var radioType;
+var selectHospi;
+/*console.log("selectHospi : "+selectHospi);
+console.log("radioType : "+radioType);*/
 $(function(){
 	tabat =0;
-	
 	sidoname = $("#sidoname").val();//지역명
-	
 	$(".tab-list__link").click(function(){
 		tabat = $(".tab-list__link").index(this);
 	});
 	
 	$(".pSearch").on("submit", function(){
+		
+		radioType = $("input[type=radio]:checked").val();
+		selectHospi = '';
+		if(radioType == '의원'){
+			selectHospi=$("#selectHospi").val();
+		}
+		
+		//console.log("selectHospi : "+selectHospi);
 		if(tabat == 0){
 			name = $("#inputPh").val();
+		} else if(tabat == 1){
+			name = $("#inputHos").val();
 		} else if(tabat == 2){
 			name = $("#inputAni").val();
 		}
-		console.log(name);
-		var params = "sidoname="+sidoname+"&name="+name+"&tabnum="+tabat;
+		//console.log(name);
+		var params = "sidoname="+sidoname+"&name="+name+"&tabnum="+tabat+"&clcdname="+radioType+"&classification="+selectHospi;
 		console.log("params : "+params);
 		$.ajax({
 			url: "pSearch.ajax",
@@ -107,7 +119,7 @@ $(function(){
 	//해당 페이지 리스트 가져오기
 	$(document).on("click", ".clickPages", function(){
 		var pageI = $(this).attr('data-no');
-		var params = "sidoname="+sidoname+"&name="+name+"&pageNum="+pageI+"&tabnum="+tabat;
+		var params = "sidoname="+sidoname+"&name="+name+"&pageNum="+pageI+"&tabnum="+tabat+"&clcdname="+radioType+"&classification="+selectHospi;
 		console.log(params);
 		
 		$.ajax({
@@ -181,7 +193,7 @@ $(function(){
 	
 	//다음 페이지 클릭
 	$(document).on("click", ".clickAfterA", function(){
-		var params = "sidoname="+sidoname+"&name="+name+"&pageNum="+afterPageNum+"&tabnum="+tabat;
+		var params = "sidoname="+sidoname+"&name="+name+"&pageNum="+afterPageNum+"&tabnum="+tabat+"&clcdname="+radioType+"&classification="+selectHospi;
 		$.ajax({
 			url: "pSearch.ajax",
 			type: "post",
@@ -253,7 +265,7 @@ $(function(){
 
 	//이전 페이지 클릭
 	$(document).on("click", ".clickBeforeA", function(){
-		var params = "sidoname="+sidoname+"&name="+name+"&pageNum="+beforPageNum+"&tabnum="+tabat;
+		var params = "sidoname="+sidoname+"&name="+name+"&pageNum="+beforPageNum+"&tabnum="+tabat+"&clcdname="+radioType+"&classification="+selectHospi;
 		console.log(params);
 		$.ajax({
 			url: "pSearch.ajax",
@@ -323,17 +335,26 @@ $(function(){
 		return false;
 	});
 	
-	//상세정보 클릭시 이동 동물병원 제외
+	//상세정보 클릭시 이동 동물병원 제외 hospital 상세정보 추가해야함
 
 		
 		$(document).on("click", ".trSearch", function(){
 			console.log("tabat : "+tabat);
 			if(tabat != 2){
 				var no = $(this).attr("data-no");
-				location.href='phDetail?no='+no+'&tabactive='+tabat+'&mapok=ok';
+				location.href='phDetail?no='+no+'&tabactive='+tabat+'&mapok=ok'+'&clcdname='+radioType+'&classification='+selectHospi;
 			} 
 				return null;
 		});
+		
+		$(".inputRadio").on("click", function(){
+			if($(this).val() == "의원"){
+				$("#dropDiv").css("display","block");
+			} else {
+				$("#dropDiv").css("display","none");
+			}
+		});
+		
 	
 	
 	

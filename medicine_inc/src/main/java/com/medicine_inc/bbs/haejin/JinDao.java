@@ -31,4 +31,7 @@ public interface JinDao {
 	
 	public abstract List<AnimalHospital> aniSearchList(String sidoname, String name, int startRow, int num);
 	public abstract int aniSearchCount(String sidoname, String name);
+	
+	public abstract List<Hospital> hosSearchList(String sidoname, String name, int startRow, int num, String clcdname, String classification);
+	public abstract int hosSearchCount(String sidoname, String name, String clcdname, String classification);
 }

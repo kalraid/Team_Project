@@ -27,4 +27,5 @@ public interface JinService {
 	public abstract Map<String, Object> pSearchList(String sidoname, String name, int pageNum);
 	public abstract Map<String, Object> aniSearchList(String sidoname, String name, int pageNum);
 	//public abstract int pgetListCount(String sidoname, String name);
+	public abstract Map<String, Object> hosSearchList(String sidoname, String name, int pageNum, String clcdname, String classification);
 }
